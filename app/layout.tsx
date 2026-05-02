@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { PageLoader } from "@/components/providers/PageLoader";
 import { anton, fraunces, jetbrainsMono } from "@/lib/fonts";
 import { cn } from "@/lib/cn";
 import "./globals.css";
@@ -32,6 +33,7 @@ export default function RootLayout({
       )}
     >
       <body>
+        <PageLoader />
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
