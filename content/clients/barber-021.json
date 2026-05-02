@@ -1,0 +1,128 @@
+{
+  "slug": "barber-021",
+  "tier": "standard",
+  "brand": {
+    "name": "BARBER 021",
+    "tagline": "Frizerie urbană contemporană. Sector 3, București.",
+    "logoVariant": "primary"
+  },
+  "manifesto": {
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Care profesionist",
+        "body": "Fiecare tunsoare începe cu o consultație. Ne uităm la formă, ritm, structura părului. Apoi tăiem cu intenție."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Stil contemporan",
+        "body": "Linii clare, texturi vii, croieli care îmbătrânesc bine. Nu urmărim trenduri — construim siluete."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Atmosferă autentică",
+        "body": "Mobilier de epocă, vinil pe pickup, un espresso scurt. Ritualul contează la fel de mult ca rezultatul."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tunsoare",
+      "name": "Tunsoare",
+      "duration": "45 min",
+      "price": 90,
+      "description": "Consultație, spălat, tuns cu foarfeca și mașina, styling final."
+    },
+    {
+      "id": "barba",
+      "name": "Barbă cu brici",
+      "duration": "30 min",
+      "price": 60,
+      "description": "Conturare, ras tradițional cu brici și prosop fierbinte."
+    },
+    {
+      "id": "combo",
+      "name": "Tunsoare + Barbă",
+      "duration": "75 min",
+      "price": 130,
+      "description": "Pachetul complet — economisești 20 RON."
+    },
+    {
+      "id": "kid",
+      "name": "Tunsoare copil",
+      "duration": "30 min",
+      "price": 60,
+      "description": "Pentru clienți sub 12 ani. Răbdare inclusă."
+    },
+    {
+      "id": "styling",
+      "name": "Styling & wash",
+      "duration": "20 min",
+      "price": 40,
+      "description": "Spălat profesional și styling pentru ocazii speciale."
+    }
+  ],
+  "gallery": [],
+  "team": [
+    {
+      "id": "andrei",
+      "name": "Andrei",
+      "role": "Master Barber",
+      "bio": "12 ani în breaslă. Specializare pe fade-uri și texturi.",
+      "portrait": "/clients/barber-021/team/andrei.jpg"
+    },
+    {
+      "id": "vlad",
+      "name": "Vlad",
+      "role": "Senior Barber",
+      "bio": "Foarfecă tradițională, brici, atenție la detaliu.",
+      "portrait": "/clients/barber-021/team/vlad.jpg"
+    },
+    {
+      "id": "radu",
+      "name": "Radu",
+      "role": "Barber",
+      "bio": "Tunsori clasice și executive cuts.",
+      "portrait": "/clients/barber-021/team/radu.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "quote": "Cea mai bună tunsoare pe care am avut-o în ultimii cinci ani. Locul are caracter — pickup, vinil, miros de lemn vechi.",
+      "author": "Cristian M.",
+      "source": "Google Reviews"
+    },
+    {
+      "id": "r2",
+      "quote": "Andrei a înțeles din prima ce voiam. Plec mereu cu o tunsoare care durează trei săptămâni bune.",
+      "author": "Ștefan P.",
+      "source": "Google Reviews"
+    },
+    {
+      "id": "r3",
+      "quote": "Atmosferă altfel decât oriunde în București. Nu e doar o frizerie, e un ritual săptămânal.",
+      "author": "Mihai D.",
+      "source": "Instagram"
+    }
+  ],
+  "instagram": {
+    "handle": "barber021",
+    "posts": []
+  },
+  "contact": {
+    "phone": "+40 720 000 000",
+    "whatsapp": "+40720000000",
+    "address": "Strada Calea Călărașilor 27, București, Sector 3",
+    "mapCenter": [26.1097, 44.4254],
+    "hours": [
+      { "day": "Luni — Vineri", "hours": "10:00 — 21:00" },
+      { "day": "Sâmbătă", "hours": "10:00 — 19:00" },
+      { "day": "Duminică", "hours": "Închis" }
+    ],
+    "email": "salut@barber021.ro"
+  },
+  "social": {
+    "instagram": "https://instagram.com/barber021"
+  }
+}

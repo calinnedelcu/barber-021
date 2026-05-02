@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-anton);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-fraunces);
+
+  --color-bg: #0a0807;
+  --color-surface: #14110f;
+  --color-ink: #f5efe6;
+  --color-ink-muted: #8a8276;
+  --color-accent: #d9764d;
+  --color-accent-hot: #e8915a;
+  --color-bone: #c9b89a;
+  --color-line: rgb(245 239 230 / 0.08);
+}
+
+@layer base {
+  :root {
+    /* === PALETTE — overridable per client === */
+    --bg: #0a0807;
+    --surface: #14110f;
+    --ink: #f5efe6;
+    --ink-muted: #8a8276;
+    --accent: #d9764d;
+    --accent-hot: #e8915a;
+    --bone: #c9b89a;
+    --line: rgb(245 239 230 / 0.08);
+
+    /* === TYPE SCALE (modular 1.25, fluid via clamp) === */
+    --fs-100: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+    --fs-200: clamp(0.875rem, 0.83rem + 0.2vw, 0.9375rem);
+    --fs-300: 1rem;
+    --fs-400: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+    --fs-500: clamp(1.4rem, 1.25rem + 0.7vw, 1.75rem);
+    --fs-600: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+    --fs-700: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+    --fs-800: clamp(3rem, 1.5rem + 7vw, 7rem);
+    --fs-display: clamp(4rem, 1rem + 14vw, 15rem);
+
+    /* === SPACING (modular 1.25 base 4px) === */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --space-10: 6rem;
+    --space-12: 8rem;
+    --space-16: 12rem;
+
+    /* === MOTION === */
+    --ease-default: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-fast: 220ms;
+    --dur-base: 420ms;
+    --dur-slow: 720ms;
+
+    /* === GRID === */
+    --grid-cols: 12;
+    --grid-gutter: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+    --container-px: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+
+    color-scheme: dark;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif), Georgia, serif;
+    font-size: var(--fs-300);
+    line-height: 1.5;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay — applied globally, fixed, low opacity */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.06;
+    background-image: url("/textures/grain.svg");
+    background-size: 280px 280px;
+    mix-blend-mode: overlay;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  /* Respect reduced motion at the platform level — components also check via hook */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    padding-inline: var(--container-px);
+  }
+
+  .hairline {
+    border-top: 1px solid var(--line);
+  }
+
+  .text-display {
+    font-family: var(--font-display), Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .text-mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-feature-settings: "tnum", "zero";
+    letter-spacing: 0.02em;
+  }
+
+  .text-serif-italic {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
