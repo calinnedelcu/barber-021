@@ -63,38 +63,40 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
 
   return (
     <article ref={ref} className={`col-span-12 ${offset}`}>
-      <motion.span
-        aria-hidden
-        className="text-display block text-[clamp(5rem,12vw,9rem)] leading-[0.7] text-[var(--accent)]"
-        initial={{ opacity: 0, y: 30 }}
-        animate={inView ? { opacity: 0.55, y: 0 } : { opacity: 0, y: 30 }}
-        transition={
-          reduced ? { duration: 0 } : { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
-        }
-      >
-        “
-      </motion.span>
+      <figure>
+        <motion.span
+          aria-hidden
+          className="text-display block text-[clamp(5rem,12vw,9rem)] leading-[0.7] text-[var(--accent)]"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 0.55, y: 0 } : { opacity: 0, y: 30 }}
+          transition={
+            reduced ? { duration: 0 } : { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
+          }
+        >
+          “
+        </motion.span>
 
-      <blockquote className="mt-2 text-serif-italic text-[length:var(--fs-600)] leading-[1.18]">
-        <MaskReveal duration={1.05} delay={0.1}>
-          {review.quote}
-        </MaskReveal>
-      </blockquote>
+        <blockquote className="mt-2 text-serif-italic text-[length:var(--fs-600)] leading-[1.18]">
+          <MaskReveal duration={1.05} delay={0.1}>
+            {review.quote}
+          </MaskReveal>
+        </blockquote>
 
-      <motion.figcaption
-        className="mt-8 flex flex-wrap items-center gap-3 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.24em] text-[var(--ink-muted)]"
-        initial={{ opacity: 0, y: 12 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-        transition={
-          reduced
-            ? { duration: 0 }
-            : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }
-        }
-      >
-        <span className="h-px w-8 bg-[var(--ink-muted)]" />
-        <span className="text-[var(--ink)]">{review.author}</span>
-        {review.source && <span>· {review.source}</span>}
-      </motion.figcaption>
+        <motion.figcaption
+          className="mt-8 flex flex-wrap items-center gap-3 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.24em] text-[var(--ink-muted)]"
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          transition={
+            reduced
+              ? { duration: 0 }
+              : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }
+          }
+        >
+          <span aria-hidden className="h-px w-8 bg-[var(--ink-muted)]" />
+          <span className="text-[var(--ink)]">{review.author}</span>
+          {review.source && <span>· {review.source}</span>}
+        </motion.figcaption>
+      </figure>
     </article>
   );
 }

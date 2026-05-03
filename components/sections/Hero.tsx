@@ -49,22 +49,30 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-[0.32]"
+            className="object-cover"
             priority
+            style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)" }}
           />
-          {/* warm duotone wash + vignette */}
+          {/* warm duotone wash + readable vignette */}
           <div
+            aria-hidden
             className="absolute inset-0 mix-blend-multiply"
             style={{
               background:
-                "linear-gradient(180deg, rgb(10 8 7 / 0.45) 0%, rgb(10 8 7 / 0.85) 100%)",
+                "linear-gradient(180deg, rgb(10 8 7 / 0.35) 0%, rgb(10 8 7 / 0.6) 100%)",
             }}
           />
           <div
+            aria-hidden
+            className="absolute inset-0 mix-blend-overlay"
+            style={{ background: "rgb(217 118 77 / 0.18)" }}
+          />
+          <div
+            aria-hidden
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at center, transparent 30%, rgb(10 8 7 / 0.7) 90%)",
+                "radial-gradient(ellipse at 30% 50%, transparent 0%, rgb(10 8 7 / 0.55) 90%)",
             }}
           />
         </motion.div>
@@ -79,7 +87,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           initial={{ opacity: 0, scale: 1.04 }}
           animate={
             inView
-              ? { opacity: 0.42, scale: 1 }
+              ? { opacity: 0.32, scale: 1 }
               : { opacity: 0, scale: 1.04 }
           }
           transition={
@@ -177,8 +185,8 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           cy="380"
           r="3.2"
           fill="var(--accent)"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+          initial={{ scale: 0.6, opacity: 0 }}
+          animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.6, opacity: 0 }}
           transition={
             reduced ? { duration: 0 } : { duration: 0.4, delay: 1.7, ease: [0.16, 1, 0.3, 1] }
           }
@@ -297,7 +305,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             </span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.2}>
-            <span className="hidden sm:inline">EST · 44.4254 N · 26.1097 E</span>
+            <span className="hidden tabular-nums sm:inline">EST · 44.4254 N · 26.1097 E</span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.3}>
             <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-[var(--ink)]">
@@ -350,8 +358,12 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
                 </MaskReveal>
               </p>
               <div className="col-span-12 mt-8 flex flex-wrap items-center gap-4 sm:col-span-12">
-                <MagneticButton variant="primary">Programează</MagneticButton>
-                <MagneticButton variant="ghost">Servicii</MagneticButton>
+                <MagneticButton as="a" href="#programare" variant="primary">
+                  Programează
+                </MagneticButton>
+                <MagneticButton as="a" href="#servicii" variant="ghost">
+                  Servicii
+                </MagneticButton>
               </div>
             </div>
           </div>
@@ -361,7 +373,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             <div className="hairline pt-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em]">
               <MaskReveal delay={1.4} duration={0.7}>
                 <div className="grid gap-3 text-[var(--ink-muted)]">
-                  <span>
+                  <span className="tabular-nums">
                     <span className="text-[var(--ink)]">N° </span>
                     021 / 2026
                   </span>
@@ -380,17 +392,18 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
   );
 }
 
+const MARQUEE_TOKENS = [
+  "EST. 2018",
+  "FĂRĂ AI · CU MÂINI · CU INTENȚIE",
+  "PICKUP · VINIL · ESPRESSO SCURT",
+  "CARDURI ACCEPTATE",
+  "DUMINICA ÎNCHIS",
+  "CALEA CĂLĂRAȘILOR 27",
+] as const;
+
 function Marquee() {
-  const tokens = [
-    "Tunsoare",
-    "Barbă cu brici",
-    "Foarfecă tradițională",
-    "Spălat profesional",
-    "Programări online",
-    "Calea Călărașilor 27",
-  ];
   const reduced = useReducedMotion();
-  const seq = [...tokens, ...tokens];
+  const seq = [...MARQUEE_TOKENS, ...MARQUEE_TOKENS];
 
   return (
     <div

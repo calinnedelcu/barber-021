@@ -10,7 +10,7 @@ const config: NextConfig = {
     ],
   },
   experimental: {
-    optimizePackageImports: ["motion", "gsap"],
+    optimizePackageImports: ["motion"],
   },
 };
 

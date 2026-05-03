@@ -113,7 +113,7 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
               <a
                 href={directionsUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-mono inline-flex items-center gap-3 border-b border-[var(--ink)] pb-1 text-[length:var(--fs-200)] uppercase tracking-[0.22em] text-[var(--ink)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <span>Obține rută</span>

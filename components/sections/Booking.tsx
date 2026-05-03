@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion, useInView } from "motion/react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { MagneticButton } from "@/components/primitives/MagneticButton";
@@ -78,7 +78,8 @@ export function Booking({ services, whatsapp }: BookingProps) {
   };
 
   const today = new Date().toISOString().split("T")[0];
-  const watched = watch();
+  const selectedService = watch("service");
+  const selectedTime = watch("time");
 
   return (
     <section
@@ -183,7 +184,7 @@ export function Booking({ services, whatsapp }: BookingProps) {
                     <label
                       key={svc.id}
                       className={`text-mono cursor-pointer border px-3 py-3 text-center text-[length:var(--fs-100)] uppercase tracking-[0.18em] transition-colors duration-200 ${
-                        watched.service === svc.id
+                        selectedService === svc.id
                           ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--bg)]"
                           : "border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]"
                       }`}
@@ -203,7 +204,7 @@ export function Booking({ services, whatsapp }: BookingProps) {
                 </div>
               </Field>
 
-              <Field label="Dată" error={errors.date?.message}>
+              <Field label="Dată" error={errors.date?.message} className="sm:col-span-2">
                 <input
                   type="date"
                   min={today}
@@ -212,17 +213,27 @@ export function Booking({ services, whatsapp }: BookingProps) {
                 />
               </Field>
 
-              <Field label="Interval" error={errors.time?.message}>
-                <select {...register("time")} className="form-input" defaultValue="">
-                  <option value="" disabled>
-                    Alege ora
-                  </option>
+              <Field label="Interval" error={errors.time?.message} className="sm:col-span-2">
+                <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
                   {TIME_SLOTS.map((slot) => (
-                    <option key={slot} value={slot}>
+                    <label
+                      key={slot}
+                      className={`text-mono cursor-pointer border px-2 py-3 text-center tabular-nums text-[length:var(--fs-100)] tracking-[0.1em] transition-colors duration-200 ${
+                        selectedTime === slot
+                          ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--bg)]"
+                          : "border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        value={slot}
+                        {...register("time")}
+                        className="sr-only"
+                      />
                       {slot}
-                    </option>
+                    </label>
                   ))}
-                </select>
+                </div>
               </Field>
 
               <Field
@@ -233,17 +244,25 @@ export function Booking({ services, whatsapp }: BookingProps) {
                 <textarea
                   rows={3}
                   {...register("notes")}
-                  placeholder="Tunsoare scurtă, fade înalt, barbă conturată..."
+                  placeholder="Tunsoare scurtă, fade înalt, barbă conturată…"
                   className="form-input resize-none"
                 />
               </Field>
             </div>
 
             <div className="mt-12 flex flex-wrap items-center gap-6">
-              <MagneticButton variant="primary" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Se trimite..." : "Trimite pe WhatsApp"}
+              <MagneticButton
+                variant="primary"
+                type="submit"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
+              >
+                {isSubmitting ? "Se trimite…" : "Trimite pe WhatsApp"}
               </MagneticButton>
-              <p className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+              <p
+                aria-live="polite"
+                className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]"
+              >
                 {submitted
                   ? "✓ S-a deschis WhatsApp cu mesajul gata."
                   : "Mesajul se deschide în WhatsApp pre-completat."}
@@ -309,7 +328,21 @@ function Field({
     <label className={`block ${className ?? ""}`}>
       <span className="text-mono mb-3 flex items-baseline justify-between text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--ink-muted)]">
         <span>{label}</span>
-        {error && <span className="text-[var(--accent)]">{error}</span>}
+        <AnimatePresence mode="wait">
+          {error && (
+            <motion.span
+              key={error}
+              role="alert"
+              className="text-[var(--accent)]"
+              initial={{ opacity: 0, y: -4, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(2px)" }}
+              transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {error}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </span>
       {children}
     </label>

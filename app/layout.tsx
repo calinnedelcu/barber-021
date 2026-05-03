@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { PageLoader } from "@/components/providers/PageLoader";
 import { anton, fraunces, jetbrainsMono } from "@/lib/fonts";
@@ -33,6 +33,14 @@ export const metadata: Metadata = {
     address: true,
     email: true,
   },
+  other: {
+    "msapplication-TileColor": "#0A0807",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0807",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -49,7 +57,17 @@ export default function RootLayout({
         jetbrainsMono.variable
       )}
     >
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body>
+        <a
+          href="#top"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-mono focus:uppercase focus:tracking-[0.22em] focus:text-[var(--bg)]"
+        >
+          Sari la conținut
+        </a>
         <PageLoader />
         <LenisProvider>{children}</LenisProvider>
       </body>

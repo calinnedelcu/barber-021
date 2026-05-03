@@ -44,12 +44,22 @@ export function Footer({ config }: FooterProps) {
               </MaskReveal>
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href={wa} target="_blank" rel="noreferrer">
-                <MagneticButton variant="primary">WhatsApp</MagneticButton>
-              </a>
-              <a href={`tel:${contact.phone.replace(/\s+/g, "")}`}>
-                <MagneticButton variant="ghost">Sună-ne</MagneticButton>
-              </a>
+              <MagneticButton
+                as="a"
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+              >
+                WhatsApp
+              </MagneticButton>
+              <MagneticButton
+                as="a"
+                href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                variant="ghost"
+              >
+                Sună-ne
+              </MagneticButton>
             </div>
           </div>
 
@@ -92,14 +102,14 @@ export function Footer({ config }: FooterProps) {
                 <span className="block text-[length:var(--fs-100)] tracking-[0.3em] text-[var(--accent)]">
                   Program
                 </span>
-                <ul className="mt-3 grid gap-1 normal-case tracking-normal">
+                <dl className="mt-3 grid grid-cols-[1fr_auto] gap-x-6 gap-y-1 normal-case tracking-normal">
                   {contact.hours.map((h) => (
-                    <li key={h.day} className="flex justify-between gap-6 text-[var(--ink)]">
-                      <span>{h.day}</span>
-                      <span className="tabular-nums text-[var(--ink-muted)]">{h.hours}</span>
-                    </li>
+                    <div key={h.day} className="contents">
+                      <dt className="text-[var(--ink)]">{h.day}</dt>
+                      <dd className="tabular-nums text-[var(--ink-muted)]">{h.hours}</dd>
+                    </div>
                   ))}
-                </ul>
+                </dl>
               </li>
             </ul>
           </div>
@@ -127,7 +137,7 @@ export function Footer({ config }: FooterProps) {
               <a
                 href={social.instagram}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="hover:text-[var(--ink)]"
               >
                 Instagram
@@ -137,7 +147,7 @@ export function Footer({ config }: FooterProps) {
               <a
                 href={social.facebook}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="hover:text-[var(--ink)]"
               >
                 Facebook
@@ -147,7 +157,7 @@ export function Footer({ config }: FooterProps) {
               <a
                 href={social.tiktok}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="hover:text-[var(--ink)]"
               >
                 TikTok

@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
 import { Monogram } from "@/components/primitives/Monogram";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface NavProps {
   brandName: string;
@@ -20,6 +21,7 @@ const LINKS = [
 export function Nav({ brandName }: NavProps) {
   const { scrollY } = useScroll();
   const [shown, setShown] = useState(false);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const unsubscribe = scrollY.on("change", (y) => {
@@ -29,16 +31,16 @@ export function Nav({ brandName }: NavProps) {
     return () => unsubscribe();
   }, [scrollY]);
 
-  const opacity = useTransform(scrollY, [0, 200], [0, 1]);
+  const dynamicOpacity = useTransform(scrollY, [0, 200], [0, 1]);
 
   return (
     <motion.nav
       aria-label="Navigare principală"
       initial={false}
-      animate={{ y: shown ? 0 : -80 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      animate={reduced ? { y: shown ? 0 : -80 } : { y: shown ? 0 : -80 }}
+      transition={reduced ? { duration: 0 } : { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed inset-x-0 top-0 z-50 backdrop-blur-md"
-      style={{ opacity }}
+      style={reduced ? { opacity: shown ? 1 : 0 } : { opacity: dynamicOpacity }}
     >
       <div
         className="absolute inset-0"

@@ -55,7 +55,7 @@ export function Instagram({ handle, posts }: InstagramProps) {
               key={i}
               href={profileUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label={`Vezi postarea ${i + 1} pe Instagram`}
               className="group relative col-span-6 aspect-square overflow-hidden bg-[var(--surface)] sm:col-span-4 md:col-span-2"
               initial={{ opacity: 0, y: 24 }}

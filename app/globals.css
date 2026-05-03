@@ -89,6 +89,22 @@
     overflow-x: hidden;
   }
 
+  /* Anchor jumps land below the sticky nav */
+  :target,
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Touch-friendly defaults */
+  button,
+  a,
+  label,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+
   /* Grain overlay — applied globally, fixed, low opacity */
   body::before {
     content: "";

@@ -106,14 +106,6 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
           {service.description}
         </p>
       )}
-
-      {/* last row hairline */}
-      {index === 9999 && (
-        <div
-          className="absolute inset-x-0 bottom-0 h-px"
-          style={{ background: "var(--line)" }}
-        />
-      )}
     </motion.li>
   );
 }

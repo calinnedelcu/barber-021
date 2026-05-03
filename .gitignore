@@ -36,3 +36,9 @@ next-env.d.ts
 # AI tooling — keep local only
 CLAUDE.md
 .claude/
+.playwright-mcp/
+
+# QA screenshots — local only
+qa-*.png
+qa-*.jpeg
+qa-*.jpg
