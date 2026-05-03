@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { PageLoader } from "@/components/providers/PageLoader";
 import { anton, fraunces, jetbrainsMono } from "@/lib/fonts";
+import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
 import "./globals.css";
 
@@ -61,7 +62,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
-      <body>
+      <body
+        style={
+          {
+            "--grain-url": `url("${assetPath("/textures/grain.svg")}")`,
+          } as React.CSSProperties
+        }
+      >
         <a
           href="#top"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-mono focus:uppercase focus:tracking-[0.22em] focus:text-[var(--bg)]"

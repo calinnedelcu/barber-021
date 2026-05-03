@@ -105,7 +105,9 @@
     touch-action: manipulation;
   }
 
-  /* Grain overlay — applied globally, fixed, neutral (luminosity strips color) */
+  /* Grain overlay — applied globally, fixed, neutral (luminosity strips color).
+     URL is set on body via inline style in layout.tsx so it picks up
+     NEXT_PUBLIC_BASE_PATH on GitHub Pages. */
   body::before {
     content: "";
     position: fixed;
@@ -113,7 +115,7 @@
     pointer-events: none;
     z-index: 100;
     opacity: 0.08;
-    background-image: url("/textures/grain.svg");
+    background-image: var(--grain-url);
     background-size: 280px 280px;
     background-repeat: repeat;
     mix-blend-mode: luminosity;

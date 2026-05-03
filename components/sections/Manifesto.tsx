@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { ParallaxLayer } from "@/components/primitives/ParallaxLayer";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { assetPath } from "@/lib/assetPath";
 
 interface ManifestoProps {
   panels: { eyebrow: string; title: string; body: string }[];
@@ -59,7 +60,7 @@ function ManifestoBackdrop() {
       <ParallaxLayer speed={0.18} className="absolute inset-0">
         <div className="relative h-full w-full">
           <Image
-            src="/clients/barber-021/manifesto/blueprint-v2.jpg"
+            src={assetPath("/clients/barber-021/manifesto/blueprint-v2.jpg")}
             alt=""
             fill
             sizes="100vw"
