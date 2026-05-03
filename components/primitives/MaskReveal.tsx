@@ -39,8 +39,12 @@ export function MaskReveal({
     >
       <motion.span
         style={{ display: "inline-block" }}
-        initial={{ y: initialY }}
-        animate={inView ? { y: 0 } : { y: initialY }}
+        initial={{ y: initialY, filter: "blur(4px)" }}
+        animate={
+          inView
+            ? { y: 0, filter: "blur(0px)" }
+            : { y: initialY, filter: "blur(4px)" }
+        }
         transition={{
           duration,
           delay,

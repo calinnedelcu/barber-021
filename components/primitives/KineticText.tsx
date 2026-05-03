@@ -69,9 +69,10 @@ export function KineticText({
             <motion.span
               style={{ display: "inline-block" }}
               variants={{
-                hidden: { y: "110%" },
+                hidden: { y: "110%", filter: "blur(4px)" },
                 visible: {
                   y: 0,
+                  filter: "blur(0px)",
                   transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
                 },
               }}
