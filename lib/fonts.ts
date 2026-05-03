@@ -1,8 +1,10 @@
-import { Anton, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Antonio, Fraunces, JetBrains_Mono } from "next/font/google";
 
-export const anton = Anton({
+// Display font — Antonio is a condensed sans-serif with full Romanian
+// diacritic support (Ă, Â, Î, Ș, Ț). Replaces Anton which lacked them.
+export const anton = Antonio({
   subsets: ["latin", "latin-ext"],
-  weight: "400",
+  weight: ["600", "700"],
   display: "swap",
   variable: "--font-anton",
 });
