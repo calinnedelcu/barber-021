@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
+const SITE = "https://calinnedelcu.github.io/barber-021";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -9,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/sandbox"],
       },
     ],
-    sitemap: "https://barber-021.vercel.app/sitemap.xml",
+    sitemap: `${SITE}/sitemap.xml`,
   };
 }

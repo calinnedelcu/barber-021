@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   description:
     "Frizerie urbană premium în București, Sector 3. Tunsoare, barbă cu brici, ritual atent.",
-  metadataBase: new URL("https://barber-021.vercel.app"),
+  metadataBase: new URL("https://calinnedelcu.github.io/barber-021/"),
   alternates: {
     canonical: "/",
   },
