@@ -102,10 +102,10 @@ function ReviewSpread({
             : { opacity: 0, y: 28, filter: "blur(6px)" }
         }
         transition={enter(0)}
-        className={`col-span-12 ${
+        className={`col-span-8 sm:col-span-6 ${
           photoOnLeft
-            ? "md:col-start-1 md:col-span-5 md:row-start-1"
-            : "md:col-start-7 md:col-span-6 md:row-start-1"
+            ? "md:col-start-1 md:col-span-4 md:row-start-1"
+            : "md:col-start-9 md:col-span-4 md:row-start-1"
         }`}
       >
         <div className="relative aspect-[4/5] overflow-hidden bg-[var(--surface)]">
@@ -113,7 +113,7 @@ function ReviewSpread({
             src={photoSrc}
             alt={`${review.author} — atelier`}
             fill
-            sizes="(max-width: 768px) 100vw, 42vw"
+            sizes="(max-width: 768px) 60vw, 30vw"
             className="object-cover"
           />
           <div
@@ -134,8 +134,8 @@ function ReviewSpread({
       <div
         className={`col-span-12 ${
           photoOnLeft
-            ? "md:col-start-7 md:col-span-6 md:row-start-1"
-            : "md:col-start-1 md:col-span-5 md:row-start-1"
+            ? "md:col-start-6 md:col-span-7 md:row-start-1"
+            : "md:col-start-1 md:col-span-7 md:row-start-1"
         }`}
       >
         <motion.span
