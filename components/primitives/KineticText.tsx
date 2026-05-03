@@ -65,7 +65,7 @@ export function KineticText({
             key={i}
             style={{
               display: "inline-block",
-              overflow: "hidden",
+              clipPath: "inset(-0.15em -0.2em 0 -0.2em)",
               verticalAlign: "bottom",
               lineHeight: 1.15,
               paddingBottom: "0.05em",
@@ -75,7 +75,7 @@ export function KineticText({
             <motion.span
               style={{ display: "inline-block", lineHeight: 1.15 }}
               variants={{
-                hidden: { y: "110%", filter: "blur(4px)" },
+                hidden: { y: "110%", filter: "blur(3px)" },
                 visible: {
                   y: 0,
                   filter: "blur(0px)",

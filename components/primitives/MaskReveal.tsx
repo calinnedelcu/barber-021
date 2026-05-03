@@ -37,7 +37,10 @@ export function MaskReveal({
       className={className}
       style={{
         display: "inline-block",
-        overflow: "hidden",
+        // clip-path lets us mask vertically (so the inner span can slide up
+        // from below) while leaving horizontal headroom for italic slants
+        // and the blur halo so trailing letters don't get clipped.
+        clipPath: "inset(-0.15em -0.4em 0 -0.4em)",
         verticalAlign: "bottom",
         lineHeight: 1.15,
         paddingBottom: "0.05em",
@@ -45,11 +48,11 @@ export function MaskReveal({
     >
       <motion.span
         style={{ display: "inline-block", lineHeight: 1.15 }}
-        initial={{ y: initialY, filter: "blur(4px)" }}
+        initial={{ y: initialY, filter: "blur(3px)" }}
         animate={
           inView
             ? { y: 0, filter: "blur(0px)" }
-            : { y: initialY, filter: "blur(4px)" }
+            : { y: initialY, filter: "blur(3px)" }
         }
         transition={{
           duration,
