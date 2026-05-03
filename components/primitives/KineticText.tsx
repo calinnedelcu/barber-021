@@ -63,11 +63,17 @@ export function KineticText({
         return (
           <span
             key={i}
-            style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+              verticalAlign: "bottom",
+              lineHeight: 1.15,
+              paddingBottom: "0.05em",
+            }}
             aria-hidden="true"
           >
             <motion.span
-              style={{ display: "inline-block" }}
+              style={{ display: "inline-block", lineHeight: 1.15 }}
               variants={{
                 hidden: { y: "110%", filter: "blur(4px)" },
                 visible: {

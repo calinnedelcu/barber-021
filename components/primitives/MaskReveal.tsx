@@ -35,10 +35,16 @@ export function MaskReveal({
     <span
       ref={ref}
       className={className}
-      style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
+      style={{
+        display: "inline-block",
+        overflow: "hidden",
+        verticalAlign: "bottom",
+        lineHeight: 1.15,
+        paddingBottom: "0.05em",
+      }}
     >
       <motion.span
-        style={{ display: "inline-block" }}
+        style={{ display: "inline-block", lineHeight: 1.15 }}
         initial={{ y: initialY, filter: "blur(4px)" }}
         animate={
           inView
