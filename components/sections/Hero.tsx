@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { KineticText } from "@/components/primitives/KineticText";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { MagneticButton } from "@/components/primitives/MagneticButton";
+import { Monogram } from "@/components/primitives/Monogram";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface HeroProps {
@@ -13,9 +14,10 @@ interface HeroProps {
   tagline: string;
   address: string;
   phone: string;
+  backdropUrl?: string;
 }
 
-export function Hero({ brandName, tagline, address, phone }: HeroProps) {
+export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-10% 0px" });
   const reduced = useReducedMotion();
@@ -29,6 +31,45 @@ export function Hero({ brandName, tagline, address, phone }: HeroProps) {
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden bg-[var(--bg)]"
     >
+      {/* === BACKDROP — atelier photo, ken-burns scale === */}
+      {backdropUrl && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={inView ? { scale: 1, opacity: 1 } : { scale: 1.08, opacity: 0 }}
+          transition={
+            reduced
+              ? { duration: 0 }
+              : { duration: 2.6, ease: [0.16, 1, 0.3, 1] }
+          }
+        >
+          <Image
+            src={backdropUrl}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-[0.32]"
+            priority
+          />
+          {/* warm duotone wash + vignette */}
+          <div
+            className="absolute inset-0 mix-blend-multiply"
+            style={{
+              background:
+                "linear-gradient(180deg, rgb(10 8 7 / 0.45) 0%, rgb(10 8 7 / 0.85) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, transparent 30%, rgb(10 8 7 / 0.7) 90%)",
+            }}
+          />
+        </motion.div>
+      )}
+
       {/* === DECOR — oversized monogram behind === */}
       <div
         aria-hidden
@@ -36,22 +77,15 @@ export function Hero({ brandName, tagline, address, phone }: HeroProps) {
       >
         <motion.div
           initial={{ opacity: 0, scale: 1.04 }}
-          animate={inView ? { opacity: 0.45, scale: 1 } : { opacity: 0, scale: 1.04 }}
+          animate={inView ? { opacity: 0.5, scale: 1 } : { opacity: 0, scale: 1.04 }}
           transition={
             reduced
               ? { duration: 0 }
               : { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
           }
-          className="relative h-[80vh] w-[60vw] translate-x-[10%]"
+          className="translate-x-[8%] text-[var(--accent)]"
         >
-          <Image
-            src="/clients/barber-021/marks/monogram-copper.png"
-            alt=""
-            fill
-            sizes="60vw"
-            className="object-contain"
-            priority
-          />
+          <Monogram size={520} tone="accent" className="opacity-90" />
         </motion.div>
       </div>
 
@@ -335,19 +369,6 @@ export function Hero({ brandName, tagline, address, phone }: HeroProps) {
         <Marquee />
       </div>
     </section>
-  );
-}
-
-function Monogram() {
-  return (
-    <Image
-      src="/clients/barber-021/marks/monogram-cream.png"
-      alt="BARBER 021"
-      width={26}
-      height={26}
-      className="h-[26px] w-auto"
-      priority
-    />
   );
 }
 

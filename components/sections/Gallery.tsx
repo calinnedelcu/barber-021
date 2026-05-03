@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useInView } from "motion/react";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -154,11 +155,12 @@ function Tile({
         className={`relative block w-full ${tile.aspect} overflow-hidden bg-[var(--surface)] text-left`}
       >
         {src ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={src}
             alt={tile.tag}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            fill
+            sizes="(max-width: 768px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
         ) : (
           <ProceduralArt variant={tile.art} index={index} />
@@ -272,11 +274,12 @@ function Lightbox({
                 className={`relative ${TILES[openIndex]?.aspect ?? "aspect-[4/5]"} h-full max-h-full w-auto overflow-hidden bg-[var(--surface)]`}
               >
                 {items && items[openIndex] ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={items[openIndex]}
                     alt={TILES[openIndex]?.tag ?? ""}
-                    className="h-full w-full object-cover"
+                    fill
+                    sizes="80vw"
+                    className="object-cover"
                   />
                 ) : (
                   <ProceduralArt

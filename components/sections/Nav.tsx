@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Monogram } from "@/components/primitives/Monogram";
 
 interface NavProps {
   brandName: string;
@@ -88,13 +88,5 @@ export function Nav({ brandName }: NavProps) {
 }
 
 function NavMonogram() {
-  return (
-    <Image
-      src="/clients/barber-021/marks/monogram-cream.png"
-      alt=""
-      width={22}
-      height={22}
-      className="h-[22px] w-auto"
-    />
-  );
+  return <Monogram size={20} />;
 }

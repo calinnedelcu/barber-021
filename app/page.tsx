@@ -24,6 +24,7 @@ export default function Home() {
           tagline={config.brand.tagline}
           address={config.contact.address}
           phone={config.contact.phone}
+          backdropUrl={config.hero?.backdropUrl}
         />
         <Manifesto panels={config.manifesto.panels} />
         <Services services={config.services} />

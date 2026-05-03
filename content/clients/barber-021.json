@@ -6,6 +6,9 @@
     "tagline": "Frizerie urbană contemporană. Sector 3, București.",
     "logoVariant": "primary"
   },
+  "hero": {
+    "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=2400&q=80&auto=format&fit=crop"
+  },
   "manifesto": {
     "panels": [
       {
@@ -62,28 +65,38 @@
       "description": "Spălat profesional și styling pentru ocazii speciale."
     }
   ],
-  "gallery": [],
+  "gallery": [
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1747832910187-f27508ac4c60?w=1600&q=80&auto=format&fit=crop"
+  ],
   "team": [
     {
       "id": "andrei",
       "name": "Andrei",
       "role": "Master Barber",
       "bio": "12 ani în breaslă. Specializare pe fade-uri și texturi.",
-      "portrait": "/clients/barber-021/team/andrei.jpg"
+      "portrait": "https://images.unsplash.com/photo-1546665291-dbef6ab58991?w=1200&q=80&auto=format&fit=crop"
     },
     {
       "id": "vlad",
       "name": "Vlad",
       "role": "Senior Barber",
       "bio": "Foarfecă tradițională, brici, atenție la detaliu.",
-      "portrait": "/clients/barber-021/team/vlad.jpg"
+      "portrait": "https://images.unsplash.com/photo-1546664278-c0a27e0cdc88?w=1200&q=80&auto=format&fit=crop"
     },
     {
       "id": "radu",
       "name": "Radu",
       "role": "Barber",
       "bio": "Tunsori clasice și executive cuts.",
-      "portrait": "/clients/barber-021/team/radu.jpg"
+      "portrait": "https://images.unsplash.com/photo-1747832910187-f27508ac4c60?w=1200&q=80&auto=format&fit=crop"
     }
   ],
   "reviews": [

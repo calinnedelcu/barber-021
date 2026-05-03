@@ -37,6 +37,11 @@ export const ClientConfigSchema = z.object({
     tagline: z.string(),
     logoVariant: z.string().default("primary"),
   }),
+  hero: z
+    .object({
+      backdropUrl: z.string().optional(),
+    })
+    .optional(),
   theme: z
     .object({
       bg: z.string().optional(),

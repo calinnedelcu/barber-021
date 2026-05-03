@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -69,6 +70,9 @@ function TeamCard({
     .toUpperCase();
 
   const span = total <= 3 ? "md:col-span-4" : "md:col-span-3";
+  const hasRealPortrait =
+    typeof member.portrait === "string" && member.portrait.length > 0 &&
+    (member.portrait.startsWith("http") || member.portrait.startsWith("/clients/"));
 
   return (
     <motion.li
@@ -84,42 +88,63 @@ function TeamCard({
     >
       {/* Portrait frame — editorial 4:5, duotone overlay */}
       <div className="relative aspect-[4/5] overflow-hidden bg-[var(--bg)]">
-        {/* duotone gradient placeholder */}
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 30% 30%, rgb(217 118 77 / 0.18), transparent 55%),
-              radial-gradient(ellipse at 70% 80%, rgb(20 17 15) 30%, var(--bg) 80%),
-              linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%)
-            `,
-          }}
-        />
-        {/* hatch lines — texture */}
-        <svg
-          aria-hidden
-          className="absolute inset-0 h-full w-full opacity-[0.08]"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <pattern id={`hatch-${member.id}`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink)" strokeWidth="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill={`url(#hatch-${member.id})`} />
-        </svg>
-        {/* initials, oversized */}
-        <span
-          aria-hidden
-          className="text-display absolute inset-0 flex items-center justify-center text-[clamp(5rem,12vw,9rem)] leading-none"
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1px var(--ink-muted)",
-          }}
-        >
-          {initials}
-        </span>
+        {hasRealPortrait ? (
+          <Image
+            src={member.portrait}
+            alt={`${member.name}, ${member.role}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+        ) : (
+          <>
+            {/* duotone gradient placeholder */}
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background: `
+                  radial-gradient(ellipse at 30% 30%, rgb(217 118 77 / 0.18), transparent 55%),
+                  radial-gradient(ellipse at 70% 80%, rgb(20 17 15) 30%, var(--bg) 80%),
+                  linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%)
+                `,
+              }}
+            />
+            <svg
+              aria-hidden
+              className="absolute inset-0 h-full w-full opacity-[0.08]"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <pattern id={`hatch-${member.id}`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink)" strokeWidth="1" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill={`url(#hatch-${member.id})`} />
+            </svg>
+            <span
+              aria-hidden
+              className="text-display absolute inset-0 flex items-center justify-center text-[clamp(5rem,12vw,9rem)] leading-none"
+              style={{
+                color: "transparent",
+                WebkitTextStroke: "1px var(--ink-muted)",
+              }}
+            >
+              {initials}
+            </span>
+          </>
+        )}
+        {/* duotone tint over photo */}
+        {hasRealPortrait && (
+          <div
+            aria-hidden
+            className="absolute inset-0 mix-blend-multiply"
+            style={{
+              background:
+                "linear-gradient(180deg, rgb(20 17 15 / 0.3) 0%, rgb(20 17 15 / 0.6) 100%)",
+            }}
+          />
+        )}
         {/* serial chip */}
         <span className="text-mono absolute left-4 top-4 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
           № {String(index + 1).padStart(2, "0")}
