@@ -105,18 +105,18 @@
     touch-action: manipulation;
   }
 
-  /* Grain overlay — applied globally, fixed, low opacity */
+  /* Grain overlay — applied globally, fixed, neutral (luminosity strips color) */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 100;
-    opacity: 0.05;
-    background-image: url("/clients/barber-021/textures/grain-01.jpg");
-    background-size: 420px 420px;
+    opacity: 0.08;
+    background-image: url("/textures/grain.svg");
+    background-size: 280px 280px;
     background-repeat: repeat;
-    mix-blend-mode: soft-light;
+    mix-blend-mode: luminosity;
   }
 
   ::selection {

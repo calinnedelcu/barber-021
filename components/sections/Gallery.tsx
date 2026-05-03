@@ -161,7 +161,7 @@ function Tile({
             fill
             sizes="(max-width: 768px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.92)" }}
+            style={{ filter: "grayscale(100%) contrast(1.02)" }}
           />
         ) : (
           <ProceduralArt variant={tile.art} index={index} />
@@ -171,7 +171,7 @@ function Tile({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgb(20 17 15 / 0.15) 0%, rgb(20 17 15 / 0.5) 100%)",
+              "linear-gradient(180deg, transparent 55%, rgb(20 17 15 / 0.55) 100%)",
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-[var(--accent)] opacity-0 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-25" />

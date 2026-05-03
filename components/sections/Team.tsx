@@ -95,7 +95,7 @@ function TeamCard({
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.95)" }}
+            style={{ filter: "grayscale(100%) contrast(1.02)" }}
           />
         ) : (
           <>
@@ -135,14 +135,14 @@ function TeamCard({
             </span>
           </>
         )}
-        {/* subtle dark wash over grayscale photo (no warm overlay) */}
+        {/* very subtle bottom wash so caption stays readable */}
         {hasRealPortrait && (
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgb(20 17 15 / 0.15) 0%, rgb(20 17 15 / 0.45) 100%)",
+                "linear-gradient(180deg, transparent 50%, rgb(20 17 15 / 0.55) 100%)",
             }}
           />
         )}

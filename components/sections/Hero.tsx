@@ -51,23 +51,15 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             sizes="100vw"
             className="object-cover"
             priority
-            style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)" }}
+            style={{ filter: "grayscale(100%) contrast(1.02) brightness(0.95)" }}
           />
-          {/* dark wash + readable vignette (no warm overlay — keep it neutral) */}
+          {/* light dark wash so type stays readable, but photo breathes */}
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgb(10 8 7 / 0.45) 0%, rgb(10 8 7 / 0.7) 100%)",
-            }}
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse at 30% 50%, transparent 0%, rgb(10 8 7 / 0.55) 90%)",
+                "linear-gradient(180deg, rgb(10 8 7 / 0.3) 0%, rgb(10 8 7 / 0.5) 100%)",
             }}
           />
         </motion.div>
