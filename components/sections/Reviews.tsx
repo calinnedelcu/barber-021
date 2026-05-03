@@ -11,10 +11,13 @@ interface ReviewsProps {
   reviews: Review[];
 }
 
-const LEFT_PHOTO =
-  "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=900&q=80&auto=format&fit=crop";
-const RIGHT_PHOTO =
-  "https://images.unsplash.com/photo-1657105052497-f996284ffff8?w=900&q=80&auto=format&fit=crop";
+const REVIEW_PHOTOS = [
+  "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1100&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1657105052497-f996284ffff8?w=1100&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1100&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1100&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1100&q=80&auto=format&fit=crop",
+];
 
 export function Reviews({ reviews }: ReviewsProps) {
   return (
@@ -44,126 +47,124 @@ export function Reviews({ reviews }: ReviewsProps) {
           </h2>
         </header>
 
-        <div className="grid grid-cols-12 gap-x-6 gap-y-16 md:gap-y-24">
-          <SidePhoto src={LEFT_PHOTO} alt="Tunsoare în lucru" side="left" />
-          <div className="col-span-12 grid gap-y-16 md:col-span-6 md:col-start-4 md:gap-y-24">
-            {reviews.map((review, i) => (
-              <ReviewCard key={review.id} review={review} index={i} />
-            ))}
-          </div>
-          <SidePhoto src={RIGHT_PHOTO} alt="Detaliu finisaj" side="right" />
+        <div className="grid gap-y-24 md:gap-y-36">
+          {reviews.map((review, i) => (
+            <ReviewSpread
+              key={review.id}
+              review={review}
+              index={i}
+              photoSrc={REVIEW_PHOTOS[i % REVIEW_PHOTOS.length] ?? REVIEW_PHOTOS[0]!}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function SidePhoto({
-  src,
-  alt,
-  side,
+function ReviewSpread({
+  review,
+  index,
+  photoSrc,
 }: {
-  src: string;
-  alt: string;
-  side: "left" | "right";
+  review: Review;
+  index: number;
+  photoSrc: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-15% 0px" });
-  const reduced = useReducedMotion();
-
-  const colPos =
-    side === "left"
-      ? "md:col-start-1 md:col-span-3 md:row-start-1"
-      : "md:col-start-10 md:col-span-3 md:row-start-1";
-
-  // mobile: stack as full-width above first review (left) or below last (right)
-  const mobileOrder = side === "left" ? "order-1" : "order-3";
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={
-        reduced
-          ? { duration: 0 }
-          : { duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
-      }
-      className={`relative col-span-12 ${mobileOrder} ${colPos} md:self-start md:sticky md:top-24`}
-    >
-      <figure className="relative aspect-[3/4] overflow-hidden bg-[var(--surface)]">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(max-width: 768px) 100vw, 25vw"
-          className="object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, transparent 55%, rgb(20 17 15 / 0.55) 100%)",
-          }}
-        />
-        <figcaption className="text-mono absolute bottom-3 left-3 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink)]">
-          {alt}
-        </figcaption>
-      </figure>
-    </motion.div>
-  );
-}
-
-function ReviewCard({ review, index }: { review: Review; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   const reduced = useReducedMotion();
 
-  // editorial offset — alternating columns
-  const offset =
-    index % 3 === 0
-      ? "md:col-start-2 md:col-span-7"
-      : index % 3 === 1
-      ? "md:col-start-5 md:col-span-7"
-      : "md:col-start-3 md:col-span-7";
+  // Alternate sides: even index = photo LEFT / text RIGHT;
+  //                   odd index = text LEFT / photo RIGHT
+  const photoOnLeft = index % 2 === 0;
+
+  const enter = (delay: number) =>
+    reduced
+      ? { duration: 0 }
+      : {
+          duration: 0.9,
+          ease: [0.16, 1, 0.3, 1] as const,
+          delay,
+        };
 
   return (
-    <article ref={ref} className={`col-span-12 ${offset}`}>
-      <figure>
+    <article
+      ref={ref}
+      className="grid grid-cols-12 items-center gap-x-6 gap-y-10"
+    >
+      {/* PHOTO */}
+      <motion.figure
+        initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
+        animate={
+          inView
+            ? { opacity: 1, y: 0, filter: "blur(0px)" }
+            : { opacity: 0, y: 28, filter: "blur(6px)" }
+        }
+        transition={enter(0)}
+        className={`col-span-12 ${
+          photoOnLeft
+            ? "md:col-start-1 md:col-span-5 md:row-start-1"
+            : "md:col-start-7 md:col-span-6 md:row-start-1"
+        }`}
+      >
+        <div className="relative aspect-[4/5] overflow-hidden bg-[var(--surface)]">
+          <Image
+            src={photoSrc}
+            alt={`${review.author} — atelier`}
+            fill
+            sizes="(max-width: 768px) 100vw, 42vw"
+            className="object-cover"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 55%, rgb(20 17 15 / 0.55) 100%)",
+            }}
+          />
+          <span className="text-mono absolute left-4 top-4 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+            № {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+      </motion.figure>
+
+      {/* QUOTE */}
+      <div
+        className={`col-span-12 ${
+          photoOnLeft
+            ? "md:col-start-7 md:col-span-6 md:row-start-1"
+            : "md:col-start-1 md:col-span-5 md:row-start-1"
+        }`}
+      >
         <motion.span
           aria-hidden
-          className="text-display block text-[clamp(5rem,12vw,9rem)] leading-[0.7] text-[var(--accent)]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 0.55, y: 0 } : { opacity: 0, y: 30 }}
-          transition={
-            reduced ? { duration: 0 } : { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
-          }
+          className="text-display block text-[clamp(4rem,9vw,7rem)] leading-[0.7] text-[var(--accent)]"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 0.6, y: 0 } : { opacity: 0, y: 24 }}
+          transition={enter(0.1)}
         >
           “
         </motion.span>
 
-        <blockquote className="mt-2 text-serif-italic text-[length:var(--fs-600)] leading-[1.18]">
-          <MaskReveal duration={1.05} delay={0.1}>
+        <blockquote className="mt-3 text-serif-italic text-[length:var(--fs-600)] leading-[1.2]">
+          <MaskReveal duration={1.05} delay={0.2}>
             {review.quote}
           </MaskReveal>
         </blockquote>
 
-        <motion.figcaption
+        <motion.div
           className="mt-8 flex flex-wrap items-center gap-3 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.24em] text-[var(--ink-muted)]"
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-          transition={
-            reduced
-              ? { duration: 0 }
-              : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }
-          }
+          transition={enter(0.55)}
         >
           <span aria-hidden className="h-px w-8 bg-[var(--ink-muted)]" />
           <span className="text-[var(--ink)]">{review.author}</span>
           {review.source && <span>· {review.source}</span>}
-        </motion.figcaption>
-      </figure>
+        </motion.div>
+      </div>
     </article>
   );
 }
