@@ -30,12 +30,16 @@ export function Footer({ config }: FooterProps) {
               id="footer-heading"
               className="text-display mt-8 text-[length:var(--fs-800)] leading-[0.85]"
             >
-              <MaskReveal duration={1.1} delay={0.15}>
-                <span className="block">Treci pe</span>
-              </MaskReveal>
-              <MaskReveal duration={1.1} delay={0.3}>
-                <span className="block text-[var(--accent)]">la noi.</span>
-              </MaskReveal>
+              <span className="block">
+                <MaskReveal duration={1.1} delay={0.15}>
+                  Treci pe
+                </MaskReveal>
+              </span>
+              <span className="block text-[var(--accent)]">
+                <MaskReveal duration={1.1} delay={0.3}>
+                  la noi.
+                </MaskReveal>
+              </span>
             </h2>
             <p className="mt-8 max-w-md text-[length:var(--fs-400)] leading-[1.5] text-[var(--ink-muted)]">
               <MaskReveal duration={0.9} delay={0.45}>
