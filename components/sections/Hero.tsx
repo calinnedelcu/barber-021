@@ -242,7 +242,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           ))}
         </motion.g>
 
-        {/* corner tag */}
+        {/* corner tag — bottom-left, above the marquee strip */}
         <motion.g
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
@@ -252,15 +252,15 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
         >
           <line
             x1="40"
-            y1="220"
+            y1="760"
             x2="120"
-            y2="220"
+            y2="760"
             stroke="var(--accent)"
             strokeWidth="1"
           />
           <text
             x="40"
-            y="248"
+            y="788"
             fill="var(--accent)"
             fontFamily="var(--font-mono), monospace"
             fontSize="10"
@@ -270,7 +270,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           </text>
           <text
             x="40"
-            y="266"
+            y="806"
             fill="var(--ink-muted)"
             fontFamily="var(--font-mono), monospace"
             fontSize="10"
@@ -298,7 +298,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
         </div>
 
         {/* === MAIN GRID — asymmetric 12 col === */}
-        <div className="container-x grid flex-1 grid-cols-12 items-end gap-x-6 pb-10 pt-8 sm:pb-16 sm:pt-16">
+        <div className="container-x grid flex-1 grid-cols-12 items-end gap-x-6 pb-10 pt-8 sm:pb-12 sm:pt-12 lg:pb-14 lg:pt-14">
           {/* left rail — vertical eyebrow */}
           <aside className="col-span-1 hidden md:flex h-full items-end justify-start">
             <span
