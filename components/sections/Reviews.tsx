@@ -98,7 +98,6 @@ function SidePhoto({
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
           className="object-cover"
-          style={{ filter: "grayscale(100%) contrast(1.02)" }}
         />
         <div
           aria-hidden

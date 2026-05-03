@@ -51,7 +51,6 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             sizes="100vw"
             className="object-cover"
             priority
-            style={{ filter: "grayscale(100%) contrast(1.02) brightness(0.95)" }}
           />
           {/* light dark wash so type stays readable, but photo breathes */}
           <div

@@ -161,7 +161,6 @@ function Tile({
             fill
             sizes="(max-width: 768px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            style={{ filter: "grayscale(100%) contrast(1.02)" }}
           />
         ) : (
           <ProceduralArt variant={tile.art} index={index} />

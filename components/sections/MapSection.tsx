@@ -66,16 +66,7 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 h-full w-full"
-                style={{
-                  border: 0,
-                  filter: "grayscale(100%) contrast(1.1) brightness(0.92) invert(0.92) hue-rotate(180deg)",
-                }}
-              />
-              {/* subtle copper tint overlay so the map sits inside the brand */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 mix-blend-multiply"
-                style={{ background: "rgb(217 118 77 / 0.06)" }}
+                style={{ border: 0 }}
               />
 
               {/* editorial corner meta over the map */}
