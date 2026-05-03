@@ -70,14 +70,18 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
         </motion.div>
       )}
 
-      {/* === DECOR — oversized monogram behind === */}
+      {/* === DECOR — oversized monogram behind (hidden on small mobile, smaller on tablet) === */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 flex items-center justify-end"
+        className="pointer-events-none absolute inset-0 hidden items-center justify-end sm:flex"
       >
         <motion.div
           initial={{ opacity: 0, scale: 1.04 }}
-          animate={inView ? { opacity: 0.5, scale: 1 } : { opacity: 0, scale: 1.04 }}
+          animate={
+            inView
+              ? { opacity: 0.42, scale: 1 }
+              : { opacity: 0, scale: 1.04 }
+          }
           transition={
             reduced
               ? { duration: 0 }
@@ -85,7 +89,11 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           }
           className="translate-x-[8%] text-[var(--accent)]"
         >
-          <Monogram size={520} tone="accent" className="opacity-90" />
+          <Monogram
+            size={320}
+            tone="accent"
+            className="md:[width:440px] md:[height:auto] lg:[width:520px]"
+          />
         </motion.div>
       </div>
 

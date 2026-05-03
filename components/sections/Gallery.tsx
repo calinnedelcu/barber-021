@@ -11,15 +11,15 @@ interface GalleryProps {
 }
 
 const TILES = [
-  { tag: "Brici", aspect: "aspect-[4/5]", art: "razor" },
-  { tag: "Foarfecă", aspect: "aspect-square", art: "scissor" },
-  { tag: "Pickup", aspect: "aspect-[4/5]", art: "vinyl" },
-  { tag: "Espresso", aspect: "aspect-[4/3]", art: "espresso" },
-  { tag: "Pieptene", aspect: "aspect-square", art: "comb" },
-  { tag: "Oglindă", aspect: "aspect-[4/5]", art: "mirror" },
-  { tag: "Tipografie", aspect: "aspect-[4/3]", art: "type" },
-  { tag: "Atelier", aspect: "aspect-square", art: "atelier" },
-  { tag: "Detaliu", aspect: "aspect-[4/5]", art: "detail" },
+  { tag: "Atelier", aspect: "aspect-[4/5]", art: "razor" },
+  { tag: "Detaliu", aspect: "aspect-square", art: "scissor" },
+  { tag: "Tunsoare", aspect: "aspect-[4/5]", art: "vinyl" },
+  { tag: "Sală", aspect: "aspect-[4/3]", art: "espresso" },
+  { tag: "Scaun", aspect: "aspect-square", art: "comb" },
+  { tag: "Interior", aspect: "aspect-[4/5]", art: "mirror" },
+  { tag: "Semn", aspect: "aspect-[4/3]", art: "type" },
+  { tag: "Tools", aspect: "aspect-square", art: "atelier" },
+  { tag: "Lucru", aspect: "aspect-[4/5]", art: "detail" },
 ] as const;
 
 const COL_LAYOUT = [
@@ -161,6 +161,7 @@ function Tile({
             fill
             sizes="(max-width: 768px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.92)" }}
           />
         ) : (
           <ProceduralArt variant={tile.art} index={index} />
@@ -170,7 +171,7 @@ function Tile({
           className="absolute inset-0 mix-blend-multiply"
           style={{
             background:
-              "linear-gradient(180deg, rgb(20 17 15 / 0.2) 0%, rgb(20 17 15 / 0.5) 100%)",
+              "linear-gradient(180deg, rgb(217 118 77 / 0.18) 0%, rgb(20 17 15 / 0.55) 100%)",
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-[var(--accent)] opacity-0 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-25" />
