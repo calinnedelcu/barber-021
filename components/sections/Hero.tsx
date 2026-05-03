@@ -281,27 +281,24 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
         </motion.g>
       </svg>
 
-      {/* === FRAME — top + side meta === */}
+      {/* === FRAME — meta strip sits below the fixed Nav === */}
       <div className="relative z-10 flex min-h-screen flex-col">
-        <header className="container-x flex items-center justify-between pt-7 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+        <div className="container-x flex items-center justify-between pt-24 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)] sm:pt-28">
           <MaskReveal duration={0.6} delay={0.1}>
-            <span className="flex items-center gap-3 text-[var(--ink)]">
-              <Monogram />
-              <span>{brandName}</span>
-            </span>
+            <span className="text-[var(--accent)]">EST. 2018 · {brandName}</span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.2}>
-            <span className="hidden tabular-nums sm:inline">EST · 44.4254 N · 26.1097 E</span>
+            <span className="hidden tabular-nums sm:inline">44.4254° N · 26.1097° E</span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.3}>
             <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-[var(--ink)]">
               {phone}
             </a>
           </MaskReveal>
-        </header>
+        </div>
 
         {/* === MAIN GRID — asymmetric 12 col === */}
-        <div className="container-x grid flex-1 grid-cols-12 items-end gap-x-6 pb-16 pt-20 sm:pt-28">
+        <div className="container-x grid flex-1 grid-cols-12 items-end gap-x-6 pb-16 pt-12 sm:pt-16">
           {/* left rail — vertical eyebrow */}
           <aside className="col-span-1 hidden md:flex h-full items-end justify-start">
             <span

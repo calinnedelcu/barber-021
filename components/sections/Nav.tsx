@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useEffect, useState } from "react";
 import { Monogram } from "@/components/primitives/Monogram";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -20,34 +19,37 @@ const LINKS = [
 
 export function Nav({ brandName }: NavProps) {
   const { scrollY } = useScroll();
-  const [shown, setShown] = useState(false);
   const reduced = useReducedMotion();
 
-  useEffect(() => {
-    const unsubscribe = scrollY.on("change", (y) => {
-      const threshold = window.innerHeight * 0.8;
-      setShown(y > threshold);
-    });
-    return () => unsubscribe();
-  }, [scrollY]);
-
-  const dynamicOpacity = useTransform(scrollY, [0, 200], [0, 1]);
+  // The dark backdrop fades in as the user starts scrolling so the nav
+  // sits directly over the Hero photo at top, then "becomes a chrome bar"
+  // once content slides under it.
+  const backdropOpacity = useTransform(scrollY, [0, 200], [0, 0.85]);
+  const borderOpacity = useTransform(scrollY, [40, 200], [0, 1]);
 
   return (
     <motion.nav
       aria-label="Navigare principală"
-      initial={false}
-      animate={reduced ? { y: shown ? 0 : -80 } : { y: shown ? 0 : -80 }}
-      transition={reduced ? { duration: 0 } : { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      initial={reduced ? false : { opacity: 0, y: -16 }}
+      animate={reduced ? false : { opacity: 1, y: 0 }}
+      transition={
+        reduced
+          ? { duration: 0 }
+          : { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }
+      }
       className="fixed inset-x-0 top-0 z-50 backdrop-blur-md"
-      style={reduced ? { opacity: shown ? 1 : 0 } : { opacity: dynamicOpacity }}
     >
-      <div
-        className="absolute inset-0"
-        style={{ background: "rgb(10 8 7 / 0.78)" }}
+      <motion.div
         aria-hidden
+        className="absolute inset-0"
+        style={{ background: "rgb(10 8 7)", opacity: backdropOpacity }}
       />
-      <div className="hairline-bottom relative">
+      <motion.div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-px"
+        style={{ background: "var(--line)", opacity: borderOpacity }}
+      />
+      <div className="relative">
         <div className="container-x flex items-center justify-between gap-6 py-4 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em]">
           <a
             href="#top"
@@ -79,12 +81,6 @@ export function Nav({ brandName }: NavProps) {
           </a>
         </div>
       </div>
-
-      <style jsx>{`
-        .hairline-bottom {
-          border-bottom: 1px solid var(--line);
-        }
-      `}</style>
     </motion.nav>
   );
 }
