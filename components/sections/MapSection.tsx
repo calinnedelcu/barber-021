@@ -38,8 +38,8 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
             className="text-serif-italic col-span-12 mt-8 text-[length:var(--fs-700)] leading-[1.05] md:col-span-9 md:mt-0"
           >
             <MaskReveal duration={1} delay={0.15}>
-              <span>Pe colț, lângă </span>
-            </MaskReveal>
+              <span>Pe colț, lângă</span>
+            </MaskReveal>{" "}
             <MaskReveal duration={1} delay={0.3}>
               <span className="text-[var(--accent)]">croitoria veche</span>
               <span>.</span>

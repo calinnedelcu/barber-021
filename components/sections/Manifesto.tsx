@@ -33,8 +33,8 @@ export function Manifesto({ panels }: ManifestoProps) {
             className="text-serif-italic col-span-12 mt-8 text-[length:var(--fs-700)] leading-[1.05] tracking-[-0.01em] md:col-span-9 md:mt-0"
           >
             <MaskReveal duration={1} delay={0.15}>
-              <span>Trei reguli pe care nu le </span>
-            </MaskReveal>
+              <span>Trei reguli pe care nu le</span>
+            </MaskReveal>{" "}
             <MaskReveal duration={1} delay={0.3}>
               <span className="text-[var(--accent)]">negociem</span>
               <span>.</span>
