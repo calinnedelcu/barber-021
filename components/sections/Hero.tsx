@@ -29,7 +29,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[var(--bg)]"
+      className="relative min-h-[100svh] overflow-hidden bg-[var(--bg)]"
     >
       {/* === BACKDROP — atelier photo, ken-burns scale === */}
       {backdropUrl && (
@@ -282,7 +282,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
       </svg>
 
       {/* === FRAME — meta strip sits below the fixed Nav === */}
-      <div className="relative z-10 flex min-h-screen flex-col">
+      <div className="relative z-10 flex min-h-[100svh] flex-col">
         <div className="container-x flex items-center justify-between gap-3 pt-20 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)] sm:pt-24">
           <MaskReveal duration={0.6} delay={0.1}>
             <span className="text-[var(--accent)]">EST. 2018 · {brandName}</span>
