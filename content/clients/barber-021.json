@@ -82,14 +82,14 @@
       "name": "Andrei",
       "role": "Master Barber",
       "bio": "Tunde din 2012. Crede că o tunsoare bună durează trei săptămâni.",
-      "portrait": "https://images.unsplash.com/photo-1546665291-dbef6ab58991?w=1200&q=80&auto=format&fit=crop"
+      "portrait": "https://images.unsplash.com/photo-1771594836579-af129894a49c?w=1200&q=80&auto=format&fit=crop"
     },
     {
       "id": "vlad",
       "name": "Vlad",
       "role": "Senior Barber",
       "bio": "Foarfeca îi e prelungire de mână. Refuză să tundă cu mașina.",
-      "portrait": "https://images.unsplash.com/photo-1546664278-c0a27e0cdc88?w=1200&q=80&auto=format&fit=crop"
+      "portrait": "https://images.unsplash.com/photo-1553521041-d168abd31de3?w=1200&q=80&auto=format&fit=crop"
     },
     {
       "id": "radu",
@@ -121,7 +121,14 @@
   ],
   "instagram": {
     "handle": "barber021",
-    "posts": []
+    "posts": [
+      "https://images.unsplash.com/photo-1657105052497-f996284ffff8?w=900&h=900&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=900&h=900&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&h=900&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&h=900&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=900&h=900&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=900&h=900&q=80&auto=format&fit=crop"
+    ]
   },
   "contact": {
     "phone": "+40 720 000 000",
