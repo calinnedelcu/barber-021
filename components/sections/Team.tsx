@@ -135,23 +135,16 @@ function TeamCard({
             </span>
           </>
         )}
-        {/* warm copper duotone wash over grayscale photo */}
+        {/* subtle dark wash over grayscale photo (no warm overlay) */}
         {hasRealPortrait && (
-          <>
-            <div
-              aria-hidden
-              className="absolute inset-0 mix-blend-multiply"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgb(217 118 77 / 0.25) 0%, rgb(20 17 15 / 0.55) 100%)",
-              }}
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 mix-blend-overlay"
-              style={{ background: "rgb(217 118 77 / 0.12)" }}
-            />
-          </>
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgb(20 17 15 / 0.15) 0%, rgb(20 17 15 / 0.45) 100%)",
+            }}
+          />
         )}
         {/* serial chip */}
         <span className="text-mono absolute left-4 top-4 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">

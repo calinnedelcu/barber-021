@@ -168,10 +168,10 @@ function Tile({
         )}
         <div
           aria-hidden
-          className="absolute inset-0 mix-blend-multiply"
+          className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgb(217 118 77 / 0.18) 0%, rgb(20 17 15 / 0.55) 100%)",
+              "linear-gradient(180deg, rgb(20 17 15 / 0.15) 0%, rgb(20 17 15 / 0.5) 100%)",
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-[var(--accent)] opacity-0 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-25" />

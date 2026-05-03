@@ -53,19 +53,14 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             priority
             style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)" }}
           />
-          {/* warm duotone wash + readable vignette */}
+          {/* dark wash + readable vignette (no warm overlay — keep it neutral) */}
           <div
             aria-hidden
-            className="absolute inset-0 mix-blend-multiply"
+            className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgb(10 8 7 / 0.35) 0%, rgb(10 8 7 / 0.6) 100%)",
+                "linear-gradient(180deg, rgb(10 8 7 / 0.45) 0%, rgb(10 8 7 / 0.7) 100%)",
             }}
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 mix-blend-overlay"
-            style={{ background: "rgb(217 118 77 / 0.18)" }}
           />
           <div
             aria-hidden
