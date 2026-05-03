@@ -283,7 +283,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
 
       {/* === FRAME — meta strip sits below the fixed Nav === */}
       <div className="relative z-10 flex min-h-screen flex-col">
-        <div className="container-x flex items-center justify-between pt-24 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)] sm:pt-28">
+        <div className="container-x flex items-center justify-between gap-3 pt-20 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)] sm:pt-24">
           <MaskReveal duration={0.6} delay={0.1}>
             <span className="text-[var(--accent)]">EST. 2018 · {brandName}</span>
           </MaskReveal>
@@ -291,14 +291,14 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             <span className="hidden tabular-nums sm:inline">44.4254° N · 26.1097° E</span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.3}>
-            <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-[var(--ink)]">
+            <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hidden hover:text-[var(--ink)] sm:inline">
               {phone}
             </a>
           </MaskReveal>
         </div>
 
         {/* === MAIN GRID — asymmetric 12 col === */}
-        <div className="container-x grid flex-1 grid-cols-12 items-end gap-x-6 pb-16 pt-12 sm:pt-16">
+        <div className="container-x grid flex-1 grid-cols-12 items-end gap-x-6 pb-10 pt-8 sm:pb-16 sm:pt-16">
           {/* left rail — vertical eyebrow */}
           <aside className="col-span-1 hidden md:flex h-full items-end justify-start">
             <span
@@ -316,9 +316,9 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
 
           {/* main type stack */}
           <div className="col-span-12 md:col-span-8 md:col-start-2">
-            <div className="mb-10 flex items-center gap-4">
+            <div className="mb-6 flex items-center gap-4 sm:mb-10">
               <span className="h-px w-12 bg-[var(--accent)]" />
-              <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--accent)]">
+              <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--ink)]">
                 <MaskReveal delay={0.35} duration={0.6}>
                   Frizerie urbană · cu intenție
                 </MaskReveal>
@@ -334,13 +334,13 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
               </span>
             </h1>
 
-            <div className="mt-10 grid grid-cols-12 gap-x-6">
+            <div className="mt-6 grid grid-cols-12 gap-x-6 sm:mt-10">
               <p className="col-span-12 max-w-md text-[length:var(--fs-400)] leading-[1.45] text-[var(--ink-muted)] sm:col-span-7">
                 <MaskReveal delay={1.2} duration={0.9}>
                   {tagline}
                 </MaskReveal>
               </p>
-              <div className="col-span-12 mt-8 flex flex-wrap items-center gap-4 sm:col-span-12">
+              <div className="col-span-12 mt-5 flex flex-wrap items-center gap-3 sm:col-span-12 sm:mt-8 sm:gap-4">
                 <MagneticButton as="a" href="#programare" variant="primary">
                   Programează
                 </MagneticButton>
@@ -351,9 +351,9 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             </div>
           </div>
 
-          {/* right rail — date / serial */}
-          <aside className="col-span-12 mt-12 md:col-span-3 md:col-start-10 md:mt-0 md:self-end">
-            <div className="hairline pt-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em]">
+          {/* right rail — date / serial (desktop only; mobile shows it in Footer) */}
+          <aside className="hidden md:col-span-3 md:col-start-10 md:flex md:self-end">
+            <div className="hairline w-full pt-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em]">
               <MaskReveal delay={1.4} duration={0.7}>
                 <div className="grid gap-3 text-[var(--ink-muted)]">
                   <span className="tabular-nums">
@@ -376,11 +376,11 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
 }
 
 const MARQUEE_TOKENS = [
-  "EST. 2018",
-  "FĂRĂ AI · CU MÂINI · CU INTENȚIE",
-  "PICKUP · VINIL · ESPRESSO SCURT",
-  "CARDURI ACCEPTATE",
-  "DUMINICA ÎNCHIS",
+  "TUNSORI · BARBĂ · BRICI",
+  "FOARFECĂ TRADIȚIONALĂ",
+  "PROGRAMĂRI WHATSAPP",
+  "EST. 2018 · SECTOR 3",
+  "PICKUP · VINIL · ESPRESSO",
   "CALEA CĂLĂRAȘILOR 27",
 ] as const;
 
@@ -400,7 +400,7 @@ function Marquee() {
         transition={
           reduced
             ? undefined
-            : { duration: 32, ease: "linear", repeat: Infinity }
+            : { duration: 18, ease: "linear", repeat: Infinity }
         }
       >
         {seq.map((t, i) => (
