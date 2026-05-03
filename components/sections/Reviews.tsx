@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -9,6 +10,11 @@ import type { Review } from "@/lib/config";
 interface ReviewsProps {
   reviews: Review[];
 }
+
+const LEFT_PHOTO =
+  "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=900&q=80&auto=format&fit=crop";
+const RIGHT_PHOTO =
+  "https://images.unsplash.com/photo-1657105052497-f996284ffff8?w=900&q=80&auto=format&fit=crop";
 
 export function Reviews({ reviews }: ReviewsProps) {
   return (
@@ -38,13 +44,75 @@ export function Reviews({ reviews }: ReviewsProps) {
           </h2>
         </header>
 
-        <div className="grid grid-cols-12 gap-y-16 md:gap-y-24">
-          {reviews.map((review, i) => (
-            <ReviewCard key={review.id} review={review} index={i} />
-          ))}
+        <div className="grid grid-cols-12 gap-x-6 gap-y-16 md:gap-y-24">
+          <SidePhoto src={LEFT_PHOTO} alt="Tunsoare în lucru" side="left" />
+          <div className="col-span-12 grid gap-y-16 md:col-span-6 md:col-start-4 md:gap-y-24">
+            {reviews.map((review, i) => (
+              <ReviewCard key={review.id} review={review} index={i} />
+            ))}
+          </div>
+          <SidePhoto src={RIGHT_PHOTO} alt="Detaliu finisaj" side="right" />
         </div>
       </div>
     </section>
+  );
+}
+
+function SidePhoto({
+  src,
+  alt,
+  side,
+}: {
+  src: string;
+  alt: string;
+  side: "left" | "right";
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-15% 0px" });
+  const reduced = useReducedMotion();
+
+  const colPos =
+    side === "left"
+      ? "md:col-start-1 md:col-span-3 md:row-start-1"
+      : "md:col-start-10 md:col-span-3 md:row-start-1";
+
+  // mobile: stack as full-width above first review (left) or below last (right)
+  const mobileOrder = side === "left" ? "order-1" : "order-3";
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      transition={
+        reduced
+          ? { duration: 0 }
+          : { duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
+      }
+      className={`relative col-span-12 ${mobileOrder} ${colPos} md:self-start md:sticky md:top-24`}
+    >
+      <figure className="relative aspect-[3/4] overflow-hidden bg-[var(--surface)]">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 25vw"
+          className="object-cover"
+          style={{ filter: "grayscale(100%) contrast(1.02)" }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent 55%, rgb(20 17 15 / 0.55) 100%)",
+          }}
+        />
+        <figcaption className="text-mono absolute bottom-3 left-3 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink)]">
+          {alt}
+        </figcaption>
+      </figure>
+    </motion.div>
   );
 }
 

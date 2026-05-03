@@ -18,6 +18,7 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
 
   const [lng, lat] = mapCenter;
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  const embedUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=16&output=embed&hl=ro`;
 
   return (
     <section
@@ -47,7 +48,7 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
         </header>
 
         <div ref={ref} className="grid grid-cols-12 gap-x-6 gap-y-12">
-          {/* schematic map */}
+          {/* real Google Maps embed framed editorial */}
           <div className="relative col-span-12 md:col-span-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -57,20 +58,35 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
                   ? { duration: 0 }
                   : { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
               }
-              className="relative aspect-[4/3] overflow-hidden bg-[var(--surface)]"
+              className="relative aspect-[4/3] overflow-hidden border border-[var(--line)] bg-[var(--surface)]"
             >
-              <SchematicMap inView={inView} reduced={reduced} />
+              <iframe
+                title="Hartă · Strada Calea Călărașilor 27"
+                src={embedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 h-full w-full"
+                style={{
+                  border: 0,
+                  filter: "grayscale(100%) contrast(1.1) brightness(0.92) invert(0.92) hue-rotate(180deg)",
+                }}
+              />
+              {/* subtle copper tint overlay so the map sits inside the brand */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 mix-blend-multiply"
+                style={{ background: "rgb(217 118 77 / 0.06)" }}
+              />
 
-              {/* corner meta — top-left */}
-              <div className="absolute left-5 top-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+              {/* editorial corner meta over the map */}
+              <div className="pointer-events-none absolute left-5 top-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
                 <span className="block text-[var(--accent)]">Lat / Lng</span>
                 <span className="mt-1 block tabular-nums text-[var(--ink)]">
                   {lat.toFixed(4)}° N · {lng.toFixed(4)}° E
                 </span>
               </div>
 
-              {/* corner meta — bottom-right */}
-              <div className="absolute bottom-5 right-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
+              <div className="pointer-events-none absolute bottom-5 right-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
                 <span className="block text-right text-[var(--accent)]">Sector 3</span>
                 <span className="mt-1 block text-right text-[var(--ink)]">București · RO</span>
               </div>
@@ -124,236 +140,5 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
         </div>
       </div>
     </section>
-  );
-}
-
-function SchematicMap({ inView, reduced }: { inView: boolean; reduced: boolean }) {
-  const drawT = (delay: number) =>
-    reduced
-      ? { duration: 0 }
-      : { duration: 1.1, ease: [0.16, 1, 0.3, 1] as const, delay };
-
-  return (
-    <svg
-      viewBox="0 0 800 600"
-      preserveAspectRatio="xMidYMid slice"
-      className="absolute inset-0 h-full w-full"
-      aria-label="Hartă schematică a locației"
-    >
-      {/* base */}
-      <rect width="800" height="600" fill="var(--surface)" />
-
-      {/* subtle grid */}
-      {Array.from({ length: 12 }, (_, i) => (
-        <line
-          key={`v${i}`}
-          x1={i * 70}
-          y1="0"
-          x2={i * 70}
-          y2="600"
-          stroke="var(--ink)"
-          strokeOpacity="0.04"
-          strokeWidth="0.5"
-        />
-      ))}
-      {Array.from({ length: 9 }, (_, i) => (
-        <line
-          key={`h${i}`}
-          x1="0"
-          y1={i * 70}
-          x2="800"
-          y2={i * 70}
-          stroke="var(--ink)"
-          strokeOpacity="0.04"
-          strokeWidth="0.5"
-        />
-      ))}
-
-      {/* roads — animated draw */}
-      <motion.path
-        d="M 0 320 L 800 320"
-        stroke="var(--ink)"
-        strokeOpacity="0.5"
-        strokeWidth="1.5"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-        transition={drawT(0.2)}
-      />
-      <motion.path
-        d="M 420 0 L 420 600"
-        stroke="var(--ink)"
-        strokeOpacity="0.5"
-        strokeWidth="1.5"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-        transition={drawT(0.35)}
-      />
-      <motion.path
-        d="M 60 80 C 200 120, 300 220, 420 320"
-        stroke="var(--ink)"
-        strokeOpacity="0.35"
-        strokeWidth="1"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-        transition={drawT(0.5)}
-      />
-      <motion.path
-        d="M 420 320 C 540 400, 660 460, 780 540"
-        stroke="var(--ink)"
-        strokeOpacity="0.35"
-        strokeWidth="1"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-        transition={drawT(0.65)}
-      />
-
-      {/* blocks — abstract building footprints */}
-      {[
-        { x: 80, y: 80, w: 240, h: 200 },
-        { x: 480, y: 60, w: 260, h: 220 },
-        { x: 80, y: 360, w: 280, h: 180 },
-        { x: 500, y: 380, w: 240, h: 160 },
-      ].map((b, i) => (
-        <motion.rect
-          key={i}
-          x={b.x}
-          y={b.y}
-          width={b.w}
-          height={b.h}
-          fill="none"
-          stroke="var(--ink-muted)"
-          strokeOpacity="0.5"
-          strokeWidth="0.8"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={
-            reduced
-              ? { duration: 0 }
-              : { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.7 + i * 0.08 }
-          }
-        />
-      ))}
-
-      {/* street labels */}
-      <motion.text
-        x="60"
-        y="312"
-        fill="var(--ink-muted)"
-        fontFamily="var(--font-mono), monospace"
-        fontSize="11"
-        letterSpacing="3"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={drawT(1.1)}
-      >
-        CALEA CĂLĂRAȘILOR
-      </motion.text>
-      <motion.text
-        x="430"
-        y="200"
-        fill="var(--ink-muted)"
-        fontFamily="var(--font-mono), monospace"
-        fontSize="11"
-        letterSpacing="3"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={drawT(1.2)}
-      >
-        STR. NERVA TRAIAN
-      </motion.text>
-
-      {/* location marker — bullseye + crosshair */}
-      <motion.g
-        initial={{ opacity: 0, scale: 0.4 }}
-        animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.4 }}
-        transition={
-          reduced
-            ? { duration: 0 }
-            : { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 1.3 }
-        }
-        style={{ transformOrigin: "420px 320px" }}
-      >
-        {/* pulse ring */}
-        {!reduced && (
-          <motion.circle
-            cx="420"
-            cy="320"
-            r="20"
-            fill="none"
-            stroke="var(--accent)"
-            strokeWidth="1"
-            initial={{ scale: 1, opacity: 0.7 }}
-            animate={{ scale: [1, 2.2, 1], opacity: [0.7, 0, 0.7] }}
-            transition={{
-              duration: 2.4,
-              repeat: Infinity,
-              ease: "easeOut",
-            }}
-            style={{ transformOrigin: "420px 320px" }}
-          />
-        )}
-        <circle cx="420" cy="320" r="20" fill="none" stroke="var(--accent)" strokeWidth="1.2" />
-        <circle cx="420" cy="320" r="6" fill="var(--accent)" />
-        <line x1="420" y1="290" x2="420" y2="305" stroke="var(--accent)" strokeWidth="1" />
-        <line x1="420" y1="335" x2="420" y2="350" stroke="var(--accent)" strokeWidth="1" />
-        <line x1="390" y1="320" x2="405" y2="320" stroke="var(--accent)" strokeWidth="1" />
-        <line x1="435" y1="320" x2="450" y2="320" stroke="var(--accent)" strokeWidth="1" />
-      </motion.g>
-
-      {/* "you are here" callout */}
-      <motion.g
-        initial={{ opacity: 0, x: -10 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-        transition={drawT(1.5)}
-      >
-        <line x1="455" y1="320" x2="540" y2="270" stroke="var(--accent)" strokeWidth="0.8" />
-        <text
-          x="544"
-          y="266"
-          fill="var(--accent)"
-          fontFamily="var(--font-mono), monospace"
-          fontSize="11"
-          letterSpacing="3"
-        >
-          BARBER 021
-        </text>
-        <text
-          x="544"
-          y="283"
-          fill="var(--ink-muted)"
-          fontFamily="var(--font-mono), monospace"
-          fontSize="10"
-          letterSpacing="2"
-        >
-          AICI ↘
-        </text>
-      </motion.g>
-
-      {/* compass */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={drawT(1.6)}
-        transform="translate(740 80)"
-      >
-        <circle cx="0" cy="0" r="20" fill="none" stroke="var(--ink-muted)" strokeWidth="0.8" />
-        <line x1="0" y1="-22" x2="0" y2="-12" stroke="var(--accent)" strokeWidth="1.5" />
-        <text
-          x="0"
-          y="-26"
-          fill="var(--accent)"
-          fontFamily="var(--font-mono), monospace"
-          fontSize="10"
-          textAnchor="middle"
-          letterSpacing="1"
-        >
-          N
-        </text>
-      </motion.g>
-    </svg>
   );
 }
