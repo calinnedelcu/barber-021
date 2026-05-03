@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { ParallaxLayer } from "@/components/primitives/ParallaxLayer";
@@ -54,60 +55,31 @@ export function Manifesto({ panels }: ManifestoProps) {
 function ManifestoBackdrop() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0">
-      {/* faint grid */}
-      <svg
-        viewBox="0 0 1440 1200"
-        preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-0 h-full w-full"
-      >
-        {Array.from({ length: 13 }, (_, i) => (
-          <line
-            key={`v${i}`}
-            x1={i * 120}
-            y1="0"
-            x2={i * 120}
-            y2="1200"
-            stroke="var(--ink)"
-            strokeOpacity="0.03"
-            strokeWidth="1"
+      {/* parallax slow — architectural blueprint of the atelier */}
+      <ParallaxLayer speed={0.18} className="absolute inset-0">
+        <div className="relative h-full w-full">
+          <Image
+            src="/clients/barber-021/manifesto/blueprint-v2.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-bottom opacity-[0.55]"
           />
-        ))}
-        {Array.from({ length: 11 }, (_, i) => (
-          <line
-            key={`h${i}`}
-            x1="0"
-            y1={i * 120}
-            x2="1440"
-            y2={i * 120}
-            stroke="var(--ink)"
-            strokeOpacity="0.03"
-            strokeWidth="1"
-          />
-        ))}
-      </svg>
-
-      {/* slow parallax — italic word */}
-      <ParallaxLayer
-        speed={0.25}
-        className="absolute inset-y-0 right-0 hidden w-1/2 lg:flex"
-      >
-        <div className="flex h-full w-full items-center justify-end pr-8">
-          <span
-            className="text-serif-italic select-none text-[clamp(10rem,22vw,22rem)] leading-[0.9]"
+          {/* fade top + bottom so it doesn't fight with text */}
+          <div
+            className="absolute inset-0"
             style={{
-              color: "transparent",
-              WebkitTextStroke: "1px rgb(217 118 77 / 0.1)",
+              background:
+                "linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 70%, var(--bg) 100%)",
             }}
-          >
-            credo
-          </span>
+          />
         </div>
       </ParallaxLayer>
 
-      {/* faster parallax — small measurement annotation */}
+      {/* faster parallax — small measurement annotation, top-left */}
       <ParallaxLayer
         speed={-0.15}
-        className="absolute left-0 top-1/3 hidden md:block"
+        className="absolute left-0 top-[18%] hidden md:block"
       >
         <svg width="180" height="120" viewBox="0 0 180 120">
           <line x1="20" y1="20" x2="20" y2="100" stroke="var(--ink)" strokeOpacity="0.18" strokeWidth="0.8" />

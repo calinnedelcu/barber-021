@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { KineticText } from "@/components/primitives/KineticText";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
@@ -28,20 +29,30 @@ export function Hero({ brandName, tagline, address, phone }: HeroProps) {
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden bg-[var(--bg)]"
     >
-      {/* === DECOR — oversized outline 021 behind === */}
+      {/* === DECOR — oversized monogram behind === */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 flex items-center justify-end"
       >
-        <span
-          className="text-display select-none translate-x-[8%] translate-y-[2%] text-[clamp(20rem,42vw,52rem)] leading-none"
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1px rgb(245 239 230 / 0.07)",
-          }}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={inView ? { opacity: 0.45, scale: 1 } : { opacity: 0, scale: 1.04 }}
+          transition={
+            reduced
+              ? { duration: 0 }
+              : { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
+          }
+          className="relative h-[80vh] w-[60vw] translate-x-[10%]"
         >
-          021
-        </span>
+          <Image
+            src="/clients/barber-021/marks/monogram-copper.png"
+            alt=""
+            fill
+            sizes="60vw"
+            className="object-contain"
+            priority
+          />
+        </motion.div>
       </div>
 
       {/* === DECOR — measuring rule + razor curve + tool study === */}
@@ -329,23 +340,14 @@ export function Hero({ brandName, tagline, address, phone }: HeroProps) {
 
 function Monogram() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden
-      className="text-[var(--accent)]"
-    >
-      <rect x="0.5" y="0.5" width="21" height="21" stroke="currentColor" strokeWidth="1" />
-      <path
-        d="M5 16 L5 6 L11 13 L17 6 L17 16"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        fill="none"
-        strokeLinecap="square"
-      />
-    </svg>
+    <Image
+      src="/clients/barber-021/marks/monogram-cream.png"
+      alt="BARBER 021"
+      width={26}
+      height={26}
+      className="h-[26px] w-auto"
+      priority
+    />
   );
 }
 

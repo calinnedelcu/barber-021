@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface NavProps {
@@ -88,21 +89,12 @@ export function Nav({ brandName }: NavProps) {
 
 function NavMonogram() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden
-      className="text-[var(--accent)]"
-    >
-      <rect x="0.5" y="0.5" width="21" height="21" stroke="currentColor" strokeWidth="1" />
-      <path
-        d="M5 16 L5 6 L11 13 L17 6 L17 16"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        fill="none"
-      />
-    </svg>
+    <Image
+      src="/clients/barber-021/marks/monogram-cream.png"
+      alt=""
+      width={22}
+      height={22}
+      className="h-[22px] w-auto"
+    />
   );
 }
