@@ -31,7 +31,7 @@ export function Services({ services }: ServicesProps) {
         <header className="grid grid-cols-12 items-end gap-x-6 pb-16">
           <div className="col-span-12 md:col-span-3">
             <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--accent)]">
-              <MaskReveal duration={0.6}>§ 02 — Lista</MaskReveal>
+              <MaskReveal duration={0.6}>§ 01 — Lista</MaskReveal>
             </span>
           </div>
           <h2

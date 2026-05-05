@@ -24,7 +24,7 @@ export function Team({ members }: TeamProps) {
         <header className="grid grid-cols-12 items-end gap-x-6 pb-20">
           <div className="col-span-12 md:col-span-3">
             <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--accent)]">
-              <MaskReveal duration={0.6}>§ 04 — Echipa</MaskReveal>
+              <MaskReveal duration={0.6}>§ 02 — Echipa</MaskReveal>
             </span>
           </div>
           <h2

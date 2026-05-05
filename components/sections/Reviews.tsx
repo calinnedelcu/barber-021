@@ -30,7 +30,7 @@ export function Reviews({ reviews }: ReviewsProps) {
         <header className="grid grid-cols-12 items-end gap-x-6 pb-20">
           <div className="col-span-12 md:col-span-3">
             <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--accent)]">
-              <MaskReveal duration={0.6}>§ 03 — Voci</MaskReveal>
+              <MaskReveal duration={0.6}>§ 05 — Voci</MaskReveal>
             </span>
           </div>
           <h2

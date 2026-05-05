@@ -10,9 +10,9 @@ interface NavProps {
 }
 
 const LINKS = [
-  { id: "manifesto", label: "Manifest" },
   { id: "servicii", label: "Servicii" },
   { id: "echipa", label: "Echipa" },
+  { id: "manifesto", label: "Manifest" },
   { id: "galerie", label: "Galerie" },
   { id: "locatie", label: "Locație" },
   { id: "programare", label: "Programare" },

@@ -24,7 +24,7 @@ export function Footer({ config }: FooterProps) {
           {/* CTA block */}
           <div className="col-span-12 md:col-span-7">
             <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--accent)]">
-              <MaskReveal duration={0.6}>§ 04 — Contact</MaskReveal>
+              <MaskReveal duration={0.6}>§ 09 — Contact</MaskReveal>
             </span>
             <h2
               id="footer-heading"

@@ -26,9 +26,9 @@ export default function Home() {
           phone={config.contact.phone}
           backdropUrl={config.hero?.backdropUrl}
         />
-        <Manifesto panels={config.manifesto.panels} />
         <Services services={config.services} />
         <Team members={config.team} />
+        <Manifesto panels={config.manifesto.panels} />
         <Gallery items={config.gallery} />
         <Reviews reviews={config.reviews} />
         <MapSection

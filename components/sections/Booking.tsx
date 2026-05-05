@@ -91,7 +91,7 @@ export function Booking({ services, whatsapp }: BookingProps) {
         <header className="grid grid-cols-12 items-end gap-x-6 pb-16">
           <div className="col-span-12 md:col-span-3">
             <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--accent)]">
-              <MaskReveal duration={0.6}>§ 06 — Programare</MaskReveal>
+              <MaskReveal duration={0.6}>§ 07 — Programare</MaskReveal>
             </span>
           </div>
           <h2
