@@ -3,6 +3,7 @@ import { DefaultSite } from "@/components/sites/DefaultSite";
 import { AASite } from "@/components/sites/aa-barber/AASite";
 import { MrMrsSite } from "@/components/sites/mr-mrs-style/MrMrsSite";
 import { AndreiSite } from "@/components/sites/andrei-canciu/AndreiSite";
+import { NicoSite } from "@/components/sites/nico-beauty-style/NicoSite";
 
 // Each lead gets a bespoke, on-brand site. Clients without one fall back to the
 // shared DefaultSite composition.
@@ -16,6 +17,8 @@ export default function Home() {
       return <MrMrsSite config={config} />;
     case "andrei-canciu":
       return <AndreiSite config={config} />;
+    case "nico-beauty-style":
+      return <NicoSite config={config} />;
     default:
       return <DefaultSite config={config} />;
   }
