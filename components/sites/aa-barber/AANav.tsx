@@ -32,6 +32,19 @@ export function AANav({ brandName, bookingUrl, phone }: AANavProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll + close on Esc while the mobile menu is open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
     <motion.header
       initial={reduced ? false : { y: -80, opacity: 0 }}
@@ -148,30 +161,60 @@ export function AANav({ brandName, bookingUrl, phone }: AANavProps) {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile full-screen overlay */}
       <motion.div
         initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="overflow-hidden bg-[var(--bg)] lg:hidden"
-        style={{ borderBottom: open ? "1px solid var(--line)" : "none" }}
+        animate={{ opacity: open ? 1 : 0 }}
+        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+        className={cn("fixed inset-0 -z-10 lg:hidden", !open && "pointer-events-none")}
+        style={{ background: "var(--bg)", visibility: open ? "visible" : "hidden" }}
+        aria-hidden={!open}
       >
-        <ul className="container-x mx-auto flex max-w-[1500px] flex-col gap-1 py-5">
-          {LINKS.map((l) => (
-            <li key={l.href}>
+        <div className="container-x mx-auto flex h-[100svh] max-w-[1500px] flex-col justify-center gap-1 pb-20 pt-24">
+          <ul className="flex flex-col">
+            {LINKS.map((l, i) => (
+              <li key={l.href}>
+                <motion.a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={false}
+                  animate={open && !reduced ? { opacity: 1, y: 0 } : { opacity: open ? 1 : 0, y: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: open && !reduced ? 0.08 + i * 0.05 : 0 }}
+                  className={cn(
+                    styles.display,
+                    "block py-2 text-[clamp(2.4rem,11vw,3.4rem)] leading-[1.05] text-[var(--ink)] transition-colors hover:text-[var(--accent)]"
+                  )}
+                >
+                  {l.label}
+                </motion.a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex flex-col gap-4">
+            {bookingUrl && (
               <a
-                href={l.href}
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className={cn(
-                  styles.display,
-                  "block py-2 text-[1.9rem] text-[var(--ink)] transition-colors hover:text-[var(--accent)]"
+                  styles.mono,
+                  "inline-flex items-center justify-between gap-2 bg-[var(--accent)] px-5 py-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--bg)]"
                 )}
               >
-                {l.label}
+                Programează pe MERO <span aria-hidden>→</span>
               </a>
-            </li>
-          ))}
-        </ul>
+            )}
+            <a
+              href={`tel:${phone.replace(/\s/g, "")}`}
+              onClick={() => setOpen(false)}
+              className={cn(styles.mono, "text-[0.72rem] uppercase tracking-[0.22em] text-[var(--ink-muted)]")}
+            >
+              Sună · {phone}
+            </a>
+          </div>
+        </div>
       </motion.div>
     </motion.header>
   );
