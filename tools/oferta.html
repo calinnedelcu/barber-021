@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Configurator ofertă · website saloane</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --panel:#ffffff; --panel2:#efece4; --ink:#1d2024; --muted:#6b7280;
+    --accent:#c2632f; --accent2:#1f7fa6; --line:rgb(29 32 36/.14); --ok:#2f8f53;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px clamp(14px,3vw,32px) 80px}
+  h1{font-size:1.5rem;letter-spacing:-.01em}
+  h1 small{display:block;font-size:.8rem;color:var(--muted);font-weight:400;margin-top:4px;letter-spacing:.02em}
+  .layout{display:grid;grid-template-columns:1fr;gap:22px;margin-top:24px}
+  @media(min-width:900px){.layout{grid-template-columns:1fr 400px;align-items:start}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 2px rgb(0 0 0/.04)}
+  .card+.card{margin-top:18px}
+  .sec-t{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:14px;font-weight:600}
+  label.opt{display:flex;gap:12px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:.15s;margin-bottom:8px}
+  label.opt:hover{border-color:rgb(238 241 244/.25)}
+  label.opt.on{border-color:var(--accent);background:rgb(194 99 47/.07)}
+  .opt input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:0 0 auto}
+  .opt .body{flex:1}
+  .opt .name{font-weight:600}
+  .opt .desc{color:var(--muted);font-size:.82rem;margin-top:2px}
+  .opt .price{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink);font-weight:600}
+  .pop{display:inline-block;font-size:.58rem;background:var(--accent);color:#fff;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle;letter-spacing:.05em;text-transform:uppercase;font-weight:700}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  input.t,select.t{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:9px 11px;font:inherit;width:100%}
+  input.num{max-width:120px;text-align:right;font-variant-numeric:tabular-nums}
+  .field{margin-bottom:12px}
+  .field>span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:5px}
+  /* summary */
+  .sum{position:sticky;top:18px;background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:20px}
+  .lineitem{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+  .lineitem .v{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .lineitem.muted{color:var(--muted)}
+  .big{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px}
+  .big .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+  .big .amt{font-size:1.7rem;font-weight:700;font-variant-numeric:tabular-nums}
+  .big .amt.accent{color:var(--accent)}
+  .big .amt.blue{color:var(--accent2)}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:10px;border:0;font:inherit;font-weight:600;cursor:pointer;margin-top:12px}
+  .btn.primary{background:var(--accent);color:#1a1206}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  textarea{width:100%;min-height:300px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;font:13px/1.55 ui-monospace,Consolas,monospace;margin-top:10px;resize:vertical}
+  .pill{display:inline-block;font-size:.7rem;background:rgb(70 182 220/.14);color:var(--accent2);padding:2px 8px;border-radius:99px;margin-left:6px}
+  .note{font-size:.8rem;color:var(--muted);margin-top:8px;line-height:1.5}
+  hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Configurator ofertă website
+    <small>Bifează opțiunile pe call → prețul și textul ofertei se generează singure. Editează prețurile în secțiunea <code>CONFIG</code> din cod oricând.</small>
+  </h1>
+
+  <div class="layout">
+    <!-- ============ OPTIONS ============ -->
+    <div>
+      <div class="card">
+        <div class="sec-t">Client</div>
+        <div class="field"><span>Nume salon / client</span><input class="t" id="clientName" placeholder="ex. HAIRMANN"></div>
+        <div class="field"><span>Link draft (opțional)</span><input class="t" id="draftUrl" placeholder="https://calinnedelcu.github.io/barber-021/hairmann/"></div>
+      </div>
+
+      <div class="card">
+        <div class="sec-t">1 · Construcție (o singură dată)</div>
+        <div id="baseOpts"></div>
+        <div class="note">Proces: 1 call (ce vrei) → trimiți poze/prețuri pe WhatsApp → preview → reviziile incluse → aprobi → live în 24–48h. Modificările de după launch intră în abonament.</div>
+      </div>
+
+      <div class="card">
+        <div class="sec-t">2 · Module add-on (se adună la setup)</div>
+        <div id="addonOpts"></div>
+      </div>
+
+      <div class="card">
+        <div class="sec-t">3 · Abonament lunar (mentenanță)</div>
+        <div id="maintOpts"></div>
+        <div class="note">Mentenanța <b>tehnică</b> (găzduire, SSL, securitate, backup) e în <b>toate</b> pachetele — site-ul rămâne mereu online. Diferă doar <b>modificările de conținut</b>. Peste plan: ~80 lei/modificare sau upgrade.</div>
+      </div>
+
+      <div class="card">
+        <div class="sec-t">3b · Add-on recurente (se adună la abonament)</div>
+        <div id="recurOpts"></div>
+      </div>
+
+      <div class="card">
+        <div class="sec-t">4 · Domeniu & ajustări</div>
+        <div class="field"><span>Domeniu</span><select class="t" id="domain"></select></div>
+        <div class="row" style="gap:18px">
+          <div class="field" style="margin:0"><span>Reducere / ajustare setup (lei)</span><input class="t num" id="adjust" type="number" value="0" step="50"></div>
+          <div class="field" style="margin:0"><span>Override abonament (lei/lună)</span><input class="t num" id="monthlyOverride" type="number" placeholder="auto"></div>
+          <div class="field" style="margin:0"><span>Avans %</span><input class="t num" id="deposit" type="number" value="50" step="5" style="max-width:80px"></div>
+        </div>
+        <label class="opt" id="annualWrap" style="margin-top:10px"><input type="checkbox" id="annual"><div class="body"><div class="name">Plată abonament anuală (2 luni gratis)</div><div class="desc">Recomandat: încasezi tot anul în avans → zero risc de churn.</div></div></label>
+      </div>
+    </div>
+
+    <!-- ============ SUMMARY ============ -->
+    <div class="sum" id="sum">
+      <div class="sec-t" style="color:var(--ink)">Sumar ofertă</div>
+      <div id="lines"></div>
+
+      <div class="big"><span class="lbl">Setup (o dată)</span><span class="amt accent" id="setupTotal">0 lei</span></div>
+      <div class="hint" id="depositHint"></div>
+
+      <div class="big"><span class="lbl" id="recurLbl">Abonament</span><span class="amt blue" id="recurAmt">0 lei/lună</span></div>
+      <div class="hint" id="recurHint"></div>
+
+      <hr>
+      <div class="lineitem" style="border:0"><span>An 1 total (setup + abonament)</span><span class="v" id="year1">0 lei</span></div>
+
+      <button class="btn primary" onclick="copyText('offer')">📋 Copiază oferta (email)</button>
+      <button class="btn ghost" onclick="copyText('wa')">💬 Copiază varianta WhatsApp</button>
+      <textarea id="offerText" readonly></textarea>
+      <div class="note">Prețurile sunt fără TVA (firmă neplătitoare). Setup: 50% avans / 50% la livrare. Abonament: contract minim 12 luni. Domeniul + site-ul rămân pe contul tău până la achitarea setup-ului.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================= CONFIG (editează liber) ============================= */
+const CONFIG = {
+  cur: "lei",
+  base: [ // alege UNA (radio) — feature gating ca să urce spre mijloc/sus
+    { id:"standard",  name:"Standard",  desc:"One-page: hero, servicii, galerie 6 poze, buton MERO, contact, hartă. 2 runde revizii. (GBP/recenzii/copywriting NU incluse.)", price:990 },
+    { id:"signature", name:"Signature", desc:"Multi-pagină, galerie nelimitată, Google Business + recenzii Google + copywriting INCLUSE, buton MERO stilizat. 3 runde revizii.", price:1690, popular:true },
+    { id:"custom",    name:"Custom / full bespoke", desc:"Tot din Signature + bilingv inclus + secțiuni extra (rezonabil) + animații avansate + co-design cu revizii NELIMITATE în perioada de construcție (~3 săpt, apoi intră în abonament). «Mai dai puțin, primești tot.»", price:2490 },
+  ],
+  addons: [ // bife (se adună la setup) — prețuri „easy-yes" pentru atașare mare (strategie de volum)
+    { id:"bi",    name:"Bilingv RO + EN",             desc:"Traducere + comutator de limbă (bun pentru turiști).", price:250 },
+    { id:"logo",  name:"Logo + elemente vizuale custom / în temă", desc:"Logo nou + accente/iconuri/pattern custom, în tema site-ului. (Refresh la logo existent: 150.)", price:290 },
+    { id:"copy",  name:"Copywriting profesional",     desc:"Scriu toate textele. (Inclus în Signature+.)", price:190 },
+    { id:"seo",   name:"Google Business + recenzii + SEO local", desc:"Diferențiatorul #1 vs MERO — prezență pe Google Search. (Inclus în Signature+.)", price:250 },
+    { id:"page",  name:"Pagină/secțiune extra",       desc:"Multi-locație, blog, landing de campanie.", price:150 },
+    { id:"rev",   name:"Rundă extra de revizii",       desc:"Peste cele incluse (altfel intră în abonament după launch).", price:100 },
+  ],
+  recur: [ // bife — se adună la ABONAMENTUL lunar
+    { id:"email",     name:"Email pro @domeniul-tău",       desc:"Adresă profesională (ex. contact@salon.ro), per căsuță.", price:29 },
+    { id:"remindere", name:"Remindere & anti-no-show",       desc:"Config + monitorizare flux. Un no-show evitat = un tuns recuperat.", price:49 },
+  ],
+  maint: [ // alege UNA (radio) — lei/lună. Mentenanța TEHNICĂ e în toate; diferă MODIFICĂRILE de conținut.
+    { id:"esential", name:"Esențial", price:79,  inc:["Tehnic: găzduire + domeniu .ro + SSL + securitate + backup","Modificări conținut: 1/lună (preț, poză, program)"] },
+    { id:"activ",    name:"Activ",    price:149, popular:true, inc:["Tot din Esențial","Modificări conținut: NELIMITAT (rezonabil) — preț/poze/program/texte","Google Business gestionat + management recenzii Google","Raport lunar (vizite + click «Programează»)"] },
+    { id:"mkt",      name:"Pro",      price:249, inc:["Tot din Activ","Modificări PRIORITARE (în 24h)","SEO local continuu (Google Search)","Cerere activă de recenzii + remindere/anti-no-show"] },
+  ],
+  domain: [ // select
+    { id:"ro_inc", name:".ro inclus în abonament", price:0 },
+    { id:"ro",     name:".ro (facturat separat)",  price:150, perYear:true },
+    { id:"com",    name:".com (facturat separat)", price:90,  perYear:true },
+    { id:"none",   name:"Subdomeniu (fără domeniu)", price:0 },
+  ],
+  rules: { annualMonthsFree: 2, minTermMonths: 12 },
+};
+/* ================================================================================== */
+
+const $ = s => document.querySelector(s);
+const money = n => new Intl.NumberFormat("ro-RO").format(Math.round(n)) + " " + CONFIG.cur;
+const state = { base:"signature", addons:new Set(), maint:"activ", recurAddons:new Set(), domain:"ro_inc", annual:false };
+
+function renderOptions(){
+  $("#baseOpts").innerHTML = CONFIG.base.map(b=>optHTML("radio","base",b)).join("");
+  $("#addonOpts").innerHTML = CONFIG.addons.map(a=>optHTML("checkbox","addon",a)).join("");
+  $("#maintOpts").innerHTML = CONFIG.maint.map(m=>optHTML("radio","maint",m,`${money(m.price)}/lună`,m.inc)).join("");
+  $("#recurOpts").innerHTML = CONFIG.recur.map(r=>optHTML("checkbox","recur",r,`+${money(r.price)}/lună`)).join("");
+  $("#domain").innerHTML = CONFIG.domain.map(d=>`<option value="${d.id}">${d.name}${d.price?` — ${money(d.price)}${d.perYear?'/an':''}`:''}</option>`).join("");
+  $("#domain").value = state.domain;
+  bind();
+}
+function optHTML(type,group,o,priceLabel,inc){
+  const pl = priceLabel ?? (o.price?`${o.id==='premium'?'de la ':'+'}${money(o.price)}`:'inclus');
+  const incHtml = inc?`<div class="desc">${inc.join(" · ")}</div>`:"";
+  return `<label class="opt" data-group="${group}" data-id="${o.id}">
+    <input type="${type}" name="${group}" value="${o.id}">
+    <div class="body"><div class="name">${o.name}${o.popular?' <span class="pop">★ Cel mai ales</span>':''}</div><div class="desc">${o.desc||""}</div>${incHtml}</div>
+    <div class="price">${pl}</div></label>`;
+}
+function bind(){
+  document.querySelectorAll('.opt input').forEach(i=>i.addEventListener("change",onChange));
+  ["#domain","#adjust","#monthlyOverride","#deposit","#annual","#clientName","#draftUrl"].forEach(s=>$(s).addEventListener("input",compute));
+  // set defaults
+  document.querySelectorAll('[data-group="base"] input').forEach(i=>i.checked=i.value===state.base);
+  document.querySelectorAll('[data-group="maint"] input').forEach(i=>i.checked=i.value===state.maint);
+  syncOnClasses(); compute();
+}
+function onChange(e){
+  const g=e.target.closest('.opt').dataset.group, id=e.target.value;
+  if(g==="base") state.base=id;
+  else if(g==="maint") state.maint=id;
+  else if(g==="addon"){ e.target.checked?state.addons.add(id):state.addons.delete(id); }
+  else if(g==="recur"){ e.target.checked?state.recurAddons.add(id):state.recurAddons.delete(id); }
+  syncOnClasses(); compute();
+}
+function syncOnClasses(){
+  document.querySelectorAll('.opt').forEach(l=>{const i=l.querySelector('input');l.classList.toggle('on',i.checked);});
+}
+function compute(){
+  state.domain=$("#domain").value; state.annual=$("#annual").checked;
+  const base=CONFIG.base.find(b=>b.id===state.base);
+  const addons=CONFIG.addons.filter(a=>state.addons.has(a.id));
+  const adj=Number($("#adjust").value||0);
+  const setup=base.price + addons.reduce((s,a)=>s+a.price,0) + adj;
+  const m=CONFIG.maint.find(x=>x.id===state.maint);
+  const recurAddons=CONFIG.recur.filter(r=>state.recurAddons.has(r.id));
+  const mOver=$("#monthlyOverride").value;
+  const monthlyBase=mOver!==""?Number(mOver):m.price;
+  const monthly=monthlyBase + recurAddons.reduce((s,r)=>s+r.price,0);
+  const dep=Math.max(0,Math.min(100,Number($("#deposit").value||50)));
+  const dom=CONFIG.domain.find(d=>d.id===state.domain);
+  const annualPrice = monthly*(12-CONFIG.rules.annualMonthsFree);
+
+  // lines
+  let lines=[`<div class="lineitem"><span>${base.name}</span><span class="v">${money(base.price)}</span></div>`];
+  addons.forEach(a=>lines.push(`<div class="lineitem"><span>${a.name}</span><span class="v">+${money(a.price)}</span></div>`));
+  if(adj) lines.push(`<div class="lineitem muted"><span>Ajustare</span><span class="v">${adj>0?'+':''}${money(adj)}</span></div>`);
+  $("#lines").innerHTML=lines.join("");
+
+  $("#setupTotal").textContent=money(setup);
+  $("#depositHint").textContent=`Avans ${dep}% = ${money(setup*dep/100)} · rest la livrare = ${money(setup*(1-dep/100))}`;
+  $("#recurLbl").textContent = state.annual? "Abonament (anual)":"Abonament";
+  $("#recurAmt").textContent = state.annual? `${money(annualPrice)}/an` : `${money(monthly)}/lună`;
+  $("#recurHint").textContent = (state.annual? `echivalent ${money(annualPrice/12)}/lună · ` : "")
+      + `${m.name}` + (dom.price?` · domeniu ${dom.name.split(' ')[0]} ${money(dom.price)}/an`:` · ${dom.name}`);
+  const year1 = setup + (state.annual?annualPrice:monthly*12) + (dom.perYear?dom.price:0);
+  $("#year1").textContent=money(year1);
+
+  buildOffer(base,addons,m,monthly,annualPrice,dom,setup,dep,recurAddons);
+}
+function buildOffer(base,addons,m,monthly,annualPrice,dom,setup,dep,recurAddons){
+  const name=$("#clientName").value||"[client]"; const url=$("#draftUrl").value;
+  const L=[];
+  L.push(`Ofertă website — ${name}`);
+  L.push("");
+  L.push("CONSTRUCȚIE (o singură dată):");
+  L.push(`• ${base.name} — ${money(base.price)}`);
+  addons.forEach(a=>L.push(`• ${a.name} — +${money(a.price)}`));
+  L.push(`Total setup: ${money(setup)}  (${dep}% avans = ${money(setup*dep/100)}, rest la livrare)`);
+  L.push("");
+  if($("#annual").checked){
+    L.push(`ABONAMENT (anual): ${money(annualPrice)}/an  — ${m.name}, 2 luni gratis`);
+  } else {
+    L.push(`ABONAMENT: ${money(monthly)}/lună — ${m.name}`);
+  }
+  m.inc.forEach(i=>L.push(`   ◦ ${i}`));
+  recurAddons.forEach(r=>L.push(`   ◦ ${r.name} (+${money(r.price)}/lună)`));
+  if(dom.price) L.push(`Domeniu ${dom.name.split(' ')[0]}: ${money(dom.price)}/an`);
+  else L.push(`Domeniu: ${dom.name}`);
+  L.push("");
+  L.push("Programările rămân pe MERO (buton direct în site).");
+  L.push("Live pe domeniul tău în 24–48h după aprobare.");
+  if(url) L.push(`Vezi draftul: ${url}`);
+  L.push("");
+  L.push("Prețuri fără TVA. Contract abonament minim 12 luni.");
+  $("#offerText").value=L.join("\n");
+
+  // WhatsApp short
+  const wa=[`Salut! Ție-ți pregătesc site-ul ${name}.`,
+    url?`Uite draftul: ${url}`:null,
+    `Ofertă: ${money(setup)} o dată (construcție) + ${$("#annual").checked?money(annualPrice)+'/an':money(monthly)+'/lună'} (găzduire, domeniu, întreținere, modificări).`,
+    `Îl pun live pe domeniul tău în 24–48h. Mergem?`].filter(Boolean).join("\n");
+  $("#offerText").dataset.wa=wa;
+}
+function copyText(which){
+  const el=$("#offerText");
+  const txt = which==="wa"? el.dataset.wa : el.value;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const b=event.target; const t=b.textContent; b.textContent="✓ Copiat!"; setTimeout(()=>b.textContent=t,1400);
+  });
+}
+renderOptions();
+</script>
+</body>
+</html>
