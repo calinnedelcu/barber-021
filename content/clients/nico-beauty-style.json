@@ -1,0 +1,157 @@
+{
+  "slug": "nico-beauty-style",
+  "tier": "premium",
+  "theme": {
+    "scheme": "light",
+    "bg": "#F4ECE3",
+    "surface": "#FFFFFF",
+    "ink": "#2A211B",
+    "inkMuted": "#8A7868",
+    "accent": "#B5683C",
+    "accentHot": "#C97E4E",
+    "bone": "#C9B79A",
+    "line": "rgb(42 33 27 / 0.12)",
+    "grain": false
+  },
+  "brand": {
+    "name": "NICO BEAUTY STYLE",
+    "shortName": "NICO BEAUTY STYLE",
+    "tagline": "Coafor unisex în Sibiu, pe Strada Șoimului — tuns, vopsit, șuvițe, coafat și barbă, pentru ea și pentru el. 4.8★ de la sute de clienți din cartier.",
+    "serial": "N° NBS / 2026",
+    "monogramInitials": "NBS",
+    "logoVariant": "primary"
+  },
+  "hero": {
+    "backdropUrl": "/clients/nico-beauty-style/hero/interior.jpg",
+    "eyebrow": "Coafor unisex · Sibiu",
+    "titleLines": ["NICO", "BEAUTY"],
+    "localityLine": "Sibiu · Strada Șoimului · Vasile Aaron",
+    "coordsLabel": "45.7834° N · 24.1665° E",
+    "scheduleLabel": "Luni → Sâmbătă",
+    "marquee": [
+      "TUNS · VOPSIT · ȘUVIȚE · COAFAT",
+      "PENTRU EA & PENTRU EL",
+      "4.8 ★ · ~150 EVALUĂRI GOOGLE",
+      "FIRMA DE AUR · 2022–2026",
+      "STRADA ȘOIMULUI 10 · SIBIU",
+      "PROGRAMĂRI ONLINE"
+    ]
+  },
+  "manifesto": {
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Pentru ea și pentru el",
+        "body": "Nico Beauty Style e un salon unisex: tuns damă și bărbat, vopsit, șuvițe, coafat și aranjat barbă, sub același acoperiș. Un loc de cartier unde vine toată familia — femei, bărbați și cei mici."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Reputația vorbește",
+        "body": "4.8★ din aproape 150 de recenzii pe Google, 5.0 pe Facebook și „Firma de Aur” în fiecare an din 2022 până în 2026. Sute de clienți din Sibiu se întorc pentru același rezultat constant."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Curat, modern, primitor",
+        "body": "Spațiu curat și modern, personal amabil și serios, lucru făcut cu răbdare. Exact ce ne scriu clienții în recenzii — te simți bine de cum intri și pleci mulțumit."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tuns-barbat",
+      "name": "Tuns bărbați",
+      "duration": "30 min",
+      "price": 45,
+      "description": "Tuns cu mașina și foarfeca, styling final."
+    },
+    {
+      "id": "tuns-barba",
+      "name": "Tuns + barbă",
+      "duration": "45 min",
+      "price": 60,
+      "description": "Tuns plus contur și aranjat barbă. Preț orientativ — îl confirmăm împreună."
+    },
+    {
+      "id": "barba",
+      "name": "Aranjat barbă",
+      "duration": "20 min",
+      "price": 30,
+      "description": "Contur și styling barbă. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "tuns-copii",
+      "name": "Tuns copii",
+      "duration": "30 min",
+      "price": 35,
+      "description": "Tuns pentru cei mici, cu răbdare. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "tuns-dama",
+      "name": "Tuns damă",
+      "duration": "45 min – 1 h",
+      "price": 70,
+      "description": "Tuns adaptat lungimii și formei feței, cu finisaj. Preț orientativ, în funcție de lungime."
+    },
+    {
+      "id": "spalat-coafat",
+      "name": "Spălat & coafat",
+      "duration": "45 min",
+      "price": 60,
+      "description": "Spălat plus coafat cu peria sau placa. Preț orientativ, în funcție de lungime."
+    },
+    {
+      "id": "vopsit",
+      "name": "Vopsit",
+      "duration": "2 h",
+      "price": 150,
+      "description": "Vopsire pe lungime, cu îngrijire și finisaj. De la 150 lei orientativ, în funcție de lungime."
+    },
+    {
+      "id": "suvite",
+      "name": "Șuvițe / balayage",
+      "duration": "3 – 4 h",
+      "price": 280,
+      "description": "Șuvițe sau balayage cu tonifiere. De la 280 lei orientativ, în funcție de lungime și tehnică."
+    },
+    {
+      "id": "coafura-eveniment",
+      "name": "Coafură de eveniment",
+      "duration": "1 h",
+      "price": 130,
+      "description": "Coc, bucle sau styling pentru o ocazie specială. Preț orientativ — de confirmat."
+    }
+  ],
+  "gallery": [],
+  "team": [],
+  "reviews": [],
+  "contact": {
+    "phone": "0742 959 299",
+    "whatsapp": "40742959299",
+    "bookingUrl": "https://stailer.ro/salon/beauty-style-nicoleta",
+    "address": "Strada Șoimului 10, Sc. C, 557260 Sibiu",
+    "mapCenter": [24.1665, 45.7834],
+    "hours": [
+      { "day": "Luni", "hours": "09:00 — 18:00" },
+      { "day": "Marți", "hours": "09:00 — 18:00" },
+      { "day": "Miercuri", "hours": "09:00 — 18:00" },
+      { "day": "Joi", "hours": "09:00 — 18:00" },
+      { "day": "Vineri", "hours": "09:00 — 18:00" },
+      { "day": "Sâmbătă", "hours": "09:00 — 14:00" },
+      { "day": "Duminică", "hours": "Închis" }
+    ]
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/by.Nicoleta.Tocaciu/"
+  },
+  "geo": {
+    "region": "Strada Șoimului",
+    "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Strada Șoimului, în",
+    "mapHeadlineAccent": "Sibiu"
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/nico-beauty-style",
+    "description": "Coafor unisex în Sibiu, pe Strada Șoimului (Vasile Aaron) — tuns damă și bărbat, vopsit, șuvițe, coafat și barbă. 4.8★ din ~150 recenzii Google, Firma de Aur 2022–2026. Programări online.",
+    "ogEyebrow": "Coafor unisex · Sibiu"
+  }
+}

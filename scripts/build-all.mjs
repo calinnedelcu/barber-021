@@ -17,6 +17,7 @@ const CLIENTS = [
   { slug: "hairmann", name: "HAIRMANN", tag: "Barbershop · male esthetics", loc: "Sibiu" },
   { slug: "aa-barber", name: "A'A Barber", tag: "Barbershop pentru bărbați", loc: "Sibiu" },
   { slug: "mr-mrs-style", name: "Mr&Mrs Style", tag: "Salon de înfrumusețare", loc: "Sibiu" },
+  { slug: "nico-beauty-style", name: "Nico Beauty Style", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
 ];
 
 rmSync("dist", { recursive: true, force: true });
