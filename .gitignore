@@ -42,3 +42,7 @@ CLAUDE.md
 qa-*.png
 qa-*.jpeg
 qa-*.jpg
+
+# multi-site build output
+/dist
+/pubtest

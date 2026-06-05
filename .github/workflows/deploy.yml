@@ -4,15 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      client:
-        description: "Client slug (content/clients/<slug>.json)"
-        required: false
-        default: ""
-      base_path:
-        description: "Base path served on Pages, e.g. /hairmann"
-        required: false
-        default: ""
 
 permissions:
   contents: read
@@ -39,15 +30,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site
-        # Which client ships is controlled by (in priority order): the
-        # workflow_dispatch inputs, repo variables CLIENT / BASE_PATH, else
-        # the barber-021 default. Pages serves one site per repo — to ship a
-        # different client, set the repo variables or run the workflow manually.
+      - name: Build all client sites + landing
+        # Builds every client into dist/<slug>/ under one Pages site, plus a
+        # landing index at dist/. SITE_BASE_PATH must match the repo's Pages path.
         env:
-          NEXT_PUBLIC_CLIENT: ${{ github.event.inputs.client || vars.CLIENT || 'barber-021' }}
-          NEXT_PUBLIC_BASE_PATH: ${{ github.event.inputs.base_path || vars.BASE_PATH || '/barber-021' }}
-        run: npm run build
+          SITE_BASE_PATH: /barber-021
+        run: node scripts/build-all.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -55,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
   deploy:
     needs: build
