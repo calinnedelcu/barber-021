@@ -62,20 +62,20 @@ Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduc
 - [ ] Finalizarea reală a fiecărui site se face **după apel**, cu conținutul lor (vezi procesul în pricing).
 
 ### Opțional / nice-to-have
-- [ ] **Pagină de ofertă client-facing** (din grila configuratorului) — de arătat pe ecran în apel. (propusă, neimplementată)
+- [x] **Pagină de ofertă client-facing** — implementată: `tools/oferta-client.html` (interactivă, comparație feature pe rânduri, logică anti-dublă-taxare, cârlig „push spre Custom"). De construit pachetul împreună pe ecran în apel.
 - [ ] `opengraph-image.tsx` fundal hardcodat dark — la Mr&Mrs (light) ușor nepotrivit; de tematizat.
 - [ ] `icon.svg` (favicon) e marca barber pentru toți — de făcut per-client.
 - [ ] `components/sections/Booking.tsx` = cod mort (nu mai e importat) — se poate șterge.
 
-## 💰 Vânzare / Pricing (vezi `docs/PRICING-STRATEGY.md` + `tools/oferta.html`)
+## 💰 Vânzare / Pricing (vezi `docs/PRICING-STRATEGY.md` + `tools/oferta.html` intern + `tools/oferta-client.html` client)
 Model: **setup one-time (50% avans / 50% livrare) + abonament lunar**, contract min. 12 luni, neplătitor TVA.
-- **Setup:** Standard 990 / **Signature 1.690 ⭐ (focus)** / Custom 2.490 (magnet de upgrade; ancora = prețul agențiilor 4.700–8.000).
+- **Setup:** Standard 1.190 / Signature 2.290 / **Custom 2.690 🎯 (focus — push spre top)**. Strategie nouă (Economist/reverse-decoy, nu ancorare clasică): gap mic Signature→Custom; Custom (2.690) costă **mai puțin** decât Signature + cele 3 module exclusive (logo+bilingv+pagină extra = 2.980) → urcarea la Custom e un no-brainer demonstrabil pe ecran. Logo + 1 pagină/secțiune extra **incluse** în Custom. Ancora externă = prețul agențiilor 4.700–8.000.
 - **Abonament:** Esențial 79 / **Activ 149 ⭐** / Pro 249. Mentenanță TEHNICĂ în toate; modificările de conținut scalează (1/lună → nelimitat → nelimitat+prioritate 24h).
 - **Add-on one-time:** Bilingv 250 · Logo+elemente vizuale custom 290 · Copywriting 190 · Google Business+recenzii+SEO 250 · Pagină extra 150 · Rundă revizii 100.
 - **Add-on recurent:** Email pro +29 · Remindere/anti-no-show +49.
 - **SCOPE:** doar site + găzduire + **Google Search organic** (SEO local + GBP + recenzii). **FĂRĂ** ședințe foto, social media, reclame plătite.
 - Strategiile de vânzare (anti-„cel mai ieftin", ancorare, script apel, obiecții, retenție): `docs/PRICING-STRATEGY.md`.
-- **Configurator** (light) care compune oferta + generează textul: `tools/oferta.html` (prețuri editabile în blocul `CONFIG`; nu se deployează).
+- **Configurator intern** (override-uri preț, generează text email/WhatsApp): `tools/oferta.html`. **Pagină de ofertă client-facing** (interactivă, fără knob-uri interne — construiești pachetul cu clientul pe call): `tools/oferta-client.html`. Ambele cu prețuri editabile în blocul `CONFIG`; niciuna nu se deployează. (Ținute sincronizate la 1.190/2.290/2.690.)
 
 ## Arhitectura / ce s-a construit
 - **Registry**: `lib/clients.ts` (5 clienți) + `NEXT_PUBLIC_CLIENT` (build-time).
@@ -99,5 +99,5 @@ Model: **setup one-time (50% avans / 50% livrare) + abonament lunar**, contract 
 - `app/layout.tsx` (temă+metadata) · `app/page.tsx` (dispatch design)
 - `components/sites/<slug>/` (bespoke) · `components/sites/DefaultSite.tsx` (comun)
 - `scripts/build-all.mjs` (deploy multi-client) · `.github/workflows/deploy.yml`
-- `tools/oferta.html` (configurator ofertă) · `docs/PRICING-STRATEGY.md` (strategie)
+- `tools/oferta.html` (configurator intern) · `tools/oferta-client.html` (ofertă client-facing) · `docs/PRICING-STRATEGY.md` (strategie)
 - `docs/HAIRMANN-DRAFT.md`, `AA-BARBER-DRAFT.md`, `MR-MRS-STYLE-DRAFT.md`, `ANDREI-CANCIU-DRAFT.md`

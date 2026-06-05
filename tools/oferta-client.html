@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pachetul tău website</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --panel:#ffffff; --panel2:#efece4; --ink:#1d2024; --muted:#6b7280;
+    --accent:#c2632f; --accent2:#1f7fa6; --line:rgb(29 32 36/.14); --ok:#2f8f53;
+    --shadow:0 1px 2px rgb(0 0 0/.05), 0 8px 24px rgb(29 32 36/.05);
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font:15px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:36px clamp(14px,3vw,32px) 90px}
+
+  /* ---- header ---- */
+  header.hero{text-align:center;margin-bottom:8px}
+  header.hero .kic{font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;color:var(--accent);font-weight:700}
+  header.hero h1{font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em;margin-top:8px}
+  header.hero p{color:var(--muted);max-width:560px;margin:12px auto 0;font-size:1.02rem}
+
+  .layout{display:grid;grid-template-columns:1fr;gap:24px;margin-top:34px}
+  @media(min-width:980px){.layout{grid-template-columns:1fr 380px;align-items:start}}
+
+  .block{margin-bottom:30px}
+  .block-h{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .block-h .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;flex:0 0 auto}
+  .block-h h2{font-size:1.15rem;letter-spacing:-.01em}
+  .block-sub{color:var(--muted);font-size:.9rem;margin:2px 0 16px 36px}
+
+  /* ---- selectable cards (packages / tiers) ---- */
+  .cards{display:grid;gap:14px}
+  .cards.three{grid-template-columns:1fr}
+  @media(min-width:620px){.cards.three{grid-template-columns:repeat(3,1fr)}}
+  .pcard{position:relative;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:18px 16px;cursor:pointer;transition:.18s;display:flex;flex-direction:column;box-shadow:0 1px 2px rgb(0 0 0/.04)}
+  .pcard:hover{border-color:rgb(194 99 47/.45);transform:translateY(-2px)}
+  .pcard.on{border-color:var(--accent);box-shadow:0 0 0 3px rgb(194 99 47/.13), var(--shadow)}
+  .pcard .tick{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;transition:.15s}
+  .pcard.on .tick{background:var(--accent);border-color:var(--accent)}
+  .pcard .pname{font-weight:700;font-size:1.05rem;padding-right:26px}
+  .pcard .pprice{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums;margin:6px 0 2px;letter-spacing:-.02em}
+  .pcard .pprice small{font-size:.78rem;font-weight:600;color:var(--muted)}
+  .pcard ul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
+  .pcard li{position:relative;padding-left:20px;font-size:.86rem;color:#3a3f45;line-height:1.4}
+  .pcard li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:700}
+  .pcard li.no{color:var(--muted)}
+  .pcard li.no::before{content:"–";color:var(--muted)}
+
+  /* ---- toggle rows (add-ons) ---- */
+  label.opt{display:flex;gap:13px;align-items:flex-start;padding:13px 14px;border:1px solid var(--line);border-radius:12px;cursor:pointer;transition:.15s;margin-bottom:9px;background:var(--panel)}
+  label.opt:hover{border-color:rgb(194 99 47/.4)}
+  label.opt.on{border-color:var(--accent);background:rgb(194 99 47/.06)}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt .box{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);flex:0 0 auto;margin-top:1px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;transition:.15s}
+  .opt.on .box{background:var(--accent);border-color:var(--accent)}
+  .opt .body{flex:1}
+  .opt .name{font-weight:600}
+  .opt .desc{color:var(--muted);font-size:.84rem;margin-top:2px}
+  .opt .price{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700;color:var(--accent)}
+
+  /* ---- domain / options row ---- */
+  .optsrow{display:flex;flex-wrap:wrap;gap:14px;align-items:end}
+  .field{flex:1;min-width:200px}
+  .field>span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin-bottom:6px}
+  select.t{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit;width:100%}
+
+  /* ---- summary ---- */
+  .sum{position:sticky;top:18px;background:linear-gradient(180deg,#fff,var(--panel2));border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+  .sum h3{font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:14px}
+  .lineitem{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+  .lineitem .v{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+  .lineitem.muted{color:var(--muted)}
+  .lineitem.muted .v{font-weight:500}
+  .big{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}
+  .big .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}
+  .big .amt{font-size:1.75rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .big .amt.accent{color:var(--accent)}
+  .big .amt.blue{color:var(--accent2)}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:5px;line-height:1.5}
+  hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+  .y1{display:flex;justify-content:space-between;align-items:baseline;background:rgb(194 99 47/.07);border-radius:10px;padding:11px 13px;font-size:.92rem;font-weight:600}
+  .y1 .v{font-variant-numeric:tabular-nums}
+  .reassure{margin-top:16px;display:flex;flex-direction:column;gap:9px}
+  .reassure div{display:flex;gap:9px;align-items:flex-start;font-size:.85rem;color:#3a3f45}
+  .reassure .i{color:var(--ok);font-weight:700;flex:0 0 auto}
+  .finep{font-size:.76rem;color:var(--muted);margin-top:16px;line-height:1.55;border-top:1px solid var(--line);padding-top:14px}
+
+  /* annual toggle */
+  .annual{display:flex;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--panel);margin-top:4px}
+  .annual.on{border-color:var(--ok);background:rgb(47 143 83/.06)}
+  .annual input{position:absolute;opacity:0;pointer-events:none}
+  .annual .sw{width:42px;height:24px;border-radius:99px;background:var(--line);position:relative;flex:0 0 auto;transition:.18s}
+  .annual .sw::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgb(0 0 0/.25);transition:.18s}
+  .annual.on .sw{background:var(--ok)}
+  .annual.on .sw::after{transform:translateX(18px)}
+  .annual .save{margin-left:auto;font-size:.72rem;font-weight:700;color:var(--ok);background:rgb(47 143 83/.12);padding:3px 9px;border-radius:99px;white-space:nowrap}
+
+  /* ---- add-on inclus în pachet + caseta «azi» ---- */
+  .opt.included{opacity:.75;cursor:default;border-style:dashed;background:rgb(47 143 83/.05)}
+  .opt.included:hover{border-color:var(--line)}
+  .opt.included .box{background:var(--ok);border-color:var(--ok)}
+  .opt .price.inc{color:var(--ok);font-weight:700;font-size:.82rem}
+  .today{background:rgb(47 143 83/.09);border:1px solid rgb(47 143 83/.28);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+  .today .r{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .today .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ok);font-weight:700}
+  .today .amt{font-size:1.45rem;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .today .sub{font-size:.77rem;color:var(--muted);margin-top:4px}
+  .hook{margin-top:14px;background:rgb(194 99 47/.07);border:1px solid rgb(194 99 47/.22);border-radius:12px;padding:11px 14px;font-size:.86rem;color:#3a3f45;line-height:1.5}
+  .hook b{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kic">Oferta ta · website salon</div>
+    <h1>Hai să-ți construim pachetul</h1>
+    <p>Alegem împreună ce ai nevoie. Prețul se actualizează pe loc — vezi exact ce plătești o singură dată și ce e lunar.</p>
+  </header>
+
+  <div class="layout">
+    <!-- ============ OPTIONS ============ -->
+    <div>
+
+      <div class="block">
+        <div class="block-h"><span class="n">1</span><h2>Construcția site-ului</h2></div>
+        <div class="block-sub">Plătită o singură dată. Alege un pachet.</div>
+        <div class="cards three" id="baseOpts"></div>
+        <div class="hook" id="customHook"></div>
+      </div>
+
+      <div class="block">
+        <div class="block-h"><span class="n">2</span><h2>Module extra</h2></div>
+        <div class="block-sub">Opționale — se adaugă la construcție. Bifezi doar ce vrei.</div>
+        <div id="addonOpts"></div>
+      </div>
+
+      <div class="block">
+        <div class="block-h"><span class="n">3</span><h2>Abonament lunar</h2></div>
+        <div class="block-sub">Site-ul rămâne online, actualizat și în siguranță. Întreținerea tehnică (găzduire, SSL, securitate, backup) e inclusă în toate — diferă cât conținut îți modific.</div>
+        <div class="cards three" id="maintOpts"></div>
+        <div style="margin-top:14px"></div>
+        <div id="recurOpts"></div>
+      </div>
+
+      <div class="block">
+        <div class="block-h"><span class="n">4</span><h2>Domeniu</h2></div>
+        <div class="block-sub">Adresa site-ului (ex. salonul-tau.ro).</div>
+        <div class="optsrow">
+          <div class="field"><span>Alege domeniu</span><select class="t" id="domain"></select></div>
+        </div>
+        <label class="annual" id="annualWrap">
+          <input type="checkbox" id="annual">
+          <span class="sw"></span>
+          <div><div class="name">Plătesc abonamentul pe an</div><div class="desc" style="color:var(--muted);font-size:.84rem">Primești 2 luni gratis.</div></div>
+          <span class="save">−2 luni</span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- ============ SUMMARY ============ -->
+    <div class="sum" id="sum">
+      <h3>Sumarul tău</h3>
+      <div id="lines"></div>
+
+      <div class="big"><span class="lbl">Construcție (o dată)</span><span class="amt accent" id="setupTotal">0 lei</span></div>
+      <div class="hint" id="depositHint"></div>
+
+      <div class="big"><span class="lbl" id="recurLbl">Abonament</span><span class="amt blue" id="recurAmt">0 lei/lună</span></div>
+      <div class="hint" id="recurHint"></div>
+
+      <hr>
+      <div class="today">
+        <div class="r"><span class="lbl">Azi, ca să pornim</span><span class="amt" id="todayAmt">0 lei</span></div>
+        <div class="sub">Avansul de construcție (50%). <b>Abonamentul începe la livrare</b> — nu azi.</div>
+      </div>
+      <div class="y1"><span>Primul an (estimat)</span><span class="v" id="year1">0 lei</span></div>
+      <div class="hint" id="year1Hint"></div>
+
+      <div class="reassure">
+        <div><span class="i">✓</span><span>Vezi un <b>draft real</b> și faci reviziile incluse înainte de livrare.</span></div>
+        <div><span class="i">✓</span><span>Live pe domeniul tău în <b>24–48h</b> după ce aprobi.</span></div>
+        <div><span class="i">✓</span><span>Programările rămân pe <b>MERO</b> — buton direct în site.</span></div>
+        <div id="reassureDomain"><span class="i">✓</span><span>Site-ul și domeniul rămân <b>ale tale</b>.</span></div>
+      </div>
+
+      <div class="finep">Prețuri fără TVA. Construcție: 50% avans, 50% la livrare. Abonament cu contract minim 12 luni. Modificările de conținut de după lansare intră în abonament.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================= CONFIG (editează liber prețurile) ============================= */
+const CONFIG = {
+  cur: "lei",
+  // Caracteristici comparate (aceleași rânduri pe toate cardurile). Per pachet `feat` e aliniat
+  // la lista de mai jos: string = afișat cu valoarea · true = inclus (✓) · false = neinclus (–).
+  baseFeatures: ["Pagini","Galerie (din pozele tale)","Buton programare MERO","Google Business + recenzii Google","Copywriting profesional","Bilingv RO + EN","Logo custom în temă","Pagină / secțiune extra","Animații avansate + co-design","Revizii incluse"],
+  base: [ // alege UNA — ladder „push spre Custom": gap mic sus, Custom < Signature + cele 3 module
+    { id:"standard",  name:"Standard",  price:1190,
+      feat:["O pagină",    "6 poze",     "Standard", false, false, false, false, false, false, "1 rundă"] },
+    { id:"signature", name:"Signature", price:2290,
+      feat:["Multi-pagină","Nelimitată", "Stilizat", true,  true,  false, false, false, false, "3 runde"] },
+    { id:"custom",    name:"Custom",    price:2690,
+      feat:["Multi-pagină","Nelimitată", "Stilizat", true,  true,  true,  true,  true,  true,  "Nelimitate (~3 săpt.)"] },
+  ],
+  // add-on de construcție → indexul feature-ului din baseFeatures pe care îl acoperă (pt. „deja inclus")
+  addonFeature: { seo:3, copy:4, bi:5, logo:6, page:7 },
+  addons: [ // bife (se adună la construcție)
+    { id:"bi",    name:"Bilingv RO + EN",                  desc:"Traducere + comutator de limbă (bun pentru turiști). (Inclus în Custom.)", price:250 },
+    { id:"logo",  name:"Logo + elemente vizuale custom",   desc:"Logo nou + accente/iconuri în tema site-ului. (Refresh la logo existent: 150.) (Inclus în Custom.)", price:290 },
+    { id:"copy",  name:"Copywriting profesional",          desc:"Scriu eu toate textele. (Inclus în Signature și Custom.)", price:190 },
+    { id:"seo",   name:"Google Business + recenzii + SEO local", desc:"Configurarea inițială, o singură dată: apari pe Google când te caută cineva în zonă. (Gestionarea lunară e în abonamentul Activ/Pro.) (Inclus în Signature și Custom.)", price:250 },
+    { id:"page",  name:"Pagină / secțiune extra",          desc:"O pagină peste cele incluse: a doua locație, blog dedicat sau landing de promoție. Pe Standard = a doua pagină; de la 2+ pagini, Signature e mai avantajos. (Inclus în Custom.)", price:150 },
+  ],
+  // add-on recurent → indexul feature-ului din maintFeatures pe care îl acoperă
+  recurFeature: { remindere:6 },
+  recur: [ // bife — se adună la abonamentul lunar
+    { id:"email",     name:"Email profesional pe domeniul tău", desc:"ex. contact@salonul-tau.ro", price:29 },
+    { id:"remindere", name:"Remindere & anti no-show",          desc:"Un client care nu mai uită = un tuns recuperat. (Inclus în Pro.)", price:49 },
+  ],
+  maintFeatures: ["Găzduire + domeniu .ro + SSL","Securitate + backup","Modificări de conținut","Google Business gestionat + recenzii","Raport lunar (vizite + click «Programează»)","SEO local continuu pe Google","Cerere activă de recenzii + remindere"],
+  maint: [ // alege UNA — lei/lună
+    { id:"esential", name:"Esențial", price:79,
+      feat:[true, true, "1 / lună",                            false, false, false, false] },
+    { id:"activ",    name:"Activ", price:149,
+      feat:[true, true, "Nelimitate (rezonabil)",              true,  true,  false, false] },
+    { id:"mkt",      name:"Pro", price:249,
+      feat:[true, true, "Nelimitate, prioritare 24h (rezonabil)", true, true, true, true] },
+  ],
+  domain: [ // select — domeniul .ro e mereu inclus în abonament (switching cost)
+    { id:"ro_inc", name:".ro inclus în abonament", price:0 },
+    { id:"com",    name:".com în loc de .ro (facturat separat)", price:90, perYear:true },
+    { id:"none",   name:"Subdomeniu (fără domeniu propriu)", price:0 },
+  ],
+  rules: { annualMonthsFree: 2, depositPct: 50 },
+};
+/* ============================================================================================ */
+
+const $ = s => document.querySelector(s);
+const money = n => new Intl.NumberFormat("ro-RO").format(Math.round(n)) + " " + CONFIG.cur;
+const state = { base:"signature", addons:new Set(), maint:"activ", recurAddons:new Set(), domain:"ro_inc", annual:false };
+
+// e add-on-ul `id` deja inclus în pachetul/abonamentul ales acum?
+function isIncluded(group,id){
+  const map = group==="addon"?CONFIG.addonFeature:CONFIG.recurFeature;
+  const idx = map[id];
+  if(idx==null) return false;
+  const pkg = group==="addon" ? CONFIG.base.find(b=>b.id===state.base) : CONFIG.maint.find(m=>m.id===state.maint);
+  return pkg.feat[idx]===true;
+}
+// scoate din selecție add-on-urile devenite „incluse" după schimbarea pachetului (evită dubla-taxare)
+function reconcile(){
+  CONFIG.addons.forEach(a=>{ if(isIncluded("addon",a.id)) state.addons.delete(a.id); });
+  CONFIG.recur.forEach(r=>{ if(isIncluded("recur",r.id)) state.recurAddons.delete(r.id); });
+}
+
+function pcardHTML(group,o){
+  const labels = group==="base"?CONFIG.baseFeatures:CONFIG.maintFeatures;
+  const rows = labels.map((label,i)=>{
+    const v=o.feat[i];
+    if(v===false) return `<li class="no">${label}</li>`;
+    if(v===true)  return `<li>${label}</li>`;
+    return `<li>${label} — <b>${v}</b></li>`; // valoare specifică (ex. „6 poze")
+  }).join("");
+  return `<div class="pcard" data-group="${group}" data-id="${o.id}">
+    <span class="tick">✓</span>
+    <div class="pname">${o.name}</div>
+    <div class="pprice">${money(o.price)}${group==='maint'?'<small>/lună</small>':''}</div>
+    <ul>${rows}</ul>
+  </div>`;
+}
+function optHTML(group,o){
+  const inc = isIncluded(group,o.id);
+  const price = inc ? `<div class="price inc">✓ Inclus</div>`
+                    : `<div class="price">+${money(o.price)}${group==='recur'?'/lună':''}</div>`;
+  return `<label class="opt${inc?' included':''}" data-group="${group}" data-id="${o.id}">
+    <input type="checkbox" value="${o.id}"${inc?' disabled':''}>
+    <span class="box">✓</span>
+    <div class="body"><div class="name">${o.name}</div><div class="desc">${inc?'Inclus în pachetul tău — 0 lei':(o.desc||"")}</div></div>
+    ${price}</label>`;
+}
+// (re)randează blocurile de add-on-uri și (re)leagă listenerii — incluse = dezactivate
+function renderAddons(){
+  $("#addonOpts").innerHTML = CONFIG.addons.map(a=>optHTML("addon",a)).join("");
+  $("#recurOpts").innerHTML = CONFIG.recur.map(r=>optHTML("recur",r)).join("");
+  document.querySelectorAll('#addonOpts .opt, #recurOpts .opt').forEach(l=>{
+    const g=l.dataset.group, id=l.dataset.id, input=l.querySelector('input');
+    const set = g==="addon"?state.addons:state.recurAddons;
+    if(!input.disabled && set.has(id)){ input.checked=true; l.classList.add('on'); }
+    input.addEventListener("change",e=>{
+      e.target.checked?set.add(id):set.delete(id);
+      l.classList.toggle('on',e.target.checked); compute();
+    });
+  });
+}
+function render(){
+  $("#baseOpts").innerHTML = CONFIG.base.map(b=>pcardHTML("base",b)).join("");
+  $("#maintOpts").innerHTML = CONFIG.maint.map(m=>pcardHTML("maint",m)).join("");
+  $("#domain").innerHTML = CONFIG.domain.map(d=>`<option value="${d.id}">${d.name}${d.price?` — ${money(d.price)}${d.perYear?'/an':''}`:''}</option>`).join("");
+  $("#domain").value = state.domain;
+
+  // cârligul „push spre Custom": Custom costă mai puțin decât Signature + modulele exclusive lui
+  const sig=CONFIG.base.find(b=>b.id==='signature'), cus=CONFIG.base.find(b=>b.id==='custom');
+  const excl=CONFIG.addons.filter(a=>{ const i=CONFIG.addonFeature[a.id]; return i!=null && cus.feat[i]===true && sig.feat[i]!==true; });
+  const buildUp=sig.price + excl.reduce((s,a)=>s+a.price,0);
+  $("#customHook").innerHTML = `💡 <b>Custom ${money(cus.price)}</b> costă mai puțin decât <b>Signature + logo + bilingv + pagină extra</b> (${money(buildUp)}) — și la Custom le ai pe <b>toate</b>, plus animații avansate și revizii nelimitate.`;
+
+  // click pe card (pachet sau abonament) → reconciliază bifele și re-randează
+  document.querySelectorAll('.pcard').forEach(c=>c.addEventListener("click",()=>{
+    const g=c.dataset.group;
+    if(g==="base") state.base=c.dataset.id; else if(g==="maint") state.maint=c.dataset.id;
+    reconcile(); renderAddons(); syncCards(); compute();
+  }));
+  ["#domain","#annual"].forEach(s=>$(s).addEventListener("input",compute));
+  $("#annualWrap").addEventListener("change",()=>$("#annualWrap").classList.toggle('on',$("#annual").checked));
+
+  reconcile(); renderAddons(); syncCards(); compute();
+}
+function syncCards(){
+  document.querySelectorAll('.pcard').forEach(c=>{
+    const g=c.dataset.group, sel = g==="base"?state.base:state.maint;
+    c.classList.toggle('on',c.dataset.id===sel);
+  });
+}
+function compute(){
+  state.domain=$("#domain").value; state.annual=$("#annual").checked;
+  const base=CONFIG.base.find(b=>b.id===state.base);
+  // guard: nu taxa niciodată add-on-uri deja incluse în pachetul ales
+  const addons=CONFIG.addons.filter(a=>state.addons.has(a.id) && !isIncluded("addon",a.id));
+  const setup=base.price + addons.reduce((s,a)=>s+a.price,0);
+  const m=CONFIG.maint.find(x=>x.id===state.maint);
+  const recurAddons=CONFIG.recur.filter(r=>state.recurAddons.has(r.id) && !isIncluded("recur",r.id));
+  const monthly=m.price + recurAddons.reduce((s,r)=>s+r.price,0);
+  const dom=CONFIG.domain.find(d=>d.id===state.domain);
+  const dep=CONFIG.rules.depositPct;
+  const annualMult = state.annual ? (12-CONFIG.rules.annualMonthsFree) : 12; // 10 vs 12
+  const yearSub = monthly*annualMult;
+  const domYear = dom.perYear?dom.price:0;
+
+  // itemizare care se adună EXACT la „primul an" — nimic nu apare „din senin"
+  let lines=[`<div class="lineitem"><span>Construcție · ${base.name}</span><span class="v">${money(base.price)}</span></div>`];
+  addons.forEach(a=>lines.push(`<div class="lineitem"><span>${a.name}</span><span class="v">+${money(a.price)}</span></div>`));
+  lines.push(`<div class="lineitem muted"><span>Abonament · ${m.name}${state.annual?' (anual)':' × 12 luni'}</span><span class="v">${money(m.price*annualMult)}</span></div>`);
+  recurAddons.forEach(r=>lines.push(`<div class="lineitem muted"><span>${r.name} × ${annualMult}</span><span class="v">+${money(r.price*annualMult)}</span></div>`));
+  if(domYear) lines.push(`<div class="lineitem muted"><span>Domeniu ${dom.name.split(' ')[0]} /an</span><span class="v">+${money(domYear)}</span></div>`);
+  $("#lines").innerHTML=lines.join("");
+
+  $("#setupTotal").textContent=money(setup);
+  $("#depositHint").textContent=`${dep}% avans = ${money(setup*dep/100)} · restul ${money(setup-setup*dep/100)} la livrare`;
+  $("#todayAmt").textContent=money(setup*dep/100);
+
+  $("#recurLbl").textContent= state.annual?"Abonament (anual)":"Abonament";
+  $("#recurAmt").textContent= state.annual?`${money(yearSub)}/an`:`${money(monthly)}/lună`;
+  let rh = m.name;
+  if(dom.id==='none') rh += ' · abonamentul include un .ro (l-ai exclus alegând subdomeniu)';
+  else if(domYear)    rh += ` · domeniu ${dom.name.split(' ')[0]} ${money(domYear)}/an`;
+  else                rh += ' · domeniu .ro inclus';
+  if(state.annual)    rh = `în loc de ${money(monthly*12)}/an — 2 luni gratis · ` + rh;
+  $("#recurHint").textContent= rh;
+
+  const year1 = setup + yearSub + domYear;
+  $("#year1").textContent=money(year1);
+  $("#year1Hint").textContent=`= construcție ${money(setup)} + abonament ${money(yearSub)}` + (domYear?` + domeniu ${money(domYear)}`:'');
+
+  const rd=$("#reassureDomain");
+  if(rd) rd.querySelector('span:last-child').innerHTML = dom.id==='none'
+    ? 'Site-ul rămâne <b>al tău</b>.'
+    : 'Site-ul și domeniul rămân <b>ale tale</b>.';
+}
+render();
+</script>
+</body>
+</html>
