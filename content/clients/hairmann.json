@@ -1,0 +1,211 @@
+{
+  "slug": "hairmann",
+  "tier": "premium",
+  "brand": {
+    "name": "HAIRMANN MALE ESTHETICS",
+    "shortName": "HAIRMANN",
+    "tagline": "Barbershop pentru bărbați în Sibiu — pe Strada Lungă, în Orașul de Jos. Tuns, barbă, ritual.",
+    "serial": "N° HM / 2026",
+    "monogramInitials": "HM",
+    "logoVariant": "primary"
+  },
+  "hero": {
+    "backdropUrl": "/clients/hairmann/hero/backdrop.jpg",
+    "eyebrow": "Barbershop · male esthetics",
+    "titleLines": ["HAIR", "MANN"],
+    "localityLine": "Sibiu · Orașul de Jos",
+    "coordsLabel": "45.8042° N · 24.1441° E",
+    "scheduleLabel": "Luni → Sâmbătă",
+    "marquee": [
+      "TUNS · BARBĂ · BRICI",
+      "HAIRMANN THERAPY",
+      "PROGRAMĂRI PE MERO",
+      "5.0 ★ · 5000+ EVALUĂRI",
+      "STRADA LUNGĂ 31 · SIBIU",
+      "TOP 100 OF ROMANIA"
+    ]
+  },
+  "manifesto": {
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Barberi cu școală",
+        "body": "HAIRMANN nu e doar barbershop — e și școală de barbering. Fiecare tuns iese din mâini care predau meseria mai departe."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Atenție la detaliu",
+        "body": "Conturul bărbii, linia fade-ului, finisajul. Detaliile sunt diferența dintre o tunsoare bună și una pe care o ții minte — exact ce ne scriu clienții în recenzii."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Ritual, nu grabă",
+        "body": "Tuns, aranjat barbă, masaj la scalp și un finisaj fără grabă. Pleci relaxat, nu doar tuns. Asta e HAIRMANN Therapy."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tuns",
+      "name": "Tuns bărbat",
+      "duration": "40 – 60 min",
+      "price": 70,
+      "description": "Consultație, tuns cu mașina și foarfeca, styling final. 70 – 110 lei, în funcție de complexitate."
+    },
+    {
+      "id": "barba",
+      "name": "Aranjat barbă",
+      "duration": "20 – 35 min",
+      "price": 40,
+      "description": "Conturare și aranjare cu brici și prosop cald. 40 – 75 lei."
+    },
+    {
+      "id": "tuns-barba",
+      "name": "Tuns & aranjat barbă",
+      "duration": "50 – 80 min",
+      "price": 85,
+      "description": "Pachetul complet: tuns plus barbă, finisat impecabil. 85 – 140 lei."
+    },
+    {
+      "id": "therapy",
+      "name": "HAIRMANN Therapy",
+      "duration": "65 – 70 min",
+      "price": 100,
+      "description": "Ritualul signature: tuns, barbă, masaj la scalp și relaxare. 100 – 170 lei."
+    },
+    {
+      "id": "tuns-intretinere",
+      "name": "Tuns & întreținere barbă",
+      "duration": "55 – 75 min",
+      "price": 75,
+      "description": "Tuns plus întreținerea bărbii între vizite. 75 – 125 lei."
+    },
+    {
+      "id": "uniform-barba",
+      "name": "Aranjat barbă & tuns uniform",
+      "duration": "45 – 60 min",
+      "price": 65,
+      "description": "Tuns uniform pe mașină și barbă conturată. 65 – 110 lei."
+    }
+  ],
+  "gallery": [
+    "/clients/hairmann/gallery/01-beard-bw.jpg",
+    "/clients/hairmann/gallery/02-interior.jpg",
+    "/clients/hairmann/gallery/03-fade-profile.jpg",
+    "/clients/hairmann/gallery/04-scissor-detail.jpg",
+    "/clients/hairmann/gallery/05-process.jpg",
+    "/clients/hairmann/gallery/06-editorial-suit.jpg",
+    "/clients/hairmann/gallery/07-crop.jpg",
+    "/clients/hairmann/gallery/08-cutting.jpg",
+    "/clients/hairmann/gallery/09-crop-back.jpg"
+  ],
+  "team": [
+    {
+      "id": "catalin",
+      "name": "Cătălin Rus",
+      "role": "Master Barber",
+      "bio": "Conduce echipa HAIRMANN. Tuns clasic, fade curat, atenție la fiecare linie.",
+      "portrait": "/clients/hairmann/team/catalin.jpg"
+    },
+    {
+      "id": "cristi",
+      "name": "Cristi Gherghel",
+      "role": "Pro Barber",
+      "bio": "Fade-uri precise și styling care ține. Lucrează curat, fără grabă.",
+      "portrait": "/clients/hairmann/team/cristi.jpg"
+    },
+    {
+      "id": "lucian",
+      "name": "Lucian Joarza",
+      "role": "Senior Barber",
+      "bio": "Mână sigură la foarfecă. Barbă și contur — specialitatea casei.",
+      "portrait": "/clients/hairmann/team/lucian.jpg"
+    },
+    {
+      "id": "luke",
+      "name": "Luke Stef",
+      "role": "Specialist",
+      "bio": "Tunsori moderne, texturi și detaliu. Mereu la curent cu trendurile.",
+      "portrait": "/clients/hairmann/team/luke.jpg"
+    },
+    {
+      "id": "ronald",
+      "name": "Ronald Antonio",
+      "role": "Specialist",
+      "bio": "„Atent la detalii” — exact ce spun clienții. Te asigură că pleci cu look-ul dorit.",
+      "portrait": "/clients/hairmann/team/ronald.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "quote": "Foarte mulțumit de rezultat! Ronald este atent la detalii, lucrează cu profesionalism și se asigură că pleci exact cu look-ul dorit. Atmosferă plăcută și servicii excelente. Recomand cu încredere!",
+      "author": "Andrei A.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/hairmann/reviews/01.jpg"
+    },
+    {
+      "id": "r2",
+      "quote": "Foarte bun, deschis la tunsori noi, recomand cu încredere!",
+      "author": "Joarză D.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/hairmann/reviews/02.jpg"
+    },
+    {
+      "id": "r3",
+      "quote": "Servicii excelente și atenție la detalii.",
+      "author": "Paul A.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/hairmann/reviews/03.jpg"
+    },
+    {
+      "id": "r4",
+      "quote": "Extraordinar acest domn. Recomand cu încredere.",
+      "author": "Lazar B.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/hairmann/reviews/04.jpg"
+    }
+  ],
+  "instagram": {
+    "handle": "hairmann.me",
+    "posts": [
+      "/clients/hairmann/instagram/01.jpg",
+      "/clients/hairmann/instagram/02.jpg",
+      "/clients/hairmann/instagram/03.jpg",
+      "/clients/hairmann/instagram/04.jpg",
+      "/clients/hairmann/instagram/05.jpg",
+      "/clients/hairmann/instagram/06.jpg"
+    ]
+  },
+  "contact": {
+    "phone": "0740 842 936",
+    "whatsapp": "40740842936",
+    "bookingUrl": "https://mero.ro/p/hairmann",
+    "address": "Strada Lungă 31, 550107 Sibiu",
+    "mapCenter": [24.14408, 45.80416],
+    "hours": [
+      { "day": "Luni", "hours": "09:00 — 20:00" },
+      { "day": "Marți", "hours": "09:00 — 21:30" },
+      { "day": "Miercuri", "hours": "09:00 — 21:00" },
+      { "day": "Joi", "hours": "09:00 — 22:00" },
+      { "day": "Vineri", "hours": "09:00 — 20:00" },
+      { "day": "Sâmbătă", "hours": "10:00 — 20:00" },
+      { "day": "Duminică", "hours": "Închis" }
+    ]
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/hairmann.me/",
+    "facebook": "https://www.facebook.com/100046954610745/"
+  },
+  "geo": {
+    "region": "Orașul de Jos",
+    "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Strada Lungă, în",
+    "mapHeadlineAccent": "Orașul de Jos"
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/hairmann",
+    "description": "Barbershop premium pentru bărbați în Sibiu, pe Strada Lungă — tuns, barbă, HAIRMANN Therapy. 5.0★ din peste 5000 de evaluări. Programări online.",
+    "ogEyebrow": "Barbershop · male esthetics"
+  }
+}

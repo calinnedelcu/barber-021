@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { assetPath } from "@/lib/assetPath";
 import type { TeamMember } from "@/lib/config";
 
 interface TeamProps {
@@ -90,7 +91,7 @@ function TeamCard({
       <div className="relative aspect-[4/5] overflow-hidden bg-[var(--bg)]">
         {hasRealPortrait ? (
           <Image
-            src={member.portrait}
+            src={assetPath(member.portrait)}
             alt={`${member.name}, ${member.role}`}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
@@ -105,7 +106,7 @@ function TeamCard({
               style={{
                 background: `
                   radial-gradient(ellipse at 30% 30%, rgb(217 118 77 / 0.18), transparent 55%),
-                  radial-gradient(ellipse at 70% 80%, rgb(20 17 15) 30%, var(--bg) 80%),
+                  radial-gradient(ellipse at 70% 80%, var(--surface) 30%, var(--bg) 80%),
                   linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%)
                 `,
               }}
@@ -141,7 +142,7 @@ function TeamCard({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, transparent 50%, rgb(20 17 15 / 0.55) 100%)",
+                "linear-gradient(180deg, transparent 50%, color-mix(in srgb, var(--surface) 70%, transparent) 100%)",
             }}
           />
         )}

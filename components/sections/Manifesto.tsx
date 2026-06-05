@@ -10,9 +10,10 @@ import { assetPath } from "@/lib/assetPath";
 
 interface ManifestoProps {
   panels: { eyebrow: string; title: string; body: string }[];
+  backdropUrl?: string;
 }
 
-export function Manifesto({ panels }: ManifestoProps) {
+export function Manifesto({ panels, backdropUrl }: ManifestoProps) {
   return (
     <section
       id="manifesto"
@@ -20,7 +21,7 @@ export function Manifesto({ panels }: ManifestoProps) {
       aria-labelledby="manifesto-heading"
     >
       {/* Parallax background — italic monogram + grid + measurements */}
-      <ManifestoBackdrop />
+      <ManifestoBackdrop backdropUrl={backdropUrl} />
 
       <div className="relative z-10 container-x">
         <header className="grid grid-cols-12 items-end gap-x-6 pb-20">
@@ -53,29 +54,31 @@ export function Manifesto({ panels }: ManifestoProps) {
   );
 }
 
-function ManifestoBackdrop() {
+function ManifestoBackdrop({ backdropUrl }: { backdropUrl?: string }) {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0">
       {/* parallax slow — architectural blueprint of the atelier */}
-      <ParallaxLayer speed={0.18} className="absolute inset-0">
-        <div className="relative h-full w-full">
-          <Image
-            src={assetPath("/clients/barber-021/manifesto/blueprint-v2.jpg")}
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-bottom opacity-[0.55]"
-          />
-          {/* fade top + bottom so it doesn't fight with text */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 70%, var(--bg) 100%)",
-            }}
-          />
-        </div>
-      </ParallaxLayer>
+      {backdropUrl && (
+        <ParallaxLayer speed={0.18} className="absolute inset-0">
+          <div className="relative h-full w-full">
+            <Image
+              src={assetPath(backdropUrl)}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover object-bottom opacity-[0.55]"
+            />
+            {/* fade top + bottom so it doesn't fight with text */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 70%, var(--bg) 100%)",
+              }}
+            />
+          </div>
+        </ParallaxLayer>
+      )}
 
       {/* faster parallax — small measurement annotation, top-left */}
       <ParallaxLayer

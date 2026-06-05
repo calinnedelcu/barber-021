@@ -12,6 +12,7 @@ interface FooterProps {
 export function Footer({ config }: FooterProps) {
   const { brand, contact, social } = config;
   const wa = buildWhatsAppDeeplink({ phone: contact.whatsapp });
+  const booking = contact.bookingUrl;
 
   return (
     <footer
@@ -43,20 +44,33 @@ export function Footer({ config }: FooterProps) {
             </h2>
             <p className="mt-8 max-w-md text-[length:var(--fs-400)] leading-[1.5] text-[var(--ink-muted)]">
               <MaskReveal duration={0.9} delay={0.45}>
-                Sună, scrie pe WhatsApp sau lasă un semn — îți răspundem în maxim 30 de minute în
-                programul de lucru.
+                {booking
+                  ? "Programează-te online pe MERO sau sună-ne — îți răspundem repede, în programul de lucru."
+                  : "Sună, scrie pe WhatsApp sau lasă un semn — îți răspundem în maxim 30 de minute în programul de lucru."}
               </MaskReveal>
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <MagneticButton
-                as="a"
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-              >
-                WhatsApp
-              </MagneticButton>
+              {booking ? (
+                <MagneticButton
+                  as="a"
+                  href={booking}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                >
+                  Programează pe MERO
+                </MagneticButton>
+              ) : (
+                <MagneticButton
+                  as="a"
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                >
+                  WhatsApp
+                </MagneticButton>
+              )}
               <MagneticButton
                 as="a"
                 href={`tel:${contact.phone.replace(/\s+/g, "")}`}
@@ -128,7 +142,7 @@ export function Footer({ config }: FooterProps) {
             WebkitTextStroke: "1px var(--ink)",
           }}
         >
-          BARBER 021
+          {brand.shortName ?? brand.name}
         </div>
 
         {/* Colophon strip */}
@@ -167,7 +181,9 @@ export function Footer({ config }: FooterProps) {
                 TikTok
               </a>
             )}
-            <span className="text-[var(--accent)]">N° 021 / 2026</span>
+            {brand.serial && (
+              <span className="text-[var(--accent)]">{brand.serial}</span>
+            )}
           </span>
         </div>
       </div>

@@ -1,0 +1,138 @@
+{
+  "slug": "andrei-canciu",
+  "tier": "premium",
+  "brand": {
+    "name": "ANDREI CANCIU",
+    "shortName": "ANDREI CANCIU",
+    "tagline": "Hairstyling și tunsori geometrice în Sibiu, pe Șoseaua Alba Iulia.",
+    "serial": "N° AC / 2026",
+    "monogramInitials": "AC",
+    "logoVariant": "primary"
+  },
+  "hero": {
+    "backdropUrl": "/clients/andrei-canciu/hero/backdrop.png",
+    "eyebrow": "Hairstyling · tunsori geometrice",
+    "titleLines": ["ANDREI", "CANCIU"],
+    "localityLine": "Sibiu · Șoseaua Alba Iulia",
+    "coordsLabel": "45.7928° N · 24.1347° E",
+    "scheduleLabel": "Luni → Vineri",
+    "marquee": [
+      "TUNSORI GEOMETRICE",
+      "COAFAT · VOPSIT · STYLING",
+      "4.9 ★ PE GOOGLE",
+      "ȘOSEAUA ALBA IULIA · SIBIU",
+      "PROGRAMĂRI LA TELEFON",
+      "ANDREI CANCIU HAIRSTYLE"
+    ]
+  },
+  "manifesto": {
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Geometrie, nu întâmplare",
+        "body": "Andrei taie pe linii și unghiuri — fiecare tunsoare e construită pe structura părului tău, nu copiată dintr-un catalog."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Mână de profesor",
+        "body": "Susține seminarii de hairstyling în toată țara. Ce înveți de la el azi, alții abia învață să predea."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Atenție pe scaun",
+        "body": "O consultație, o discuție, apoi lucrul. Pleci cu un look care ți se potrivește și pe care îl poți reface și acasă."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tuns-coafat-dama",
+      "name": "Tuns & coafat damă",
+      "duration": "45 – 60 min",
+      "price": 120,
+      "description": "Tuns, spălat și coafat, adaptat formei feței. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "tuns-geometric",
+      "name": "Tuns geometric bărbați",
+      "duration": "30 – 45 min",
+      "price": 90,
+      "description": "Tunsoare construită pe linii și unghiuri, cu styling final. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "vopsit",
+      "name": "Vopsit",
+      "duration": "90 – 120 min",
+      "price": 250,
+      "description": "Vopsire profesională, ton uniform sau schimbare de bază. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "suvite",
+      "name": "Șuvițe / Balayage",
+      "duration": "120 – 180 min",
+      "price": 350,
+      "description": "Șuvițe, balayage sau blond, cu îngrijire finală. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "eveniment",
+      "name": "Coafură de eveniment",
+      "duration": "45 – 60 min",
+      "price": 150,
+      "description": "Coafură pentru nuntă, botez sau ocazie specială. Preț orientativ — de confirmat."
+    },
+    {
+      "id": "tratament",
+      "name": "Tratament & styling",
+      "duration": "30 min",
+      "price": 80,
+      "description": "Tratament pentru păr și styling final. Preț orientativ — de confirmat."
+    }
+  ],
+  "gallery": [
+    "/clients/andrei-canciu/gallery/01.jpg",
+    "/clients/andrei-canciu/gallery/02.png",
+    "/clients/andrei-canciu/gallery/03.png",
+    "/clients/andrei-canciu/gallery/04.png",
+    "/clients/andrei-canciu/gallery/05.png"
+  ],
+  "team": [],
+  "reviews": [],
+  "contact": {
+    "phone": "0722 163 509",
+    "whatsapp": "40722163509",
+    "address": "Șoseaua Alba Iulia 40, Sibiu",
+    "mapCenter": [24.13469, 45.79280],
+    "hours": [
+      { "day": "Luni — Vineri", "hours": "12:00 — 20:00" },
+      { "day": "Sâmbătă", "hours": "Închis" },
+      { "day": "Duminică", "hours": "Închis" }
+    ]
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/andreicanciu.hairstyle/",
+    "facebook": "https://www.facebook.com/hairstylingsibiu/"
+  },
+  "theme": {
+    "scheme": "light",
+    "bg": "#ECE7DD",
+    "surface": "#0B0B0C",
+    "ink": "#111110",
+    "inkMuted": "#6E685E",
+    "accent": "#B4724A",
+    "accentHot": "#C8835A",
+    "bone": "#0B0B0C",
+    "line": "rgb(17 17 16 / 0.14)",
+    "grain": false
+  },
+  "geo": {
+    "region": "Șoseaua Alba Iulia",
+    "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Șoseaua Alba Iulia, în",
+    "mapHeadlineAccent": "Sibiu"
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/andrei-canciu",
+    "description": "Hairstyling și tunsori geometrice în Sibiu, pe Șoseaua Alba Iulia — Andrei Canciu. 4.9★ pe Google. Programări la telefon.",
+    "ogEyebrow": "Hairstyling · tunsori geometrice"
+  }
+}

@@ -3,13 +3,30 @@
   "tier": "standard",
   "brand": {
     "name": "BARBER 021",
+    "shortName": "BARBER 021",
     "tagline": "Frizerie urbană contemporană. Sector 3, București.",
+    "serial": "N° 021 / 2026",
+    "est": "2018",
     "logoVariant": "primary"
   },
   "hero": {
-    "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=2400&q=80&auto=format&fit=crop"
+    "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=2400&q=80&auto=format&fit=crop",
+    "eyebrow": "Frizerie urbană · cu intenție",
+    "titleLines": ["BARBER", "021"],
+    "localityLine": "Sector 3 · București · 2018→",
+    "coordsLabel": "44.4254° N · 26.1097° E",
+    "scheduleLabel": "Luni → Sâmb.",
+    "marquee": [
+      "TUNSORI · BARBĂ · BRICI",
+      "FOARFECĂ TRADIȚIONALĂ",
+      "PROGRAMĂRI WHATSAPP",
+      "EST. 2018 · SECTOR 3",
+      "PICKUP · VINIL · ESPRESSO",
+      "CALEA CĂLĂRAȘILOR 27"
+    ]
   },
   "manifesto": {
+    "backdropUrl": "/clients/barber-021/manifesto/blueprint-v2.jpg",
     "panels": [
       {
         "eyebrow": "01",
@@ -144,5 +161,16 @@
   },
   "social": {
     "instagram": "https://instagram.com/barber021"
+  },
+  "geo": {
+    "region": "Sector 3",
+    "localityCountry": "București · RO",
+    "mapHeadlineLead": "Pe colț, lângă",
+    "mapHeadlineAccent": "croitoria veche"
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/barber-021",
+    "description": "Frizerie urbană premium în București, Sector 3. Tunsoare, barbă cu brici, ritual atent.",
+    "ogEyebrow": "Frizerie urbană · cu intenție"
   }
 }

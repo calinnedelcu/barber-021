@@ -1,0 +1,213 @@
+/* ===========================================================================
+   ANDREI CANCIU — "Cut Geometry" editorial / designer-portfolio styles.
+   Stark bone ground + ink + one clay accent. Typographic & geometric — built
+   for a site with NO real work photos. All motifs are SVG line-art / type.
+   =========================================================================== */
+
+.root {
+  --ac-bg: var(--bg);
+  --ac-ink: var(--ink);
+  --ac-muted: var(--ink-muted);
+  --ac-accent: var(--accent);
+  --ac-line: var(--line);
+  --ac-panel: var(--surface);
+  background: var(--ac-bg);
+  color: var(--ac-ink);
+  position: relative;
+  overflow: clip;
+  font-family: var(--font-archivo), system-ui, sans-serif;
+}
+
+/* Type roles -------------------------------------------------------------- */
+.display {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+.syne {
+  font-family: var(--font-syne), system-ui, sans-serif;
+}
+.mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-feature-settings: "tnum", "zero";
+  letter-spacing: 0.04em;
+}
+.archivo {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+}
+
+/* Hairlines & grid -------------------------------------------------------- */
+.line {
+  border-color: var(--ac-line);
+}
+
+/* A thin geometric tick row used as section dividers */
+.ticks {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ac-line) 0,
+    var(--ac-line) 1px,
+    transparent 1px,
+    transparent 28px
+  );
+  height: 10px;
+}
+
+/* Hero — oversized name, outlined ghost layer ----------------------------- */
+
+/* The name column is a sizing container so the display type is measured
+   against the space it actually has (not the full viewport). This keeps the
+   words ("ANDREI" / "CANCIU") fitting on a single line at every width instead
+   of overflowing and getting clipped. */
+.heroNameCol {
+  container-type: inline-size;
+  container-name: heroname;
+}
+
+.heroName {
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+}
+
+/* Fit-to-container display size for the hero name. 16cqw keeps even the
+   longest 6-letter word ("CANCIU") comfortably inside the column, while the
+   clamp ceiling/floor keep it bold and readable on tiny + huge screens.
+   Below the lg breakpoint the column spans the full width, so the same unit
+   still scales correctly down to 390px. */
+.heroNameFit {
+  font-size: clamp(3rem, 16cqw, 12rem);
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+/* Vertical reveal mask for the slide-up entrance. Only the Y axis is clipped
+   so a slightly-too-wide glyph can never be cut off horizontally. */
+.heroNameMask {
+  display: block;
+  overflow-y: clip;
+  overflow-x: visible;
+  line-height: 0.84;
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--ac-ink);
+  text-stroke: 1.2px var(--ac-ink);
+}
+
+/* Marquee ----------------------------------------------------------------- */
+.marqueeTrack {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: acMarquee 38s linear infinite;
+}
+.marqueePaused .marqueeTrack {
+  animation: none;
+  transform: none;
+}
+@keyframes acMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Animated draw-on for the "cut geometry" SVG strokes --------------------- */
+.draw path,
+.draw line,
+.draw circle,
+.draw polyline {
+  stroke-dasharray: var(--len, 1200);
+  stroke-dashoffset: var(--len, 1200);
+  animation: acDraw 2.6s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+.drawStatic path,
+.drawStatic line,
+.drawStatic circle,
+.drawStatic polyline {
+  stroke-dashoffset: 0;
+}
+@keyframes acDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Service rows ------------------------------------------------------------ */
+.serviceIndex,
+.serviceDuration {
+  color: var(--ac-muted);
+  transition: color 0.4s var(--ease-default, ease);
+}
+.servicePrice {
+  color: var(--ac-accent);
+}
+.serviceDesc {
+  color: var(--ac-muted);
+  transition: color 0.4s var(--ease-default, ease);
+}
+.serviceName {
+  color: var(--ac-ink);
+  transition: color 0.4s var(--ease-default, ease);
+}
+.serviceRow {
+  position: relative;
+  transition: background 0.4s var(--ease-default, ease), color 0.4s var(--ease-default, ease);
+}
+.serviceRow:hover {
+  background: var(--ac-ink);
+}
+.serviceRow:hover .serviceName {
+  color: var(--ac-bg);
+}
+.serviceRow:hover .serviceIndex,
+.serviceRow:hover .serviceDuration {
+  color: rgb(255 255 255 / 0.55);
+}
+.serviceRow:hover .serviceDesc {
+  color: rgb(255 255 255 / 0.6);
+}
+
+/* Portfolio placeholder tiles (deliberate geometric art, not broken photos) */
+.tile {
+  position: relative;
+  border: 1px solid var(--ac-line);
+  overflow: hidden;
+  background: transparent;
+  transition: background 0.5s var(--ease-default, ease);
+}
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ac-accent);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-default, ease);
+  mix-blend-mode: multiply;
+}
+.tile:hover::after {
+  opacity: 0.08;
+}
+
+/* Reduced-motion: kill marquee + draw */
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+    transform: none;
+  }
+  .draw path,
+  .draw line,
+  .draw circle,
+  .draw polyline {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}

@@ -306,7 +306,7 @@ export function Booking({ services, whatsapp }: BookingProps) {
           padding-right: 2rem;
         }
         :global(input[type="date"].form-input) {
-          color-scheme: dark;
+          color-scheme: inherit;
         }
       `}</style>
     </section>

@@ -2,11 +2,15 @@
 
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
-import { Monogram } from "@/components/primitives/Monogram";
+import { BrandMark } from "@/components/primitives/BrandMark";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface NavProps {
   brandName: string;
+  metaLine: string;
+  monogramInitials?: string;
+  bookingHref: string;
+  bookingExternal: boolean;
 }
 
 const LINKS = [
@@ -15,10 +19,13 @@ const LINKS = [
   { id: "manifesto", label: "Manifest" },
   { id: "galerie", label: "Galerie" },
   { id: "locatie", label: "Locație" },
-  { id: "programare", label: "Programare" },
+  { id: "contact", label: "Contact" },
 ];
 
-export function Nav({ brandName }: NavProps) {
+export function Nav({ brandName, metaLine, monogramInitials, bookingHref, bookingExternal }: NavProps) {
+  const ext = bookingExternal
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
   const { scrollY } = useScroll();
   const reduced = useReducedMotion();
   const [open, setOpen] = useState(false);
@@ -57,7 +64,7 @@ export function Nav({ brandName }: NavProps) {
         <motion.div
           aria-hidden
           className="absolute inset-0"
-          style={{ background: "rgb(10 8 7)", opacity: backdropOpacity }}
+          style={{ background: "var(--bg)", opacity: backdropOpacity }}
         />
         <motion.div
           aria-hidden
@@ -70,7 +77,7 @@ export function Nav({ brandName }: NavProps) {
               href="#top"
               className="flex items-center gap-3 text-[var(--ink)] hover:text-[var(--accent)]"
             >
-              <NavMonogram />
+              <BrandMark size={20} initials={monogramInitials} />
               <span className="hidden sm:inline">{brandName}</span>
             </a>
 
@@ -89,7 +96,8 @@ export function Nav({ brandName }: NavProps) {
 
             <div className="flex items-center gap-4">
               <a
-                href="#programare"
+                href={bookingHref}
+                {...ext}
                 className="hidden items-center gap-2 text-[var(--accent)] hover:text-[var(--accent-hot)] sm:inline-flex"
               >
                 <span>Programează</span>
@@ -155,7 +163,8 @@ export function Nav({ brandName }: NavProps) {
                 className="grid gap-6"
               >
                 <a
-                  href="#programare"
+                  href={bookingHref}
+                  {...ext}
                   onClick={() => setOpen(false)}
                   className="text-mono inline-flex items-center justify-between border border-[var(--accent)] bg-[var(--accent)] px-6 py-5 uppercase tracking-[0.22em] text-[length:var(--fs-200)] text-[var(--bg)] transition-colors hover:bg-[var(--accent-hot)]"
                 >
@@ -164,7 +173,7 @@ export function Nav({ brandName }: NavProps) {
                 </a>
                 <div className="text-mono grid gap-2 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
                   <span className="text-[var(--accent)]">{brandName}</span>
-                  <span>EST. 2018 · Sector 3 · București</span>
+                  <span>{metaLine}</span>
                 </div>
               </motion.div>
             </div>
@@ -173,10 +182,6 @@ export function Nav({ brandName }: NavProps) {
       </AnimatePresence>
     </>
   );
-}
-
-function NavMonogram() {
-  return <Monogram size={20} />;
 }
 
 function Burger({ open }: { open: boolean }) {

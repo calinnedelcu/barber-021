@@ -1,9 +1,21 @@
 import { ImageResponse } from "next/og";
+import { getActiveClient } from "@/lib/clients";
 
 export const dynamic = "force-static";
-export const alt = "BARBER 021 — Frizerie urbană contemporană în București";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+const config = getActiveClient();
+const brandName = config.brand.shortName ?? config.brand.name;
+const titleLines: [string, string] = config.hero?.titleLines ?? [config.brand.name, ""];
+const regionLine = [
+  config.geo?.region,
+  config.geo?.localityCountry?.replace(/ · RO$/, ""),
+]
+  .filter(Boolean)
+  .join(" · ");
+
+export const alt = `${config.brand.name} — ${config.brand.tagline}`;
 
 export default function OgImage() {
   return new ImageResponse(
@@ -31,8 +43,8 @@ export default function OgImage() {
             color: "#8A8276",
           }}
         >
-          <span>BARBER 021</span>
-          <span style={{ color: "#D9764D" }}>SECTOR 3 · BUCUREȘTI</span>
+          <span>{brandName}</span>
+          <span style={{ color: "#D9764D" }}>{regionLine}</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -48,7 +60,7 @@ export default function OgImage() {
             }}
           >
             <span style={{ width: 60, height: 1, background: "#D9764D" }} />
-            <span>Frizerie urbană · cu intenție</span>
+            <span>{config.seo?.ogEyebrow ?? config.brand.tagline}</span>
           </div>
           <div
             style={{
@@ -60,20 +72,22 @@ export default function OgImage() {
               marginTop: 30,
             }}
           >
-            BARBER
+            {titleLines[0]}
           </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 200,
-              lineHeight: 0.85,
-              fontWeight: 800,
-              letterSpacing: -6,
-              color: "#D9764D",
-            }}
-          >
-            021
-          </div>
+          {titleLines[1] ? (
+            <div
+              style={{
+                display: "flex",
+                fontSize: 200,
+                lineHeight: 0.85,
+                fontWeight: 800,
+                letterSpacing: -6,
+                color: "#D9764D",
+              }}
+            >
+              {titleLines[1]}
+            </div>
+          ) : null}
         </div>
 
         <div
@@ -88,8 +102,8 @@ export default function OgImage() {
             paddingTop: 20,
           }}
         >
-          <span>N° 021 / 2026</span>
-          <span>Calea Călărașilor 27</span>
+          <span>{config.brand.serial ?? brandName}</span>
+          <span>{config.contact.address}</span>
         </div>
       </div>
     ),

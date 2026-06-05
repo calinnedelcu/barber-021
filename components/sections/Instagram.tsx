@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { assetPath } from "@/lib/assetPath";
 
 interface InstagramProps {
   handle: string;
@@ -73,7 +74,7 @@ export function Instagram({ handle, posts }: InstagramProps) {
             >
               {typeof item === "string" ? (
                 <Image
-                  src={item}
+                  src={assetPath(item)}
                   alt=""
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
@@ -88,7 +89,7 @@ export function Instagram({ handle, posts }: InstagramProps) {
                 className="absolute inset-0 mix-blend-multiply"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgb(20 17 15 / 0.15) 0%, rgb(20 17 15 / 0.55) 100%)",
+                    "linear-gradient(180deg, color-mix(in srgb, var(--surface) 18%, transparent) 0%, color-mix(in srgb, var(--surface) 60%, transparent) 100%)",
                 }}
               />
               {/* hover veil + arrow */}

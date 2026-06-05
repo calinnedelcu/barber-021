@@ -5,12 +5,15 @@ import Image from "next/image";
 import { useRef } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { assetPath } from "@/lib/assetPath";
 import type { Review } from "@/lib/config";
 
 interface ReviewsProps {
   reviews: Review[];
 }
 
+// Fallback imagery for the fictional barber-021 demo only. Real client drafts
+// supply `review.photo` (a real photo) per review and never hit these.
 const REVIEW_PHOTOS = [
   "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1100&q=80&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1657105052497-f996284ffff8?w=1100&q=80&auto=format&fit=crop",
@@ -53,7 +56,11 @@ export function Reviews({ reviews }: ReviewsProps) {
               key={review.id}
               review={review}
               index={i}
-              photoSrc={REVIEW_PHOTOS[i % REVIEW_PHOTOS.length] ?? REVIEW_PHOTOS[0]!}
+              photoSrc={
+                review.photo ??
+                REVIEW_PHOTOS[i % REVIEW_PHOTOS.length] ??
+                REVIEW_PHOTOS[0]!
+              }
             />
           ))}
         </div>
@@ -110,7 +117,7 @@ function ReviewSpread({
       >
         <div className="relative aspect-[4/5] overflow-hidden bg-[var(--surface)]">
           <Image
-            src={photoSrc}
+            src={assetPath(photoSrc)}
             alt={`${review.author} — atelier`}
             fill
             sizes="(max-width: 768px) 60vw, 30vw"
@@ -121,7 +128,7 @@ function ReviewSpread({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, transparent 55%, rgb(20 17 15 / 0.55) 100%)",
+                "linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--surface) 70%, transparent) 100%)",
             }}
           />
           <span className="text-mono absolute left-4 top-4 text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">

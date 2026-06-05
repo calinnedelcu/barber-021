@@ -3,10 +3,11 @@
 import { motion, useInView } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
+import { assetPath } from "@/lib/assetPath";
 import { KineticText } from "@/components/primitives/KineticText";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { MagneticButton } from "@/components/primitives/MagneticButton";
-import { Monogram } from "@/components/primitives/Monogram";
+import { BrandMark } from "@/components/primitives/BrandMark";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface HeroProps {
@@ -15,9 +16,37 @@ interface HeroProps {
   address: string;
   phone: string;
   backdropUrl?: string;
+  eyebrow: string;
+  titleLines: [string, string];
+  localityLine: string;
+  coordsLabel: string;
+  scheduleLabel: string;
+  serial: string;
+  est?: string;
+  marquee: string[];
+  monogramInitials?: string;
+  bookingHref: string;
+  bookingExternal: boolean;
 }
 
-export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroProps) {
+export function Hero({
+  brandName,
+  tagline,
+  address,
+  phone,
+  backdropUrl,
+  eyebrow,
+  titleLines,
+  localityLine,
+  coordsLabel,
+  scheduleLabel,
+  serial,
+  est,
+  marquee,
+  monogramInitials,
+  bookingHref,
+  bookingExternal,
+}: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-10% 0px" });
   const reduced = useReducedMotion();
@@ -45,20 +74,29 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           }
         >
           <Image
-            src={backdropUrl}
+            src={assetPath(backdropUrl)}
             alt=""
             fill
             sizes="100vw"
             className="object-cover"
             priority
           />
-          {/* light dark wash so type stays readable, but photo breathes */}
+          {/* light wash so type stays readable, but photo breathes */}
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgb(10 8 7 / 0.3) 0%, rgb(10 8 7 / 0.5) 100%)",
+                "linear-gradient(180deg, color-mix(in srgb, var(--bg) 32%, transparent) 0%, color-mix(in srgb, var(--bg) 58%, transparent) 100%)",
+            }}
+          />
+          {/* top scrim — keeps the nav legible over a bright photo */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-32"
+            style={{
+              background:
+                "linear-gradient(180deg, color-mix(in srgb, var(--bg) 80%, transparent) 0%, transparent 100%)",
             }}
           />
         </motion.div>
@@ -83,9 +121,10 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
           }
           className="translate-x-[8%] text-[var(--accent)]"
         >
-          <Monogram
+          <BrandMark
             size={320}
             tone="accent"
+            initials={monogramInitials}
             className="md:[width:440px] md:[height:auto] lg:[width:520px]"
           />
         </motion.div>
@@ -285,10 +324,13 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
       <div className="relative z-10 flex min-h-[100svh] flex-col">
         <div className="container-x flex items-center justify-between gap-3 pt-20 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)] sm:pt-24">
           <MaskReveal duration={0.6} delay={0.1}>
-            <span className="text-[var(--accent)]">EST. 2018 · {brandName}</span>
+            <span className="text-[var(--accent)]">
+              {est ? `EST. ${est} · ` : ""}
+              {brandName}
+            </span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.2}>
-            <span className="hidden tabular-nums sm:inline">44.4254° N · 26.1097° E</span>
+            <span className="hidden tabular-nums sm:inline">{coordsLabel}</span>
           </MaskReveal>
           <MaskReveal duration={0.6} delay={0.3}>
             <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hidden hover:text-[var(--ink)] sm:inline">
@@ -309,7 +351,7 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
               }}
             >
               <MaskReveal delay={0.5} duration={0.7}>
-                Sector 3 · București · 2018→
+                {localityLine}
               </MaskReveal>
             </span>
           </aside>
@@ -320,17 +362,17 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
               <span className="h-px w-12 bg-[var(--accent)]" />
               <span className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--ink)]">
                 <MaskReveal delay={0.35} duration={0.6}>
-                  Frizerie urbană · cu intenție
+                  {eyebrow}
                 </MaskReveal>
               </span>
             </div>
 
             <h1 className="text-display leading-[0.82]">
               <span className="block text-[clamp(4rem,11vw,11rem)]">
-                <KineticText text="BARBER" delay={0.45} staggerEach={0.05} />
+                <KineticText text={titleLines[0]} delay={0.45} staggerEach={0.05} />
               </span>
               <span className="mt-1 block text-[clamp(4rem,11vw,11rem)] text-[var(--accent)]">
-                <KineticText text="021" delay={0.85} staggerEach={0.05} />
+                <KineticText text={titleLines[1]} delay={0.85} staggerEach={0.05} />
               </span>
             </h1>
 
@@ -341,7 +383,14 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
                 </MaskReveal>
               </p>
               <div className="col-span-12 mt-5 flex flex-wrap items-center gap-3 sm:col-span-12 sm:mt-8 sm:gap-4">
-                <MagneticButton as="a" href="#programare" variant="primary">
+                <MagneticButton
+                  as="a"
+                  href={bookingHref}
+                  variant="primary"
+                  {...(bookingExternal
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
                   Programează
                 </MagneticButton>
                 <MagneticButton as="a" href="#servicii" variant="ghost">
@@ -356,12 +405,9 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
             <div className="hairline w-full pt-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em]">
               <MaskReveal delay={1.4} duration={0.7}>
                 <div className="grid gap-3 text-[var(--ink-muted)]">
-                  <span className="tabular-nums">
-                    <span className="text-[var(--ink)]">N° </span>
-                    021 / 2026
-                  </span>
+                  <span className="tabular-nums text-[var(--ink)]">{serial}</span>
                   <span>{address}</span>
-                  <span className="text-[var(--accent)]">Luni → Sâmb.</span>
+                  <span className="text-[var(--accent)]">{scheduleLabel}</span>
                 </div>
               </MaskReveal>
             </div>
@@ -369,24 +415,15 @@ export function Hero({ brandName, tagline, address, phone, backdropUrl }: HeroPr
         </div>
 
         {/* bottom marquee strip */}
-        <Marquee />
+        <Marquee tokens={marquee} />
       </div>
     </section>
   );
 }
 
-const MARQUEE_TOKENS = [
-  "TUNSORI · BARBĂ · BRICI",
-  "FOARFECĂ TRADIȚIONALĂ",
-  "PROGRAMĂRI WHATSAPP",
-  "EST. 2018 · SECTOR 3",
-  "PICKUP · VINIL · ESPRESSO",
-  "CALEA CĂLĂRAȘILOR 27",
-] as const;
-
-function Marquee() {
+function Marquee({ tokens }: { tokens: string[] }) {
   const reduced = useReducedMotion();
-  const seq = [...MARQUEE_TOKENS, ...MARQUEE_TOKENS];
+  const seq = [...tokens, ...tokens];
 
   return (
     <div

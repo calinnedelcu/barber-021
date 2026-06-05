@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MaskReveal } from "@/components/primitives/MaskReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { assetPath } from "@/lib/assetPath";
 
 interface GalleryProps {
   items?: string[];
@@ -156,7 +157,7 @@ function Tile({
       >
         {src ? (
           <Image
-            src={src}
+            src={assetPath(src)}
             alt={tile.tag}
             fill
             sizes="(max-width: 768px) 50vw, 33vw"
@@ -170,7 +171,7 @@ function Tile({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, transparent 55%, rgb(20 17 15 / 0.55) 100%)",
+              "linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--surface) 70%, transparent) 100%)",
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-[var(--accent)] opacity-0 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-25" />
@@ -275,7 +276,7 @@ function Lightbox({
               >
                 {items && items[openIndex] ? (
                   <Image
-                    src={items[openIndex]}
+                    src={assetPath(items[openIndex]!)}
                     alt={TILES[openIndex]?.tag ?? ""}
                     fill
                     sizes="80vw"

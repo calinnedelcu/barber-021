@@ -1,33 +1,65 @@
 import type { Metadata, Viewport } from "next";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { PageLoader } from "@/components/providers/PageLoader";
-import { anton, fraunces, jetbrainsMono } from "@/lib/fonts";
+import {
+  anton,
+  fraunces,
+  jetbrainsMono,
+  spaceGrotesk,
+  cormorant,
+  syne,
+  archivo,
+} from "@/lib/fonts";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
+import { getActiveClient } from "@/lib/clients";
 import "./globals.css";
+
+const config = getActiveClient();
+const brandName = config.brand.shortName ?? config.brand.name;
+const description = config.seo?.description ?? config.brand.tagline;
+const siteUrl = config.seo?.siteUrl ?? "https://example.com";
+// Only the fictional demo pulls images from Unsplash; real clients ship local
+// assets, so skip the preconnect (and any unsplash reference) for them.
+const usesUnsplash = JSON.stringify(config).includes("images.unsplash.com");
+
+// Per-client palette override. Maps config.theme onto the CSS custom properties
+// that globals.css declares (and every component reads via var(--…)). Omitted
+// keys fall back to the default dark palette in globals.css.
+const t = config.theme ?? {};
+const themeStyle: React.CSSProperties = {
+  ...(t.bg ? { ["--bg" as string]: t.bg } : {}),
+  ...(t.surface ? { ["--surface" as string]: t.surface } : {}),
+  ...(t.ink ? { ["--ink" as string]: t.ink } : {}),
+  ...(t.inkMuted ? { ["--ink-muted" as string]: t.inkMuted } : {}),
+  ...(t.accent ? { ["--accent" as string]: t.accent } : {}),
+  ...(t.accentHot ? { ["--accent-hot" as string]: t.accentHot } : {}),
+  ...(t.bone ? { ["--bone" as string]: t.bone } : {}),
+  ...(t.line ? { ["--line" as string]: t.line } : {}),
+  ...(t.scheme ? { colorScheme: t.scheme } : {}),
+};
 
 export const metadata: Metadata = {
   title: {
-    default: "BARBER 021 — Frizerie urbană contemporană",
-    template: "%s · BARBER 021",
+    default: `${config.brand.name} — ${config.brand.tagline}`,
+    template: `%s · ${brandName}`,
   },
-  description:
-    "Frizerie urbană premium în București, Sector 3. Tunsoare, barbă cu brici, ritual atent.",
-  metadataBase: new URL("https://calinnedelcu.github.io/barber-021/"),
+  description,
+  metadataBase: new URL(`${siteUrl}/`),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "BARBER 021",
-    description: "Frizerie urbană contemporană în București",
+    title: brandName,
+    description,
     locale: "ro_RO",
     type: "website",
-    siteName: "BARBER 021",
+    siteName: brandName,
   },
   twitter: {
     card: "summary_large_image",
-    title: "BARBER 021",
-    description: "Frizerie urbană contemporană în București",
+    title: brandName,
+    description,
   },
   formatDetection: {
     telephone: true,
@@ -35,13 +67,13 @@ export const metadata: Metadata = {
     email: true,
   },
   other: {
-    "msapplication-TileColor": "#0A0807",
+    "msapplication-TileColor": config.theme?.bg ?? "#0A0807",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0807",
-  colorScheme: "dark",
+  themeColor: config.theme?.bg ?? "#0A0807",
+  colorScheme: config.theme?.scheme ?? "dark",
 };
 
 export default function RootLayout({
@@ -52,20 +84,32 @@ export default function RootLayout({
   return (
     <html
       lang="ro"
+      style={themeStyle}
       className={cn(
         anton.variable,
         fraunces.variable,
-        jetbrainsMono.variable
+        jetbrainsMono.variable,
+        spaceGrotesk.variable,
+        cormorant.variable,
+        syne.variable,
+        archivo.variable
       )}
     >
       <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        {usesUnsplash && (
+          <>
+            <link rel="preconnect" href="https://images.unsplash.com" />
+            <link rel="dns-prefetch" href="https://images.unsplash.com" />
+          </>
+        )}
       </head>
       <body
         style={
           {
-            "--grain-url": `url("${assetPath("/textures/grain.svg")}")`,
+            "--grain-url":
+              config.theme?.grain === false
+                ? "none"
+                : `url("${assetPath("/textures/grain.svg")}")`,
           } as React.CSSProperties
         }
       >

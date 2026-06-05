@@ -1,0 +1,308 @@
+/* ===========================================================================
+   A'A BARBER — "Neon Barber / Electric Blue" bespoke styles
+   Dark industrial streetwear energy. Icy electric-blue glow on near-black.
+   =========================================================================== */
+
+.root {
+  --aa-accent: var(--accent);
+  --aa-accent-hot: var(--accent-hot);
+  --aa-glow: 0 0 1px rgba(70, 182, 220, 0.9), 0 0 14px rgba(70, 182, 220, 0.55),
+    0 0 38px rgba(70, 182, 220, 0.3);
+  background: var(--bg);
+  position: relative;
+  overflow: clip;
+}
+
+/* Fonts ------------------------------------------------------------------- */
+.display {
+  font-family: var(--font-anton), Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+}
+.grotesk {
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+}
+.mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-feature-settings: "tnum", "zero";
+}
+
+/* Electric-blue neon text ------------------------------------------------- */
+.neon {
+  color: var(--aa-accent);
+  text-shadow: var(--aa-glow);
+}
+.neonFlicker {
+  animation: aaFlicker 6s linear infinite;
+}
+@keyframes aaFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: var(--aa-glow);
+  }
+  41% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.55;
+    text-shadow: 0 0 1px rgba(70, 182, 220, 0.6);
+  }
+  43% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.7;
+  }
+  46% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.4;
+    text-shadow: 0 0 1px rgba(70, 182, 220, 0.5);
+  }
+  94% {
+    opacity: 1;
+  }
+}
+
+/* Outlined display letters (the big A'A hero mark) ------------------------- */
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  text-stroke: 2px var(--ink);
+}
+.outlineAccent {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--aa-accent);
+  text-stroke: 2px var(--aa-accent);
+  filter: drop-shadow(0 0 18px rgba(70, 182, 220, 0.35));
+}
+
+/* Scanline / grid texture overlays --------------------------------------- */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(70, 182, 220, 0.05) 0px,
+    rgba(70, 182, 220, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+.blueprintGrid {
+  background-image: linear-gradient(
+      rgba(70, 182, 220, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(70, 182, 220, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Radial electric glow blob ---------------------------------------------- */
+.glowBlob {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(70, 182, 220, 0.32) 0%,
+    rgba(70, 182, 220, 0.08) 40%,
+    transparent 70%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Marquee ----------------------------------------------------------------- */
+.marqueeTrack {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: aaMarquee 38s linear infinite;
+}
+.marqueeTrack.reverse {
+  animation-direction: reverse;
+}
+.marqueeTrack.fast {
+  animation-duration: 22s;
+}
+.marquee:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+@keyframes aaMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Gallery marquee (vertical-feeling rows) -------------------------------- */
+.galleryTrack {
+  display: inline-flex;
+  gap: 14px;
+  will-change: transform;
+  animation: aaMarquee 55s linear infinite;
+}
+.galleryTrack.reverse {
+  animation-direction: reverse;
+  animation-duration: 64s;
+}
+.galleryStrip:hover .galleryTrack {
+  animation-play-state: paused;
+}
+
+/* Service row hover sweep ------------------------------------------------- */
+.serviceRow {
+  position: relative;
+  isolation: isolate;
+}
+.serviceRow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--aa-accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.serviceRow:hover::before {
+  transform: scaleY(1);
+}
+.serviceRow:hover .serviceName,
+.serviceRow:hover .serviceMeta,
+.serviceRow:hover .servicePrice,
+.serviceRow:hover .serviceIndex {
+  color: var(--bg) !important;
+  -webkit-text-stroke: 0;
+}
+.serviceRow:hover .serviceArrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--bg);
+}
+.serviceArrow {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Neon CTA button --------------------------------------------------------- */
+.neonBtn {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, transform 0.25s ease, background 0.3s ease,
+    color 0.3s ease;
+  box-shadow: 0 0 0 1px var(--aa-accent), 0 0 22px rgba(70, 182, 220, 0.25);
+}
+.neonBtn:hover {
+  box-shadow: 0 0 0 1px var(--aa-accent), 0 0 36px rgba(70, 182, 220, 0.6),
+    0 0 80px rgba(70, 182, 220, 0.25);
+  transform: translateY(-2px);
+}
+.neonBtn:active {
+  transform: translateY(0) scale(0.98);
+}
+.neonBtnSweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.neonBtn:hover .neonBtnSweep {
+  transform: translateX(120%);
+}
+
+/* Image tiles ------------------------------------------------------------- */
+.tile {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+.tile img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s ease;
+  filter: grayscale(0.35) contrast(1.05);
+}
+.tile:hover img {
+  transform: scale(1.06);
+  filter: grayscale(0) contrast(1.08);
+}
+.tileFrame {
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+/* Corner ticks (industrial frame) ---------------------------------------- */
+.corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--aa-accent);
+  z-index: 2;
+}
+.cornerTL {
+  top: 0;
+  left: 0;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.cornerTR {
+  top: 0;
+  right: 0;
+  border-top: 1.5px solid;
+  border-right: 1.5px solid;
+}
+.cornerBL {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.cornerBR {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* Star rating glow -------------------------------------------------------- */
+.stars {
+  color: var(--aa-accent);
+  text-shadow: 0 0 10px rgba(70, 182, 220, 0.55);
+  letter-spacing: 0.08em;
+}
+
+/* Vertical rotated label -------------------------------------------------- */
+.vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Reduced motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack,
+  .galleryTrack,
+  .neonFlicker {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "slug": "mr-mrs-style",
+  "tier": "premium",
+  "theme": {
+    "scheme": "light",
+    "bg": "#F6F1E9",
+    "surface": "#FFFFFF",
+    "ink": "#2B2622",
+    "inkMuted": "#7A7065",
+    "accent": "#4E7C5E",
+    "accentHot": "#5E9070",
+    "bone": "#B7A98C",
+    "line": "rgb(43 38 34 / 0.12)",
+    "grain": false
+  },
+  "brand": {
+    "name": "MR&MRS STYLE",
+    "shortName": "MR&MRS STYLE",
+    "tagline": "Salon de înfrumusețare în Sibiu, pe Strada Alpinismului — tuns, coafat, color și styling pentru ea și pentru el.",
+    "serial": "N° M&M / 2026",
+    "monogramInitials": "M&M",
+    "logoVariant": "primary"
+  },
+  "hero": {
+    "backdropUrl": "/clients/mr-mrs-style/hero/backdrop.jpg",
+    "eyebrow": "Salon de înfrumusețare · Sibiu",
+    "titleLines": ["MR&MRS", "STYLE"],
+    "localityLine": "Sibiu · Strada Alpinismului",
+    "coordsLabel": "45.7931° N · 24.1356° E",
+    "scheduleLabel": "Luni → Sâmbătă",
+    "marquee": [
+      "TUNS · COLOR · STYLING",
+      "BALAYAGE · AIRTOUCH · ȘUVIȚE",
+      "PROGRAMĂRI ONLINE PE MERO",
+      "5.0 ★ · 48 EVALUĂRI",
+      "STRADA ALPINISMULUI 5C · SIBIU",
+      "PENTRU EA & PENTRU EL"
+    ]
+  },
+  "manifesto": {
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Pentru ea și pentru el",
+        "body": "MR&MRS STYLE e un salon unisex: tuns damă și bărbat, coafat, color și styling sub același acoperiș. Un loc unde vine toată familia, nu doar jumătate din ea."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Color cu tehnică",
+        "body": "Balayage, airtouch, șuvițe, blond rece sau schimbare completă de bază — folosim tehnicile actuale de blondare, ca rezultatul să arate natural și să țină."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Atmosferă și seriozitate",
+        "body": "„Servicii de calitate cu oameni profesioniști, atmosferă plăcută” — exact ce ne scriu clienții. Lucrăm așezat, cu grijă, și te ții de noi vizită după vizită."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tuns-dama-scurt",
+      "name": "Tuns damă scurt",
+      "duration": "1 h",
+      "price": 150,
+      "description": "Tuns pentru păr scurt, adaptat formei feței."
+    },
+    {
+      "id": "tuns-dama-mediu",
+      "name": "Tuns damă mediu",
+      "duration": "1 h – 1 h 15 min",
+      "price": 170,
+      "description": "Tuns pentru lungime medie, cu finisaj. 170 lei."
+    },
+    {
+      "id": "tuns-dama-lung",
+      "name": "Tuns damă lung",
+      "duration": "1 h 10 min – 1 h 30 min",
+      "price": 200,
+      "description": "Tuns pentru păr lung, lucrat pe straturi. 200 lei."
+    },
+    {
+      "id": "spalat-coafat",
+      "name": "Spălat & coafat / placă",
+      "duration": "1 h",
+      "price": 90,
+      "description": "Spălat plus coafat cu peria sau placa. 90 – 120 lei, în funcție de lungime."
+    },
+    {
+      "id": "balayage",
+      "name": "Balayage",
+      "duration": "4 h 30 min – 5 h 30 min",
+      "price": 750,
+      "description": "Balayage pe păr mediu sau lung, cu tonifiere și îngrijire. 750 – 1250 lei, în funcție de lungime."
+    },
+    {
+      "id": "airtouch",
+      "name": "Airtouch",
+      "duration": "5 h 30 min",
+      "price": 800,
+      "description": "Tehnica airtouch pentru tranziții fine și natural. 800 – 1500 lei."
+    },
+    {
+      "id": "suvite",
+      "name": "Șuvițe",
+      "duration": "30 min – 4 h 30 min",
+      "price": 750,
+      "description": "Șuvițe pe păr mediu sau lung, cu ton final. 750 – 1250 lei."
+    },
+    {
+      "id": "decolorare-color",
+      "name": "Decolorare & schimbare de culoare",
+      "duration": "5 h",
+      "price": 450,
+      "description": "Decolorare completă sau schimbare de bază pentru păr scurt. 450 – 1800 lei, în funcție de complexitate."
+    },
+    {
+      "id": "coafura-eveniment",
+      "name": "Coafură de eveniment",
+      "duration": "1 h – 1 h 15 min",
+      "price": 190,
+      "description": "Coc, bucle sau coafură pentru ocazie specială. 190 – 350 lei."
+    },
+    {
+      "id": "tuns-barbat",
+      "name": "Tuns bărbat",
+      "duration": "30 min",
+      "price": 85,
+      "description": "Tuns bărbat cu mașina și foarfeca, styling final. 85 lei."
+    },
+    {
+      "id": "tuns-copii",
+      "name": "Tuns copii (până la 10 ani)",
+      "duration": "30 min",
+      "price": 65,
+      "description": "Tuns pentru cei mici, răbdare inclusă. 65 lei."
+    }
+  ],
+  "gallery": [
+    "/clients/mr-mrs-style/gallery/01-balayage-storefront.jpg",
+    "/clients/mr-mrs-style/gallery/02-balayage-style-wall.jpg",
+    "/clients/mr-mrs-style/gallery/03-mahogany-shine.jpg",
+    "/clients/mr-mrs-style/gallery/04-brown-bob-interior.jpg",
+    "/clients/mr-mrs-style/gallery/05-silver-balayage.jpg",
+    "/clients/mr-mrs-style/gallery/06-mens-fade.jpg",
+    "/clients/mr-mrs-style/gallery/07-red-curls-storefront.jpg",
+    "/clients/mr-mrs-style/gallery/08-pink-vivid.jpg",
+    "/clients/mr-mrs-style/gallery/09-silver-curls.jpg",
+    "/clients/mr-mrs-style/gallery/10-silver-style-wall.jpg",
+    "/clients/mr-mrs-style/gallery/11-silver-ash-moss.jpg",
+    "/clients/mr-mrs-style/gallery/12-rose-copper-layers.jpg",
+    "/clients/mr-mrs-style/gallery/13-cool-blonde-mirror.jpg",
+    "/clients/mr-mrs-style/gallery/14-rosegold-waves.jpg",
+    "/clients/mr-mrs-style/gallery/15-cherry-long.jpg"
+  ],
+  "team": [
+    {
+      "id": "laura",
+      "name": "Laura Gherman",
+      "role": "Master Hairstylist",
+      "bio": "Conduce styling-ul în salon. Tuns, coafat și color — mână sigură la fiecare lucrare.",
+      "portrait": "/clients/mr-mrs-style/team/laura.jpg"
+    },
+    {
+      "id": "ionela",
+      "name": "Ionela Popa",
+      "role": "Hairstylist Expert",
+      "bio": "Expertă în color și blondare. Balayage, airtouch și șuvițe lucrate cu răbdare.",
+      "portrait": "/clients/mr-mrs-style/team/ionela.jpg"
+    },
+    {
+      "id": "diana",
+      "name": "Diana I.",
+      "role": "Specialist",
+      "bio": "Specialistă în styling și finisaj. Atentă la detaliu și la rezultatul de durată.",
+      "portrait": "/clients/mr-mrs-style/team/diana.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "quote": "Recomand din tot sufletul! Servicii de calitate cu oameni profesioniști, atmosferă plăcută. Mulțumesc pentru seriozitatea de care dați dovadă.",
+      "author": "Cristina P.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/mr-mrs-style/reviews/01.jpg"
+    },
+    {
+      "id": "r2",
+      "quote": "Servicii profesionale! Recomand cu drag!",
+      "author": "Iulia M.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/mr-mrs-style/reviews/02.jpg"
+    },
+    {
+      "id": "r3",
+      "quote": "Perfect!",
+      "author": "Ștefan D.",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/mr-mrs-style/reviews/03.jpg"
+    },
+    {
+      "id": "r4",
+      "quote": "Excelent!",
+      "author": "Sebastian",
+      "source": "MERO · 5.0★",
+      "photo": "/clients/mr-mrs-style/reviews/04.jpg"
+    }
+  ],
+  "instagram": {
+    "handle": "mrmrsstylesibiu",
+    "posts": [
+      "/clients/mr-mrs-style/instagram/01.jpg",
+      "/clients/mr-mrs-style/instagram/02.jpg",
+      "/clients/mr-mrs-style/instagram/03.jpg",
+      "/clients/mr-mrs-style/instagram/04.jpg",
+      "/clients/mr-mrs-style/instagram/05.jpg",
+      "/clients/mr-mrs-style/instagram/06.jpg"
+    ]
+  },
+  "contact": {
+    "phone": "0755 630 278",
+    "whatsapp": "40755630278",
+    "bookingUrl": "https://mero.ro/p/mr-mrs-style",
+    "address": "Strada Alpinismului 5c, 557260 Sibiu",
+    "mapCenter": [24.13563, 45.79313],
+    "hours": [
+      { "day": "Luni", "hours": "08:00 — 16:00 · 17:30 — 21:00" },
+      { "day": "Marți", "hours": "08:00 — 16:00 · 17:30 — 21:00" },
+      { "day": "Miercuri", "hours": "08:00 — 16:00 · 17:30 — 21:00" },
+      { "day": "Joi", "hours": "08:00 — 16:00 · 17:30 — 21:00" },
+      { "day": "Vineri", "hours": "08:00 — 16:00 · 17:30 — 21:30" },
+      { "day": "Sâmbătă", "hours": "08:00 — 18:00" },
+      { "day": "Duminică", "hours": "Închis" }
+    ]
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/MrMrsStyleSibiu/",
+    "tiktok": "https://www.tiktok.com/@mrmrsstylesibiu"
+  },
+  "geo": {
+    "region": "Strada Alpinismului",
+    "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Strada Alpinismului, în",
+    "mapHeadlineAccent": "Sibiu"
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/mr-mrs-style",
+    "description": "Salon de înfrumusețare unisex în Sibiu, pe Strada Alpinismului — tuns, coafat, balayage, airtouch și styling pentru ea și pentru el. 5.0★ pe MERO. Programări online.",
+    "ogEyebrow": "Salon de înfrumusețare · Sibiu"
+  }
+}

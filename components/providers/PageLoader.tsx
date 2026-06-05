@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { getActiveClient } from "@/lib/clients";
 
 /**
  * Branded entry loader. Shown for ~1.4s on first paint.
@@ -14,6 +15,16 @@ const MIN_DISPLAY_MS = 1300;
 export function PageLoader() {
   const reduced = useReducedMotion();
   const [shown, setShown] = useState(true);
+
+  const config = getActiveClient();
+  const brandLabel = config.brand.shortName ?? config.brand.name;
+  const localityLabel = [
+    config.geo?.region,
+    config.geo?.localityCountry?.replace(/ · RO$/, ""),
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const markText = config.brand.monogramInitials ?? "021";
 
   useEffect(() => {
     if (reduced) {
@@ -81,8 +92,8 @@ export function PageLoader() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-mono text-[length:var(--fs-100)] uppercase tracking-[0.3em] text-[var(--ink-muted)]"
             >
-              <span className="block text-[var(--accent)]">BARBER 021</span>
-              <span className="mt-2 block">București · Sector 3</span>
+              <span className="block text-[var(--accent)]">{brandLabel}</span>
+              <span className="mt-2 block">{localityLabel}</span>
             </motion.div>
 
             <motion.span
@@ -107,7 +118,7 @@ export function PageLoader() {
               WebkitTextStroke: "1px var(--ink)",
             }}
           >
-            021
+            {markText}
           </motion.span>
 
           {/* sweep bar */}

@@ -9,9 +9,21 @@ interface MapSectionProps {
   address: string;
   hours: { day: string; hours: string }[];
   mapCenter: [number, number];
+  region: string;
+  localityCountry: string;
+  headlineLead: string;
+  headlineAccent: string;
 }
 
-export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
+export function MapSection({
+  address,
+  hours,
+  mapCenter,
+  region,
+  localityCountry,
+  headlineLead,
+  headlineAccent,
+}: MapSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-12% 0px" });
   const reduced = useReducedMotion();
@@ -38,10 +50,10 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
             className="text-serif-italic col-span-12 mt-8 text-[length:var(--fs-700)] leading-[1.05] md:col-span-9 md:mt-0"
           >
             <MaskReveal duration={1} delay={0.15}>
-              <span>Pe colț, lângă</span>
+              <span>{headlineLead}</span>
             </MaskReveal>{" "}
             <MaskReveal duration={1} delay={0.3}>
-              <span className="text-[var(--accent)]">croitoria veche</span>
+              <span className="text-[var(--accent)]">{headlineAccent}</span>
               <span>.</span>
             </MaskReveal>
           </h2>
@@ -61,7 +73,7 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
               className="relative aspect-[4/3] overflow-hidden border border-[var(--line)] bg-[var(--surface)]"
             >
               <iframe
-                title="Hartă · Strada Calea Călărașilor 27"
+                title={`Hartă · ${address}`}
                 src={embedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -78,8 +90,8 @@ export function MapSection({ address, hours, mapCenter }: MapSectionProps) {
               </div>
 
               <div className="pointer-events-none absolute bottom-5 right-5 text-mono text-[length:var(--fs-100)] uppercase tracking-[0.22em] text-[var(--ink-muted)]">
-                <span className="block text-right text-[var(--accent)]">Sector 3</span>
-                <span className="mt-1 block text-right text-[var(--ink)]">București · RO</span>
+                <span className="block text-right text-[var(--accent)]">{region}</span>
+                <span className="mt-1 block text-right text-[var(--ink)]">{localityCountry}</span>
               </div>
             </motion.div>
           </div>
