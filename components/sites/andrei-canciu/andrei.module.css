@@ -25,6 +25,27 @@
   letter-spacing: -0.03em;
   line-height: 0.86;
   text-transform: uppercase;
+  /* Long uppercase Romanian words ("GEOMETRIE.") must never get clipped by the
+     parent's overflow:clip. Allow them to break to a new line if a width is
+     ever too tight, and never bleed past the box. */
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+/* Section headings that live inside a narrow grid column. The column is made a
+   container, and the type is sized in container-width units so the full word
+   always fits the space it actually has — no clipping at 1440 / 1024 / 390. */
+.headCol {
+  container-type: inline-size;
+  container-name: headcol;
+}
+.displayFit {
+  /* 10.5cqw keeps even the longest word ("GEOMETRIE.") on ONE line inside the
+     column with margin to spare — so words break only at the <br>/spaces, never
+     mid-word, at every breakpoint. */
+  font-size: clamp(1.6rem, 8.2cqw, 3.9rem);
+  letter-spacing: -0.04em;
+  line-height: 0.94;
 }
 .syne {
   font-family: var(--font-syne), system-ui, sans-serif;
@@ -74,15 +95,98 @@
   line-height: 0.82;
 }
 
-/* Fit-to-container display size for the hero name. 16cqw keeps even the
+/* Fit-to-container display size for the hero name. 17cqw keeps even the
    longest 6-letter word ("CANCIU") comfortably inside the column, while the
    clamp ceiling/floor keep it bold and readable on tiny + huge screens.
    Below the lg breakpoint the column spans the full width, so the same unit
    still scales correctly down to 390px. */
 .heroNameFit {
-  font-size: clamp(3rem, 16cqw, 12rem);
-  letter-spacing: -0.045em;
+  /* 12.5cqw keeps the longest 6-letter word ("CANCIU") inside the column with a
+     safe margin so it never bumps the photo (desktop) or overflows (mobile). */
+  font-size: clamp(2rem, 12.5cqw, 8rem);
+  letter-spacing: -0.05em;
   white-space: nowrap;
+}
+
+/* Hero photo frame — refined editorial framing with a hairline inset and a
+   slow, intentional zoom-settle on the image inside. */
+.heroFrame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ac-line);
+  background: var(--ac-panel);
+}
+.heroFrame::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  pointer-events: none;
+  z-index: 2;
+}
+.heroFrameImg {
+  transform: scale(1.06);
+  animation: acHeroSettle 1.8s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1)) 0.2s forwards;
+}
+@keyframes acHeroSettle {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Full-width hero CTA rail — a hairline that ignites in accent on hover. */
+.heroCta {
+  position: relative;
+  transition: color 0.4s var(--ease-default, ease);
+}
+.heroCta::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -1px;
+  height: 1px;
+  background: var(--ac-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.heroCta:hover::before {
+  transform: scaleX(1);
+}
+
+/* A thin vertical measure tick used as an editorial detail in the hero rail. */
+.measureRule {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--ac-line) 0,
+    var(--ac-line) 1px,
+    transparent 1px,
+    transparent 11px
+  );
+}
+
+/* Index numeral badge on gallery / hero tiles. */
+.tag {
+  background: var(--ac-ink);
+  color: var(--ac-bg);
+}
+
+/* Footer phone — accent underline draws in on hover. */
+.footerPhone {
+  position: relative;
+  background-image: linear-gradient(var(--ac-accent), var(--ac-accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 0.08em;
+  transition: background-size 0.5s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.footerPhone:hover {
+  background-size: 100% 0.08em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footerPhone {
+    transition: none;
+  }
 }
 
 /* Vertical reveal mask for the slide-up entrance. Only the Y axis is clipped
@@ -162,8 +266,32 @@
   position: relative;
   transition: background 0.4s var(--ease-default, ease), color 0.4s var(--ease-default, ease);
 }
+/* an accent rule sweeps in from the left edge on hover */
+.serviceRow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ac-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.serviceRow:hover::before {
+  transform: scaleY(1);
+}
 .serviceRow:hover {
   background: var(--ac-ink);
+}
+.serviceRow:hover .servicePrice {
+  color: var(--ac-accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .serviceRow::before {
+    transition: none;
+  }
 }
 .serviceRow:hover .serviceName {
   color: var(--ac-bg);
@@ -197,7 +325,37 @@
   opacity: 0.08;
 }
 
-/* Reduced-motion: kill marquee + draw */
+/* Gallery figure — editorial caption bar that slides up on hover --------- */
+.galleryFig {
+  position: relative;
+  overflow: hidden;
+}
+.galleryImg {
+  transition: transform 0.9s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.galleryFig:hover .galleryImg {
+  transform: scale(1.05);
+}
+.galleryBar {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  background: linear-gradient(to top, rgb(11 11 12 / 0.78), transparent);
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.55s var(--ease-expo-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    opacity 0.4s ease;
+}
+.galleryFig:hover .galleryBar {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Reduced-motion: kill marquee + draw + the hero settle + gallery motion */
 @media (prefers-reduced-motion: reduce) {
   .marqueeTrack {
     animation: none;
@@ -209,5 +367,18 @@
   .draw polyline {
     stroke-dashoffset: 0;
     animation: none;
+  }
+  .heroFrameImg {
+    animation: none;
+    transform: none;
+  }
+  .galleryImg {
+    transition: none;
+  }
+  .galleryFig:hover .galleryImg {
+    transform: none;
+  }
+  .galleryBar {
+    transition: none;
   }
 }

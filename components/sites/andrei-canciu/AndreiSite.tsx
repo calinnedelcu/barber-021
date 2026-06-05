@@ -103,18 +103,19 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
             <span style={{ color: "var(--accent)" }}>★ 4.9 · Google</span>
           </div>
 
-          {/* name + ghost outline + real work image */}
-          <div className="relative grid grid-cols-1 gap-8 pt-10 lg:grid-cols-12 lg:pt-16">
-            <div className={cn(styles.heroNameCol, "lg:col-span-7")}>
+          {/* name + supporting rail + real work image — balanced editorial grid */}
+          <div className="relative grid grid-cols-1 items-stretch gap-10 pt-12 lg:grid-cols-12 lg:gap-12 lg:pt-16">
+            {/* left: name fills the column, then tagline + meta close the void */}
+            <div className={cn(styles.heroNameCol, "relative flex flex-col lg:col-span-7")}>
               {/* ghost outlined echo behind the solid name */}
               <motion.div
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 top-24 -z-0 hidden select-none lg:block"
+                className="pointer-events-none absolute -left-1 top-2 -z-0 hidden select-none lg:block"
                 style={reduced ? undefined : { y: ghostY }}
               >
                 <span
-                  className={cn(styles.heroName, styles.outline)}
-                  style={{ fontSize: "clamp(5rem, 14vw, 15rem)", opacity: 0.16 }}
+                  className={cn(styles.heroName, styles.heroNameFit, styles.outline, "block")}
+                  style={{ opacity: 0.1 }}
                 >
                   {titleLines[1] || titleLines[0]}
                 </span>
@@ -126,29 +127,54 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
                   <HeroLine key={i} text={line} delay={0.2 + i * 0.12} reduced={reduced} />
                 ))}
               </h1>
+
+              {/* fills the former dead space under the name */}
+              <div className="relative z-10 mt-auto grid grid-cols-1 gap-8 pt-12 sm:grid-cols-12 sm:items-end">
+                <Reveal className="sm:col-span-7" delay={0.5}>
+                  <p className={cn(styles.syne, "max-w-md text-[length:var(--fs-500)] font-medium leading-[1.12]")}>
+                    {brand.tagline}
+                  </p>
+                </Reveal>
+
+                <Reveal className="sm:col-span-5 sm:justify-self-end" delay={0.6}>
+                  <div className="flex flex-col gap-3">
+                    {/* a small editorial measure detail */}
+                    <span aria-hidden="true" className={cn(styles.measureRule, "h-2.5 w-28")} />
+                    <span className={cn(styles.mono, "text-[length:var(--fs-100)] uppercase tracking-[0.22em]")} style={{ color: "var(--ink-muted)" }}>
+                      {hero?.scheduleLabel ?? "Luni → Vineri"}
+                    </span>
+                    <span className={cn(styles.mono, "text-[length:var(--fs-100)] uppercase tracking-[0.22em]")} style={{ color: "var(--ink-muted)" }}>
+                      {contact.hours[0]?.hours ?? ""}
+                    </span>
+                  </div>
+                </Reveal>
+              </div>
             </div>
 
-            {/* real hero image — his salon + work */}
+            {/* right: real hero image — his salon + work, properly framed */}
             <motion.div
               className="relative z-10 lg:col-span-5"
               style={reduced ? undefined : { y: geomY }}
             >
               {heroImg ? (
-                <div
-                  className="relative aspect-[4/5] w-full overflow-hidden border"
-                  style={{ borderColor: "var(--line)" }}
-                >
+                <div className={cn(styles.heroFrame, "aspect-[4/5] w-full")}>
                   <Image
                     src={assetPath(heroImg)}
-                    alt="Lucrare Andrei Canciu — coafat în salon"
+                    alt="Salonul Andrei Canciu — coafat și balayage în Sibiu"
                     fill
                     sizes="(max-width: 1024px) 100vw, 42vw"
-                    className="object-cover"
+                    className={cn(styles.heroFrameImg, "object-cover")}
                     priority
                   />
+                  {/* floating index tag, top-right of the frame */}
+                  <span
+                    className={cn(styles.mono, styles.tag, "absolute right-3 top-3 z-[3] px-2.5 py-1 text-[length:var(--fs-100)] uppercase tracking-[0.2em]")}
+                  >
+                    Studio · Sibiu
+                  </span>
                   {/* geometric brand motif over the photo corner */}
-                  <div aria-hidden="true" className="pointer-events-none absolute -bottom-5 -left-5 hidden opacity-90 lg:block">
-                    <CutGeometry className="h-36 w-auto" animate={!reduced} accent="var(--accent)" />
+                  <div aria-hidden="true" className="pointer-events-none absolute -bottom-6 -left-6 z-[3] hidden opacity-90 lg:block">
+                    <CutGeometry className="h-32 w-auto" animate={!reduced} accent="var(--accent)" />
                   </div>
                 </div>
               ) : (
@@ -159,40 +185,30 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
             </motion.div>
           </div>
 
-          {/* tagline + cta row */}
-          <div
-            className="mt-12 grid grid-cols-1 items-end gap-8 border-t pt-8 lg:grid-cols-12"
-            style={{ borderColor: "var(--line)" }}
-          >
-            <Reveal className="lg:col-span-6" delay={0.5}>
-              <p
-                className={cn(styles.syne, "max-w-xl text-[length:var(--fs-500)] font-medium leading-tight")}
-              >
-                {brand.tagline}
-              </p>
-            </Reveal>
-
-            <div className="flex flex-col gap-4 lg:col-span-6 lg:items-end">
-              <Reveal delay={0.62} className="w-full lg:w-auto">
-                <a
-                  href={phoneHref}
-                  className={cn(
-                    styles.mono,
-                    "group inline-flex w-full items-center justify-between gap-6 px-7 py-5 text-[length:var(--fs-200)] uppercase tracking-[0.2em] transition-colors duration-300 lg:w-auto"
-                  )}
-                  style={{ background: "var(--ink)", color: "var(--bg)" }}
-                >
-                  <span>Programează</span>
-                  <span style={{ color: "var(--accent)" }}>{contact.phone}</span>
-                </a>
-              </Reveal>
-              <Reveal delay={0.7}>
-                <p className={cn(styles.mono, "text-[length:var(--fs-100)] uppercase tracking-[0.22em]")} style={{ color: "var(--ink-muted)" }}>
-                  {hero?.localityLine ?? contact.address}
-                </p>
-              </Reveal>
-            </div>
-          </div>
+          {/* full-width CTA rail — horizontal rhythm closing the hero */}
+          <Reveal delay={0.5}>
+            <a
+              href={phoneHref}
+              className={cn(
+                styles.mono,
+                styles.heroCta,
+                "group mt-12 flex flex-col gap-4 border-t px-1 py-7 text-[length:var(--fs-200)] uppercase tracking-[0.2em] sm:flex-row sm:items-center sm:justify-between"
+              )}
+              style={{ borderColor: "var(--line)" }}
+            >
+              <span className="flex items-center gap-4">
+                <span aria-hidden="true" className="h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
+                <span style={{ color: "var(--ink-muted)" }}>{hero?.localityLine ?? contact.address}</span>
+              </span>
+              <span className="flex items-center gap-5 sm:gap-8">
+                <span className="hidden sm:inline" style={{ color: "var(--ink-muted)" }}>Programări la telefon</span>
+                <span className="flex items-center gap-3 text-[length:var(--fs-400)]">
+                  <span>{contact.phone}</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1" style={{ color: "var(--accent)" }}>→</span>
+                </span>
+              </span>
+            </a>
+          </Reveal>
         </div>
 
         {/* marquee strip */}
@@ -202,13 +218,14 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
       {/* ======================================================= MANIFEST */}
       <section id="manifest" className="relative scroll-mt-24 py-24 sm:py-32">
         <div className="container-x mx-auto max-w-[1600px]">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-4">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
+            <Reveal className={cn(styles.headCol, "lg:col-span-5")}>
               <Kicker index="—01" label="Manifest" />
-              <h2 className={cn(styles.display, "mt-6 text-[length:var(--fs-700)]")}>
-                Tunsoarea<br />ca<br /><span style={{ color: "var(--accent)" }}>geometrie.</span>
+              <h2 className={cn(styles.display, styles.displayFit, "mt-6")}>
+                Tunsoarea<br />ca<br />
+                <span style={{ color: "var(--accent)" }}>geometrie.</span>
               </h2>
-              <p className={cn(styles.archivo, "mt-6 max-w-xs text-[length:var(--fs-200)] leading-relaxed")} style={{ color: "var(--ink-muted)" }}>
+              <p className={cn(styles.archivo, "mt-7 max-w-xs text-[length:var(--fs-200)] leading-relaxed")} style={{ color: "var(--ink-muted)" }}>
                 Trei principii după care lucrez. Fără șabloane, fără grabă.
               </p>
 
@@ -235,7 +252,7 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
               </div>
             </Reveal>
 
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-7">
               <div className="grid grid-cols-1 gap-px" style={{ background: "var(--line)" }}>
                 {manifesto.panels.map((panel, i) => (
                   <Reveal key={panel.eyebrow} delay={i * 0.08}>
@@ -313,9 +330,9 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
       <section id="studio" className="relative scroll-mt-24 py-24 sm:py-32" style={{ background: "var(--bg)" }}>
         <div className="container-x mx-auto max-w-[1600px]">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5">
+            <Reveal className={cn(styles.headCol, "lg:col-span-5")}>
               <Kicker index="—04" label="Studio" />
-              <h2 className={cn(styles.display, "mt-6 text-[length:var(--fs-700)]")}>
+              <h2 className={cn(styles.display, styles.displayFit, "mt-6")}>
                 {geo?.mapHeadlineLead ?? "În"}{" "}
                 <span style={{ color: "var(--accent)" }}>{geo?.mapHeadlineAccent ?? "Sibiu"}</span>
               </h2>
@@ -450,7 +467,7 @@ function Portfolio({ reduced, instagram, gallery }: { reduced: boolean; instagra
           {gallery.map((src, i) => (
             <Reveal key={src} delay={Math.min(i * 0.06, 0.4)}>
               <figure
-                className="group relative aspect-[3/4] overflow-hidden"
+                className={cn(styles.galleryFig, "aspect-[3/4]")}
                 style={{ background: "var(--surface)" }}
               >
                 <Image
@@ -458,7 +475,7 @@ function Portfolio({ reduced, instagram, gallery }: { reduced: boolean; instagra
                   alt={`Lucrare Andrei Canciu ${i + 1}`}
                   fill
                   sizes="(max-width: 640px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-[800ms] group-hover:scale-105"
+                  className={cn(styles.galleryImg, "h-full w-full object-cover")}
                 />
                 <figcaption
                   className={cn(styles.mono, "absolute left-3 top-3 px-2 py-1 text-[length:var(--fs-100)] uppercase tracking-[0.2em]")}
@@ -466,6 +483,10 @@ function Portfolio({ reduced, instagram, gallery }: { reduced: boolean; instagra
                 >
                   {String(i + 1).padStart(2, "0")}
                 </figcaption>
+                <span className={cn(styles.galleryBar, styles.mono, "text-[length:var(--fs-100)] uppercase tracking-[0.22em]")} aria-hidden="true">
+                  <span style={{ color: "var(--bg)" }}>Lucrare</span>
+                  <span style={{ color: "var(--accent)" }}>↗</span>
+                </span>
               </figure>
             </Reveal>
           ))}
@@ -475,12 +496,14 @@ function Portfolio({ reduced, instagram, gallery }: { reduced: boolean; instagra
                 href={instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex aspect-[3/4] flex-col justify-between p-6 transition-opacity hover:opacity-90"
+                className="group relative flex aspect-[3/4] flex-col justify-between overflow-hidden p-6 transition-opacity hover:opacity-90"
                 style={{ background: "var(--accent)", color: "var(--bg)" }}
               >
                 <span className={cn(styles.mono, "text-[length:var(--fs-100)] uppercase tracking-[0.22em]")}>Instagram</span>
-                <span className={cn(styles.syne, "text-[length:var(--fs-500)] font-bold leading-tight")}>
-                  Vezi toate<br />lucrările ↗
+                <CutGeometry className="pointer-events-none absolute -right-10 -top-8 h-44 w-auto opacity-20" animate={false} accent="var(--bg)" />
+                <span className={cn(styles.syne, "relative text-[length:var(--fs-500)] font-bold leading-tight")}>
+                  Vezi toate<br />lucrările
+                  <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
                 </span>
               </a>
             </Reveal>
@@ -612,7 +635,12 @@ function Footer({
 
   return (
     <footer id="contact" className="relative scroll-mt-24 overflow-hidden pt-24" style={{ background: "var(--surface)", color: "var(--bg)" }}>
-      <div className="container-x mx-auto max-w-[1600px]">
+      {/* faint geometric watermark, cohesive with the dark Portfolio section */}
+      <div aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-0 hidden opacity-[0.08] lg:block">
+        <CutGeometry className="h-[34rem] w-auto" animate={false} accent="var(--bg)" />
+      </div>
+
+      <div className="container-x relative mx-auto max-w-[1600px]">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* big CTA */}
           <div className="lg:col-span-7">
@@ -621,7 +649,7 @@ function Footer({
             </p>
             <a
               href={phoneHref}
-              className={cn(styles.display, "mt-5 block break-words text-[length:var(--fs-800)] transition-colors")}
+              className={cn(styles.display, styles.footerPhone, "mt-5 inline-block break-words text-[length:var(--fs-800)] transition-colors")}
               style={{ color: "var(--bg)" }}
             >
               {contact.phone}
