@@ -49,7 +49,7 @@ A'A, Mr&Mrs și Andrei au fiecare **design bespoke complet diferit** în `compon
 | **Mr&Mrs Style** | `mr-mrs-style` | **bespoke light editorial (crem + salvie)** | ✅ complet | **live, QA făcut** (perfect pe toate dimensiunile) | mapare echipă; IG neconfirmat; cod poștal |
 | **Andrei Canciu** | `andrei-canciu` | **bespoke geometric monocrom (bone + clay)** | ✅ **poze reale integrate** (hero salon, 5 galerie, portret, logo) | **live, finalizat** (V1 ales, hero+manifest reparate) | prețuri reale (acum orientative); recenzii reale |
 | barber-021 | `barber-021` | dark/cupru (DefaultSite) | demo fictiv (Unsplash) | referință template | — |
-| **Demo Start** | `demo-start` | **StartSite dedicat — 7 teme comutabile** (`?tema=`) | fictiv „Atelier Central" (Unsplash) | construit + îmbogățit (recenzii/despre/categorii), build ✓ | **de pushat** (e în CLIENTS, se publică la primul push) |
+| **Demo Start** | `demo-start` | **StartSite dedicat — 10 teme comutabile** (`?tema=`) | fictiv „Atelier Central" (Unsplash) | construit + îmbogățit (recenzii/despre/categorii), build ✓ | **de pushat** (e în CLIENTS, se publică la primul push) |
 
 Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduced-motion, 0 poze stock, deploy live ✓.
 
@@ -59,7 +59,7 @@ Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduc
 - A'A: reparat **meniul mobil** (era dropdown scurt prin care se vedea hero-ul → acum overlay full-screen, body-lock, Esc). `components/sites/aa-barber/AANav.tsx`.
 
 ## Demo-uri per pachet (noul model de vânzare)
-- **Start** ✅ — `demo-start` („Atelier Central", fictiv): one-page vandabil — hero (cu ramă accent), bandou puncte forte, servicii pe categorii (schema `ServiceSchema` a primit `category` opțional), despre (din `manifesto.panels`), galerie 6 poze (mixed grid), recenzii-citate, contact + hartă + WhatsApp. **7 teme comutabile** din switcher sau `?tema=carbune|salvie|cerneala|mahon|teracota|pudra|beton`. Fără PageLoader/Lenis/animații avansate (gated în `app/layout.tsx`; doar fade-up subtil cu IntersectionObserver + reduced-motion) — alea sunt diferențiatorii tier-elor de sus. Nuanță de onestitate: pe demo apar **citate** din recenzii; serviciul GBP + managementul recenziilor rămâne Signature+. Componente: `components/sites/demo-start/`.
+- **Start** ✅ — `demo-start` („Atelier Central", fictiv): one-page vandabil — hero (cu ramă accent), bandou puncte forte, servicii pe categorii (schema `ServiceSchema` a primit `category` opțional), despre (din `manifesto.panels`), galerie 6 poze (mixed grid), recenzii-citate, contact + hartă + WhatsApp. **10 teme comutabile** din switcher sau `?tema=carbune|salvie|cerneala|mahon|teracota|pudra|beton|noapte|bordo|lavanda`. Fără PageLoader/Lenis/animații avansate (gated în `app/layout.tsx`; doar fade-up subtil cu IntersectionObserver + reduced-motion) — alea sunt diferențiatorii tier-elor de sus. Nuanță de onestitate: pe demo apar **citate** din recenzii; serviciul GBP + managementul recenziilor rămâne Signature+. Componente: `components/sites/demo-start/`.
 - **Signature** — exemplele = portofoliul live (A'A / Mr&Mrs / Andrei).
 - **Custom** — flagship fictiv „BRICI" cu 3D/WebGL: **de construit**.
 

@@ -346,7 +346,7 @@ export function StartSite({ config }: { config: ClientConfig }) {
             <a href="#galerie" className="transition-colors hover:text-[var(--ink)]">Galerie</a>
             <a href="#contact" className="transition-colors hover:text-[var(--ink)]">Contact</a>
           </nav>
-          <p>Site demonstrativ · pachetul Start — alegi una din cele 7 teme.</p>
+          <p>Site demonstrativ · pachetul Start — alegi una din cele 10 teme.</p>
         </div>
       </footer>
 

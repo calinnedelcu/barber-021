@@ -155,6 +155,66 @@ export const START_THEMES: StartTheme[] = [
       "--sd-weight": "700",
     },
   },
+  {
+    // Bleumarin profund + albastru-gheață; gentleman's club, rece și elegant.
+    id: "noapte",
+    label: "Noapte",
+    scheme: "dark",
+    swatch: ["#0d1421", "#8fb7e6"],
+    vars: {
+      "--bg": "#0d1421",
+      "--surface": "#161f30",
+      "--ink": "#e8edf6",
+      "--ink-muted": "#8b96ab",
+      "--accent": "#8fb7e6",
+      "--accent-hot": "#a5c6ef",
+      "--line": "rgb(232 237 246 / 0.11)",
+      "--sd-head": "var(--font-grotesk)",
+      "--sd-case": "uppercase",
+      "--sd-track": "0.04em",
+      "--sd-weight": "700",
+    },
+  },
+  {
+    // Burgund întunecat + roșu zmeuriu; moștenirea clasică a frizeriei, dramatic.
+    id: "bordo",
+    label: "Bordo",
+    scheme: "dark",
+    swatch: ["#190d11", "#c4485c"],
+    vars: {
+      "--bg": "#190d11",
+      "--surface": "#251419",
+      "--ink": "#f2e7e4",
+      "--ink-muted": "#9d8389",
+      "--accent": "#c4485c",
+      "--accent-hot": "#d25a6d",
+      "--line": "rgb(242 231 228 / 0.11)",
+      "--sd-head": "var(--font-cormorant)",
+      "--sd-case": "none",
+      "--sd-track": "0",
+      "--sd-weight": "600",
+    },
+  },
+  {
+    // Lavandă deschisă + violet; beauty modern, tineresc.
+    id: "lavanda",
+    label: "Lavandă",
+    scheme: "light",
+    swatch: ["#f6f3fb", "#7c5cc4"],
+    vars: {
+      "--bg": "#f6f3fb",
+      "--surface": "#fefdff",
+      "--ink": "#2a2433",
+      "--ink-muted": "#79708a",
+      "--accent": "#7c5cc4",
+      "--accent-hot": "#6a4bb0",
+      "--line": "rgb(42 36 51 / 0.13)",
+      "--sd-head": "var(--font-syne)",
+      "--sd-case": "none",
+      "--sd-track": "0",
+      "--sd-weight": "700",
+    },
+  },
 ];
 
 const STORAGE_KEY = "demo-start-theme";
@@ -195,7 +255,7 @@ export function ThemeSwitcher() {
     <div
       role="group"
       aria-label="Demo: alege tema site-ului"
-      className="fixed bottom-4 left-1/2 z-[200] flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--line)] bg-[color-mix(in_srgb,var(--surface)_85%,transparent)] px-3 py-2 shadow-[0_6px_24px_rgb(0_0_0/0.25)] backdrop-blur-md"
+      className="fixed bottom-4 left-1/2 z-[200] flex max-w-[94vw] -translate-x-1/2 flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-3xl border border-[var(--line)] bg-[color-mix(in_srgb,var(--surface)_85%,transparent)] px-3 py-2 shadow-[0_6px_24px_rgb(0_0_0/0.25)] backdrop-blur-md"
     >
       <span className="hidden pl-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[var(--ink-muted)] sm:block">
         Temă · demo
