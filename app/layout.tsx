@@ -10,6 +10,7 @@ import {
   cormorant,
   syne,
   archivo,
+  bricolage,
 } from "@/lib/fonts";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
@@ -96,7 +97,8 @@ export default function RootLayout({
         spaceGrotesk.variable,
         cormorant.variable,
         syne.variable,
-        archivo.variable
+        archivo.variable,
+        bricolage.variable
       )}
     >
       <head>

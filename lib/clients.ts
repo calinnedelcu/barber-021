@@ -5,6 +5,7 @@ import aaBarber from "@/content/clients/aa-barber.json";
 import mrMrsStyle from "@/content/clients/mr-mrs-style.json";
 import nicoBeautyStyle from "@/content/clients/nico-beauty-style.json";
 import demoStart from "@/content/clients/demo-start.json";
+import demoCustom from "@/content/clients/demo-custom.json";
 import { loadClientConfig, type ClientConfig } from "./config";
 
 // Registry of all client content files. Add a new entry per client draft.
@@ -16,6 +17,7 @@ const REGISTRY: Record<string, unknown> = {
   "mr-mrs-style": mrMrsStyle,
   "nico-beauty-style": nicoBeautyStyle,
   "demo-start": demoStart,
+  "demo-custom": demoCustom,
 };
 
 // Active client is chosen at build time via NEXT_PUBLIC_CLIENT (set in the

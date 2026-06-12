@@ -6,6 +6,7 @@ import {
   Cormorant_Garamond,
   Syne,
   Archivo,
+  Bricolage_Grotesque,
 } from "next/font/google";
 
 // Display font — Antonio is a condensed sans-serif with full Romanian
@@ -59,4 +60,12 @@ export const archivo = Archivo({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-archivo",
+});
+
+// Brutal-editorial display with personality (variable 200–800). Reserved for
+// the BRICI flagship (demo-custom) so the Custom tier reads visually distinct.
+export const bricolage = Bricolage_Grotesque({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-bricolage",
 });

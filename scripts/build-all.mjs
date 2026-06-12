@@ -18,7 +18,8 @@ const CLIENTS = [
   { slug: "aa-barber", name: "A'A Barber", tag: "Barbershop pentru bărbați", loc: "Sibiu" },
   { slug: "mr-mrs-style", name: "Mr&Mrs Style", tag: "Salon de înfrumusețare", loc: "Sibiu" },
   { slug: "nico-beauty-style", name: "Nico Beauty Style", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
-  { slug: "demo-start", name: "Demo · Pachetul Start", tag: "Exemplu pachet Start · 5 teme la alegere", loc: "Demo" },
+  { slug: "demo-start", name: "Demo · Pachetul Start", tag: "Exemplu pachet Start · 10 teme la alegere", loc: "Demo" },
+  { slug: "demo-custom", name: "BRICI · Pachetul Custom", tag: "Flagship Custom · 3D, bilingv, pagină extra", loc: "Demo" },
 ];
 
 rmSync("dist", { recursive: true, force: true });
