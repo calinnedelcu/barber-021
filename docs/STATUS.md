@@ -33,6 +33,9 @@ Toți clienții sunt live dintr-un singur repo (`calinnedelcu/barber-021`, GitHu
 - https://calinnedelcu.github.io/barber-021/aa-barber/
 - https://calinnedelcu.github.io/barber-021/mr-mrs-style/
 - https://calinnedelcu.github.io/barber-021/andrei-canciu/
+- https://calinnedelcu.github.io/barber-021/nico-beauty-style/ (bespoke live din 2026-06-12)
+- https://calinnedelcu.github.io/barber-021/demo-start/ (demo pachet Start, 10 teme)
+- https://calinnedelcu.github.io/barber-021/oferta/ (pagina de ofertă client — noindex, fără link pe landing)
 
 Mecanism: workflow-ul rulează `node scripts/build-all.mjs` → fiecare client cu `NEXT_PUBLIC_BASE_PATH=/barber-021/<slug>` în `dist/<slug>/` + landing `dist/index.html`. Ca să adaugi/scoți un client publicat → editezi `CLIENTS` în `scripts/build-all.mjs`.
 
@@ -49,7 +52,7 @@ A'A, Mr&Mrs și Andrei au fiecare **design bespoke complet diferit** în `compon
 | **Mr&Mrs Style** | `mr-mrs-style` | **bespoke light editorial (crem + salvie)** | ✅ complet | **live, QA făcut** (perfect pe toate dimensiunile) | mapare echipă; IG neconfirmat; cod poștal |
 | **Andrei Canciu** | `andrei-canciu` | **bespoke geometric monocrom (bone + clay)** | ✅ **poze reale integrate** (hero salon, 5 galerie, portret, logo) | **live, finalizat** (V1 ales, hero+manifest reparate) | prețuri reale (acum orientative); recenzii reale |
 | barber-021 | `barber-021` | dark/cupru (DefaultSite) | demo fictiv (Unsplash) | referință template | — |
-| **Demo Start** | `demo-start` | **StartSite dedicat — 10 teme comutabile** (`?tema=`) | fictiv „Atelier Central" (Unsplash) | construit + îmbogățit (recenzii/despre/categorii), build ✓ | **de pushat** (e în CLIENTS, se publică la primul push) |
+| **Demo Start** | `demo-start` | **StartSite dedicat — 10 teme comutabile** (`?tema=`) | fictiv „Atelier Central" (Unsplash) | construit + îmbogățit (recenzii/despre/categorii) | **live** (deploy 2026-06-12) | — |
 
 Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduced-motion, 0 poze stock, deploy live ✓.
 
@@ -63,7 +66,7 @@ Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduc
 - **Signature** — exemplele = portofoliul live (A'A / Mr&Mrs / Andrei).
 - **Custom** — flagship fictiv „BRICI" cu 3D/WebGL: **de construit**.
 
-⚠️ **CI reparat local (2026-06-12, de pushat):** push-ul Nico a lăsat build-ul roșu — 2 erori `react/no-unescaped-entities` în `NicoSite.tsx` (ghilimele `"` neescapate; înlocuite cu `”`). Din cauza lor NICIUN client nu se mai deployă. Fixat + verificat (`next build` trece pe demo-start și nico).
+✅ **CI reparat (2026-06-12, deploy verde):** push-ul Nico a lăsat build-ul roșu — 2 erori `react/no-unescaped-entities` în `NicoSite.tsx` (ghilimele `"` neescapate; înlocuite cu `”`). Din cauza lor NICIUN client nu se mai deployă. Fixat, pushat, Actions verde — bespoke-ul Nico e live.
 
 ## De făcut (TODO)
 ### Prioritar (înainte de a trimite/vinde)
