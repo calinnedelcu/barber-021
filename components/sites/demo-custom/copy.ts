@@ -23,9 +23,11 @@ export const UI = {
     contact: {
       kicker: "06 · Contact",
       title: "Vino să ne cunoaștem",
+      finale: "Ia-ți locul în scaun.",
       directions: "indicații în Maps",
       whatsapp: "Scrie-ne pe WhatsApp",
       cta: "Programează-te pe MERO",
+      cursor: "REZERVĂ",
     },
     footer: {
       demo: "Site demonstrativ · pachetul Custom — design unic, animații 3D, bilingv, pagină extra.",
@@ -51,9 +53,11 @@ export const UI = {
     contact: {
       kicker: "06 · Contact",
       title: "Come meet us",
+      finale: "Take your seat.",
       directions: "directions in Maps",
       whatsapp: "Message us on WhatsApp",
       cta: "Book on MERO",
+      cursor: "BOOK",
     },
     footer: {
       demo: "Demo site · the Custom package — bespoke design, 3D animations, bilingual, extra page.",

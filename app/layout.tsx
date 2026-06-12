@@ -21,6 +21,9 @@ const config = getActiveClient();
 // The Start-package demo stays intentionally plain: no branded entry loader,
 // no smooth-scroll — those are part of the upper tiers' polish.
 const isStartDemo = ACTIVE_SLUG === "demo-start";
+// The Custom flagship ships its own cinematic preloader (BriciPreloader),
+// so the shared PageLoader is skipped — Lenis stays on.
+const isCustomDemo = ACTIVE_SLUG === "demo-custom";
 const brandName = config.brand.shortName ?? config.brand.name;
 const description = config.seo?.description ?? config.brand.tagline;
 const siteUrl = config.seo?.siteUrl ?? "https://example.com";
@@ -125,7 +128,7 @@ export default function RootLayout({
         >
           Sari la conținut
         </a>
-        {!isStartDemo && <PageLoader />}
+        {!isStartDemo && !isCustomDemo && <PageLoader />}
         {isStartDemo ? children : <LenisProvider>{children}</LenisProvider>}
         <PortfolioTour />
       </body>
