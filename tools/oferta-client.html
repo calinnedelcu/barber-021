@@ -200,14 +200,14 @@ const CONFIG = {
   cur: "lei",
   // Caracteristici comparate (aceleași rânduri pe toate cardurile). Per pachet `feat` e aliniat
   // la lista de mai jos: string = afișat cu valoarea · true = inclus (✓) · false = neinclus (–).
-  baseFeatures: ["Design unic, creat pentru tine","Pagini","Galerie (din pozele tale)","Buton programare MERO","Google Business + recenzii Google","Copywriting profesional","Bilingv RO + EN","Logo custom în temă","Pagină / secțiune extra","Animații avansate + co-design","Revizii incluse"],
+  baseFeatures: ["Design unic, creat pentru tine","Pagini","Galerie (din pozele tale)","Buton programare MERO","Google Business + recenzii Google","Copywriting profesional","Bilingv RO + EN","Logo custom în temă","Pagină / secțiune extra","Animații","Revizii incluse"],
   base: [ // alege UNA — ladder cu dublu cârlig: Signature < Start + design + texte + Google · Custom < Signature + cele 3 module
     { id:"standard",  name:"Start",     price:1190,
       feat:[false, "O pagină",    "6 poze",     "Standard", false, false, false, false, false, false, "1 rundă"] },
     { id:"signature", name:"Signature", price:2290,
-      feat:[true,  "Multi-pagină","Nelimitată", "Stilizat", true,  true,  false, false, false, false, "3 runde"] },
+      feat:[true,  "La alegere (incl. multi-pagină)","Nelimitată", "Stilizat", true,  true,  false, false, false, "Micro-interacțiuni ✓", "3 runde"] },
     { id:"custom",    name:"Custom",    price:2690,
-      feat:[true,  "Multi-pagină","Nelimitată", "Stilizat", true,  true,  true,  true,  true,  true,  "Nelimitate (~3 săpt.)"] },
+      feat:[true,  "La alegere (incl. multi-pagină)","Nelimitată", "Stilizat", true,  true,  true,  true,  true,  "3D / imersive + co-design", "Nelimitate (~3 săpt.)"] },
   ],
   // add-on de construcție → indexul feature-ului din baseFeatures pe care îl acoperă (pt. „deja inclus")
   addonFeature: { design:0, seo:4, copy:5, bi:6, logo:7, page:8 },
@@ -312,7 +312,7 @@ function render(){
   const sigBuild=std.price + exclOver(std,sig).reduce((s,a)=>s+a.price,0);
   $("#signatureHook").innerHTML = `💡 <b>Signature ${money(sig.price)}</b> costă mai puțin decât <b>Start + design unic + texte + Google</b> (${money(sigBuild)}) — și la Signature ai în plus galerie nelimitată, multi-pagină și 3 runde de revizii.`;
   const cusBuild=sig.price + exclOver(sig,cus).reduce((s,a)=>s+a.price,0);
-  $("#customHook").innerHTML = `💡 <b>Custom ${money(cus.price)}</b> costă mai puțin decât <b>Signature + logo + bilingv + pagină extra</b> (${money(cusBuild)}) — și la Custom le ai pe <b>toate</b>, plus animații avansate și revizii nelimitate.`;
+  $("#customHook").innerHTML = `💡 <b>Custom ${money(cus.price)}</b> costă mai puțin decât <b>Signature + logo + bilingv + pagină extra</b> (${money(cusBuild)}) — și la Custom le ai pe <b>toate</b>, plus animații 3D/imersive și revizii nelimitate.`;
 
   // click pe card (pachet sau abonament) → reconciliază bifele și re-randează
   document.querySelectorAll('.pcard').forEach(c=>c.addEventListener("click",()=>{

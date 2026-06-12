@@ -83,7 +83,7 @@ const landing = `<!doctype html>
     <div class="grid">
 ${cards}
     </div>
-    <footer class="mono">Realizate ca propuneri · date &amp; poze din surse publice</footer>
+    <footer class="mono">Realizate ca propuneri · date &amp; poze din surse publice · <a href="./andrei-canciu/?tur=1" style="color:var(--accent);text-decoration:none">tur ghidat &rarr;</a></footer>
   </main>
 </body>
 </html>

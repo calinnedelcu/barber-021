@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { PageLoader } from "@/components/providers/PageLoader";
+import { PortfolioTour } from "@/components/providers/PortfolioTour";
 import {
   anton,
   fraunces,
@@ -124,6 +125,7 @@ export default function RootLayout({
         </a>
         {!isStartDemo && <PageLoader />}
         {isStartDemo ? children : <LenisProvider>{children}</LenisProvider>}
+        <PortfolioTour />
       </body>
     </html>
   );
