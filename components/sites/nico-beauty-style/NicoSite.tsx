@@ -332,7 +332,7 @@ function Hero({ config }: { config: ClientConfig }) {
             >
               <Stars size={14} />
               <span>
-                <b>4,8</b> din ~150 recenzii Google · „Firma de Aur" 5 ani la rând
+                <b>4,8</b> din ~150 recenzii Google · „Firma de Aur” 5 ani la rând
               </span>
             </motion.div>
           </div>
@@ -455,7 +455,7 @@ function Reputatie() {
           </Reveal>
 
           <Reveal delay={0.12} className={s.repRight}>
-            <span className={s.repAwardsTitle}>„Firma de Aur" — premiat în fiecare an</span>
+            <span className={s.repAwardsTitle}>„Firma de Aur” — premiat în fiecare an</span>
             <div className={s.repAwards}>
               {AWARD_YEARS.map((y) => (
                 <span key={y} className={s.repAward}>
