@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
 <title>Pachetul tău website</title>
 <style>
   :root{
@@ -128,6 +129,7 @@
         <div class="block-h"><span class="n">1</span><h2>Construcția site-ului</h2></div>
         <div class="block-sub">Plătită o singură dată. Alege un pachet.</div>
         <div class="cards three" id="baseOpts"></div>
+        <div class="hook" id="signatureHook"></div>
         <div class="hook" id="customHook"></div>
       </div>
 
@@ -198,23 +200,24 @@ const CONFIG = {
   cur: "lei",
   // Caracteristici comparate (aceleași rânduri pe toate cardurile). Per pachet `feat` e aliniat
   // la lista de mai jos: string = afișat cu valoarea · true = inclus (✓) · false = neinclus (–).
-  baseFeatures: ["Pagini","Galerie (din pozele tale)","Buton programare MERO","Google Business + recenzii Google","Copywriting profesional","Bilingv RO + EN","Logo custom în temă","Pagină / secțiune extra","Animații avansate + co-design","Revizii incluse"],
-  base: [ // alege UNA — ladder „push spre Custom": gap mic sus, Custom < Signature + cele 3 module
-    { id:"standard",  name:"Standard",  price:1190,
-      feat:["O pagină",    "6 poze",     "Standard", false, false, false, false, false, false, "1 rundă"] },
+  baseFeatures: ["Design unic, creat pentru tine","Pagini","Galerie (din pozele tale)","Buton programare MERO","Google Business + recenzii Google","Copywriting profesional","Bilingv RO + EN","Logo custom în temă","Pagină / secțiune extra","Animații avansate + co-design","Revizii incluse"],
+  base: [ // alege UNA — ladder cu dublu cârlig: Signature < Start + design + texte + Google · Custom < Signature + cele 3 module
+    { id:"standard",  name:"Start",     price:1190,
+      feat:[false, "O pagină",    "6 poze",     "Standard", false, false, false, false, false, false, "1 rundă"] },
     { id:"signature", name:"Signature", price:2290,
-      feat:["Multi-pagină","Nelimitată", "Stilizat", true,  true,  false, false, false, false, "3 runde"] },
+      feat:[true,  "Multi-pagină","Nelimitată", "Stilizat", true,  true,  false, false, false, false, "3 runde"] },
     { id:"custom",    name:"Custom",    price:2690,
-      feat:["Multi-pagină","Nelimitată", "Stilizat", true,  true,  true,  true,  true,  true,  "Nelimitate (~3 săpt.)"] },
+      feat:[true,  "Multi-pagină","Nelimitată", "Stilizat", true,  true,  true,  true,  true,  true,  "Nelimitate (~3 săpt.)"] },
   ],
   // add-on de construcție → indexul feature-ului din baseFeatures pe care îl acoperă (pt. „deja inclus")
-  addonFeature: { seo:3, copy:4, bi:5, logo:6, page:7 },
-  addons: [ // bife (se adună la construcție)
+  addonFeature: { design:0, seo:4, copy:5, bi:6, logo:7, page:8 },
+  addons: [ // bife (se adună la construcție) — design = decoy spre Signature, restul „easy-yes"
+    { id:"design", name:"Design unic, creat pentru tine",  desc:"Layout, tipografie și paletă proprii, făcute pentru salonul tău — ca în portofoliu. Pe Start, site-ul folosește tema noastră dovedită, personalizată cu pozele și culorile tale. (Inclus în Signature și Custom.)", price:990 },
     { id:"bi",    name:"Bilingv RO + EN",                  desc:"Traducere + comutator de limbă (bun pentru turiști). (Inclus în Custom.)", price:250 },
     { id:"logo",  name:"Logo + elemente vizuale custom",   desc:"Logo nou + accente/iconuri în tema site-ului. (Refresh la logo existent: 150.) (Inclus în Custom.)", price:290 },
     { id:"copy",  name:"Copywriting profesional",          desc:"Scriu eu toate textele. (Inclus în Signature și Custom.)", price:190 },
     { id:"seo",   name:"Google Business + recenzii + SEO local", desc:"Configurarea inițială, o singură dată: apari pe Google când te caută cineva în zonă. (Gestionarea lunară e în abonamentul Activ/Pro.) (Inclus în Signature și Custom.)", price:250 },
-    { id:"page",  name:"Pagină / secțiune extra",          desc:"O pagină peste cele incluse: a doua locație, blog dedicat sau landing de promoție. Pe Standard = a doua pagină; de la 2+ pagini, Signature e mai avantajos. (Inclus în Custom.)", price:150 },
+    { id:"page",  name:"Pagină / secțiune extra",          desc:"O pagină peste cele incluse: a doua locație, blog dedicat sau landing de promoție. Pe Start = a doua pagină; de la 2+ pagini, Signature e mai avantajos. (Inclus în Custom.)", price:150 },
   ],
   // add-on recurent → indexul feature-ului din maintFeatures pe care îl acoperă
   recurFeature: { remindere:6 },
@@ -303,11 +306,13 @@ function render(){
   $("#domain").innerHTML = CONFIG.domain.map(d=>`<option value="${d.id}">${d.name}${d.price?` — ${money(d.price)}${d.perYear?'/an':''}`:''}</option>`).join("");
   $("#domain").value = state.domain;
 
-  // cârligul „push spre Custom": Custom costă mai puțin decât Signature + modulele exclusive lui
-  const sig=CONFIG.base.find(b=>b.id==='signature'), cus=CONFIG.base.find(b=>b.id==='custom');
-  const excl=CONFIG.addons.filter(a=>{ const i=CONFIG.addonFeature[a.id]; return i!=null && cus.feat[i]===true && sig.feat[i]!==true; });
-  const buildUp=sig.price + excl.reduce((s,a)=>s+a.price,0);
-  $("#customHook").innerHTML = `💡 <b>Custom ${money(cus.price)}</b> costă mai puțin decât <b>Signature + logo + bilingv + pagină extra</b> (${money(buildUp)}) — și la Custom le ai pe <b>toate</b>, plus animații avansate și revizii nelimitate.`;
+  // cârligele „push în sus": fiecare pachet costă mai puțin decât cel de sub el + modulele lui exclusive
+  const std=CONFIG.base.find(b=>b.id==='standard'), sig=CONFIG.base.find(b=>b.id==='signature'), cus=CONFIG.base.find(b=>b.id==='custom');
+  const exclOver=(lo,hi)=>CONFIG.addons.filter(a=>{ const i=CONFIG.addonFeature[a.id]; return i!=null && hi.feat[i]===true && lo.feat[i]!==true; });
+  const sigBuild=std.price + exclOver(std,sig).reduce((s,a)=>s+a.price,0);
+  $("#signatureHook").innerHTML = `💡 <b>Signature ${money(sig.price)}</b> costă mai puțin decât <b>Start + design unic + texte + Google</b> (${money(sigBuild)}) — și la Signature ai în plus galerie nelimitată, multi-pagină și 3 runde de revizii.`;
+  const cusBuild=sig.price + exclOver(sig,cus).reduce((s,a)=>s+a.price,0);
+  $("#customHook").innerHTML = `💡 <b>Custom ${money(cus.price)}</b> costă mai puțin decât <b>Signature + logo + bilingv + pagină extra</b> (${money(cusBuild)}) — și la Custom le ai pe <b>toate</b>, plus animații avansate și revizii nelimitate.`;
 
   // click pe card (pachet sau abonament) → reconciliază bifele și re-randează
   document.querySelectorAll('.pcard').forEach(c=>c.addEventListener("click",()=>{

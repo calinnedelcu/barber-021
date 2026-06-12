@@ -12,10 +12,13 @@ import {
 } from "@/lib/fonts";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
-import { getActiveClient } from "@/lib/clients";
+import { getActiveClient, ACTIVE_SLUG } from "@/lib/clients";
 import "./globals.css";
 
 const config = getActiveClient();
+// The Start-package demo stays intentionally plain: no branded entry loader,
+// no smooth-scroll — those are part of the upper tiers' polish.
+const isStartDemo = ACTIVE_SLUG === "demo-start";
 const brandName = config.brand.shortName ?? config.brand.name;
 const description = config.seo?.description ?? config.brand.tagline;
 const siteUrl = config.seo?.siteUrl ?? "https://example.com";
@@ -119,8 +122,8 @@ export default function RootLayout({
         >
           Sari la conținut
         </a>
-        <PageLoader />
-        <LenisProvider>{children}</LenisProvider>
+        {!isStartDemo && <PageLoader />}
+        {isStartDemo ? children : <LenisProvider>{children}</LenisProvider>}
       </body>
     </html>
   );

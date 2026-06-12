@@ -7,6 +7,8 @@ export const ServiceSchema = z.object({
   price: z.number().int().nonnegative(),
   description: z.string().optional(),
   icon: z.string().optional(),
+  /** Optional group header (e.g. "Frizerie", "Coafor") — sites may render services grouped. */
+  category: z.string().optional(),
 });
 
 export const TeamMemberSchema = z.object({

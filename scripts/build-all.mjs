@@ -8,7 +8,7 @@
 // between builds because NEXT_PUBLIC_* is inlined at build time.
 
 import { execSync } from "node:child_process";
-import { rmSync, renameSync, mkdirSync, writeFileSync } from "node:fs";
+import { rmSync, renameSync, mkdirSync, writeFileSync, copyFileSync } from "node:fs";
 
 const REPO_BASE = (process.env.SITE_BASE_PATH || "/barber-021").replace(/\/$/, "");
 
@@ -18,6 +18,7 @@ const CLIENTS = [
   { slug: "aa-barber", name: "A'A Barber", tag: "Barbershop pentru bărbați", loc: "Sibiu" },
   { slug: "mr-mrs-style", name: "Mr&Mrs Style", tag: "Salon de înfrumusețare", loc: "Sibiu" },
   { slug: "nico-beauty-style", name: "Nico Beauty Style", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
+  { slug: "demo-start", name: "Demo · Pachetul Start", tag: "Exemplu pachet Start · 5 teme la alegere", loc: "Demo" },
 ];
 
 rmSync("dist", { recursive: true, force: true });
@@ -90,4 +91,12 @@ ${cards}
 
 writeFileSync("dist/index.html", landing);
 writeFileSync("dist/.nojekyll", "");
-console.log(`\n✓ Built ${CLIENTS.length} clients + landing into dist/`);
+
+// ---- pagina de ofertă client-facing ------------------------------------------
+// Publicată la /<repoBase>/oferta/ ca s-o poți deschide/trimite pe call.
+// Nu apare pe landing și are noindex — o distribui doar tu, deliberat.
+// (tools/oferta.html — configuratorul intern cu override-uri — NU se publică.)
+mkdirSync("dist/oferta", { recursive: true });
+copyFileSync("tools/oferta-client.html", "dist/oferta/index.html");
+
+console.log(`\n✓ Built ${CLIENTS.length} clients + landing + /oferta/ into dist/`);

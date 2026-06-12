@@ -1,0 +1,177 @@
+{
+  "slug": "demo-start",
+  "tier": "standard",
+  "brand": {
+    "name": "Atelier Central",
+    "shortName": "Atelier Central",
+    "tagline": "Frizerie & coafor în centrul Sibiului.",
+    "est": "2020"
+  },
+  "hero": {
+    "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1800&q=80&auto=format&fit=crop",
+    "eyebrow": "Frizerie & coafor · Sibiu",
+    "marquee": [
+      "Programări online pe MERO",
+      "4,9★ · 120+ recenzii Google",
+      "Frizerie & coafor sub același acoperiș",
+      "Plata cash sau card"
+    ]
+  },
+  "manifesto": {
+    "backdropUrl": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Programare fără bătăi de cap",
+        "body": "Îți alegi ora pe MERO în 30 de secunde — sau ne suni. Confirmarea vine pe loc, iar dacă întârzii, ne scrii pe WhatsApp."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Produse profesionale",
+        "body": "Lucrăm cu game profesionale pentru tuns, culoare și îngrijire — alese pentru rezultate care țin, nu pentru raft."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Pentru toată familia",
+        "body": "Frizerie și coafor sub același acoperiș: vii cu copilul, pleci și tu aranjat. De-asta ne zice lumea „centralul”."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tuns-barbati",
+      "name": "Tuns bărbați",
+      "category": "Frizerie",
+      "duration": "45 min",
+      "price": 60,
+      "description": "Consultație, spălat, tuns, styling final."
+    },
+    {
+      "id": "tuns-copii",
+      "name": "Tuns copii",
+      "category": "Frizerie",
+      "duration": "30 min",
+      "price": 40,
+      "description": "Pentru clienți sub 12 ani. Răbdare inclusă."
+    },
+    {
+      "id": "contur",
+      "name": "Contur & retuș",
+      "category": "Frizerie",
+      "duration": "20 min",
+      "price": 30,
+      "description": "Împrospătare rapidă între două tunsori."
+    },
+    {
+      "id": "barba",
+      "name": "Aranjat barbă",
+      "category": "Barbă",
+      "duration": "30 min",
+      "price": 40,
+      "description": "Conturare și întreținere cu mașina și briciul."
+    },
+    {
+      "id": "ras",
+      "name": "Ras tradițional",
+      "category": "Barbă",
+      "duration": "40 min",
+      "price": 50,
+      "description": "Ras complet cu brici și prosop cald."
+    },
+    {
+      "id": "tuns-femei",
+      "name": "Tuns femei",
+      "category": "Coafor",
+      "duration": "60 min",
+      "price": 90,
+      "description": "Spălat, tuns, uscat și aranjat."
+    },
+    {
+      "id": "coafat",
+      "name": "Coafat & styling",
+      "category": "Coafor",
+      "duration": "45 min",
+      "price": 80,
+      "description": "Pentru zi cu zi sau ocazii speciale."
+    },
+    {
+      "id": "vopsit",
+      "name": "Vopsit & retuș rădăcini",
+      "category": "Culoare & tratamente",
+      "duration": "90 min",
+      "price": 150,
+      "description": "Preț de la — în funcție de lungime și lucrare."
+    },
+    {
+      "id": "balayage",
+      "name": "Balayage / suvițe",
+      "category": "Culoare & tratamente",
+      "duration": "3 ore",
+      "price": 280,
+      "description": "Preț de la — include tonare și styling."
+    },
+    {
+      "id": "tratament",
+      "name": "Tratament de hidratare",
+      "category": "Culoare & tratamente",
+      "duration": "45 min",
+      "price": 120,
+      "description": "Reface firul după culoare sau decolorare."
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop"
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "quote": "Programare ușoară, zero așteptare, tuns impecabil. De două luni nu mai merg nicăieri altundeva.",
+      "author": "Andrei P.",
+      "source": "Google"
+    },
+    {
+      "id": "r2",
+      "quote": "Mi-au reparat culoarea după o vopsire ratată în altă parte. A ieșit exact ca în poza de referință.",
+      "author": "Ioana M.",
+      "source": "Google"
+    },
+    {
+      "id": "r3",
+      "quote": "Vin cu băiatul meu o dată pe lună. Răbdători cu el, rapizi cu mine. Recomand cu încredere.",
+      "author": "Mihai T.",
+      "source": "Google"
+    }
+  ],
+  "contact": {
+    "phone": "+40 721 000 021",
+    "whatsapp": "+40721000021",
+    "address": "Str. Nicolae Bălcescu 12, Sibiu",
+    "mapCenter": [24.1517, 45.7937],
+    "hours": [
+      { "day": "Luni — Vineri", "hours": "09:00 — 19:00" },
+      { "day": "Sâmbătă", "hours": "09:00 — 15:00" },
+      { "day": "Duminică", "hours": "Închis" }
+    ],
+    "bookingUrl": "https://mero.ro/"
+  },
+  "theme": {
+    "scheme": "dark",
+    "bg": "#0c0a09",
+    "surface": "#16120f",
+    "ink": "#f3ece1",
+    "inkMuted": "#94897a",
+    "accent": "#c87f4a",
+    "accentHot": "#dd9258",
+    "line": "rgb(243 236 225 / 0.1)",
+    "grain": false
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/demo-start",
+    "description": "Site demonstrativ pentru pachetul Start — frizerie & coafor cu 7 teme la alegere: o pagină, servicii, galerie, recenzii, programare MERO, contact și hartă."
+  }
+}

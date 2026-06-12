@@ -129,12 +129,13 @@
 /* ============================= CONFIG (editează liber) ============================= */
 const CONFIG = {
   cur: "lei",
-  base: [ // alege UNA (radio) — feature gating ca să urce spre mijloc/sus
-    { id:"standard",  name:"Standard",  desc:"One-page: hero, servicii, galerie 6 poze, buton MERO, contact, hartă. 1 rundă revizii. (GBP/recenzii/copywriting NU incluse.)", price:1190 },
-    { id:"signature", name:"Signature", desc:"Multi-pagină, galerie nelimitată, Google Business + recenzii Google + copywriting INCLUSE, buton MERO stilizat. 3 runde revizii.", price:2290, popular:true },
+  base: [ // alege UNA (radio) — feature gating ca să urce spre mijloc/sus; design unic = diferențiatorul Start→Signature
+    { id:"standard",  name:"Start",  desc:"One-page pe tema noastră dovedită, personalizată cu pozele/culorile lui: hero, servicii, galerie 6 poze, buton MERO, contact, hartă. 1 rundă revizii. (Design unic / GBP / recenzii / copywriting NU incluse.)", price:1190 },
+    { id:"signature", name:"Signature", desc:"DESIGN UNIC creat pentru salon (ca în portofoliu) + multi-pagină, galerie nelimitată, Google Business + recenzii Google + copywriting INCLUSE, buton MERO stilizat. 3 runde revizii. «Signature costă mai puțin decât Start + design + texte + Google (2.620).»", price:2290, popular:true },
     { id:"custom",    name:"Custom / full bespoke", desc:"Tot din Signature + bilingv + LOGO custom + o pagină/secțiune extra INCLUSE + animații avansate + co-design cu revizii NELIMITATE (~3 săpt). «Custom costă mai puțin decât Signature + cele 3 module (2.980) — le ai pe toate.»", price:2690 },
   ],
-  addons: [ // bife (se adună la setup) — prețuri „easy-yes" pentru atașare mare (strategie de volum)
+  addons: [ // bife (se adună la setup) — design = decoy spre Signature; restul „easy-yes" pentru atașare mare
+    { id:"design", name:"Design unic, creat pentru salon", desc:"Layout/tipografie/paletă proprii, ca în portofoliu — nu tema standard. (Inclus în Signature+.)", price:990 },
     { id:"bi",    name:"Bilingv RO + EN",             desc:"Traducere + comutator de limbă (bun pentru turiști).", price:250 },
     { id:"logo",  name:"Logo + elemente vizuale custom / în temă", desc:"Logo nou + accente/iconuri/pattern custom, în tema site-ului. (Refresh la logo existent: 150.)", price:290 },
     { id:"copy",  name:"Copywriting profesional",     desc:"Scriu toate textele. (Inclus în Signature+.)", price:190 },
