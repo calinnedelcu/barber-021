@@ -702,7 +702,7 @@ function GalleryStrip({ images, reverse = false }: { images: string[]; reverse?:
           <Tile
             key={`${src}-${i}`}
             src={src}
-            alt={`Lucrare ${brand.shortName ?? brand.name}`}
+            alt="Lucrare barbershop"
             corners={false}
             sizes="200px"
             className="aspect-[3/4] w-[150px] flex-none sm:w-[200px]"
