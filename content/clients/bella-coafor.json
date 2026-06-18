@@ -42,97 +42,42 @@
       {
         "eyebrow": "01",
         "title": "Pentru ea și pentru el",
-        "body": "Bella Coafor e un salon unisex: tuns damă și bărbat, vopsit, șuvițe, coafat și aranjat barbă. Un loc de cartier unde vine toată familia — femei, bărbați și cei mici."
+        "body": "Bella Coafor e un salon unisex: tuns damă și bărbat, vopsit, șuvițe, coafat și aranjat barbă. Un loc de cartier unde vine toată familia."
       },
       {
         "eyebrow": "02",
         "title": "Reputația vorbește",
-        "body": "4.8★ din aproape 150 de recenzii pe Google. Sute de clienți din Sibiu se întorc pentru același rezultat constant, vizită după vizită."
+        "body": "4.8★ din aproape 150 de recenzii pe Google. Sute de clienți din Sibiu se întorc pentru același rezultat constant."
       },
       {
         "eyebrow": "03",
         "title": "Curat, modern, primitor",
-        "body": "Spațiu curat și modern, personal amabil și serios, lucru făcut cu răbdare. Exact ce ne scriu clienții — te simți bine de cum intri și pleci mulțumit."
+        "body": "Spațiu curat și modern, personal amabil și serios, lucru făcut cu răbdare. Te simți bine de cum intri și pleci mulțumit."
       }
     ]
   },
   "services": [
-    {
-      "id": "tuns-barbat",
-      "name": "Tuns bărbați",
-      "duration": "30 min",
-      "price": 45,
-      "description": "Tuns cu mașina și foarfeca, styling final."
-    },
-    {
-      "id": "tuns-barba",
-      "name": "Tuns + barbă",
-      "duration": "45 min",
-      "price": 60,
-      "description": "Tuns plus contur și aranjat barbă. Preț orientativ — îl confirmăm împreună."
-    },
-    {
-      "id": "barba",
-      "name": "Aranjat barbă",
-      "duration": "20 min",
-      "price": 30,
-      "description": "Contur și styling barbă. Preț orientativ — de confirmat."
-    },
-    {
-      "id": "tuns-copii",
-      "name": "Tuns copii",
-      "duration": "30 min",
-      "price": 35,
-      "description": "Tuns pentru cei mici, cu răbdare. Preț orientativ — de confirmat."
-    },
-    {
-      "id": "tuns-dama",
-      "name": "Tuns damă",
-      "duration": "45 min – 1 h",
-      "price": 70,
-      "description": "Tuns adaptat lungimii și formei feței, cu finisaj. Preț orientativ, în funcție de lungime."
-    },
-    {
-      "id": "spalat-coafat",
-      "name": "Spălat & coafat",
-      "duration": "45 min",
-      "price": 60,
-      "description": "Spălat plus coafat cu peria sau placa. Preț orientativ, în funcție de lungime."
-    },
-    {
-      "id": "vopsit",
-      "name": "Vopsit",
-      "duration": "2 h",
-      "price": 150,
-      "description": "Vopsire pe lungime, cu îngrijire și finisaj. De la 150 lei orientativ, în funcție de lungime."
-    },
-    {
-      "id": "suvite",
-      "name": "Șuvițe / balayage",
-      "duration": "3 – 4 h",
-      "price": 280,
-      "description": "Șuvițe sau balayage cu tonifiere. De la 280 lei orientativ, în funcție de lungime și tehnică."
-    },
-    {
-      "id": "coafura-eveniment",
-      "name": "Coafură de eveniment",
-      "duration": "1 h",
-      "price": 130,
-      "description": "Coc, bucle sau styling pentru o ocazie specială. Preț orientativ — de confirmat."
-    }
+    { "id": "tuns-barbat", "name": "Tuns bărbați", "duration": "30 min", "price": 45, "description": "Tuns cu mașina și foarfeca, styling final." },
+    { "id": "tuns-barba", "name": "Tuns + barbă", "duration": "45 min", "price": 60, "description": "Tuns plus contur și aranjat barbă." },
+    { "id": "barba", "name": "Aranjat barbă", "duration": "20 min", "price": 30, "description": "Contur și styling barbă." },
+    { "id": "tuns-copii", "name": "Tuns copii", "duration": "30 min", "price": 35, "description": "Tuns pentru cei mici, cu răbdare." },
+    { "id": "tuns-dama", "name": "Tuns damă", "duration": "45 min – 1 h", "price": 70, "description": "Tuns adaptat lungimii și formei feței, cu finisaj." },
+    { "id": "spalat-coafat", "name": "Spălat & coafat", "duration": "45 min", "price": 60, "description": "Spălat plus coafat cu peria sau placa." },
+    { "id": "vopsit", "name": "Vopsit", "duration": "2 h", "price": 150, "description": "Vopsire pe lungime, cu îngrijire și finisaj. De la 150 lei." },
+    { "id": "suvite", "name": "Șuvițe / balayage", "duration": "3 – 4 h", "price": 280, "description": "Șuvițe sau balayage cu tonifiere. De la 280 lei." },
+    { "id": "coafura-eveniment", "name": "Coafură de eveniment", "duration": "1 h", "price": 130, "description": "Coc, bucle sau styling pentru ocazie specială." }
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1546877625-cb8c71916608?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1617391654484-2894196c2cc9?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [],
   "reviews": [],
   "contact": {
-    "phone": "0742 000 404",
-    "whatsapp": "40742000404",
+    "phone": "0742 000 404", "whatsapp": "40742000404",
     "bookingUrl": "https://stailer.ro/",
     "address": "Strada Bâlea 5, 557260 Sibiu",
     "mapCenter": [24.1600, 45.7834],
@@ -148,14 +93,12 @@
   },
   "social": {},
   "geo": {
-    "region": "Strada Bâlea",
-    "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Bâlea, în",
-    "mapHeadlineAccent": "Sibiu"
+    "region": "Strada Bâlea", "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Strada Bâlea, în", "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
     "siteUrl": "https://calinnedelcu.github.io/barber-021/bella-coafor",
-    "description": "Coafor unisex în Sibiu, pe Strada Bâlea — tuns damă și bărbat, vopsit, șuvițe, coafat și barbă. 4.8★ din 150 recenzii Google. Programări online.",
+    "description": "Coafor unisex în Sibiu, pe Strada Bâlea — tuns damă și bărbat, vopsit, șuvițe, coafat și barbă. 4.8★.",
     "ogEyebrow": "Coafor unisex · Sibiu"
   }
 }

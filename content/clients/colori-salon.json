@@ -22,8 +22,8 @@
     "logoVariant": "primary"
   },
   "hero": {
-    "backdropUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1800&q=80&auto=format&fit=crop",
-    "backdropUrl2": "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1800&q=80&auto=format&fit=crop",
+    "backdropUrl": "https://images.unsplash.com/photo-1617391654484-2894196c2cc9?w=1800&q=80&auto=format&fit=crop",
+    "backdropUrl2": "https://images.unsplash.com/photo-1630827020718-3433092696e7?w=1800&q=80&auto=format&fit=crop",
     "eyebrow": "Salon de înfrumusețare · Sibiu",
     "titleLines": ["COLORI", "SALON"],
     "localityLine": "Sibiu · Strada Trenului",
@@ -58,159 +58,65 @@
     ]
   },
   "services": [
-    {
-      "id": "tuns-dama-scurt",
-      "name": "Tuns damă scurt",
-      "duration": "1 h",
-      "price": 150,
-      "description": "Tuns pentru păr scurt, adaptat formei feței."
-    },
-    {
-      "id": "tuns-dama-mediu",
-      "name": "Tuns damă mediu",
-      "duration": "1 h – 1 h 15 min",
-      "price": 170,
-      "description": "Tuns pentru lungime medie, cu finisaj. 170 lei."
-    },
-    {
-      "id": "tuns-dama-lung",
-      "name": "Tuns damă lung",
-      "duration": "1 h 10 min – 1 h 30 min",
-      "price": 200,
-      "description": "Tuns pentru păr lung, lucrat pe straturi. 200 lei."
-    },
-    {
-      "id": "spalat-coafat",
-      "name": "Spălat & coafat / placă",
-      "duration": "1 h",
-      "price": 90,
-      "description": "Spălat plus coafat cu peria sau placa. 90 – 120 lei, în funcție de lungime."
-    },
-    {
-      "id": "balayage",
-      "name": "Balayage",
-      "duration": "4 h 30 min – 5 h 30 min",
-      "price": 750,
-      "description": "Balayage pe păr mediu sau lung, cu tonifiere și îngrijire. 750 – 1250 lei."
-    },
-    {
-      "id": "airtouch",
-      "name": "Airtouch",
-      "duration": "5 h 30 min",
-      "price": 800,
-      "description": "Tehnica airtouch pentru tranziții fine și natural. 800 – 1500 lei."
-    },
-    {
-      "id": "suvite",
-      "name": "Șuvițe",
-      "duration": "30 min – 4 h 30 min",
-      "price": 750,
-      "description": "Șuvițe pe păr mediu sau lung, cu ton final. 750 – 1250 lei."
-    },
-    {
-      "id": "decolorare-color",
-      "name": "Decolorare & schimbare de culoare",
-      "duration": "5 h",
-      "price": 450,
-      "description": "Decolorare completă sau schimbare de bază. 450 – 1800 lei."
-    },
-    {
-      "id": "coafura-eveniment",
-      "name": "Coafură de eveniment",
-      "duration": "1 h – 1 h 15 min",
-      "price": 190,
-      "description": "Coc, bucle sau coafură pentru ocazie specială. 190 – 350 lei."
-    },
-    {
-      "id": "tuns-barbat",
-      "name": "Tuns bărbat",
-      "duration": "30 min",
-      "price": 85,
-      "description": "Tuns bărbat cu mașina și foarfeca, styling final. 85 lei."
-    },
-    {
-      "id": "tuns-copii",
-      "name": "Tuns copii (până la 10 ani)",
-      "duration": "30 min",
-      "price": 65,
-      "description": "Tuns pentru cei mici, răbdare inclusă. 65 lei."
-    }
+    { "id": "tuns-dama-scurt", "name": "Tuns damă scurt", "duration": "1 h", "price": 150, "description": "Tuns pentru păr scurt, adaptat formei feței." },
+    { "id": "tuns-dama-mediu", "name": "Tuns damă mediu", "duration": "1 h – 1 h 15 min", "price": 170, "description": "Tuns pentru lungime medie, cu finisaj. 170 lei." },
+    { "id": "tuns-dama-lung", "name": "Tuns damă lung", "duration": "1 h 10 min – 1 h 30 min", "price": 200, "description": "Tuns pentru păr lung, lucrat pe straturi. 200 lei." },
+    { "id": "spalat-coafat", "name": "Spălat & coafat / placă", "duration": "1 h", "price": 90, "description": "Spălat plus coafat cu peria sau placa. 90 – 120 lei." },
+    { "id": "balayage", "name": "Balayage", "duration": "4 h 30 min – 5 h 30 min", "price": 750, "description": "Balayage pe păr mediu sau lung. 750 – 1250 lei." },
+    { "id": "airtouch", "name": "Airtouch", "duration": "5 h 30 min", "price": 800, "description": "Tehnica airtouch pentru tranziții fine și natural. 800 – 1500 lei." },
+    { "id": "suvite", "name": "Șuvițe", "duration": "30 min – 4 h 30 min", "price": 750, "description": "Șuvițe pe păr mediu sau lung, cu ton final. 750 – 1250 lei." },
+    { "id": "coafura-eveniment", "name": "Coafură de eveniment", "duration": "1 h – 1 h 15 min", "price": 190, "description": "Coc, bucle sau coafură pentru ocazie specială. 190 – 350 lei." },
+    { "id": "tuns-barbat", "name": "Tuns bărbat", "duration": "30 min", "price": 85, "description": "Tuns bărbat cu mașina și foarfeca, styling final. 85 lei." },
+    { "id": "tuns-copii", "name": "Tuns copii (până la 10 ani)", "duration": "30 min", "price": 65, "description": "Tuns pentru cei mici, răbdare inclusă. 65 lei." }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1617391654484-2894196c2cc9?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1546877625-cb8c71916608?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1630827020718-3433092696e7?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1595475884562-073c30d45670?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1554519934-e32b1629d9ee?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1568339434343-2a640a1a9946?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
-      "id": "elena",
-      "name": "Elena Gheorghe",
-      "role": "Master Hairstylist",
+      "id": "elena", "name": "Elena Gheorghe", "role": "Master Hairstylist",
       "bio": "Conduce styling-ul în salon. Tuns, coafat și color — mână sigură la fiecare lucrare.",
-      "portrait": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "andreea",
-      "name": "Andreea Nica",
-      "role": "Hairstylist Expert",
+      "id": "andreea", "name": "Andreea Nica", "role": "Hairstylist Expert",
       "bio": "Expertă în color și blondare. Balayage, airtouch și șuvițe lucrate cu răbdare.",
-      "portrait": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "dana",
-      "name": "Dana I.",
-      "role": "Specialist",
+      "id": "dana", "name": "Dana I.", "role": "Specialist",
       "bio": "Specialistă în styling și finisaj. Atentă la detaliu și la rezultatul de durată.",
-      "portrait": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1553521041-d168abd31de3?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [
-    {
-      "id": "r1",
-      "quote": "Recomand din tot sufletul! Servicii de calitate cu oameni profesioniști, atmosferă plăcută. Mulțumesc pentru seriozitate.",
-      "author": "Cristina P.",
-      "source": "MERO · 5.0★"
-    },
-    {
-      "id": "r2",
-      "quote": "Servicii profesionale! Recomand cu drag!",
-      "author": "Iulia M.",
-      "source": "MERO · 5.0★"
-    },
-    {
-      "id": "r3",
-      "quote": "Perfect!",
-      "author": "Ștefan D.",
-      "source": "MERO · 5.0★"
-    },
-    {
-      "id": "r4",
-      "quote": "Excelent!",
-      "author": "Sebastian",
-      "source": "MERO · 5.0★"
-    }
+    { "id": "r1", "quote": "Recomand din tot sufletul! Servicii de calitate cu oameni profesioniști, atmosferă plăcută.", "author": "Cristina P.", "source": "MERO · 5.0★" },
+    { "id": "r2", "quote": "Servicii profesionale! Recomand cu drag!", "author": "Iulia M.", "source": "MERO · 5.0★" },
+    { "id": "r3", "quote": "Perfect!", "author": "Ștefan D.", "source": "MERO · 5.0★" },
+    { "id": "r4", "quote": "Excelent!", "author": "Sebastian", "source": "MERO · 5.0★" }
   ],
   "instagram": {
     "handle": "colorisalon.sibiu",
     "posts": [
-      "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1493522081028-12d79a2e2e4d?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1619449814206-a05d7b1c73b8?w=600&q=80&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1617391654484-2894196c2cc9?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1546877625-cb8c71916608?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1595475884562-073c30d45670?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554519934-e32b1629d9ee?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1605980766335-d3a41c7332a1?w=600&q=80&auto=format&fit=crop"
     ]
   },
   "contact": {
-    "phone": "0755 000 303",
-    "whatsapp": "40755000303",
+    "phone": "0755 000 303", "whatsapp": "40755000303",
     "bookingUrl": "https://mero.ro/",
     "address": "Strada Trenului 8, 550350 Sibiu",
     "mapCenter": [24.1410, 45.7931],
@@ -226,14 +132,12 @@
   },
   "social": {},
   "geo": {
-    "region": "Strada Trenului",
-    "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Trenului, în",
-    "mapHeadlineAccent": "Sibiu"
+    "region": "Strada Trenului", "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Strada Trenului, în", "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
     "siteUrl": "https://calinnedelcu.github.io/barber-021/colori-salon",
-    "description": "Salon de înfrumusețare unisex în Sibiu, pe Strada Trenului — tuns, coafat, balayage, airtouch și styling pentru ea și pentru el. 5.0★ pe MERO.",
+    "description": "Salon unisex în Sibiu, pe Strada Trenului — tuns, coafat, balayage, airtouch și styling pentru ea și pentru el. 5.0★.",
     "ogEyebrow": "Salon de înfrumusețare · Sibiu"
   }
 }

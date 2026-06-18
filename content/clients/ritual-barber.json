@@ -45,130 +45,65 @@
     ]
   },
   "services": [
-    {
-      "id": "tuns",
-      "name": "Tuns bărbat",
-      "duration": "40 – 60 min",
-      "price": 70,
-      "description": "Consultație, tuns cu mașina și foarfeca, styling final. 70 – 110 lei."
-    },
-    {
-      "id": "barba",
-      "name": "Aranjat barbă",
-      "duration": "20 – 35 min",
-      "price": 40,
-      "description": "Conturare și aranjare cu brici și prosop cald. 40 – 75 lei."
-    },
-    {
-      "id": "tuns-barba",
-      "name": "Tuns & aranjat barbă",
-      "duration": "50 – 80 min",
-      "price": 85,
-      "description": "Pachetul complet: tuns plus barbă, finisat impecabil. 85 – 140 lei."
-    },
-    {
-      "id": "therapy",
-      "name": "Ritual Therapy",
-      "duration": "65 – 70 min",
-      "price": 100,
-      "description": "Ritualul signature: tuns, barbă, masaj la scalp și relaxare. 100 – 170 lei."
-    },
-    {
-      "id": "tuns-intretinere",
-      "name": "Tuns & întreținere barbă",
-      "duration": "55 – 75 min",
-      "price": 75,
-      "description": "Tuns plus întreținerea bărbii între vizite. 75 – 125 lei."
-    },
-    {
-      "id": "uniform-barba",
-      "name": "Aranjat barbă & tuns uniform",
-      "duration": "45 – 60 min",
-      "price": 65,
-      "description": "Tuns uniform pe mașină și barbă conturată. 65 – 110 lei."
-    }
+    { "id": "tuns", "name": "Tuns bărbat", "duration": "40 – 60 min", "price": 70, "description": "Consultație, tuns cu mașina și foarfeca, styling final. 70 – 110 lei." },
+    { "id": "barba", "name": "Aranjat barbă", "duration": "20 – 35 min", "price": 40, "description": "Conturare și aranjare cu brici și prosop cald. 40 – 75 lei." },
+    { "id": "tuns-barba", "name": "Tuns & aranjat barbă", "duration": "50 – 80 min", "price": 85, "description": "Pachetul complet: tuns plus barbă, finisat impecabil. 85 – 140 lei." },
+    { "id": "therapy", "name": "Ritual Therapy", "duration": "65 – 70 min", "price": 100, "description": "Ritualul signature: tuns, barbă, masaj la scalp și relaxare. 100 – 170 lei." },
+    { "id": "tuns-intretinere", "name": "Tuns & întreținere barbă", "duration": "55 – 75 min", "price": 75, "description": "Tuns plus întreținerea bărbii între vizite. 75 – 125 lei." },
+    { "id": "uniform-barba", "name": "Aranjat barbă & tuns uniform", "duration": "45 – 60 min", "price": 65, "description": "Tuns uniform pe mașină și barbă conturată. 65 – 110 lei." }
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1630827020718-3433092696e7?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
-      "id": "bogdan",
-      "name": "Bogdan Rus",
-      "role": "Master Barber",
+      "id": "bogdan", "name": "Bogdan Rus", "role": "Master Barber",
       "bio": "Conduce echipa Ritual. Tuns clasic, fade curat, atenție la fiecare linie.",
-      "portrait": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1771594836579-af129894a49c?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "vlad",
-      "name": "Vlad Gherghel",
-      "role": "Pro Barber",
+      "id": "vlad", "name": "Vlad Gherghel", "role": "Pro Barber",
       "bio": "Fade-uri precise și styling care ține. Lucrează curat, fără grabă.",
-      "portrait": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1693756222572-23e251a7737d?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "mihnea",
-      "name": "Mihnea Joarza",
-      "role": "Senior Barber",
+      "id": "mihnea", "name": "Mihnea Joarza", "role": "Senior Barber",
       "bio": "Mână sigură la foarfecă. Barbă și contur — specialitatea casei.",
-      "portrait": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1598524374912-6b0b0bab43dd?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "stefan",
-      "name": "Ștefan Ionescu",
-      "role": "Specialist",
+      "id": "stefan", "name": "Ștefan Ionescu", "role": "Specialist",
       "bio": "Tunsori moderne, texturi și detaliu. Mereu la curent cu trendurile.",
-      "portrait": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1553521041-d168abd31de3?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [
-    {
-      "id": "r1",
-      "quote": "Atent la detalii, lucrează cu profesionalism și se asigură că pleci exact cu look-ul dorit. Atmosferă plăcută și servicii excelente. Recomand cu încredere!",
-      "author": "Andrei A.",
-      "source": "MERO · 5.0★"
-    },
-    {
-      "id": "r2",
-      "quote": "Foarte bun, deschis la tunsori noi, recomand cu încredere!",
-      "author": "Doru M.",
-      "source": "MERO · 5.0★"
-    },
-    {
-      "id": "r3",
-      "quote": "Servicii excelente și atenție la detalii.",
-      "author": "Paul A.",
-      "source": "MERO · 5.0★"
-    },
-    {
-      "id": "r4",
-      "quote": "Extraordinar. Recomand cu încredere.",
-      "author": "Lazar B.",
-      "source": "MERO · 5.0★"
-    }
+    { "id": "r1", "quote": "Atent la detalii, lucrează cu profesionalism și se asigură că pleci exact cu look-ul dorit. Recomand cu încredere!", "author": "Andrei A.", "source": "MERO · 5.0★" },
+    { "id": "r2", "quote": "Foarte bun, deschis la tunsori noi, recomand cu încredere!", "author": "Doru M.", "source": "MERO · 5.0★" },
+    { "id": "r3", "quote": "Servicii excelente și atenție la detalii.", "author": "Paul A.", "source": "MERO · 5.0★" },
+    { "id": "r4", "quote": "Extraordinar. Recomand cu încredere.", "author": "Lazar B.", "source": "MERO · 5.0★" }
   ],
   "instagram": {
     "handle": "ritualbarber.sibiu",
     "posts": [
       "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1493522081028-12d79a2e2e4d?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1592647420148-bfcc177e2117?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1630827020718-3433092696e7?w=600&q=80&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1619449814206-a05d7b1c73b8?w=600&q=80&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=600&q=80&auto=format&fit=crop"
     ]
   },
   "contact": {
-    "phone": "0740 000 505",
-    "whatsapp": "40740000505",
+    "phone": "0740 000 505", "whatsapp": "40740000505",
     "bookingUrl": "https://mero.ro/",
     "address": "Strada Turnului 14, 550107 Sibiu",
     "mapCenter": [24.1490, 45.8042],
@@ -184,14 +119,12 @@
   },
   "social": {},
   "geo": {
-    "region": "Strada Turnului",
-    "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Turnului, în",
-    "mapHeadlineAccent": "Sibiu"
+    "region": "Strada Turnului", "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Strada Turnului, în", "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
     "siteUrl": "https://calinnedelcu.github.io/barber-021/ritual-barber",
-    "description": "Barbershop premium în Sibiu, pe Strada Turnului — tuns, barbă, Ritual Therapy. 5.0★ din peste 5000 de evaluări. Programări online.",
+    "description": "Barbershop premium în Sibiu, pe Strada Turnului — tuns, barbă, Ritual Therapy. 5.0★. Programări online.",
     "ogEyebrow": "Barbershop · premium"
   }
 }

@@ -56,108 +56,57 @@
     ]
   },
   "services": [
-    {
-      "id": "tuns-barba",
-      "name": "Tuns modern + barbă + spălat + aranjat",
-      "duration": "60 min",
-      "price": 85,
-      "description": "Pachetul complet: tuns modern, barbă, spălat și aranjat. 85 – 90 lei."
-    },
-    {
-      "id": "tuns",
-      "name": "Tuns modern + spălat + aranjat",
-      "duration": "40 – 45 min",
-      "price": 70,
-      "description": "Tuns modern cu spălat și styling final. 70 – 75 lei."
-    },
-    {
-      "id": "foarfeca",
-      "name": "Tunsoare din foarfecă",
-      "duration": "60 min",
-      "price": 100,
-      "description": "Tunsoare lucrată integral din foarfecă, pentru un finisaj fin. 100 lei."
-    },
-    {
-      "id": "barba",
-      "name": "Barbă",
-      "duration": "20 – 30 min",
-      "price": 30,
-      "description": "Conturare și aranjare barbă cu brici. 30 – 50 lei."
-    }
+    { "id": "tuns-barba", "name": "Tuns modern + barbă + spălat + aranjat", "duration": "60 min", "price": 85, "description": "Pachetul complet: tuns modern, barbă, spălat și aranjat. 85 – 90 lei." },
+    { "id": "tuns", "name": "Tuns modern + spălat + aranjat", "duration": "40 – 45 min", "price": 70, "description": "Tuns modern cu spălat și styling final. 70 – 75 lei." },
+    { "id": "foarfeca", "name": "Tunsoare din foarfecă", "duration": "60 min", "price": 100, "description": "Tunsoare lucrată integral din foarfecă, pentru un finisaj fin. 100 lei." },
+    { "id": "barba", "name": "Barbă", "duration": "20 – 30 min", "price": 30, "description": "Conturare și aranjare barbă cu brici. 30 – 50 lei." }
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1630827020718-3433092696e7?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1568339434343-2a640a1a9946?w=1600&q=80&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
-      "id": "radu",
-      "name": "Radu Ionescu",
-      "role": "Specialist",
+      "id": "radu", "name": "Radu Ionescu", "role": "Specialist",
       "bio": "Tuns modern, fade curat și atenție la fiecare linie. Lucrează curat, fără grabă.",
-      "portrait": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1771594836579-af129894a49c?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "dan",
-      "name": "Dan Popa",
-      "role": "Specialist",
+      "id": "dan", "name": "Dan Popa", "role": "Specialist",
       "bio": "Mână sigură la foarfecă și la contur. Te asigură că pleci cu look-ul dorit.",
-      "portrait": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1693756222572-23e251a7737d?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "alex",
-      "name": "Alexandru Marin",
-      "role": "Specialist",
+      "id": "alex", "name": "Alexandru Marin", "role": "Specialist",
       "bio": "Tunsori moderne, texturi și detaliu. Atmosferă plăcută pe scaun.",
-      "portrait": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=600&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1598524374912-6b0b0bab43dd?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [
-    {
-      "id": "r1",
-      "quote": "Foarte mulțumit de experiență, sfaturi super bune!",
-      "author": "Cristian M.",
-      "source": "MERO · 4.99★"
-    },
-    {
-      "id": "r2",
-      "quote": "E top, știe ce face.",
-      "author": "Tudor S.",
-      "source": "MERO · 4.99★"
-    },
-    {
-      "id": "r3",
-      "quote": "Genial și foarte social, tunde extraordinar, atmosferă plăcută, 10/10.",
-      "author": "Dănuț M.",
-      "source": "MERO · 4.99★"
-    },
-    {
-      "id": "r4",
-      "quote": "Excelent. Recomand cu cea mai mare încredere.",
-      "author": "Marcu M.",
-      "source": "MERO · 4.99★"
-    }
+    { "id": "r1", "quote": "Foarte mulțumit de experiență, sfaturi super bune!", "author": "Cristian M.", "source": "MERO · 4.99★" },
+    { "id": "r2", "quote": "E top, știe ce face.", "author": "Tudor S.", "source": "MERO · 4.99★" },
+    { "id": "r3", "quote": "Genial și foarte social, tunde extraordinar, atmosferă plăcută, 10/10.", "author": "Dănuț M.", "source": "MERO · 4.99★" },
+    { "id": "r4", "quote": "Excelent. Recomand cu cea mai mare încredere.", "author": "Marcu M.", "source": "MERO · 4.99★" }
   ],
   "instagram": {
     "handle": "zerofade.sibiu",
     "posts": [
-      "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1493522081028-12d79a2e2e4d?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1619449814206-a05d7b1c73b8?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=600&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=600&q=80&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1592647420148-bfcc177e2117?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1661380558859-40df8dd91dfd?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=600&q=80&auto=format&fit=crop"
     ]
   },
   "contact": {
-    "phone": "0725 000 202",
-    "whatsapp": "40725000202",
+    "phone": "0725 000 202", "whatsapp": "40725000202",
     "bookingUrl": "https://mero.ro/",
     "address": "Calea Cisnădiei 18, 550054 Sibiu",
     "mapCenter": [24.1520, 45.7780],
@@ -173,14 +122,12 @@
   },
   "social": {},
   "geo": {
-    "region": "Calea Cisnădiei",
-    "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Calea Cisnădiei, în",
-    "mapHeadlineAccent": "Sibiu"
+    "region": "Calea Cisnădiei", "localityCountry": "Sibiu · RO",
+    "mapHeadlineLead": "Pe Calea Cisnădiei, în", "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
     "siteUrl": "https://calinnedelcu.github.io/barber-021/zero-fade",
-    "description": "Barbershop modern în Sibiu, pe Calea Cisnădiei — tuns modern, fade, barbă. 4.99★ din peste 4000 de evaluări. Programări online.",
+    "description": "Barbershop modern în Sibiu, pe Calea Cisnădiei — tuns modern, fade, barbă. 4.99★. Programări online.",
     "ogEyebrow": "Barbershop · Sibiu"
   }
 }

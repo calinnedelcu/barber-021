@@ -7,8 +7,7 @@
     "tagline": "Hairstyling și tunsori geometrice în Sibiu, pe Bulevardul Victoriei.",
     "serial": "N° MC / 2026",
     "monogramInitials": "MC",
-    "logoVariant": "primary",
-    "portraitUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=faces"
+    "logoVariant": "primary"
   },
   "hero": {
     "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1800&q=80&auto=format&fit=crop",
@@ -91,10 +90,11 @@
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=1600&q=80&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1617391654484-2894196c2cc9?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1546877625-cb8c71916608?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
@@ -102,7 +102,7 @@
       "name": "Mihai Ciobanu",
       "role": "Hairstylist · fondator",
       "bio": "Construiește fiecare tunsoare pe geometria părului. Atenție la detaliu, fără grabă.",
-      "portrait": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=faces"
+      "portrait": "https://images.unsplash.com/photo-1598524374912-6b0b0bab43dd?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [],
