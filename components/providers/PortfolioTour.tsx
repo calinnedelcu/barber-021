@@ -20,11 +20,11 @@ interface TourSite {
 }
 
 const SITES: TourSite[] = [
-  { slug: "andrei-canciu", name: "Andrei Canciu", mark: "AC" },
-  { slug: "aa-barber", name: "A'A Barber", mark: "A'A" },
-  { slug: "mr-mrs-style", name: "Mr&Mrs Style", mark: "MM" },
-  { slug: "nico-beauty-style", name: "Nico Beauty Style", mark: "NB" },
-  { slug: "hairmann", name: "HAIRMANN", mark: "HM" },
+  { slug: "andrei-canciu", name: "Mihai Ciobanu", mark: "MC" },
+  { slug: "aa-barber", name: "Zero Fade Barber", mark: "ZF" },
+  { slug: "mr-mrs-style", name: "Colori Salon", mark: "CS" },
+  { slug: "nico-beauty-style", name: "Bella Coafor", mark: "BC" },
+  { slug: "hairmann", name: "Ritual Barber", mark: "RB" },
 ];
 
 const CURRENT = (process.env.NEXT_PUBLIC_CLIENT ?? "").trim() || "barber-021";

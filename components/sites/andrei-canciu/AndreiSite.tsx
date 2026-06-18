@@ -10,8 +10,6 @@ import { cn } from "@/lib/cn";
 import styles from "./andrei.module.css";
 import { CutGeometry } from "./CutGeometry";
 
-const LOGO = "/clients/andrei-canciu/marks/logo.jpg";
-const PORTRAIT = "/clients/andrei-canciu/about/andrei.jpg";
 
 const NAV = [
   { id: "manifest", label: "Manifest" },
@@ -67,9 +65,12 @@ function Kicker({ index, label }: { index: string; label: string }) {
 /* ------------------------------------------------------------------- site */
 
 export function AndreiSite({ config }: { config: ClientConfig }) {
-  const { brand, hero, manifesto, services, gallery, contact, social, geo } = config;
+  const { brand, hero, manifesto, services, gallery, team, contact, social, geo } = config;
   const reduced = useReducedMotion();
   const heroImg = hero?.backdropUrl;
+  const founderPortrait = team[0]?.portrait ?? brand.portraitUrl;
+  const founderName = team[0]?.name ?? brand.shortName ?? brand.name;
+  const founderRole = team[0]?.role ?? "Fondator";
 
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -229,24 +230,26 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
                 Trei principii după care lucrez. Fără șabloane, fără grabă.
               </p>
 
-              {/* signature — Andrei himself */}
+              {/* signature — founder */}
               <div className="mt-10 flex items-center gap-4">
-                <span
-                  className="relative block h-16 w-16 shrink-0 overflow-hidden rounded-full border"
-                  style={{ borderColor: "var(--line)", background: "var(--surface)" }}
-                >
-                  <Image
-                    src={assetPath(PORTRAIT)}
-                    alt="Andrei Canciu"
-                    fill
-                    sizes="64px"
-                    className="object-cover"
-                  />
-                </span>
+                {founderPortrait && (
+                  <span
+                    className="relative block h-16 w-16 shrink-0 overflow-hidden rounded-full border"
+                    style={{ borderColor: "var(--line)", background: "var(--surface)" }}
+                  >
+                    <Image
+                      src={assetPath(founderPortrait)}
+                      alt={founderName}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
+                  </span>
+                )}
                 <div>
-                  <p className={cn(styles.syne, "text-[length:var(--fs-300)] font-bold")}>Andrei Canciu</p>
+                  <p className={cn(styles.syne, "text-[length:var(--fs-300)] font-bold")}>{founderName}</p>
                   <p className={cn(styles.mono, "mt-1 text-[length:var(--fs-100)] uppercase tracking-[0.2em]")} style={{ color: "var(--ink-muted)" }}>
-                    Hairstylist · fondator
+                    {founderRole}
                   </p>
                 </div>
               </div>
@@ -541,15 +544,17 @@ function Nav({
         }}
       >
         <a href="#top" className="flex items-center gap-3">
-          <span className="relative block h-9 w-9 overflow-hidden rounded-full" style={{ background: "var(--ink)" }}>
-            <Image
-              src={assetPath(LOGO)}
-              alt={brand.name}
-              fill
-              sizes="36px"
-              className="object-contain p-1"
-            />
-          </span>
+          {brand.markImageUrl && (
+            <span className="relative block h-9 w-9 overflow-hidden rounded-full" style={{ background: "var(--ink)" }}>
+              <Image
+                src={assetPath(brand.markImageUrl)}
+                alt={brand.name}
+                fill
+                sizes="36px"
+                className="object-contain p-1"
+              />
+            </span>
+          )}
           <span className={cn(styles.syne, "text-[length:var(--fs-200)] font-bold uppercase tracking-[0.14em]")}>
             {brand.shortName ?? brand.name}
           </span>
@@ -661,16 +666,17 @@ function Footer({
 
           {/* logo panel + meta */}
           <div className="flex flex-col justify-between gap-10 lg:col-span-5">
-            <div className="relative ml-auto h-40 w-full max-w-xs overflow-hidden">
-              {/* logo is white-on-black → sits perfectly on this dark panel */}
-              <Image
-                src={assetPath(LOGO)}
-                alt={`${brand.name} — logo`}
-                fill
-                sizes="(max-width: 1024px) 80vw, 320px"
-                className="object-contain"
-              />
-            </div>
+            {brand.markImageUrl && (
+              <div className="relative ml-auto h-40 w-full max-w-xs overflow-hidden">
+                <Image
+                  src={assetPath(brand.markImageUrl)}
+                  alt={`${brand.name} — logo`}
+                  fill
+                  sizes="(max-width: 1024px) 80vw, 320px"
+                  className="object-contain"
+                />
+              </div>
+            )}
 
             <div className="grid grid-cols-2 gap-px" style={{ background: "rgb(255 255 255 / 0.12)" }}>
               <FooterCell label="Adresă" value={contact.address} />

@@ -2,27 +2,28 @@
   "slug": "andrei-canciu",
   "tier": "premium",
   "brand": {
-    "name": "ANDREI CANCIU",
-    "shortName": "ANDREI CANCIU",
-    "tagline": "Hairstyling și tunsori geometrice în Sibiu, pe Șoseaua Alba Iulia.",
-    "serial": "N° AC / 2026",
-    "monogramInitials": "AC",
-    "logoVariant": "primary"
+    "name": "MIHAI CIOBANU",
+    "shortName": "MIHAI CIOBANU",
+    "tagline": "Hairstyling și tunsori geometrice în Sibiu, pe Bulevardul Victoriei.",
+    "serial": "N° MC / 2026",
+    "monogramInitials": "MC",
+    "logoVariant": "primary",
+    "portraitUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=faces"
   },
   "hero": {
-    "backdropUrl": "/clients/andrei-canciu/hero/backdrop.png",
+    "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1800&q=80&auto=format&fit=crop",
     "eyebrow": "Hairstyling · tunsori geometrice",
-    "titleLines": ["ANDREI", "CANCIU"],
-    "localityLine": "Sibiu · Șoseaua Alba Iulia",
-    "coordsLabel": "45.7928° N · 24.1347° E",
+    "titleLines": ["MIHAI", "CIOBANU"],
+    "localityLine": "Sibiu · Bulevardul Victoriei",
+    "coordsLabel": "45.7920° N · 24.1350° E",
     "scheduleLabel": "Luni → Vineri",
     "marquee": [
       "TUNSORI GEOMETRICE",
       "COAFAT · VOPSIT · STYLING",
       "4.9 ★ PE GOOGLE",
-      "ȘOSEAUA ALBA IULIA · SIBIU",
+      "BULEVARDUL VICTORIEI · SIBIU",
       "PROGRAMĂRI LA TELEFON",
-      "ANDREI CANCIU HAIRSTYLE"
+      "MIHAI CIOBANU HAIRSTYLE"
     ]
   },
   "manifesto": {
@@ -30,12 +31,12 @@
       {
         "eyebrow": "01",
         "title": "Geometrie, nu întâmplare",
-        "body": "Andrei taie pe linii și unghiuri — fiecare tunsoare e construită pe structura părului tău, nu copiată dintr-un catalog."
+        "body": "Mihai taie pe linii și unghiuri — fiecare tunsoare e construită pe structura părului tău, nu copiată dintr-un catalog."
       },
       {
         "eyebrow": "02",
         "title": "Mână de profesor",
-        "body": "Susține seminarii de hairstyling în toată țara. Ce înveți de la el azi, alții abia învață să predea."
+        "body": "Susține ateliere de hairstyling pentru colegii din breaslă. Ce înveți de la el azi, alții abia învață să predea."
       },
       {
         "eyebrow": "03",
@@ -89,29 +90,34 @@
     }
   ],
   "gallery": [
-    "/clients/andrei-canciu/gallery/01.jpg",
-    "/clients/andrei-canciu/gallery/02.png",
-    "/clients/andrei-canciu/gallery/03.png",
-    "/clients/andrei-canciu/gallery/04.png",
-    "/clients/andrei-canciu/gallery/05.png"
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop"
   ],
-  "team": [],
+  "team": [
+    {
+      "id": "mihai",
+      "name": "Mihai Ciobanu",
+      "role": "Hairstylist · fondator",
+      "bio": "Construiește fiecare tunsoare pe geometria părului. Atenție la detaliu, fără grabă.",
+      "portrait": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=faces"
+    }
+  ],
   "reviews": [],
   "contact": {
-    "phone": "0722 163 509",
-    "whatsapp": "40722163509",
-    "address": "Șoseaua Alba Iulia 40, Sibiu",
-    "mapCenter": [24.13469, 45.79280],
+    "phone": "0722 000 101",
+    "whatsapp": "40722000101",
+    "address": "Bulevardul Victoriei 22, Sibiu",
+    "mapCenter": [24.1350, 45.7920],
     "hours": [
       { "day": "Luni — Vineri", "hours": "12:00 — 20:00" },
       { "day": "Sâmbătă", "hours": "Închis" },
       { "day": "Duminică", "hours": "Închis" }
     ]
   },
-  "social": {
-    "instagram": "https://www.instagram.com/andreicanciu.hairstyle/",
-    "facebook": "https://www.facebook.com/hairstylingsibiu/"
-  },
+  "social": {},
   "theme": {
     "scheme": "light",
     "bg": "#ECE7DD",
@@ -125,14 +131,14 @@
     "grain": false
   },
   "geo": {
-    "region": "Șoseaua Alba Iulia",
+    "region": "Bulevardul Victoriei",
     "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Șoseaua Alba Iulia, în",
+    "mapHeadlineLead": "Pe Bulevardul Victoriei, în",
     "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
-    "siteUrl": "https://calinnedelcu.github.io/andrei-canciu",
-    "description": "Hairstyling și tunsori geometrice în Sibiu, pe Șoseaua Alba Iulia — Andrei Canciu. 4.9★ pe Google. Programări la telefon.",
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/andrei-canciu",
+    "description": "Hairstyling și tunsori geometrice în Sibiu — Mihai Ciobanu. 4.9★ pe Google. Programări la telefon.",
     "ogEyebrow": "Hairstyling · tunsori geometrice"
   }
 }

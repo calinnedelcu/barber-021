@@ -14,26 +14,26 @@
     "grain": false
   },
   "brand": {
-    "name": "NICO BEAUTY STYLE",
-    "shortName": "NICO BEAUTY STYLE",
-    "tagline": "Coafor unisex în Sibiu, pe Strada Șoimului — tuns, vopsit, șuvițe, coafat și barbă, pentru ea și pentru el. 4.8★ de la sute de clienți din cartier.",
-    "serial": "N° NBS / 2026",
-    "monogramInitials": "NBS",
+    "name": "BELLA COAFOR",
+    "shortName": "BELLA COAFOR",
+    "tagline": "Coafor unisex în Sibiu, pe Strada Bâlea — tuns, vopsit, șuvițe, coafat și barbă, pentru ea și pentru el.",
+    "serial": "N° BC / 2026",
+    "monogramInitials": "BC",
     "logoVariant": "primary"
   },
   "hero": {
-    "backdropUrl": "/clients/nico-beauty-style/hero/interior.jpg",
+    "backdropUrl": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1800&q=80&auto=format&fit=crop",
     "eyebrow": "Coafor unisex · Sibiu",
-    "titleLines": ["NICO", "BEAUTY"],
-    "localityLine": "Sibiu · Strada Șoimului · Vasile Aaron",
-    "coordsLabel": "45.7834° N · 24.1665° E",
+    "titleLines": ["BELLA", "COAFOR"],
+    "localityLine": "Sibiu · Strada Bâlea · Vasile Aaron",
+    "coordsLabel": "45.7834° N · 24.1600° E",
     "scheduleLabel": "Luni → Sâmbătă",
     "marquee": [
       "TUNS · VOPSIT · ȘUVIȚE · COAFAT",
       "PENTRU EA & PENTRU EL",
-      "4.8 ★ · ~150 EVALUĂRI GOOGLE",
-      "FIRMA DE AUR · 2022–2026",
-      "STRADA ȘOIMULUI 10 · SIBIU",
+      "4.8 ★ · 150 EVALUĂRI GOOGLE",
+      "COAFOR DE CARTIER",
+      "STRADA BÂLEA 5 · SIBIU",
       "PROGRAMĂRI ONLINE"
     ]
   },
@@ -42,17 +42,17 @@
       {
         "eyebrow": "01",
         "title": "Pentru ea și pentru el",
-        "body": "Nico Beauty Style e un salon unisex: tuns damă și bărbat, vopsit, șuvițe, coafat și aranjat barbă, sub același acoperiș. Un loc de cartier unde vine toată familia — femei, bărbați și cei mici."
+        "body": "Bella Coafor e un salon unisex: tuns damă și bărbat, vopsit, șuvițe, coafat și aranjat barbă. Un loc de cartier unde vine toată familia — femei, bărbați și cei mici."
       },
       {
         "eyebrow": "02",
         "title": "Reputația vorbește",
-        "body": "4.8★ din aproape 150 de recenzii pe Google, 5.0 pe Facebook și „Firma de Aur” în fiecare an din 2022 până în 2026. Sute de clienți din Sibiu se întorc pentru același rezultat constant."
+        "body": "4.8★ din aproape 150 de recenzii pe Google. Sute de clienți din Sibiu se întorc pentru același rezultat constant, vizită după vizită."
       },
       {
         "eyebrow": "03",
         "title": "Curat, modern, primitor",
-        "body": "Spațiu curat și modern, personal amabil și serios, lucru făcut cu răbdare. Exact ce ne scriu clienții în recenzii — te simți bine de cum intri și pleci mulțumit."
+        "body": "Spațiu curat și modern, personal amabil și serios, lucru făcut cu răbdare. Exact ce ne scriu clienții — te simți bine de cum intri și pleci mulțumit."
       }
     ]
   },
@@ -121,15 +121,21 @@
       "description": "Coc, bucle sau styling pentru o ocazie specială. Preț orientativ — de confirmat."
     }
   ],
-  "gallery": [],
+  "gallery": [
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop"
+  ],
   "team": [],
   "reviews": [],
   "contact": {
-    "phone": "0742 959 299",
-    "whatsapp": "40742959299",
-    "bookingUrl": "https://stailer.ro/salon/beauty-style-nicoleta",
-    "address": "Strada Șoimului 10, Sc. C, 557260 Sibiu",
-    "mapCenter": [24.1665, 45.7834],
+    "phone": "0742 000 404",
+    "whatsapp": "40742000404",
+    "bookingUrl": "https://stailer.ro/",
+    "address": "Strada Bâlea 5, 557260 Sibiu",
+    "mapCenter": [24.1600, 45.7834],
     "hours": [
       { "day": "Luni", "hours": "09:00 — 18:00" },
       { "day": "Marți", "hours": "09:00 — 18:00" },
@@ -140,18 +146,16 @@
       { "day": "Duminică", "hours": "Închis" }
     ]
   },
-  "social": {
-    "facebook": "https://www.facebook.com/by.Nicoleta.Tocaciu/"
-  },
+  "social": {},
   "geo": {
-    "region": "Strada Șoimului",
+    "region": "Strada Bâlea",
     "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Șoimului, în",
+    "mapHeadlineLead": "Pe Strada Bâlea, în",
     "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
-    "siteUrl": "https://calinnedelcu.github.io/nico-beauty-style",
-    "description": "Coafor unisex în Sibiu, pe Strada Șoimului (Vasile Aaron) — tuns damă și bărbat, vopsit, șuvițe, coafat și barbă. 4.8★ din ~150 recenzii Google, Firma de Aur 2022–2026. Programări online.",
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/nico-beauty-style",
+    "description": "Coafor unisex în Sibiu, pe Strada Bâlea — tuns damă și bărbat, vopsit, șuvițe, coafat și barbă. 4.8★ din 150 recenzii Google. Programări online.",
     "ogEyebrow": "Coafor unisex · Sibiu"
   }
 }

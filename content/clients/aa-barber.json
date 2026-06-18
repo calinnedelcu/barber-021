@@ -13,25 +13,26 @@
     "line": "rgb(237 241 244 / 0.09)"
   },
   "brand": {
-    "name": "A'A BARBER",
-    "shortName": "A'A BARBER",
-    "tagline": "Barbershop pentru bărbați în Sibiu, pe Strada Luptei — tuns, barbă, brici.",
-    "serial": "N° AA / 2026",
-    "monogramInitials": "A'A",
+    "name": "ZERO FADE BARBER",
+    "shortName": "ZERO FADE",
+    "tagline": "Barbershop modern în Sibiu, pe Calea Cisnădiei — tuns, fade, barbă.",
+    "serial": "N° ZF / 2026",
+    "monogramInitials": "ZF",
     "logoVariant": "primary"
   },
   "hero": {
+    "backdropUrl": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80&auto=format&fit=crop",
     "eyebrow": "Barbershop · Sibiu",
-    "titleLines": ["A'A", "BARBER"],
-    "localityLine": "Sibiu · Hipodrom",
-    "coordsLabel": "45.7814° N · 24.1606° E",
+    "titleLines": ["ZERO", "FADE"],
+    "localityLine": "Sibiu · Calea Cisnădiei",
+    "coordsLabel": "45.7780° N · 24.1520° E",
     "scheduleLabel": "Luni → Sâmbătă",
     "marquee": [
       "TUNS · BARBĂ · BRICI",
-      "TUNSOARE DIN FOARFECĂ",
-      "PROGRAMĂRI PE MERO",
-      "4.99 ★ · 4050 EVALUĂRI",
-      "STRADA LUPTEI 19 · SIBIU",
+      "FADE CURAT DIN FOARFECĂ",
+      "PROGRAMĂRI ONLINE",
+      "4.99 ★ · 4000+ EVALUĂRI",
+      "CALEA CISNĂDIEI 18 · SIBIU",
       "MALE IMAGE & GROOMING"
     ]
   },
@@ -40,12 +41,12 @@
       {
         "eyebrow": "01",
         "title": "Meserie din pasiune",
-        "body": "A'A BARBER a pornit din pasiune pentru meserie — servicii de calitate la prețuri corecte. Asta ne aduce clienții înapoi, vizită după vizită."
+        "body": "Zero Fade a pornit din pasiune pentru meserie — servicii de calitate la prețuri corecte. Asta ne aduce clienții înapoi, vizită după vizită."
       },
       {
         "eyebrow": "02",
         "title": "Atenție la detaliu",
-        "body": "Conturul bărbii, linia fade-ului, finisajul. Lucrăm curat și cu răbdare — exact ce ne scriu clienții în recenzii: „știe ce face”."
+        "body": "Conturul bărbii, linia fade-ului, finisajul. Lucrăm curat și cu răbdare — exact ce ne scriu clienții în recenzii."
       },
       {
         "eyebrow": "03",
@@ -85,36 +86,36 @@
     }
   ],
   "gallery": [
-    "/clients/aa-barber/gallery/01.jpg",
-    "/clients/aa-barber/gallery/02.jpg",
-    "/clients/aa-barber/gallery/03.jpg",
-    "/clients/aa-barber/gallery/04.jpg",
-    "/clients/aa-barber/gallery/05.jpg",
-    "/clients/aa-barber/gallery/06.jpg",
-    "/clients/aa-barber/gallery/07.jpg",
-    "/clients/aa-barber/gallery/08.jpg"
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
-      "id": "alexandru",
-      "name": "Alexandru-Alberto Surupăceanu",
+      "id": "radu",
+      "name": "Radu Ionescu",
       "role": "Specialist",
       "bio": "Tuns modern, fade curat și atenție la fiecare linie. Lucrează curat, fără grabă.",
-      "portrait": "/clients/aa-barber/team/alexandru.jpg"
+      "portrait": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "sergiu",
-      "name": "Sergiu Constantin Drăghici",
+      "id": "dan",
+      "name": "Dan Popa",
       "role": "Specialist",
       "bio": "Mână sigură la foarfecă și la contur. Te asigură că pleci cu look-ul dorit.",
-      "portrait": "/clients/aa-barber/team/sergiu.jpg"
+      "portrait": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "calin",
-      "name": "Calin Mihaiu",
+      "id": "alex",
+      "name": "Alexandru Marin",
       "role": "Specialist",
       "bio": "Tunsori moderne, texturi și detaliu. Atmosferă plăcută pe scaun.",
-      "portrait": "/clients/aa-barber/team/calin.jpg"
+      "portrait": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [
@@ -122,48 +123,44 @@
       "id": "r1",
       "quote": "Foarte mulțumit de experiență, sfaturi super bune!",
       "author": "Cristian M.",
-      "source": "MERO · 4.99★",
-      "photo": "/clients/aa-barber/reviews/01.jpg"
+      "source": "MERO · 4.99★"
     },
     {
       "id": "r2",
       "quote": "E top, știe ce face.",
       "author": "Tudor S.",
-      "source": "MERO · 4.99★",
-      "photo": "/clients/aa-barber/reviews/02.jpg"
+      "source": "MERO · 4.99★"
     },
     {
       "id": "r3",
-      "quote": "Genial tip și foarte social, tunde extraordinar, atmosferă plăcută, 10/10.",
+      "quote": "Genial și foarte social, tunde extraordinar, atmosferă plăcută, 10/10.",
       "author": "Dănuț M.",
-      "source": "MERO · 4.99★",
-      "photo": "/clients/aa-barber/reviews/03.jpg"
+      "source": "MERO · 4.99★"
     },
     {
       "id": "r4",
       "quote": "Excelent. Recomand cu cea mai mare încredere.",
       "author": "Marcu M.",
-      "source": "MERO · 4.99★",
-      "photo": "/clients/aa-barber/reviews/04.jpg"
+      "source": "MERO · 4.99★"
     }
   ],
   "instagram": {
-    "handle": "a.abarbersibiu",
+    "handle": "zerofade.sibiu",
     "posts": [
-      "/clients/aa-barber/instagram/01.jpg",
-      "/clients/aa-barber/instagram/02.jpg",
-      "/clients/aa-barber/instagram/03.jpg",
-      "/clients/aa-barber/instagram/04.jpg",
-      "/clients/aa-barber/instagram/05.jpg",
-      "/clients/aa-barber/instagram/06.jpg"
+      "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1493522081028-12d79a2e2e4d?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1619449814206-a05d7b1c73b8?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=600&q=80&auto=format&fit=crop"
     ]
   },
   "contact": {
-    "phone": "0725 168 726",
-    "whatsapp": "40725168726",
-    "bookingUrl": "https://mero.ro/p/frizeria-fin",
-    "address": "Strada Luptei 19, 550330 Sibiu",
-    "mapCenter": [24.1606231, 45.7814411],
+    "phone": "0725 000 202",
+    "whatsapp": "40725000202",
+    "bookingUrl": "https://mero.ro/",
+    "address": "Calea Cisnădiei 18, 550054 Sibiu",
+    "mapCenter": [24.1520, 45.7780],
     "hours": [
       { "day": "Luni", "hours": "09:00 — 20:00" },
       { "day": "Marți", "hours": "09:00 — 20:00" },
@@ -174,20 +171,16 @@
       { "day": "Duminică", "hours": "Închis" }
     ]
   },
-  "social": {
-    "instagram": "https://www.instagram.com/a.abarbersibiu/",
-    "facebook": "https://www.facebook.com/BarbersArenaSibiu/",
-    "tiktok": "https://www.tiktok.com/@aa.barber.sibiu"
-  },
+  "social": {},
   "geo": {
-    "region": "Hipodrom",
+    "region": "Calea Cisnădiei",
     "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Luptei, în",
-    "mapHeadlineAccent": "cartierul Hipodrom"
+    "mapHeadlineLead": "Pe Calea Cisnădiei, în",
+    "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
-    "siteUrl": "https://calinnedelcu.github.io/aa-barber",
-    "description": "Barbershop pentru bărbați în Sibiu, pe Strada Luptei — tuns modern, barbă, brici și tunsoare din foarfecă. 4.99★ din peste 4000 de evaluări. Programări online.",
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/aa-barber",
+    "description": "Barbershop modern în Sibiu, pe Calea Cisnădiei — tuns modern, fade, barbă. 4.99★ din peste 4000 de evaluări. Programări online.",
     "ogEyebrow": "Barbershop · Sibiu"
   }
 }

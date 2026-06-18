@@ -2,26 +2,26 @@
   "slug": "hairmann",
   "tier": "premium",
   "brand": {
-    "name": "HAIRMANN MALE ESTHETICS",
-    "shortName": "HAIRMANN",
-    "tagline": "Barbershop pentru bărbați în Sibiu — pe Strada Lungă, în Orașul de Jos. Tuns, barbă, ritual.",
-    "serial": "N° HM / 2026",
-    "monogramInitials": "HM",
+    "name": "RITUAL BARBER",
+    "shortName": "RITUAL",
+    "tagline": "Barbershop premium în Sibiu, pe Strada Turnului — tuns, barbă, ritual.",
+    "serial": "N° RB / 2026",
+    "monogramInitials": "RB",
     "logoVariant": "primary"
   },
   "hero": {
-    "backdropUrl": "/clients/hairmann/hero/backdrop.jpg",
-    "eyebrow": "Barbershop · male esthetics",
-    "titleLines": ["HAIR", "MANN"],
-    "localityLine": "Sibiu · Orașul de Jos",
-    "coordsLabel": "45.8042° N · 24.1441° E",
+    "backdropUrl": "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1800&q=80&auto=format&fit=crop",
+    "eyebrow": "Barbershop · premium",
+    "titleLines": ["RITUAL", "BARBER"],
+    "localityLine": "Sibiu · Strada Turnului",
+    "coordsLabel": "45.8042° N · 24.1490° E",
     "scheduleLabel": "Luni → Sâmbătă",
     "marquee": [
       "TUNS · BARBĂ · BRICI",
-      "HAIRMANN THERAPY",
-      "PROGRAMĂRI PE MERO",
+      "RITUAL THERAPY",
+      "PROGRAMĂRI ONLINE",
       "5.0 ★ · 5000+ EVALUĂRI",
-      "STRADA LUNGĂ 31 · SIBIU",
+      "STRADA TURNULUI 14 · SIBIU",
       "TOP 100 OF ROMANIA"
     ]
   },
@@ -30,17 +30,17 @@
       {
         "eyebrow": "01",
         "title": "Barberi cu școală",
-        "body": "HAIRMANN nu e doar barbershop — e și școală de barbering. Fiecare tuns iese din mâini care predau meseria mai departe."
+        "body": "RITUAL BARBER nu e doar barbershop — e și școală de barbering. Fiecare tuns iese din mâini care predau meseria mai departe."
       },
       {
         "eyebrow": "02",
         "title": "Atenție la detaliu",
-        "body": "Conturul bărbii, linia fade-ului, finisajul. Detaliile sunt diferența dintre o tunsoare bună și una pe care o ții minte — exact ce ne scriu clienții în recenzii."
+        "body": "Conturul bărbii, linia fade-ului, finisajul. Detaliile sunt diferența dintre o tunsoare bună și una pe care o ții minte."
       },
       {
         "eyebrow": "03",
         "title": "Ritual, nu grabă",
-        "body": "Tuns, aranjat barbă, masaj la scalp și un finisaj fără grabă. Pleci relaxat, nu doar tuns. Asta e HAIRMANN Therapy."
+        "body": "Tuns, aranjat barbă, masaj la scalp și un finisaj fără grabă. Pleci relaxat, nu doar tuns. Asta e Ritual Therapy."
       }
     ]
   },
@@ -50,7 +50,7 @@
       "name": "Tuns bărbat",
       "duration": "40 – 60 min",
       "price": 70,
-      "description": "Consultație, tuns cu mașina și foarfeca, styling final. 70 – 110 lei, în funcție de complexitate."
+      "description": "Consultație, tuns cu mașina și foarfeca, styling final. 70 – 110 lei."
     },
     {
       "id": "barba",
@@ -68,7 +68,7 @@
     },
     {
       "id": "therapy",
-      "name": "HAIRMANN Therapy",
+      "name": "Ritual Therapy",
       "duration": "65 – 70 min",
       "price": 100,
       "description": "Ritualul signature: tuns, barbă, masaj la scalp și relaxare. 100 – 170 lei."
@@ -89,100 +89,89 @@
     }
   ],
   "gallery": [
-    "/clients/hairmann/gallery/01-beard-bw.jpg",
-    "/clients/hairmann/gallery/02-interior.jpg",
-    "/clients/hairmann/gallery/03-fade-profile.jpg",
-    "/clients/hairmann/gallery/04-scissor-detail.jpg",
-    "/clients/hairmann/gallery/05-process.jpg",
-    "/clients/hairmann/gallery/06-editorial-suit.jpg",
-    "/clients/hairmann/gallery/07-crop.jpg",
-    "/clients/hairmann/gallery/08-cutting.jpg",
-    "/clients/hairmann/gallery/09-crop-back.jpg"
+    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
-      "id": "catalin",
-      "name": "Cătălin Rus",
+      "id": "bogdan",
+      "name": "Bogdan Rus",
       "role": "Master Barber",
-      "bio": "Conduce echipa HAIRMANN. Tuns clasic, fade curat, atenție la fiecare linie.",
-      "portrait": "/clients/hairmann/team/catalin.jpg"
+      "bio": "Conduce echipa Ritual. Tuns clasic, fade curat, atenție la fiecare linie.",
+      "portrait": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "cristi",
-      "name": "Cristi Gherghel",
+      "id": "vlad",
+      "name": "Vlad Gherghel",
       "role": "Pro Barber",
       "bio": "Fade-uri precise și styling care ține. Lucrează curat, fără grabă.",
-      "portrait": "/clients/hairmann/team/cristi.jpg"
+      "portrait": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "lucian",
-      "name": "Lucian Joarza",
+      "id": "mihnea",
+      "name": "Mihnea Joarza",
       "role": "Senior Barber",
       "bio": "Mână sigură la foarfecă. Barbă și contur — specialitatea casei.",
-      "portrait": "/clients/hairmann/team/lucian.jpg"
+      "portrait": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "luke",
-      "name": "Luke Stef",
+      "id": "stefan",
+      "name": "Ștefan Ionescu",
       "role": "Specialist",
       "bio": "Tunsori moderne, texturi și detaliu. Mereu la curent cu trendurile.",
-      "portrait": "/clients/hairmann/team/luke.jpg"
-    },
-    {
-      "id": "ronald",
-      "name": "Ronald Antonio",
-      "role": "Specialist",
-      "bio": "„Atent la detalii” — exact ce spun clienții. Te asigură că pleci cu look-ul dorit.",
-      "portrait": "/clients/hairmann/team/ronald.jpg"
+      "portrait": "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [
     {
       "id": "r1",
-      "quote": "Foarte mulțumit de rezultat! Ronald este atent la detalii, lucrează cu profesionalism și se asigură că pleci exact cu look-ul dorit. Atmosferă plăcută și servicii excelente. Recomand cu încredere!",
+      "quote": "Atent la detalii, lucrează cu profesionalism și se asigură că pleci exact cu look-ul dorit. Atmosferă plăcută și servicii excelente. Recomand cu încredere!",
       "author": "Andrei A.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/hairmann/reviews/01.jpg"
+      "source": "MERO · 5.0★"
     },
     {
       "id": "r2",
       "quote": "Foarte bun, deschis la tunsori noi, recomand cu încredere!",
-      "author": "Joarză D.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/hairmann/reviews/02.jpg"
+      "author": "Doru M.",
+      "source": "MERO · 5.0★"
     },
     {
       "id": "r3",
       "quote": "Servicii excelente și atenție la detalii.",
       "author": "Paul A.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/hairmann/reviews/03.jpg"
+      "source": "MERO · 5.0★"
     },
     {
       "id": "r4",
-      "quote": "Extraordinar acest domn. Recomand cu încredere.",
+      "quote": "Extraordinar. Recomand cu încredere.",
       "author": "Lazar B.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/hairmann/reviews/04.jpg"
+      "source": "MERO · 5.0★"
     }
   ],
   "instagram": {
-    "handle": "hairmann.me",
+    "handle": "ritualbarber.sibiu",
     "posts": [
-      "/clients/hairmann/instagram/01.jpg",
-      "/clients/hairmann/instagram/02.jpg",
-      "/clients/hairmann/instagram/03.jpg",
-      "/clients/hairmann/instagram/04.jpg",
-      "/clients/hairmann/instagram/05.jpg",
-      "/clients/hairmann/instagram/06.jpg"
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1493522081028-12d79a2e2e4d?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1619449814206-a05d7b1c73b8?w=600&q=80&auto=format&fit=crop"
     ]
   },
   "contact": {
-    "phone": "0740 842 936",
-    "whatsapp": "40740842936",
-    "bookingUrl": "https://mero.ro/p/hairmann",
-    "address": "Strada Lungă 31, 550107 Sibiu",
-    "mapCenter": [24.14408, 45.80416],
+    "phone": "0740 000 505",
+    "whatsapp": "40740000505",
+    "bookingUrl": "https://mero.ro/",
+    "address": "Strada Turnului 14, 550107 Sibiu",
+    "mapCenter": [24.1490, 45.8042],
     "hours": [
       { "day": "Luni", "hours": "09:00 — 20:00" },
       { "day": "Marți", "hours": "09:00 — 21:30" },
@@ -193,19 +182,16 @@
       { "day": "Duminică", "hours": "Închis" }
     ]
   },
-  "social": {
-    "instagram": "https://www.instagram.com/hairmann.me/",
-    "facebook": "https://www.facebook.com/100046954610745/"
-  },
+  "social": {},
   "geo": {
-    "region": "Orașul de Jos",
+    "region": "Strada Turnului",
     "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Lungă, în",
-    "mapHeadlineAccent": "Orașul de Jos"
+    "mapHeadlineLead": "Pe Strada Turnului, în",
+    "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
-    "siteUrl": "https://calinnedelcu.github.io/hairmann",
-    "description": "Barbershop premium pentru bărbați în Sibiu, pe Strada Lungă — tuns, barbă, HAIRMANN Therapy. 5.0★ din peste 5000 de evaluări. Programări online.",
-    "ogEyebrow": "Barbershop · male esthetics"
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/hairmann",
+    "description": "Barbershop premium în Sibiu, pe Strada Turnului — tuns, barbă, Ritual Therapy. 5.0★ din peste 5000 de evaluări. Programări online.",
+    "ogEyebrow": "Barbershop · premium"
   }
 }

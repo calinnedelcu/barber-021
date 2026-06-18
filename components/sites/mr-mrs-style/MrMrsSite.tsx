@@ -256,7 +256,7 @@ function Hero({ config }: { config: ClientConfig }) {
 
   // Photos: hero backdrop (the "Mrs" balayage) + a men's cut (the "Mr").
   const mrsImg = hero?.backdropUrl ?? config.gallery[0] ?? "";
-  const mrImg = "/clients/mr-mrs-style/gallery/06-mens-fade.jpg";
+  const mrImg = config.hero?.backdropUrl2 ?? config.gallery[5] ?? config.gallery[0] ?? "";
 
   const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -395,9 +395,8 @@ function Marquee({ items }: { items: string[] }) {
 function Manifesto({ config }: { config: ClientConfig }) {
   const panels = config.manifesto.panels;
   // pick a feminine + a masculine result for the paired cards
-  const mrsCard =
-    config.gallery.find((g) => g.includes("02-balayage")) ?? config.gallery[0] ?? "";
-  const mrCard = "/clients/mr-mrs-style/gallery/06-mens-fade.jpg";
+  const mrsCard = config.hero?.backdropUrl ?? config.gallery[0] ?? "";
+  const mrCard = config.hero?.backdropUrl2 ?? config.gallery[5] ?? config.gallery[0] ?? "";
 
   return (
     <section className={s.section} id="filozofie">

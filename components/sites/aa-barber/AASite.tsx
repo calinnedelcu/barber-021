@@ -218,15 +218,17 @@ export function AASite({ config }: { config: ClientConfig }) {
               <motion.div style={{ y: heroImgY }} className="sticky top-[120px]">
                 {/* Source is 500x500 (the neon-sign brand shot) — keep it square so the whole sign reads. */}
                 <div className={cn(styles.tile, "relative aspect-square w-full overflow-hidden")}>
-                  <Image
-                    src={assetPath("/clients/aa-barber/hero/backdrop.jpg")}
-                    alt="Vitrina A'A Barber cu firma neon și tavanul hexagonal cu iederă"
-                    fill
-                    sizes="460px"
-                    priority
-                    className="object-cover"
-                    style={{ filter: "contrast(1.08) saturate(1.05)" }}
-                  />
+                  {hero?.backdropUrl && (
+                    <Image
+                      src={assetPath(hero.backdropUrl)}
+                      alt={brand.name}
+                      fill
+                      sizes="460px"
+                      priority
+                      className="object-cover"
+                      style={{ filter: "contrast(1.08) saturate(1.05)" }}
+                    />
+                  )}
                   <div
                     className="pointer-events-none absolute inset-0"
                     style={{
@@ -353,7 +355,7 @@ export function AASite({ config }: { config: ClientConfig }) {
           reverse
           fast
           sep="/"
-          items={["TUNS", "BARBĂ", "BRICI", "FADE", "FOARFECĂ", "STYLING", "A'A BARBER SIBIU"]}
+          items={["TUNS", "BARBĂ", "BRICI", "FADE", "FOARFECĂ", "STYLING", brand.shortName ?? brand.name]}
           className={cn(styles.display, styles.outline, "text-[2.4rem] md:text-[3.4rem]")}
         />
       </div>
@@ -366,7 +368,7 @@ export function AASite({ config }: { config: ClientConfig }) {
           <Reveal>
             <SectionTag index="02" label="Echipa" />
             <h2 className={cn(styles.display, "mt-5 text-[clamp(2.6rem,7vw,5.5rem)] text-[var(--ink)]")}>
-              Barberii <span className={styles.neon}>A&apos;A</span>
+              Barberii <span className={styles.neon}>{brand.shortName ?? brand.name}</span>
             </h2>
           </Reveal>
 

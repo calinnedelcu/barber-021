@@ -14,26 +14,27 @@
     "grain": false
   },
   "brand": {
-    "name": "MR&MRS STYLE",
-    "shortName": "MR&MRS STYLE",
-    "tagline": "Salon de înfrumusețare în Sibiu, pe Strada Alpinismului — tuns, coafat, color și styling pentru ea și pentru el.",
-    "serial": "N° M&M / 2026",
-    "monogramInitials": "M&M",
+    "name": "COLORI SALON",
+    "shortName": "COLORI SALON",
+    "tagline": "Salon de înfrumusețare unisex în Sibiu, pe Strada Trenului — tuns, coafat, color și styling pentru ea și pentru el.",
+    "serial": "N° CS / 2026",
+    "monogramInitials": "CS",
     "logoVariant": "primary"
   },
   "hero": {
-    "backdropUrl": "/clients/mr-mrs-style/hero/backdrop.jpg",
+    "backdropUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1800&q=80&auto=format&fit=crop",
+    "backdropUrl2": "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1800&q=80&auto=format&fit=crop",
     "eyebrow": "Salon de înfrumusețare · Sibiu",
-    "titleLines": ["MR&MRS", "STYLE"],
-    "localityLine": "Sibiu · Strada Alpinismului",
-    "coordsLabel": "45.7931° N · 24.1356° E",
+    "titleLines": ["COLORI", "SALON"],
+    "localityLine": "Sibiu · Strada Trenului",
+    "coordsLabel": "45.7931° N · 24.1410° E",
     "scheduleLabel": "Luni → Sâmbătă",
     "marquee": [
       "TUNS · COLOR · STYLING",
       "BALAYAGE · AIRTOUCH · ȘUVIȚE",
-      "PROGRAMĂRI ONLINE PE MERO",
-      "5.0 ★ · 48 EVALUĂRI",
-      "STRADA ALPINISMULUI 5C · SIBIU",
+      "PROGRAMĂRI ONLINE",
+      "5.0 ★ · 50+ EVALUĂRI",
+      "STRADA TRENULUI 8 · SIBIU",
       "PENTRU EA & PENTRU EL"
     ]
   },
@@ -42,7 +43,7 @@
       {
         "eyebrow": "01",
         "title": "Pentru ea și pentru el",
-        "body": "MR&MRS STYLE e un salon unisex: tuns damă și bărbat, coafat, color și styling sub același acoperiș. Un loc unde vine toată familia, nu doar jumătate din ea."
+        "body": "COLORI SALON e un salon unisex: tuns damă și bărbat, coafat, color și styling sub același acoperiș. Un loc unde vine toată familia, nu doar jumătate din ea."
       },
       {
         "eyebrow": "02",
@@ -52,7 +53,7 @@
       {
         "eyebrow": "03",
         "title": "Atmosferă și seriozitate",
-        "body": "„Servicii de calitate cu oameni profesioniști, atmosferă plăcută” — exact ce ne scriu clienții. Lucrăm așezat, cu grijă, și te ții de noi vizită după vizită."
+        "body": "Servicii de calitate cu oameni profesioniști, atmosferă plăcută — exact ce ne scriu clienții. Lucrăm așezat, cu grijă, și te ții de noi vizită după vizită."
       }
     ]
   },
@@ -90,7 +91,7 @@
       "name": "Balayage",
       "duration": "4 h 30 min – 5 h 30 min",
       "price": 750,
-      "description": "Balayage pe păr mediu sau lung, cu tonifiere și îngrijire. 750 – 1250 lei, în funcție de lungime."
+      "description": "Balayage pe păr mediu sau lung, cu tonifiere și îngrijire. 750 – 1250 lei."
     },
     {
       "id": "airtouch",
@@ -111,7 +112,7 @@
       "name": "Decolorare & schimbare de culoare",
       "duration": "5 h",
       "price": 450,
-      "description": "Decolorare completă sau schimbare de bază pentru păr scurt. 450 – 1800 lei, în funcție de complexitate."
+      "description": "Decolorare completă sau schimbare de bază. 450 – 1800 lei."
     },
     {
       "id": "coafura-eveniment",
@@ -136,92 +137,83 @@
     }
   ],
   "gallery": [
-    "/clients/mr-mrs-style/gallery/01-balayage-storefront.jpg",
-    "/clients/mr-mrs-style/gallery/02-balayage-style-wall.jpg",
-    "/clients/mr-mrs-style/gallery/03-mahogany-shine.jpg",
-    "/clients/mr-mrs-style/gallery/04-brown-bob-interior.jpg",
-    "/clients/mr-mrs-style/gallery/05-silver-balayage.jpg",
-    "/clients/mr-mrs-style/gallery/06-mens-fade.jpg",
-    "/clients/mr-mrs-style/gallery/07-red-curls-storefront.jpg",
-    "/clients/mr-mrs-style/gallery/08-pink-vivid.jpg",
-    "/clients/mr-mrs-style/gallery/09-silver-curls.jpg",
-    "/clients/mr-mrs-style/gallery/10-silver-style-wall.jpg",
-    "/clients/mr-mrs-style/gallery/11-silver-ash-moss.jpg",
-    "/clients/mr-mrs-style/gallery/12-rose-copper-layers.jpg",
-    "/clients/mr-mrs-style/gallery/13-cool-blonde-mirror.jpg",
-    "/clients/mr-mrs-style/gallery/14-rosegold-waves.jpg",
-    "/clients/mr-mrs-style/gallery/15-cherry-long.jpg"
+    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop"
   ],
   "team": [
     {
-      "id": "laura",
-      "name": "Laura Gherman",
+      "id": "elena",
+      "name": "Elena Gheorghe",
       "role": "Master Hairstylist",
       "bio": "Conduce styling-ul în salon. Tuns, coafat și color — mână sigură la fiecare lucrare.",
-      "portrait": "/clients/mr-mrs-style/team/laura.jpg"
+      "portrait": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "ionela",
-      "name": "Ionela Popa",
+      "id": "andreea",
+      "name": "Andreea Nica",
       "role": "Hairstylist Expert",
       "bio": "Expertă în color și blondare. Balayage, airtouch și șuvițe lucrate cu răbdare.",
-      "portrait": "/clients/mr-mrs-style/team/ionela.jpg"
+      "portrait": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80&auto=format&fit=crop&crop=faces"
     },
     {
-      "id": "diana",
-      "name": "Diana I.",
+      "id": "dana",
+      "name": "Dana I.",
       "role": "Specialist",
       "bio": "Specialistă în styling și finisaj. Atentă la detaliu și la rezultatul de durată.",
-      "portrait": "/clients/mr-mrs-style/team/diana.jpg"
+      "portrait": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80&auto=format&fit=crop&crop=faces"
     }
   ],
   "reviews": [
     {
       "id": "r1",
-      "quote": "Recomand din tot sufletul! Servicii de calitate cu oameni profesioniști, atmosferă plăcută. Mulțumesc pentru seriozitatea de care dați dovadă.",
+      "quote": "Recomand din tot sufletul! Servicii de calitate cu oameni profesioniști, atmosferă plăcută. Mulțumesc pentru seriozitate.",
       "author": "Cristina P.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/mr-mrs-style/reviews/01.jpg"
+      "source": "MERO · 5.0★"
     },
     {
       "id": "r2",
       "quote": "Servicii profesionale! Recomand cu drag!",
       "author": "Iulia M.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/mr-mrs-style/reviews/02.jpg"
+      "source": "MERO · 5.0★"
     },
     {
       "id": "r3",
       "quote": "Perfect!",
       "author": "Ștefan D.",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/mr-mrs-style/reviews/03.jpg"
+      "source": "MERO · 5.0★"
     },
     {
       "id": "r4",
       "quote": "Excelent!",
       "author": "Sebastian",
-      "source": "MERO · 5.0★",
-      "photo": "/clients/mr-mrs-style/reviews/04.jpg"
+      "source": "MERO · 5.0★"
     }
   ],
   "instagram": {
-    "handle": "mrmrsstylesibiu",
+    "handle": "colorisalon.sibiu",
     "posts": [
-      "/clients/mr-mrs-style/instagram/01.jpg",
-      "/clients/mr-mrs-style/instagram/02.jpg",
-      "/clients/mr-mrs-style/instagram/03.jpg",
-      "/clients/mr-mrs-style/instagram/04.jpg",
-      "/clients/mr-mrs-style/instagram/05.jpg",
-      "/clients/mr-mrs-style/instagram/06.jpg"
+      "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1493522081028-12d79a2e2e4d?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583341614782-5b3bd3c5c2da?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=600&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1619449814206-a05d7b1c73b8?w=600&q=80&auto=format&fit=crop"
     ]
   },
   "contact": {
-    "phone": "0755 630 278",
-    "whatsapp": "40755630278",
-    "bookingUrl": "https://mero.ro/p/mr-mrs-style",
-    "address": "Strada Alpinismului 5c, 557260 Sibiu",
-    "mapCenter": [24.13563, 45.79313],
+    "phone": "0755 000 303",
+    "whatsapp": "40755000303",
+    "bookingUrl": "https://mero.ro/",
+    "address": "Strada Trenului 8, 550350 Sibiu",
+    "mapCenter": [24.1410, 45.7931],
     "hours": [
       { "day": "Luni", "hours": "08:00 — 16:00 · 17:30 — 21:00" },
       { "day": "Marți", "hours": "08:00 — 16:00 · 17:30 — 21:00" },
@@ -232,19 +224,16 @@
       { "day": "Duminică", "hours": "Închis" }
     ]
   },
-  "social": {
-    "facebook": "https://www.facebook.com/MrMrsStyleSibiu/",
-    "tiktok": "https://www.tiktok.com/@mrmrsstylesibiu"
-  },
+  "social": {},
   "geo": {
-    "region": "Strada Alpinismului",
+    "region": "Strada Trenului",
     "localityCountry": "Sibiu · RO",
-    "mapHeadlineLead": "Pe Strada Alpinismului, în",
+    "mapHeadlineLead": "Pe Strada Trenului, în",
     "mapHeadlineAccent": "Sibiu"
   },
   "seo": {
-    "siteUrl": "https://calinnedelcu.github.io/mr-mrs-style",
-    "description": "Salon de înfrumusețare unisex în Sibiu, pe Strada Alpinismului — tuns, coafat, balayage, airtouch și styling pentru ea și pentru el. 5.0★ pe MERO. Programări online.",
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/mr-mrs-style",
+    "description": "Salon de înfrumusețare unisex în Sibiu, pe Strada Trenului — tuns, coafat, balayage, airtouch și styling pentru ea și pentru el. 5.0★ pe MERO.",
     "ogEyebrow": "Salon de înfrumusețare · Sibiu"
   }
 }

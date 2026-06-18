@@ -48,10 +48,16 @@ export const ClientConfigSchema = z.object({
     /** If set, the brand mark renders these initials instead of the geometric 021 glyph. */
     monogramInitials: z.string().optional(),
     logoVariant: z.string().default("primary"),
+    /** Optional brand mark photo shown in nav/footer (36x36 circle). */
+    markImageUrl: z.string().optional(),
+    /** Short founder/about portrait URL — shown in the "Despre" signature strip. */
+    portraitUrl: z.string().optional(),
   }),
   hero: z
     .object({
       backdropUrl: z.string().optional(),
+      /** Second hero photo (used by MR&MRS split hero — the "Mr" half). */
+      backdropUrl2: z.string().optional(),
       /** Small kicker above the title, e.g. "Frizerie urbană · cu intenție". */
       eyebrow: z.string().optional(),
       /** Two display lines of the big hero type, e.g. ["HAIR", "MANN"]. */
