@@ -13,11 +13,11 @@ import { rmSync, renameSync, mkdirSync, writeFileSync, copyFileSync } from "node
 const REPO_BASE = (process.env.SITE_BASE_PATH || "/barber-021").replace(/\/$/, "");
 
 const CLIENTS = [
-  { slug: "andrei-canciu", name: "Andrei Canciu", tag: "Hairstyling · tunsori geometrice", loc: "Sibiu" },
-  { slug: "hairmann", name: "HAIRMANN", tag: "Barbershop · male esthetics", loc: "Sibiu" },
-  { slug: "aa-barber", name: "A'A Barber", tag: "Barbershop pentru bărbați", loc: "Sibiu" },
-  { slug: "mr-mrs-style", name: "Mr&Mrs Style", tag: "Salon de înfrumusețare", loc: "Sibiu" },
-  { slug: "nico-beauty-style", name: "Nico Beauty Style", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
+  { slug: "mihai-ciobanu", name: "Mihai Ciobanu", tag: "Hairstyling · tunsori geometrice", loc: "Sibiu" },
+  { slug: "ritual-barber", name: "Ritual Barber", tag: "Barbershop premium", loc: "Sibiu" },
+  { slug: "zero-fade", name: "Zero Fade Barber", tag: "Barbershop modern", loc: "Sibiu" },
+  { slug: "colori-salon", name: "Colori Salon", tag: "Salon de înfrumusețare", loc: "Sibiu" },
+  { slug: "bella-coafor", name: "Bella Coafor", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
   { slug: "demo-start", name: "Demo · Pachetul Start", tag: "Exemplu pachet Start · 10 teme la alegere", loc: "Demo" },
   { slug: "demo-custom", name: "BRICI · Pachetul Custom", tag: "Flagship Custom · 3D, bilingv, pagină extra", loc: "Demo" },
 ];
@@ -84,7 +84,7 @@ const landing = `<!doctype html>
     <div class="grid">
 ${cards}
     </div>
-    <footer class="mono">Realizate ca propuneri · date &amp; poze din surse publice · <a href="./andrei-canciu/?tur=1" style="color:var(--accent);text-decoration:none">tur ghidat &rarr;</a></footer>
+    <footer class="mono">Realizate ca propuneri · date &amp; poze din surse publice · <a href="./mihai-ciobanu/?tur=1" style="color:var(--accent);text-decoration:none">tur ghidat &rarr;</a></footer>
   </main>
 </body>
 </html>

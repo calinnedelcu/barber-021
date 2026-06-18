@@ -1,9 +1,9 @@
 import barber021 from "@/content/clients/barber-021.json";
-import hairmann from "@/content/clients/hairmann.json";
-import andreiCanciu from "@/content/clients/andrei-canciu.json";
-import aaBarber from "@/content/clients/aa-barber.json";
-import mrMrsStyle from "@/content/clients/mr-mrs-style.json";
-import nicoBeautyStyle from "@/content/clients/nico-beauty-style.json";
+import ritualBarber from "@/content/clients/ritual-barber.json";
+import mihaiCiobanu from "@/content/clients/mihai-ciobanu.json";
+import zeroFade from "@/content/clients/zero-fade.json";
+import coloriSalon from "@/content/clients/colori-salon.json";
+import bellaCoafor from "@/content/clients/bella-coafor.json";
 import demoStart from "@/content/clients/demo-start.json";
 import demoCustom from "@/content/clients/demo-custom.json";
 import { loadClientConfig, type ClientConfig } from "./config";
@@ -11,17 +11,17 @@ import { loadClientConfig, type ClientConfig } from "./config";
 // Registry of all client content files. Add a new entry per client draft.
 const REGISTRY: Record<string, unknown> = {
   "barber-021": barber021,
-  hairmann: hairmann,
-  "andrei-canciu": andreiCanciu,
-  "aa-barber": aaBarber,
-  "mr-mrs-style": mrMrsStyle,
-  "nico-beauty-style": nicoBeautyStyle,
+  "ritual-barber": ritualBarber,
+  "mihai-ciobanu": mihaiCiobanu,
+  "zero-fade": zeroFade,
+  "colori-salon": coloriSalon,
+  "bella-coafor": bellaCoafor,
   "demo-start": demoStart,
   "demo-custom": demoCustom,
 };
 
 // Active client is chosen at build time via NEXT_PUBLIC_CLIENT (set in the
-// deploy workflow alongside NEXT_PUBLIC_BASE_PATH). Locally: `NEXT_PUBLIC_CLIENT=hairmann npm run dev`.
+// deploy workflow alongside NEXT_PUBLIC_BASE_PATH). Locally: `NEXT_PUBLIC_CLIENT=ritual-barber npm run dev`.
 export const ACTIVE_SLUG =
   (process.env.NEXT_PUBLIC_CLIENT ?? "").trim() || "barber-021";
 

@@ -13,13 +13,13 @@ export default function Home() {
   const config = getActiveClient();
 
   switch (ACTIVE_SLUG) {
-    case "aa-barber":
+    case "zero-fade":
       return <AASite config={config} />;
-    case "mr-mrs-style":
+    case "colori-salon":
       return <MrMrsSite config={config} />;
-    case "andrei-canciu":
+    case "mihai-ciobanu":
       return <AndreiSite config={config} />;
-    case "nico-beauty-style":
+    case "bella-coafor":
       return <NicoSite config={config} />;
     case "demo-start":
       return <StartSite config={config} />;
