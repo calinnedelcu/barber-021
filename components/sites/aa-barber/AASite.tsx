@@ -202,7 +202,7 @@ export function AASite({ config }: { config: ClientConfig }) {
                   <Tile
                     key={src}
                     src={src}
-                    alt={`Tunsoare A'A Barber ${i + 1}`}
+                    alt={`Tunsoare ${brand.shortName ?? brand.name} ${i + 1}`}
                     sizes="(max-width: 1024px) 22vw, 140px"
                     className="aspect-[3/4]"
                     priority={i === 0}
@@ -573,7 +573,7 @@ export function AASite({ config }: { config: ClientConfig }) {
             <Reveal delay={0.1}>
               <div className={cn(styles.tile, "relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-full")}>
                 <iframe
-                  title="Hartă A'A Barber"
+                  title={`Hartă ${brand.shortName ?? brand.name}`}
                   src={mapSrc}
                   className="absolute inset-0 h-full w-full"
                   style={{ border: 0, filter: "grayscale(1) invert(0.92) contrast(0.9) hue-rotate(180deg)" }}
@@ -702,7 +702,7 @@ function GalleryStrip({ images, reverse = false }: { images: string[]; reverse?:
           <Tile
             key={`${src}-${i}`}
             src={src}
-            alt="Lucrare A'A Barber"
+            alt={`Lucrare ${brand.shortName ?? brand.name}`}
             corners={false}
             sizes="200px"
             className="aspect-[3/4] w-[150px] flex-none sm:w-[200px]"
