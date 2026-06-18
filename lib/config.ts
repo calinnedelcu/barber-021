@@ -81,6 +81,7 @@ export const ClientConfigSchema = z.object({
       /** Location section headline — plain lead + accent fragment. */
       mapHeadlineLead: z.string().optional(),
       mapHeadlineAccent: z.string().optional(),
+      mapSubtitle: z.string().optional(),
     })
     .optional(),
   seo: z

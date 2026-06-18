@@ -641,7 +641,7 @@ function Location({ config }: { config: ClientConfig }) {
               <span className={s.serifItalic}>{geo?.mapHeadlineAccent ?? "Sibiu"}</span>
             </h2>
           </div>
-          <p className={s.sectionLede}>În spatele Școlii nr. 17, cu parcare în apropiere.</p>
+          {geo?.mapSubtitle && <p className={s.sectionLede}>{geo.mapSubtitle}</p>}
         </div>
 
         <div className={s.locGrid}>

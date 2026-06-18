@@ -161,7 +161,7 @@ export function AndreiSite({ config }: { config: ClientConfig }) {
                 <div className={cn(styles.heroFrame, "aspect-[4/5] w-full")}>
                   <Image
                     src={assetPath(heroImg)}
-                    alt="Salonul Andrei Canciu — coafat și balayage în Sibiu"
+                    alt={`Salonul ${brand.shortName ?? brand.name} — coafat și styling în Sibiu`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className={cn(styles.heroFrameImg, "object-cover")}
@@ -475,7 +475,7 @@ function Portfolio({ reduced, instagram, gallery }: { reduced: boolean; instagra
               >
                 <Image
                   src={assetPath(src)}
-                  alt={`Lucrare Andrei Canciu ${i + 1}`}
+                  alt={`Lucrare ${brand.shortName ?? brand.name} ${i + 1}`}
                   fill
                   sizes="(max-width: 640px) 50vw, 33vw"
                   className={cn(styles.galleryImg, "h-full w-full object-cover")}
