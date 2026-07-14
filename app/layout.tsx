@@ -23,7 +23,7 @@ const config = getActiveClient();
 const isStartDemo = ACTIVE_SLUG === "demo-start";
 // The Custom flagship ships its own cinematic preloader (BriciPreloader),
 // so the shared PageLoader is skipped — Lenis stays on.
-const isCustomDemo = ACTIVE_SLUG === "demo-custom";
+const isCustomDemo = ACTIVE_SLUG === "demo-custom" || ACTIVE_SLUG === "demo-custom-v2";
 const brandName = config.brand.shortName ?? config.brand.name;
 const description = config.seo?.description ?? config.brand.tagline;
 const siteUrl = config.seo?.siteUrl ?? "https://example.com";

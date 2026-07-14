@@ -1,0 +1,168 @@
+{
+  "slug": "demo-custom-v2",
+  "tier": "premium",
+  "brand": {
+    "name": "BRICI",
+    "shortName": "BRICI",
+    "tagline": "Frizerie de precizie, în inima Sibiului.",
+    "serial": "N° BR / 2026",
+    "est": "2026",
+    "monogramInitials": "B."
+  },
+  "hero": {
+    "backdropUrl": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1800&q=80&auto=format&fit=crop",
+    "eyebrow": "Barbershop · Sibiu",
+    "titleLines": ["BRI", "CI"],
+    "localityLine": "Piața Mică 4 · Sibiu · 2026→",
+    "marquee": [
+      "TUNS DE PRECIZIE",
+      "RAS TRADIȚIONAL CU BRICI",
+      "CROM · OȚEL · INTENȚIE",
+      "EST. 2026 · PIAȚA MICĂ 4",
+      "PROGRAMĂRI PE MERO"
+    ]
+  },
+  "manifesto": {
+    "panels": [
+      {
+        "eyebrow": "01",
+        "title": "Precizia e o religie",
+        "body": "Fiecare linie e trasă o singură dată. Măsurăm de două ori, tăiem o dată — cu mâna sigură și briciul calibrat."
+      },
+      {
+        "eyebrow": "02",
+        "title": "Oțel, crom, intenție",
+        "body": "Foarfeci japoneze, brici forjat, produse pe care le folosim și noi. Nimic întâmplător, de la primul fade la ultimul detaliu."
+      },
+      {
+        "eyebrow": "03",
+        "title": "Un ritual, nu o programare",
+        "body": "Patruzeci de minute doar ale tale: prosop fierbinte, muzică bună, zero grabă. Intri client, ieși alt om."
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "tuns",
+      "name": "Tuns de precizie",
+      "duration": "45 min",
+      "price": 80,
+      "description": "Consultație, foarfecă și mașină, finisaj la milimetru."
+    },
+    {
+      "id": "fade",
+      "name": "Skin fade",
+      "duration": "50 min",
+      "price": 90,
+      "description": "Degrade la piele, tranziții fără urmă de linie."
+    },
+    {
+      "id": "ras",
+      "name": "Ras tradițional cu brici",
+      "duration": "40 min",
+      "price": 70,
+      "description": "Prosop fierbinte, spumă caldă, lamă nouă. Ritualul complet."
+    },
+    {
+      "id": "barba",
+      "name": "Barbă sculptată",
+      "duration": "30 min",
+      "price": 60,
+      "description": "Contur cu briciul, ulei și balsam la final."
+    },
+    {
+      "id": "combo",
+      "name": "Tuns + barbă",
+      "duration": "80 min",
+      "price": 130,
+      "description": "Pachetul complet — economisești 20 lei."
+    },
+    {
+      "id": "ritual",
+      "name": "Ritualul prosopului fierbinte",
+      "duration": "20 min",
+      "price": 40,
+      "description": "Reset facial: comprese fierbinți, masaj scurt, loțiune rece."
+    }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1536520002442-39764a41e987?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621645582931-d1d3e6564943?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1678356164573-9a534fe43958?w=1600&q=80&auto=format&fit=crop"
+  ],
+  "team": [
+    {
+      "id": "darius",
+      "name": "Darius",
+      "role": "Master barber",
+      "bio": "Zece ani de foarfecă. Crede că un fade bun se vede abia la două săptămâni.",
+      "portrait": "https://images.unsplash.com/photo-1771594836579-af129894a49c?w=1200&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "alex",
+      "name": "Alex",
+      "role": "Fade specialist",
+      "bio": "Nu există «aproape perfect». Există perfect sau mai tundem o dată.",
+      "portrait": "https://images.unsplash.com/photo-1693756222572-23e251a7737d?w=1200&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "robert",
+      "name": "Robert",
+      "role": "Brici & barbă",
+      "bio": "Mâna care ține briciul nu tremură. Restul e spumă caldă și răbdare.",
+      "portrait": "https://images.unsplash.com/photo-1747832910187-f27508ac4c60?w=1200&q=80&auto=format&fit=crop"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "quote": "Cel mai curat fade din Sibiu. Punct.",
+      "author": "Vlad R.",
+      "source": "Google"
+    },
+    {
+      "id": "r2",
+      "quote": "Am venit pentru tuns, am rămas pentru ritual. Prosopul fierbinte te resetează complet.",
+      "author": "Andrei M.",
+      "source": "Google"
+    },
+    {
+      "id": "r3",
+      "quote": "Briciul pe gât și încredere totală. Meseriași cum rar mai găsești.",
+      "author": "Cristi D.",
+      "source": "Google"
+    }
+  ],
+  "contact": {
+    "phone": "+40 721 000 022",
+    "whatsapp": "+40721000022",
+    "address": "Piața Mică 4, Sibiu",
+    "mapCenter": [24.1495, 45.7975],
+    "hours": [
+      { "day": "Marți — Vineri", "hours": "10:00 — 20:00" },
+      { "day": "Sâmbătă", "hours": "10:00 — 16:00" },
+      { "day": "Duminică — Luni", "hours": "Închis" }
+    ],
+    "bookingUrl": "https://mero.ro/"
+  },
+  "theme": {
+    "scheme": "dark",
+    "bg": "#0a0a0b",
+    "surface": "#131316",
+    "ink": "#f1eee7",
+    "inkMuted": "#8e8b84",
+    "accent": "#ff4533",
+    "accentHot": "#ff6552",
+    "line": "rgb(241 238 231 / 0.09)"
+  },
+  "seo": {
+    "siteUrl": "https://calinnedelcu.github.io/barber-021/demo-custom-v2",
+    "description": "BRICI Cinema — site demonstrativ pentru pachetul Custom: film AI Higgsfield regizat pe scroll, design unic, bilingv RO/EN și pagină extra. Frizerie de precizie, Sibiu.",
+    "ogEyebrow": "Barbershop · Sibiu"
+  }
+}

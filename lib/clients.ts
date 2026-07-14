@@ -6,6 +6,7 @@ import coloriSalon from "@/content/clients/colori-salon.json";
 import bellaCoafor from "@/content/clients/bella-coafor.json";
 import demoStart from "@/content/clients/demo-start.json";
 import demoCustom from "@/content/clients/demo-custom.json";
+import demoCustomV2 from "@/content/clients/demo-custom-v2.json";
 import { loadClientConfig, type ClientConfig } from "./config";
 
 // Registry of all client content files. Add a new entry per client draft.
@@ -18,6 +19,7 @@ const REGISTRY: Record<string, unknown> = {
   "bella-coafor": bellaCoafor,
   "demo-start": demoStart,
   "demo-custom": demoCustom,
+  "demo-custom-v2": demoCustomV2,
 };
 
 // Active client is chosen at build time via NEXT_PUBLIC_CLIENT (set in the

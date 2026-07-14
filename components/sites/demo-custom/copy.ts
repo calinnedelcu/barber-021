@@ -7,7 +7,7 @@ export type Lang = "ro" | "en";
 
 export const UI = {
   ro: {
-    nav: { manifest: "Manifest", servicii: "Servicii", galerie: "Galerie", echipa: "Echipa", contact: "Contact", cta: "Programează" },
+    nav: { manifest: "Manifest", servicii: "Servicii", galerie: "Galerie", echipa: "Echipa", recenzii: "Recenzii", contact: "Contact", cta: "Programează" },
     hero: {
       kicker: "Barbershop · Sibiu",
       sub: "Frizerie de precizie, în inima Sibiului. Tuns, fade și ras tradițional cu brici — pe programare.",
@@ -37,7 +37,7 @@ export const UI = {
     // self-contained (shared modules across routes broke the client manifest).
   },
   en: {
-    nav: { manifest: "Manifesto", servicii: "Services", galerie: "Gallery", echipa: "The team", contact: "Contact", cta: "Book now" },
+    nav: { manifest: "Manifesto", servicii: "Services", galerie: "Gallery", echipa: "The team", recenzii: "Reviews", contact: "Contact", cta: "Book now" },
     hero: {
       kicker: "Barbershop · Sibiu",
       sub: "Precision grooming in the heart of Sibiu. Haircuts, fades and traditional straight-razor shaves — by appointment.",

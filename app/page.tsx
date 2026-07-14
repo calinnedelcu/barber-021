@@ -25,6 +25,8 @@ export default function Home() {
       return <StartSite config={config} />;
     case "demo-custom":
       return <BriciSite config={config} />;
+    case "demo-custom-v2":
+      return <BriciSite config={config} variant="cinema" />;
     default:
       return <DefaultSite config={config} />;
   }

@@ -16,6 +16,28 @@ import type { ClientConfig } from "@/lib/config";
 
 type Lang = "ro" | "en";
 
+function StoryLogo() {
+  return (
+    <span className="inline-flex items-center gap-2.5">
+      <svg width="30" height="30" viewBox="0 0 56 42" fill="none" aria-hidden>
+        <path d="M4 22.4 35.2 4.5H52l-8.7 9.1h-7.1L16.5 27H4Z" fill="currentColor" />
+        <path d="m16.5 27 19.7-13.4h7.1L18.4 29.2Z" fill="var(--accent)" />
+        <path
+          d="M16.3 26.5c9.5 2 20.1 5.2 31.7 9.3l-3.6 3.7C33.2 36.8 22.8 33.4 13 29Z"
+          fill="currentColor"
+          fillOpacity="0.16"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinejoin="round"
+        />
+        <circle cx="15.4" cy="27.8" r="3.2" fill="var(--accent)" />
+        <circle cx="15.4" cy="27.8" r="1.15" fill="#0a0a0b" />
+      </svg>
+      <span className="bd text-[1rem]" style={{ letterSpacing: ".12em" }}>BRICI</span>
+    </span>
+  );
+}
+
 const T = {
   ro: {
     kicker: "Pagina extra — inclusă în Custom",
@@ -71,8 +93,8 @@ export function Povestea({ config }: { config: ClientConfig }) {
 
       <header className="border-b border-[var(--line)]">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
-          <Link href="/" aria-label="BRICI — acasă" className="bd text-[1.1rem] tracking-[0.08em]">
-            BRICI
+          <Link href="/" aria-label="BRICI — acasă">
+            <StoryLogo />
           </Link>
           <Link href="/" className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">
             {t.back}

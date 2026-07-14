@@ -10,6 +10,8 @@ import { UI, EN_SERVICES, EN_REVIEWS, EN_MANIFESTO, EN_TEAM, EN_MARQUEE, type La
 import { BriciLogo } from "./BriciLogo";
 import { BriciPreloader } from "./BriciPreloader";
 import { BriciCursor } from "./BriciCursor";
+import { CinematicHero } from "./CinematicHero";
+import { BriciNavigation } from "./BriciNavigation";
 import { heroState } from "./heroState";
 
 // Tot ce e greu (three.js + R3F + drei) trăiește în chunk-ul ăsta lazy — restul
@@ -37,7 +39,13 @@ function canRun3D(): boolean {
   }
 }
 
-export function BriciSite({ config }: { config: ClientConfig }) {
+export function BriciSite({
+  config,
+  variant = "classic",
+}: {
+  config: ClientConfig;
+  variant?: "classic" | "cinema";
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const introPlayed = useRef(false);
@@ -69,6 +77,21 @@ export function BriciSite({ config }: { config: ClientConfig }) {
       ? { ...p, title: EN_MANIFESTO[i]?.title ?? p.title, body: EN_MANIFESTO[i]?.body ?? p.body }
       : p
   );
+  const cinemaCues = lang === "en"
+    ? [
+        { index: "01", label: "OPENING", title: "Everything starts with control.", body: "Weight, balance, intention. The tool only amplifies the hand that guides it." },
+        { index: "02", label: "INCISION", title: "One line changes the frame.", body: "The edge does not decorate the story. It opens the door into it." },
+        { index: "03", label: "WORKSHOP", title: "Beyond the edge, the ritual begins.", body: "A quiet room, prepared light and a place where every detail has a purpose." },
+        { index: "04", label: "HAND", title: "Millimetre by millimetre.", body: "Comb, clipper and patience move together. No wasted gesture, no rushed transition." },
+        { index: "05", label: "RESULT", title: "The shape remains after the noise fades.", body: "A clean contour, a balanced profile and the confidence to carry both." },
+      ]
+    : [
+        { index: "01", label: "DESCHIDERE", title: "Totul începe cu control.", body: "Greutate, echilibru, intenție. Unealta doar amplifică mâna care o conduce." },
+        { index: "02", label: "INCIZIE", title: "O singură linie schimbă cadrul.", body: "Muchia nu decorează povestea. Deschide drumul către ea." },
+        { index: "03", label: "ATELIER", title: "Dincolo de muchie începe ritualul.", body: "Un spațiu liniștit, lumină pregătită și un loc în care fiecare detaliu are un rost." },
+        { index: "04", label: "MÂNĂ", title: "Milimetru cu milimetru.", body: "Pieptenele, mașina și răbdarea se mișcă împreună. Niciun gest în plus, nicio trecere grăbită." },
+        { index: "05", label: "REZULTAT", title: "Forma rămâne după ce zgomotul dispare.", body: "Un contur curat, un profil echilibrat și încrederea de a le purta." },
+      ];
 
   // ── init: limbă din URL/localStorage; capabilitate 3D ────────────────────
   useEffect(() => {
@@ -82,8 +105,8 @@ export function BriciSite({ config }: { config: ClientConfig }) {
   }, [lang]);
 
   useEffect(() => {
-    setShow3D(!reduced && canRun3D());
-  }, [reduced]);
+    setShow3D(variant === "classic" && !reduced && canRun3D());
+  }, [reduced, variant]);
 
   const chooseLang = (l: Lang) => {
     setLang(l);
@@ -114,7 +137,9 @@ export function BriciSite({ config }: { config: ClientConfig }) {
       cleanup.push(() => lenis?.off("scroll", onLenis));
 
       const fine = window.matchMedia("(pointer: fine)").matches;
-      const introDelay = introPlayed.current ? 0.1 : 2.45; // după tăietura preloader-ului
+      // În varianta cinema filmul este deja reveal-ul principal; textul poate
+      // intra sub preloader și este complet vizibil când ecranul se taie.
+      const introDelay = introPlayed.current ? 0.1 : variant === "cinema" ? 0.35 : 2.45;
       introPlayed.current = true;
 
       const ctx = gsap.context((self) => {
@@ -150,18 +175,32 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         ScrollTrigger.create({
           trigger: "[data-hero]",
           start: "top top",
-          end: "bottom top",
+          end: variant === "cinema" ? "bottom bottom" : "bottom top",
           scrub: true,
+          onEnter: () => {
+            if (variant === "cinema") heroState.cinemaScene = 0;
+          },
+          onEnterBack: () => {
+            if (variant === "cinema") heroState.cinemaScene = 0;
+          },
+          onLeave: () => {
+            if (variant === "cinema") heroState.cinemaScene = 1;
+          },
+          onLeaveBack: () => {
+            if (variant === "cinema") heroState.cinemaScene = 0;
+          },
           onUpdate: (s) => {
             heroState.p = s.progress;
           },
         });
-        gsap.to("[data-hero-fade]", {
-          yPercent: -16,
-          opacity: 0.15,
-          ease: "none",
-          scrollTrigger: { trigger: "[data-hero]", start: "top top", end: "bottom top", scrub: true },
-        });
+        if (variant === "classic") {
+          gsap.to("[data-hero-fade]", {
+            yPercent: -16,
+            opacity: 0.15,
+            ease: "none",
+            scrollTrigger: { trigger: "[data-hero]", start: "top top", end: "bottom top", scrub: true },
+          });
+        }
 
         /* ── titluri mascate + reveal-uri + linii-tăietură ─────────────────── */
         (gsap.utils.toArray("[data-split]") as Element[]).forEach((el) => {
@@ -214,6 +253,21 @@ export function BriciSite({ config }: { config: ClientConfig }) {
               pin: true,
               scrub: 0.6,
               invalidateOnRefresh: true,
+              onEnter: () => {
+                if (variant === "cinema") heroState.cinemaScene = 1;
+              },
+              onEnterBack: () => {
+                if (variant === "cinema") heroState.cinemaScene = 1;
+              },
+              onLeaveBack: () => {
+                if (variant === "cinema") heroState.cinemaScene = 0;
+              },
+              onUpdate: (s) => {
+                if (variant === "cinema") {
+                  heroState.cinemaScene = 1;
+                  heroState.cinemaManifest = s.progress;
+                }
+              },
             },
           });
           gsap.to("[data-h-progress]", {
@@ -264,6 +318,31 @@ export function BriciSite({ config }: { config: ClientConfig }) {
           }
         }
 
+        if (variant === "cinema") {
+          ScrollTrigger.create({
+            trigger: "#servicii",
+            start: "top top",
+            end: "bottom 10%",
+            onEnter: () => {
+              heroState.cinemaScene = 2;
+            },
+            onEnterBack: () => {
+              heroState.cinemaScene = 2;
+            },
+            onLeave: () => {
+              heroState.cinemaScene = 2;
+              heroState.cinemaServices = 1;
+            },
+            onLeaveBack: () => {
+              heroState.cinemaScene = 1;
+            },
+            onUpdate: (s) => {
+              heroState.cinemaScene = 2;
+              heroState.cinemaServices = s.progress;
+            },
+          });
+        }
+
         /* ── GALERIE — bandă cinematică orizontală pinned ──────────────────── */
         const gTrack = root.querySelector<HTMLElement>("[data-gal-track]");
         const gPin = root.querySelector<HTMLElement>("[data-gal-pin]");
@@ -279,7 +358,26 @@ export function BriciSite({ config }: { config: ClientConfig }) {
               pin: true,
               scrub: 0.6,
               invalidateOnRefresh: true,
+              onEnter: () => {
+                if (variant === "cinema") heroState.cinemaScene = 3;
+              },
+              onEnterBack: () => {
+                if (variant === "cinema") heroState.cinemaScene = 3;
+              },
+              onLeave: () => {
+                if (variant === "cinema") {
+                  heroState.cinemaScene = 4;
+                  heroState.cinemaGallery = 1;
+                }
+              },
+              onLeaveBack: () => {
+                if (variant === "cinema") heroState.cinemaScene = 2;
+              },
               onUpdate: (s) => {
+                if (variant === "cinema") {
+                  heroState.cinemaScene = 3;
+                  heroState.cinemaGallery = s.progress;
+                }
                 const counter = root.querySelector("[data-gal-counter]");
                 if (counter) {
                   const n = Math.min(8, Math.max(1, Math.round(s.progress * 7) + 1));
@@ -310,12 +408,38 @@ export function BriciSite({ config }: { config: ClientConfig }) {
             scrollTrigger: { trigger: next, start: "top bottom", end: "top top", scrub: true },
           });
         });
+        if (variant === "cinema" && cards.length > 0) {
+          ScrollTrigger.create({
+            trigger: "#echipa",
+            start: "top bottom",
+            end: "bottom top",
+            onEnter: () => {
+              heroState.cinemaScene = 4;
+            },
+            onEnterBack: () => {
+              heroState.cinemaScene = 4;
+            },
+            onLeave: () => {
+              heroState.cinemaScene = 4;
+              heroState.cinemaTeam = 1;
+            },
+            onLeaveBack: () => {
+              heroState.cinemaScene = 3;
+            },
+            onUpdate: (s) => {
+              heroState.cinemaScene = 4;
+              heroState.cinemaTeam = s.progress;
+            },
+          });
+        }
 
         /* ── RECENZII — pinned, citatele se schimbă sub scroll ─────────────── */
         const rPin = root.querySelector<HTMLElement>("[data-rev-pin]");
         const quotes = gsap.utils.toArray("[data-rev-q]") as HTMLElement[];
         if (rPin && quotes.length > 0) {
           gsap.set(quotes, { autoAlpha: 0 });
+          const firstQuote = quotes[0];
+          if (firstQuote) gsap.set(firstQuote, { autoAlpha: 1 });
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: rPin,
@@ -323,17 +447,64 @@ export function BriciSite({ config }: { config: ClientConfig }) {
               end: "+=" + quotes.length * 90 + "%",
               pin: true,
               scrub: 0.5,
+              onEnter: () => {
+                if (variant === "cinema") heroState.cinemaScene = 5;
+              },
+              onEnterBack: () => {
+                if (variant === "cinema") heroState.cinemaScene = 5;
+              },
+              onLeave: () => {
+                if (variant === "cinema") {
+                  heroState.cinemaScene = 5;
+                  heroState.cinemaReviews = 1;
+                }
+              },
+              onLeaveBack: () => {
+                if (variant === "cinema") heroState.cinemaScene = 4;
+              },
+              onUpdate: (s) => {
+                if (variant === "cinema") {
+                  heroState.cinemaScene = 5;
+                  heroState.cinemaReviews = s.progress;
+                }
+              },
             },
           });
           quotes.forEach((q, i) => {
             const text = q.querySelector("[data-rev-text]");
             const words = text ? new SplitText(text, { type: "words" }).words : [];
-            tl.to(q, { autoAlpha: 1, duration: 0.18 }, i)
-              .from(words, { yPercent: 60, opacity: 0, stagger: 0.018, duration: 0.3, ease: "power3.out" }, i + 0.02)
-              .to("[data-rev-bar]", { scaleX: (i + 1) / quotes.length, duration: 0.4, ease: "none" }, i + 0.1);
+            if (i > 0) {
+              tl.to(q, { autoAlpha: 1, duration: 0.18 }, i).from(
+                words,
+                { yPercent: 60, opacity: 0, stagger: 0.018, duration: 0.3, ease: "power3.out" },
+                i + 0.02
+              );
+            }
+            tl.to("[data-rev-bar]", { scaleX: (i + 1) / quotes.length, duration: 0.4, ease: "none" }, i + 0.1);
             if (i < quotes.length - 1) {
               tl.to(q, { autoAlpha: 0, yPercent: -4, duration: 0.18 }, i + 0.78);
             }
+          });
+        }
+
+        if (variant === "cinema") {
+          ScrollTrigger.create({
+            trigger: "#contact",
+            start: "top bottom",
+            end: "bottom bottom",
+            onEnter: () => {
+              heroState.cinemaScene = 6;
+            },
+            onEnterBack: () => {
+              heroState.cinemaScene = 6;
+            },
+            onLeaveBack: () => {
+              heroState.cinemaScene = 5;
+            },
+            onUpdate: (s) => {
+              heroState.cinemaScene = 6;
+              heroState.cinemaContact = s.progress;
+            },
           });
         }
 
@@ -383,16 +554,44 @@ export function BriciSite({ config }: { config: ClientConfig }) {
       killed = true;
       cleanup.forEach((f) => f());
       heroState.p = 0;
+      heroState.cinemaScene = 0;
+      heroState.cinemaManifest = 0;
+      heroState.cinemaServices = 0;
+      heroState.cinemaGallery = 0;
+      heroState.cinemaTeam = 0;
+      heroState.cinemaReviews = 0;
+      heroState.cinemaContact = 0;
     };
-  }, [reduced, lang]);
+  }, [reduced, lang, variant]);
 
   return (
-    <div ref={rootRef} id="top" data-anim={reduced ? "off" : "on"} className="brici bg-[var(--bg)] text-[var(--ink)]">
+    <div
+      ref={rootRef}
+      id="top"
+      data-anim={reduced ? "off" : "on"}
+      data-variant={variant}
+      className="brici bg-[var(--bg)] text-[var(--ink)]"
+    >
       <style>{`
         .brici{font-family:var(--font-archivo),system-ui,sans-serif}
+        .brici :is(#manifest,#servicii,#galerie,#echipa,#recenzii,#contact){scroll-margin-top:4.75rem}
+        .brici :is(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:4px}
         .brici .bd{font-family:var(--font-bricolage),sans-serif;font-weight:800;letter-spacing:-0.015em;line-height:1.02}
         .brici .kicker{font-family:var(--font-jetbrains-mono),monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.24em;color:var(--accent)}
         .brici .chrome{background:linear-gradient(178deg,#ffffff 8%,#cfccc4 38%,#76736c 62%,#403f43 86%);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .brici .cinema-shade{background:linear-gradient(90deg,rgb(7 7 8/.92) 0%,rgb(7 7 8/.62) 36%,rgb(7 7 8/.08) 68%),linear-gradient(180deg,rgb(7 7 8/.42),transparent 32%,rgb(7 7 8/.45))}
+        .brici[data-variant="cinema"]{position:relative;isolation:isolate;background:#070708}
+        .brici[data-variant="cinema"] main> :not([data-cinema-backdrop]){position:relative;z-index:2}
+        .brici[data-variant="cinema"] .cinema-surface{background:rgb(10 10 11/.82)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+        .brici[data-variant="cinema"] .cinema-veil{background:linear-gradient(90deg,rgb(7 7 8/.88),rgb(7 7 8/.64) 52%,rgb(7 7 8/.38))}
+        .brici[data-variant="cinema"] .cinema-gallery{background:linear-gradient(180deg,rgb(7 7 8/.28),rgb(7 7 8/.58) 52%,rgb(7 7 8/.3))}
+        .brici[data-variant="cinema"] .cinema-manifest{background:linear-gradient(90deg,rgb(7 7 8/.88),rgb(7 7 8/.62) 48%,rgb(7 7 8/.28))}
+        .brici[data-variant="cinema"] .cinema-services{background:linear-gradient(90deg,rgb(10 10 11/.96) 0%,rgb(10 10 11/.88) 54%,rgb(10 10 11/.42) 76%,rgb(10 10 11/.16))!important;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+        .brici[data-variant="cinema"] .cinema-team{background:linear-gradient(90deg,rgb(7 7 8/.88),rgb(7 7 8/.56) 58%,rgb(7 7 8/.3))}
+        .brici[data-variant="cinema"] .cinema-reviews{background:linear-gradient(90deg,rgb(10 10 11/.86),rgb(10 10 11/.62) 55%,rgb(10 10 11/.3))!important}
+        .brici[data-variant="cinema"] .cinema-contact{background:linear-gradient(90deg,rgb(7 7 8/.9),rgb(7 7 8/.68) 55%,rgb(7 7 8/.34))}
+        .brici[data-variant="cinema"] .cinema-card{background:rgb(16 16 19/.86)!important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+        .brici[data-variant="cinema"] footer{position:relative;z-index:2;background:rgb(7 7 8/.76);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
         .brici .outline-num{-webkit-text-stroke:1.5px var(--line);color:transparent}
         .brici .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:6px;padding:.8rem 1.5rem;font-weight:700;font-size:.95rem;background:var(--accent);color:#0a0a0b;border:1px solid transparent;transition:background var(--dur-fast) var(--ease-default)}
         .brici .btn:hover{background:var(--accent-hot)}
@@ -410,6 +609,16 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         .brici .finale-cta{display:block;border-block:1px solid var(--line);padding:4.5vw 0;text-align:center;transition:background .4s var(--ease-default),color .4s var(--ease-default)}
         .brici .finale-cta:hover{background:var(--accent);color:#0a0a0b}
         .brici .finale-cta:hover .chrome{-webkit-text-fill-color:#0a0a0b}
+        @media(max-width:639px){
+          .brici .nav-cta{display:none}
+          .brici .cinema-actions{display:grid;grid-template-columns:minmax(0,1fr)}
+          .brici .cinema-actions .btn{width:100%}
+          .brici .cinema-shade{background:linear-gradient(90deg,rgb(7 7 8/.9) 0%,rgb(7 7 8/.7) 72%,rgb(7 7 8/.35) 100%),linear-gradient(180deg,rgb(7 7 8/.48),transparent 34%,rgb(7 7 8/.52))}
+          .brici[data-variant="cinema"] .cinema-veil{background:rgb(7 7 8/.72)}
+          .brici[data-variant="cinema"] .cinema-manifest,.brici[data-variant="cinema"] .cinema-services,.brici[data-variant="cinema"] .cinema-team,.brici[data-variant="cinema"] .cinema-reviews,.brici[data-variant="cinema"] .cinema-contact{background:rgb(7 7 8/.7)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+          .brici[data-variant="cinema"] .cinema-card{background:rgb(16 16 19/.9)!important}
+        }
+        @media(min-width:1024px){.brici[data-variant="cinema"] .cinema-services-content{width:68%;margin-left:max(1.25rem,calc((100vw - 72rem)/2 + 1.25rem));margin-right:auto}}
         /* fallback static: fără pin-uri, totul curge normal */
         .brici[data-anim="off"] [data-h-track]{display:grid;width:100%;grid-template-columns:1fr;gap:2.5rem}
         @media(min-width:768px){.brici[data-anim="off"] [data-h-track]{grid-template-columns:repeat(3,1fr)}}
@@ -431,113 +640,105 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         style={{ transform: "scaleX(0)" }}
       />
 
-      {/* ── Nav ──────────────────────────────────────────────────────────── */}
-      <header className="fixed inset-x-0 top-0 z-[230] border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_72%,transparent)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
-          <a href="#top" aria-label="BRICI — sus">
-            <BriciLogo />
-          </a>
-          <nav className="hidden items-center gap-6 text-sm text-[var(--ink-muted)] lg:flex">
-            <a href="#manifest" className="transition-colors hover:text-[var(--ink)]">{t.nav.manifest}</a>
-            <a href="#servicii" className="transition-colors hover:text-[var(--ink)]">{t.nav.servicii}</a>
-            <a href="#galerie" className="transition-colors hover:text-[var(--ink)]">{t.nav.galerie}</a>
-            <a href="#echipa" className="transition-colors hover:text-[var(--ink)]">{t.nav.echipa}</a>
-            <a href="#contact" className="transition-colors hover:text-[var(--ink)]">{t.nav.contact}</a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <div role="group" aria-label="Limbă" className="flex overflow-hidden rounded-[5px] border border-[var(--line)] text-xs font-bold">
-              {(["ro", "en"] as const).map((l) => (
-                <button
-                  key={l}
-                  type="button"
-                  aria-pressed={lang === l}
-                  onClick={() => chooseLang(l)}
-                  className="px-2.5 py-1.5 uppercase transition-colors"
-                  style={lang === l ? { background: "var(--ink)", color: "var(--bg)" } : { color: "var(--ink-muted)" }}
-                >
-                  {l}
-                </button>
-              ))}
-            </div>
-            <a href={bookingHref} target="_blank" rel="noopener noreferrer" className="btn hidden !px-4 !py-2 text-sm sm:inline-flex">
-              {t.nav.cta}
-            </a>
-          </div>
-        </div>
-      </header>
+      <BriciNavigation
+        lang={lang}
+        labels={t.nav}
+        bookingHref={bookingHref}
+        address={contact.address}
+        phone={contact.phone}
+        onLanguageChange={chooseLang}
+      />
 
       <main>
-        {/* ── HERO — lama plutește peste litere ───────────────────────────── */}
-        <section data-hero className="relative flex min-h-[100svh] flex-col overflow-hidden">
-          <div aria-hidden className="absolute inset-0">
-            {config.hero?.backdropUrl && (
-              <Image src={config.hero.backdropUrl} alt="" fill priority sizes="100vw" className="object-cover opacity-[0.16]" />
-            )}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 70% 55% at 50% 38%, rgb(255 69 51 / 0.10), transparent 65%), linear-gradient(180deg, rgb(10 10 11 / 0.45), rgb(10 10 11 / 0.78) 78%, var(--bg))",
-              }}
-            />
-          </div>
-
-          {/* linia verticală a tăieturii */}
-          <div
-            data-hero-line
-            aria-hidden
-            className="absolute left-5 top-0 z-[6] h-[38vh] w-[2px] origin-top bg-[var(--accent)] sm:left-[8vw]"
+        {/* ── HERO — 3D-ul original sau filmul AI regizat pe scroll ──────── */}
+        {variant === "cinema" ? (
+          <CinematicHero
+            key={lang}
+            kicker={t.hero.kicker}
+            title="BRICI"
+            subtitle={t.hero.sub}
+            primaryLabel={t.hero.cta}
+            secondaryLabel={t.hero.ctaGhost}
+            bookingHref={bookingHref}
+            servicesHref="#servicii"
+            address={contact.address}
+            phone={contact.phone}
+            telHref={telHref}
+            established={brand.est}
+            cues={cinemaCues}
+            teamVisuals={team.map((member) => member.portrait)}
+            reviewVisuals={config.gallery.slice(-3)}
           />
-          {/* coordonate pe șina din dreapta */}
-          <p
-            aria-hidden
-            className="kicker absolute right-5 top-1/2 z-[6] hidden origin-right -translate-y-1/2 rotate-90 !tracking-[0.3em] !text-[var(--ink-muted)] lg:block"
-          >
-            45.7975° N · 24.1495° E
-          </p>
-
-          {show3D && (
-            <Suspense fallback={null}>
-              <Hero3D />
-            </Suspense>
-          )}
-
-          <div className="relative z-[5] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pt-28 pb-10">
-            <div data-hero-fade>
-              <p className="kicker">{t.hero.kicker}</p>
-              <h1
-                key={lang}
-                data-hero-title
-                className="bd chrome mt-4 overflow-hidden text-[clamp(5rem,22vw,16rem)] uppercase leading-[0.9]"
-              >
-                BRICI
-              </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--ink-muted)]">{t.hero.sub}</p>
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <a data-magnetic href={bookingHref} target="_blank" rel="noopener noreferrer" className="btn">
-                  {t.hero.cta}
-                </a>
-                <a href="#servicii" className="btn ghost">
-                  {t.hero.ctaGhost}
-                </a>
-              </div>
-              <p className="mt-9 text-sm text-[var(--ink-muted)]">
-                {contact.address} · est. {brand.est} ·{" "}
-                <a href={telHref} className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--ink)]">
-                  {contact.phone}
-                </a>
-              </p>
+        ) : (
+          <section data-hero className="relative flex min-h-[100svh] flex-col overflow-hidden">
+            <div aria-hidden className="absolute inset-0">
+              {config.hero?.backdropUrl && (
+                <Image src={config.hero.backdropUrl} alt="" fill priority sizes="100vw" className="object-cover opacity-[0.16]" />
+              )}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 70% 55% at 50% 38%, rgb(255 69 51 / 0.10), transparent 65%), linear-gradient(180deg, rgb(10 10 11 / 0.45), rgb(10 10 11 / 0.78) 78%, var(--bg))",
+                }}
+              />
             </div>
-          </div>
 
-          <p aria-hidden className="kicker relative z-[5] mx-auto pb-5 !text-[var(--ink-muted)]">
-            ↓ {t.hero.scroll}
-          </p>
-        </section>
+            <div
+              data-hero-line
+              aria-hidden
+              className="absolute left-5 top-0 z-[6] h-[38vh] w-[2px] origin-top bg-[var(--accent)] sm:left-[8vw]"
+            />
+            <p
+              aria-hidden
+              className="kicker absolute right-5 top-1/2 z-[6] hidden origin-right -translate-y-1/2 rotate-90 !tracking-[0.3em] !text-[var(--ink-muted)] lg:block"
+            >
+              45.7975° N · 24.1495° E
+            </p>
+
+            {show3D && (
+              <Suspense fallback={null}>
+                <Hero3D />
+              </Suspense>
+            )}
+
+            <div className="relative z-[5] mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pt-28 pb-10">
+              <div data-hero-fade>
+                <p className="kicker">{t.hero.kicker}</p>
+                <h1
+                  key={lang}
+                  data-hero-title
+                  className="bd chrome mt-4 overflow-hidden text-[clamp(5rem,22vw,16rem)] uppercase leading-[0.9]"
+                >
+                  BRICI
+                </h1>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--ink-muted)]">{t.hero.sub}</p>
+                <div className="mt-9 flex flex-wrap items-center gap-4">
+                  <a data-magnetic href={bookingHref} target="_blank" rel="noopener noreferrer" className="btn">
+                    {t.hero.cta}
+                  </a>
+                  <a href="#servicii" className="btn ghost">
+                    {t.hero.ctaGhost}
+                  </a>
+                </div>
+                <p className="mt-9 text-sm text-[var(--ink-muted)]">
+                  {contact.address} · est. {brand.est} ·{" "}
+                  <a href={telHref} className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--ink)]">
+                    {contact.phone}
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <p aria-hidden className="kicker relative z-[5] mx-auto pb-5 !text-[var(--ink-muted)]">
+              ↓ {t.hero.scroll}
+            </p>
+          </section>
+        )}
 
         {/* ── Marquee ─────────────────────────────────────────────────────── */}
         {marquee.length > 0 && (
-          <div className="-rotate-[1.2deg] overflow-hidden border-y border-[var(--line)] bg-[var(--surface)] py-3">
+          <div className="cinema-surface -rotate-[1.2deg] overflow-hidden border-y border-[var(--line)] bg-[var(--surface)] py-3">
             <div data-marquee-track className="flex w-max gap-10 whitespace-nowrap">
               {[0, 1].map((copy) => (
                 <span key={copy} aria-hidden={copy === 1} className="flex gap-10">
@@ -553,7 +754,7 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         )}
 
         {/* ── MANIFEST — bandă orizontală ─────────────────────────────────── */}
-        <section id="manifest" className="relative">
+        <section id="manifest" className="cinema-manifest cinema-veil relative">
           <div data-manifest-pin className="flex min-h-[100svh] flex-col justify-center overflow-hidden py-20">
             <div className="mx-auto w-full max-w-6xl px-5">
               <p className="kicker">{t.manifest.kicker}</p>
@@ -580,8 +781,8 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         </section>
 
         {/* ── SERVICII — lista cu preview flotant ─────────────────────────── */}
-        <section id="servicii" className="border-y border-[var(--line)] bg-[var(--surface)]">
-          <div className="mx-auto max-w-6xl px-5 py-24 lg:py-32">
+        <section id="servicii" className="cinema-services cinema-surface border-y border-[var(--line)] bg-[var(--surface)]">
+          <div className="cinema-services-content mx-auto max-w-6xl px-5 py-24 lg:py-32">
             <p className="kicker">{t.services.kicker}</p>
             <h2 key={lang} data-split className="bd mt-4 text-[length:var(--fs-700)]">
               {t.services.title}
@@ -641,7 +842,7 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         </section>
 
         {/* ── GALERIE — banda cinematică ──────────────────────────────────── */}
-        <section id="galerie" className="relative">
+        <section id="galerie" className="cinema-gallery relative">
           <div data-gal-pin className="flex min-h-[100svh] items-center overflow-hidden">
             <div data-gal-track className="flex w-max items-center gap-[4vw] px-5 sm:px-[8vw]">
               <div className="w-[78vw] shrink-0 sm:w-[34vw]">
@@ -675,7 +876,7 @@ export function BriciSite({ config }: { config: ClientConfig }) {
 
         {/* ── ECHIPA — carduri suprapuse ──────────────────────────────────── */}
         {team.length > 0 && (
-          <section id="echipa" className="relative border-t border-[var(--line)]">
+          <section id="echipa" className="cinema-team cinema-veil relative border-t border-[var(--line)]">
             <div className="mx-auto max-w-6xl px-5 pt-24">
               <p className="kicker">{t.team.kicker}</p>
               <h2 key={lang} data-split className="bd mt-4 max-w-2xl text-[length:var(--fs-700)]">
@@ -685,7 +886,7 @@ export function BriciSite({ config }: { config: ClientConfig }) {
             <div className="mx-auto max-w-6xl px-5 pb-24">
               {team.map((member, i) => (
                 <div key={member.id} data-team-card className="sticky top-[12vh] pt-8">
-                  <article className="grid min-h-[72vh] overflow-hidden rounded-xl border border-[var(--line)] bg-[#101013] md:grid-cols-[1fr_1.25fr]">
+                  <article className="cinema-card grid min-h-[72vh] overflow-hidden rounded-xl border border-[var(--line)] bg-[#101013] md:grid-cols-[1fr_1.25fr]">
                     <div className="relative min-h-[300px]">
                       <Image
                         src={member.portrait}
@@ -719,7 +920,7 @@ export function BriciSite({ config }: { config: ClientConfig }) {
 
         {/* ── RECENZII — pinned, un citat pe ecran ────────────────────────── */}
         {reviews.length > 0 && (
-          <section id="recenzii" className="relative border-t border-[var(--line)] bg-[var(--surface)]">
+          <section id="recenzii" className="cinema-reviews relative border-t border-[var(--line)] bg-[var(--surface)]">
             <div data-rev-pin className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 py-20">
               <p aria-hidden className="bd outline-num pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[34vw] leading-none">
                 5,0
@@ -752,7 +953,7 @@ export function BriciSite({ config }: { config: ClientConfig }) {
         )}
 
         {/* ── CONTACT + FINALĂ ────────────────────────────────────────────── */}
-        <section id="contact" className="border-t border-[var(--line)]">
+        <section id="contact" className="cinema-contact cinema-veil border-t border-[var(--line)]">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-2 lg:py-28">
             <div>
               <p className="kicker">{t.contact.kicker}</p>

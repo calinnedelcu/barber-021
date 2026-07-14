@@ -15,7 +15,7 @@ import { ACTIVE_SLUG, getActiveClient } from "@/lib/clients";
 import { Povestea } from "@/components/sites/demo-custom/Povestea";
 
 export default function PovesteaPage() {
-  if (ACTIVE_SLUG !== "demo-custom") {
+  if (ACTIVE_SLUG !== "demo-custom" && ACTIVE_SLUG !== "demo-custom-v2") {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[var(--bg)] text-[var(--ink)]">
         <Link href="/" className="underline underline-offset-4">

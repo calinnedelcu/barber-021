@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { BriciMark } from "./BriciLogo";
 
 // Preloader-ul BRICI: numărătoare 000→100 cu lama care se desenează, apoi
 // ecranul e „tăiat" — cele două jumătăți alunecă în direcții opuse pe o
@@ -15,6 +16,7 @@ export function BriciPreloader() {
   const reduced = useReducedMotion();
   const [phase, setPhase] = useState<"count" | "cut" | "gone">("count");
   const num = useRef<HTMLParagraphElement>(null);
+  const bar = useRef<HTMLDivElement>(null);
 
   // numărătoarea + tranziția de fază (idempotent, restartabil)
   useEffect(() => {
@@ -25,6 +27,7 @@ export function BriciPreloader() {
       const p = Math.min(1, (now - t0) / COUNT_MS);
       const eased = 1 - Math.pow(1 - p, 3);
       if (num.current) num.current.textContent = String(Math.round(eased * 100)).padStart(3, "0");
+      if (bar.current) bar.current.style.transform = `scaleX(${eased})`;
       if (p < 1) {
         raf = requestAnimationFrame(tick);
       } else {
@@ -67,13 +70,18 @@ export function BriciPreloader() {
         .brici-pre[data-phase="cut"] [data-pre-half="bottom"]{transform:translateY(102%)}
         .brici-pre [data-pre-content]{transition:opacity .35s ease}
         .brici-pre[data-phase="cut"] [data-pre-content]{opacity:0}
-        .brici-pre [data-pre-cut]{transform:rotate(-4.6deg) scaleX(0);transform-origin:left center}
-        .brici-pre[data-phase="cut"] [data-pre-cut]{animation:pre-cut .55s cubic-bezier(.7,0,.84,0) forwards}
-        @keyframes pre-cut{60%{transform:rotate(-4.6deg) scaleX(1);opacity:1}100%{transform:rotate(-4.6deg) scaleX(1);opacity:0}}
         .brici-pre [data-pre-word]{animation:pre-word .8s cubic-bezier(.16,1,.3,1) .15s both}
         @keyframes pre-word{from{transform:translateY(120%)}to{transform:none}}
-        .brici-pre [data-pre-draw]{stroke-dasharray:70;stroke-dashoffset:70;animation:pre-draw 1.1s cubic-bezier(.16,1,.3,1) .1s forwards}
-        @keyframes pre-draw{to{stroke-dashoffset:0}}
+        .brici-pre [data-pre-mark]{animation:pre-mark .8s cubic-bezier(.16,1,.3,1) both}
+        .brici-pre [data-pre-mark] [data-logo-blade]{clip-path:inset(0 100% 0 0);animation:pre-blade .72s cubic-bezier(.16,1,.3,1) .08s forwards}
+        .brici-pre [data-pre-mark] [data-logo-edge]{opacity:0;animation:pre-edge .3s ease .52s forwards}
+        .brici-pre [data-pre-mark] [data-logo-handle]{opacity:0;transform:rotate(-24deg);transform-origin:15.4px 27.8px;animation:pre-handle .68s cubic-bezier(.16,1,.3,1) .22s forwards}
+        .brici-pre [data-pre-mark] [data-logo-pivot]{transform:scale(0);transform-origin:15.4px 27.8px;animation:pre-pivot .36s cubic-bezier(.34,1.56,.64,1) .62s forwards}
+        @keyframes pre-mark{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+        @keyframes pre-blade{to{clip-path:inset(0 0 0 0)}}
+        @keyframes pre-edge{to{opacity:1}}
+        @keyframes pre-handle{to{opacity:1;transform:rotate(0)}}
+        @keyframes pre-pivot{to{transform:scale(1)}}
       `}</style>
 
       <div
@@ -86,38 +94,49 @@ export function BriciPreloader() {
         className="absolute inset-0 bg-[#0a0a0b]"
         style={{ clipPath: "polygon(0 58%, 100% 42%, 100% 100%, 0 100%)" }}
       />
-      <div
-        data-pre-cut
-        className="absolute left-0 top-1/2 h-[2px] w-full bg-[#ff4533]"
-        style={{ boxShadow: "0 0 18px rgb(255 69 51 / 0.9)" }}
-      />
-      <div data-pre-content className="absolute inset-0 flex flex-col items-center justify-center gap-6">
-        <svg width="46" height="46" viewBox="0 0 32 32" fill="none">
-          <path
-            data-pre-draw
-            d="M6 19 L24 4.5 L27.5 8.5 L10.5 22 Z"
-            stroke="#f1eee7"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-          />
-          <circle cx="8" cy="21" r="1.6" fill="#ff4533" />
-        </svg>
-        <div className="overflow-hidden">
+      <div data-pre-content className="absolute inset-0 flex items-center justify-center px-5">
+        <div className="w-full max-w-xl text-center">
+          <div data-pre-mark className="mx-auto w-fit text-[#f1eee7]">
+            <BriciMark size={88} />
+          </div>
           <p
-            data-pre-word
-            className="text-[2rem] font-extrabold tracking-[0.14em] text-[#f1eee7]"
-            style={{ fontFamily: "var(--font-bricolage), sans-serif" }}
+            className="mt-7 text-[.62rem] font-semibold uppercase text-[#8e8b84]"
+            style={{ fontFamily: "var(--font-jetbrains-mono), monospace", letterSpacing: ".24em" }}
           >
-            BRICI
+            Atelier de precizie · Sibiu
           </p>
+          <div className="mt-2 overflow-hidden">
+            <p
+              data-pre-word
+              className="text-[clamp(3.7rem,14vw,7.5rem)] font-extrabold uppercase leading-none text-[#f1eee7]"
+              style={{ fontFamily: "var(--font-bricolage), sans-serif", letterSpacing: ".04em" }}
+            >
+              BRICI
+            </p>
+          </div>
+          <div className="mx-auto mt-10 flex max-w-sm items-center gap-4">
+            <p
+              ref={num}
+              className="w-10 text-left text-xs text-[#ff4533]"
+              style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
+            >
+              000
+            </p>
+            <div className="h-px flex-1 overflow-hidden bg-white/15">
+              <div ref={bar} className="h-full w-full origin-left scale-x-0 bg-[#ff4533]" />
+            </div>
+            <p className="text-xs text-[#686660]" style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}>
+              100
+            </p>
+          </div>
+          <div
+            className="mx-auto mt-5 flex max-w-sm justify-between text-[.58rem] uppercase text-[#5f5d58]"
+            style={{ fontFamily: "var(--font-jetbrains-mono), monospace", letterSpacing: ".18em" }}
+          >
+            <span>Est. 2026</span>
+            <span>45.7975° N</span>
+          </div>
         </div>
-        <p
-          ref={num}
-          className="text-sm tracking-[0.3em] text-[#8e8b84]"
-          style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
-        >
-          000
-        </p>
       </div>
     </div>
   );

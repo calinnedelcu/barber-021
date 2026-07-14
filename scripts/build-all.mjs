@@ -20,6 +20,7 @@ const CLIENTS = [
   { slug: "bella-coafor", name: "Bella Coafor", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
   { slug: "demo-start", name: "Demo · Pachetul Start", tag: "Exemplu pachet Start · 10 teme la alegere", loc: "Demo" },
   { slug: "demo-custom", name: "BRICI · Pachetul Custom", tag: "Flagship Custom · 3D, bilingv, pagină extra", loc: "Demo" },
+  { slug: "demo-custom-v2", name: "BRICI Cinema · Custom V2", tag: "Flagship Custom · Higgsfield, scroll-film, bilingv", loc: "Demo" },
 ];
 
 rmSync("dist", { recursive: true, force: true });
