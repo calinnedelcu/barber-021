@@ -27,14 +27,12 @@ Schimbi clientul: `Ctrl+C` → `Remove-Item -Recurse -Force .next` → setezi en
 **Build TOȚI clienții (ca pe producție):** `node scripts/build-all.mjs` → `dist/<slug>/` + landing.
 
 ## 🟢 LIVE (publicat)
-Toți clienții sunt live dintr-un singur repo (`calinnedelcu/barber-021`, GitHub Pages, deploy automat la push pe `main`):
+Toate demo-urile sunt live dintr-un singur repo (`calinnedelcu/barber-021`, GitHub Pages, deploy automat la push pe `main`):
 - **Landing:** https://calinnedelcu.github.io/barber-021/
-- https://calinnedelcu.github.io/barber-021/hairmann/
-- https://calinnedelcu.github.io/barber-021/aa-barber/
-- https://calinnedelcu.github.io/barber-021/mr-mrs-style/
-- https://calinnedelcu.github.io/barber-021/andrei-canciu/
-- https://calinnedelcu.github.io/barber-021/nico-beauty-style/ (bespoke live din 2026-06-12)
 - https://calinnedelcu.github.io/barber-021/demo-start/ (demo pachet Start, 10 teme)
+- https://calinnedelcu.github.io/barber-021/demo-signature/ (demo pachet Signature, 5 designuri)
+- https://calinnedelcu.github.io/barber-021/demo-custom/ (Custom V1)
+- https://calinnedelcu.github.io/barber-021/demo-custom-v2/ (Custom V2 Cinema)
 - https://calinnedelcu.github.io/barber-021/oferta/ (pagina de ofertă client — noindex, fără link pe landing)
 
 Mecanism: workflow-ul rulează `node scripts/build-all.mjs` → fiecare client cu `NEXT_PUBLIC_BASE_PATH=/barber-021/<slug>` în `dist/<slug>/` + landing `dist/index.html`. Ca să adaugi/scoți un client publicat → editezi `CLIENTS` în `scripts/build-all.mjs`.
@@ -47,14 +45,10 @@ A'A, Mr&Mrs și Andrei au fiecare **design bespoke complet diferit** în `compon
 
 | Client | slug | Design | Date reale | Stare | De confirmat / lipsă |
 |--------|------|--------|-----------|-------|----------------------|
-| **HAIRMANN** | `hairmann` | dark/cupru (DefaultSite) | ✅ complet | **live, gata** | mapare poză↔barber; prețuri „de la"; bio-uri neutre |
-| **A'A Barber** | `aa-barber` | **bespoke neon-dark (albastru-ice)** | ✅ complet | **live, QA făcut** (desktop+tabletă+mobil+meniu) | logo „Barbers Arena"≠A'A?; mapare echipă; poze online mici |
-| **Mr&Mrs Style** | `mr-mrs-style` | **bespoke light editorial (crem + salvie)** | ✅ complet | **live, QA făcut** (perfect pe toate dimensiunile) | mapare echipă; IG neconfirmat; cod poștal |
-| **Andrei Canciu** | `andrei-canciu` | **bespoke geometric monocrom (bone + clay)** | ✅ **poze reale integrate** (hero salon, 5 galerie, portret, logo) | **live, finalizat** (V1 ales, hero+manifest reparate) | prețuri reale (acum orientative); recenzii reale |
-| barber-021 | `barber-021` | dark/cupru (DefaultSite) | demo fictiv (Unsplash) | referință template | — |
 | **Demo Start** | `demo-start` | **StartSite dedicat — 10 teme comutabile** (`?tema=`) | fictiv „Atelier Central" (Unsplash) | construit + îmbogățit (recenzii/despre/categorii) | **live** (deploy 2026-06-12) | —
+| **Demo Signature** | `demo-signature` | **5 designuri bespoke comutabile** (`?site=`) | configurații fictive | QA desktop + mobil, selector persistent | **live după push** | —
 | **BRICI (Custom)** | `demo-custom` | **flagship 3D regizat cap-coadă** (hero Lama), bilingv, `/povestea` | fictiv „BRICI" (Unsplash) | v2 regizat, verificat local (pin-uri/recenzii/preloader probate) | **live după push** | |
-| **BRICI Cinema (Custom V2)** | `demo-custom-v2` | **poveste Seedance distribuită prin tot site-ul pe fundal fixed**, bilingv, `/povestea` | fictiv „BRICI" + cadre generate custom | construit și QA local desktop/mobil | de publicat prin push | |
+| **BRICI Cinema (Custom V2)** | `demo-custom-v2` | **poveste Seedance distribuită prin tot site-ul pe fundal fixed**, bilingv, `/povestea` | fictiv „BRICI" + cadre generate custom | construit și QA local desktop/mobil | **live după push** | |
 
 Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduced-motion, 0 poze stock, deploy live ✓.
 
@@ -65,7 +59,7 @@ Toate verificate: typecheck ✓, build ✓ (toți), 0 conținut blocat sub reduc
 
 ## Demo-uri per pachet (noul model de vânzare)
 - **Start** ✅ — `demo-start` („Atelier Central", fictiv): one-page vandabil — hero (cu ramă accent), bandou puncte forte, servicii pe categorii (schema `ServiceSchema` a primit `category` opțional), despre (din `manifesto.panels`), galerie 6 poze (mixed grid), recenzii-citate, contact + hartă + WhatsApp. **10 teme comutabile** din switcher sau `?tema=carbune|salvie|cerneala|mahon|teracota|pudra|beton|noapte|bordo|lavanda`. Fără PageLoader/Lenis/animații avansate (gated în `app/layout.tsx`; doar fade-up subtil cu IntersectionObserver + reduced-motion) — alea sunt diferențiatorii tier-elor de sus. Nuanță de onestitate: pe demo apar **citate** din recenzii; serviciul GBP + managementul recenziilor rămâne Signature+. Componente: `components/sites/demo-start/`.
-- **Signature** — exemplele = portofoliul live. **Tur ghidat:** deschizi orice site cu `?tur=1` (ex. `…/andrei-canciu/?tur=1`) → bară flotantă care te plimbă prin cele 5 site-uri (Andrei, A'A, Mr&Mrs, Nico, HAIRMANN); parametrul se propagă, linkurile curate trimise lead-urilor NU arată bara (`components/providers/PortfolioTour.tsx`). Link discret „tur ghidat →" și în footer-ul landing-ului. Ofertă recalibrată la ce arată exemplele: Signature include „Animații & micro-interacțiuni" + pagini „la alegere"; exclusivitatea Custom = animații **3D/imersive** (le va demonstra BRICI).
+- **Signature** ✅ — toate cele 5 direcții sunt consolidate în `demo-signature`; selectorul fix schimbă instant designul, configurația și paleta și persistă alegerea în `?site=`. Build-urile publice separate au fost înlocuite de un singur URL demonstrativ. Ofertă recalibrată la ce arată exemplele: Signature include „Animații & micro-interacțiuni" + pagini „la alegere"; exclusivitatea Custom = animații **3D/imersive** (demonstrate de BRICI).
 - **Custom** ✅ — `demo-custom` (**„BRICI"**, fictiv): flagship-ul cu tot arsenalul tier-ului, regizat cap-coadă (v2, 2026-06-12; varianta de hero aleasă: **Lama** — switcher-ul a fost scos). **Regia:** preloader cinematic (numărătoare + ecranul „tăiat" pe diagonală; pur CSS/rAF — imun la StrictMode), cursor custom de precizie (punct+inel, etichetă pe CTA-uri), hero cu briciul 3D plutind PESTE litere + linie verticală roșie, manifest pe **bandă orizontală pinned**, servicii cu **preview de imagine care urmărește cursorul** (rândurile sunt linkuri spre MERO), galerie **cinematică orizontală pinned** (B&W→color la hover, counter 01/08, parallax intern), echipa în **carduri suprapuse** (cel vechi se stinge sub următorul), recenzii **pinned** (un citat pe ecran, cuvinte animate, bară de progres), finală cu **CTA gigant** full-width + footer cu marquee uriaș outlined. **Bilingv RO/EN** real (toggle în nav, `?lang=en`, persistat), **logo custom animat** (SVG draw-on), **pagină extra** `/povestea`, coregrafie **GSAP ScrollTrigger + SplitText** (titluri mascate pe linii, marquee infinit, galerie parallax pe 2 rânduri, CTA-uri magnetice, bară de progres), integrat cu Lenis (`window.__lenis`). Stack ales prin research (2026-06-12): three 0.184 + R3F 9.6 + drei 10.7 + GSAP 3.15 (gratuit comercial post-Webflow). **Perf mobil:** 3D în chunk lazy (~183KB gz, doar aici), poster static întâi, DPR≤1.75, frameloop oprit off-screen, fallback complet la reduced-motion/low-end/fără WebGL; mediu de reflexii 100% procedural (Lightformers, zero download HDRI). ⚠️ Gotcha Next 15: două rute care împart module client (`/` + `/povestea`) pierd intrări din React Client Manifest la export static → `/povestea` e deliberat self-contained (vezi comentariile din `Povestea.tsx`). Fonturi: Bricolage Grotesque (nou, doar BRICI).
 - **Custom Cinema V2** ✅ — `demo-custom-v2`: reutilizează `demo-custom`, dar schimbă hero-ul 3D cu o poveste în trei filme Seedance controlate bidirecțional de scroll: brici -> tăietură deterministă -> atelier -> lucru macro -> rezultat -> echipă -> dovadă socială -> invitație. Scena este un fundal full-viewport `fixed`, persistent sub întreaga pagină. Hero-ul de `280svh` păstrează numai `DESCHIDERE` / `INCIZIE`; filmul atelierului este condus de Manifest, lucrul de Servicii, wipe-ul rezultatului de Galerie, portretele de cardurile Echipei, cadrele foto de citatele pinned, iar Contactul revine la scaunul gol. Tranzițiile sunt `clip-path`/wipe/crossfade în browser, toate filmele sunt H.264 all-keyframe, iar reduced-motion folosește rezultatul static fără să monteze video. Cele două secvențe noi au costat 35 credite Higgsfield; soldul a rămas 52.5. Job-uri, prompturi, asset-uri și măsurători QA: `docs/DEMO-CUSTOM-V2.md`.
 

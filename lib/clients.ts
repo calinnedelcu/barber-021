@@ -9,6 +9,22 @@ import demoCustom from "@/content/clients/demo-custom.json";
 import demoCustomV2 from "@/content/clients/demo-custom-v2.json";
 import { loadClientConfig, type ClientConfig } from "./config";
 
+const demoSignature = {
+  ...mihaiCiobanu,
+  slug: "demo-signature",
+  brand: {
+    ...mihaiCiobanu.brand,
+    name: "DEMO SIGNATURE",
+    shortName: "SIGNATURE",
+    tagline: "Cinci direcții de design unic pentru saloane și frizerii.",
+  },
+  seo: {
+    ...mihaiCiobanu.seo,
+    siteUrl: "https://calinnedelcu.github.io/barber-021/demo-signature",
+    description: "Demo Signature: cinci direcții de design unic, comutabile într-un singur website.",
+  },
+};
+
 // Registry of all client content files. Add a new entry per client draft.
 const REGISTRY: Record<string, unknown> = {
   "barber-021": barber021,
@@ -18,6 +34,7 @@ const REGISTRY: Record<string, unknown> = {
   "colori-salon": coloriSalon,
   "bella-coafor": bellaCoafor,
   "demo-start": demoStart,
+  "demo-signature": demoSignature,
   "demo-custom": demoCustom,
   "demo-custom-v2": demoCustomV2,
 };
@@ -29,9 +46,12 @@ export const ACTIVE_SLUG =
 
 let cached: ClientConfig | null = null;
 
+export function getClientConfig(slug: string): ClientConfig {
+  return loadClientConfig(REGISTRY[slug] ?? barber021);
+}
+
 export function getActiveClient(): ClientConfig {
   if (cached) return cached;
-  const raw = REGISTRY[ACTIVE_SLUG] ?? barber021;
-  cached = loadClientConfig(raw);
+  cached = getClientConfig(ACTIVE_SLUG);
   return cached;
 }

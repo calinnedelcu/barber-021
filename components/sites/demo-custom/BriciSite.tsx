@@ -12,6 +12,7 @@ import { BriciPreloader } from "./BriciPreloader";
 import { BriciCursor } from "./BriciCursor";
 import { CinematicHero } from "./CinematicHero";
 import { BriciNavigation } from "./BriciNavigation";
+import { DemoPackageSwitcher } from "@/components/providers/DemoPackageSwitcher";
 import { heroState } from "./heroState";
 
 // Tot ce e greu (three.js + R3F + drei) trăiește în chunk-ul ăsta lazy — restul
@@ -1044,6 +1045,16 @@ export function BriciSite({
           </div>
         </div>
       </footer>
+
+      <DemoPackageSwitcher
+        label="Custom · versiune"
+        active={variant === "cinema" ? "v2" : "v1"}
+        align="left"
+        options={[
+          { id: "v1", label: "V1 · 3D", shortLabel: "V1", href: variant === "cinema" ? "../demo-custom/" : "./" },
+          { id: "v2", label: "V2 · Cinema", shortLabel: "V2", href: variant === "cinema" ? "./" : "../demo-custom-v2/" },
+        ]}
+      />
     </div>
   );
 }

@@ -13,14 +13,10 @@ import { rmSync, renameSync, mkdirSync, writeFileSync, copyFileSync } from "node
 const REPO_BASE = (process.env.SITE_BASE_PATH || "/barber-021").replace(/\/$/, "");
 
 const CLIENTS = [
-  { slug: "mihai-ciobanu", name: "Mihai Ciobanu", tag: "Hairstyling · tunsori geometrice", loc: "Sibiu" },
-  { slug: "ritual-barber", name: "Ritual Barber", tag: "Barbershop premium", loc: "Sibiu" },
-  { slug: "zero-fade", name: "Zero Fade Barber", tag: "Barbershop modern", loc: "Sibiu" },
-  { slug: "colori-salon", name: "Colori Salon", tag: "Salon de înfrumusețare", loc: "Sibiu" },
-  { slug: "bella-coafor", name: "Bella Coafor", tag: "Coafor unisex · tuns, vopsit, barbă", loc: "Sibiu" },
   { slug: "demo-start", name: "Demo · Pachetul Start", tag: "Exemplu pachet Start · 10 teme la alegere", loc: "Demo" },
-  { slug: "demo-custom", name: "BRICI · Pachetul Custom", tag: "Flagship Custom · 3D, bilingv, pagină extra", loc: "Demo" },
-  { slug: "demo-custom-v2", name: "BRICI Cinema · Custom V2", tag: "Flagship Custom · Higgsfield, scroll-film, bilingv", loc: "Demo" },
+  { slug: "demo-signature", name: "Demo · Pachetul Signature", tag: "5 direcții de design unic · animații și micro-interacțiuni", loc: "Demo" },
+  { slug: "demo-custom", name: "BRICI · Custom V1", tag: "Flagship Custom · 3D, bilingv, pagină extra", loc: "Demo" },
+  { slug: "demo-custom-v2", name: "BRICI Cinema · Custom V2", tag: "Flagship Custom · scroll-film, bilingv, pagină extra", loc: "Demo" },
 ];
 
 rmSync("dist", { recursive: true, force: true });
@@ -85,7 +81,7 @@ const landing = `<!doctype html>
     <div class="grid">
 ${cards}
     </div>
-    <footer class="mono">Realizate ca propuneri · date &amp; poze din surse publice · <a href="./mihai-ciobanu/?tur=1" style="color:var(--accent);text-decoration:none">tur ghidat &rarr;</a></footer>
+    <footer class="mono">Realizate ca propuneri · date &amp; poze din surse publice · <a href="./demo-signature/" style="color:var(--accent);text-decoration:none">vezi Signature &rarr;</a></footer>
   </main>
 </body>
 </html>
